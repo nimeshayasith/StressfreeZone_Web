@@ -63,7 +63,7 @@ export default function Register() {
       </div>
     </div>
     
-      <div className="flex flex-col items-start text-base font-medium max-w-[426px] text-slate-400">
+      <div className="flex flex-col items-start text-base font-medium max-w-[426px] text-slate-400 mt-10">
         <h1 className="text-3xl font-semibold text-white">Create an Account 👋</h1>
         <div className="mt-5 text-lg leading-loose">
       Kindly fill in your details to create an account
@@ -97,19 +97,23 @@ export default function Register() {
           />
        
        
-        <button onClick={signup} className="w-full bg-teal-500 text-white py-3 rounded">
+        <button onClick={signup} className="w-full bg-teal-500 text-white py-3 rounded mt-10">
           Register
         </button>
-        <p className="mt-6 text-center text-white">
+
+        <p className="flex gap-48 mt-6 text-center text-white ">
           Already have an account?{" "}
           <span
             onClick={() => navigate("/")}
             className="text-teal-400 cursor-pointer"
           >
-            Login
+                Login
           </span>
         </p>
+
+        
       </div>
+      
       </div>
       <div className="w-1/2 text-right">
       <img src={Meditation_1} alt="" className="w-120 h-120 left-[100px] top-[100px] "/>
