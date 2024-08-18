@@ -1,98 +1,53 @@
-import React, { useState ,useEffect } from 'react';
+// eslint-disable-next-line no-unused-vars
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { auth, googleProvider } from "../firebaseConfig";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import axios from "axios";
 import logo_icon from '../assets/logo1.svg';
 import Meditation_2 from '../assets/Meditation_2.svg';
 
 export default function Login() {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
-  useEffect(() => {
-   
-    google.accounts.id.initialize({
-      client_id: "YOUR_GOOGLE_CLIENT_ID", 
-      callback: handleGoogleResponse,
-    });
-
-    google.accounts.id.renderButton(
-      document.getElementById("googleSignInButton"),
-      { theme: "outline", size: "large" }
-    );
-  }, []);
-
-  const handleGoogleResponse = (response) => {
-    console.log("Encoded JWT ID token: " + response.credential);
-
-  };
-
-  const changeHandler = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const login = () => {
-    if (!formData.email || !formData.password) {
-      alert("Please enter both email and password.");
-      return;
-    }
-
-    fetch("https://example.com/api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: formData.email,
-        password: formData.password,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
-          console.log("Login successful!", data);
-         
-          navigate("/");
-        } else {
-          alert("Invalid email or password.");
-        }
-      })
-      .catch((error) => {
-        console.error("Error during login:", error);
-        alert("An error occurred. Please try again later.");
-      });
-  };
-  const handleForgotPassword = async () => {
-    if (!formData.email) {
-      alert("Please enter your email address.");
-      return;
-    }
-
+  const handleLogin = async () => {
     try {
-      const response = await fetch("https://example.com/api/forgot-password", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email: formData.email }),
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // Optionally, authenticate with your backend
+      await axios.post("http://localhost:5000/api/login", {
+        email,
+        password
       });
 
-      if (response.ok) {
-        setMessage("Password reset link has been sent to your email.");
-      } else {
-        setMessage("Failed to send email. Please try again.");
-      }
+      console.log("User logged in:", user);
+      alert("User Logged in succefull !");
     } catch (error) {
-      console.error("Error sending email:", error);
-      setMessage("An error occurred. Please try again later.");
+      console.error("Error during login:", error);
+      alert("An error occurred. Please try again later.");
     }
   };
 
+  const handleGoogleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
 
- 
+      // Optionally, authenticate with your backend
+      await axios.post("http://localhost:5000/api/login-google", {
+        email: user.email,
+        name: user.displayName
+      });
+
+      console.log("User logged in with Google:", user);
+    } catch (error) {
+      console.error("Error during Google login:", error);
+    }
+  };
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center px-20 py-14 bg-gray-800">
@@ -117,8 +72,8 @@ export default function Login() {
               <div className="mt-12 text-gray-500 max-md:mt-10">Enter the Email-Address*</div>
               <input
             name="email"
-            value={formData.email}
-            onChange={changeHandler}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             type="email"
             placeholder="Enter your E-mail"
             className="px-8 py-6 mt-3 max-w-full rounded-md border border-solid bg-zinc-800 border-slate-400 w-[426px] max-md:px-5 text-white"
@@ -126,8 +81,8 @@ export default function Login() {
               <div className="mt-12 text-gray-500 max-md:mt-10">Enter your password*</div>
              <input
             name="password"
-            value={formData.password}
-            onChange={changeHandler}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             type="password"
             placeholder="Create your password"
             className="px-8 py-6 mt-3 max-w-full rounded-md border border-solid bg-zinc-800 border-slate-400 w-[426px] max-md:px-5 text-white"
@@ -138,9 +93,9 @@ export default function Login() {
             <button onClick={() => navigate("/adminlogin")}
             className=" cursor-pointer">Admin</button>
 
-          <button onClick={handleForgotPassword} className="cursor-pointer">Forget password</button>
+          <button  className="cursor-pointer">Forget password</button>
           </div>
-        <button onClick={login} className="w-full bg-teal-500 text-white py-3 rounded mt-5">
+        <button onClick={handleLogin} className="w-full bg-teal-500 text-white py-3 rounded mt-5">
           Login
         </button>
 
@@ -148,10 +103,12 @@ export default function Login() {
         <p className='w-full text-center mt-10 text-teal-50'>Or</p>
         <div id="googleSignInButton" className="mt-10 w-full"></div>
 
-        {message && <p className="mt-6 text-center text-green-400">{message}</p>}
+        
+        <button className="mt-6 text-center text-green-400" onClick={handleGoogleLogin}>Login with Google</button>
+
         <p className="flex gap-48 mt-10 text-center text-white ">
-          Don't have an account? {" "}
-<span
+          Do not have an account? {" "}
+          <span
             onClick={() => navigate("/register")}
             className="text-teal-400 cursor-pointer"
           >
