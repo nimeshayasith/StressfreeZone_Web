@@ -28,15 +28,15 @@ export default function Home() {
           <button className="self-stretch my-auto text-teal-500 w-[150px]">Stress Checker</button>
           <button className="self-stretch my-auto w-[150px]">Quick Relaxation</button>
           <button className="self-stretch my-auto w-[150px]">Movements</button>
-          <button className="self-stretch my-auto w-[154px]">Learn more</button
-          >
+          <button className="self-stretch my-auto w-[154px]">Learn more</button>
+          
         </div>
         </div>
         <div className="flex gap-0.5 justify-center items-center self-stretch my-auto min-h-[51px] min-w-[240px] w-[480px] max-md:max-w-full">
         <div className="flex flex-col self-stretch my-auto min-w-[240px] w-[480px] max-md:max-w-full">
           <div className="flex justify-center items-center min-h-[51px]">
             <button className="self-stretch my-auto w-[120px]">Home</button>
-            <button className="self-stretch my-auto w-[120px]">About US</button>
+            <button className="self-stretch my-auto w-[120px]">About Us</button>
             <button className="self-stretch my-auto w-[120px]">Mobile App</button>
             <button className="self-stretch my-auto w-[120px]">Premier plan</button>
           </div>

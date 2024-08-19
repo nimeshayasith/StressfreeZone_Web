@@ -27,7 +27,7 @@ export default function Register() {
           uid: user.uid
         });
   
-        // Optionally, send data to your backend
+        // Optionally, send data to our backend
         await axios.post("http://localhost:5000/api/register", {
           email,
           name,
