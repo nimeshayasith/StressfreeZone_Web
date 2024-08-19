@@ -1,18 +1,29 @@
-import React from "react";
+import React  from "react";
+import { useNavigate } from "react-router-dom";
 import YogaBackgroundArt from '../assets/Yoga background art.png'
 import YogaGirlRightSide from '../assets/Yoga girl right side.png'
-import CircleGaps from '../assets/Circle Gaps.png'
 import logo_icon from '../assets/logo1.svg'
 import group4 from '../assets/Group 4.png'
 import group7 from '../assets/Group 7.png'
 import group8 from '../assets/Group 8.png'
-import blurcircle from '../assets/Ellipse 4.svg'
 import breathingword from '../assets/BREATHING.png'
-import logocircle from '../assets/logo.png'
+import logocirclewithstyle from '../assets/logo with style.png'
+import breath from '../assets/breath.png'
+import base from '../assets/base.png'
+import phoneSelection from '../assets/Phone Selection.png'
+import frame2 from '../assets/Frame 2.png'
+
 
 
 export default function Home() {
+  const navigate = useNavigate();
+
+const handleClick = () => {
+  navigate('/login');
+};
+
   return (
+
     <div>
 
       
@@ -60,8 +71,10 @@ export default function Home() {
           </div>
        
         <div className="flex gap-5 justify-between mt-16 ml-36 max-w-full text-lg font-medium tracking-wider text-white w-[360px] max-md:mt-10 max-md:ml-2.5">
-          <button className="px-14 py-5 bg-teal-500 max-md:px-5">Try for free</button>
-          <button className="self-start px-3 py-5">Contact Us</button>
+          <button 
+          onClick={handleClick} 
+          className="relative px-14 py-5 bg-teal-500 max-md:px-5">Try for free</button>
+          <button className="relative self-start px-3 py-5">Contact Us</button>
         </div>
         </div>
 
@@ -74,40 +87,39 @@ export default function Home() {
 
 
 
-    <div className="flex overflow-hidden flex-col items-center px-16 pb-40 bg-slate-600 bg-opacity-50 max-md:px-5 max-md:pb-24">
+    <div className="flex overflow-hidden flex-col items-center px-16 pb-36 bg-slate-700/50 bg-opacity-50 max-md:px-5 max-md:pb-24">
       <div className="ml-12 w-full max-w-[1407px] max-md:max-w-full">
         <div className="flex gap-5 max-md:flex-col">
-          <div className="flex flex-col w-[69%] max-md:ml-0 max-md:w-full">
-            <div className="flex flex-col w-full max-md:mt-10 max-md:max-w-full">
-              <div className="max-w-full w-[571px]">
-                <div className="flex gap-5 max-md:flex-col pl-20">
-                  <div className="flex flex-col w-[28%] max-md:ml-0 max-md:w-full">
-                  <img src={blurcircle} alt="" className="absolute w-[150px] h-[150px] mt-72 -ml-4 object-cover" />
-                  <div className="flex relative flex-col grow px-3 pt-60 pb-32 font-light text-center text-white whitespace-nowrap aspect-[0.209] rounded-[65px] text-[159px] w-[100px] max-md:py-24 max-md:pr-5 max-md:mt-10 max-md:text-4xl">
+          <div className="flex flex-col w-[65%] max-md:ml-0 max-md:w-full">
+            <div className="flex flex-col w-full max-md:mt-010 max-md:max-w-full">
+              <div className="max-w-full w-[550px]">
+                <div className="flex gap-5 max-md:flex-col pl-10">
+                <div className="flex flex-col mb-40 pl-0 w-[34%] max-md:ml-0 max-md:w-full">
 
-                  <img src={group4} alt="" className="absolute inset-7 w-auto h-auto object-cover" />
-                     4
-                  </div>
-                  </div>
-                  <div className="flex flex-col ml-5 pl-20 w-[34%] max-md:ml-0 max-md:w-full">
-                  <img src={blurcircle} alt="" className="absolute w-[150px] h-[150px] mt-72 -ml-2 object-cover" />
-                    <div className="flex relative flex-col grow px-7 pt-60 pb-32 font-light text-center text-white whitespace-nowrap aspect-[0.209] rounded-[65px] text-[159px] w-[100px] max-md:py-24 max-md:pr-5 max-md:mt-10 max-md:text-4xl">
-                      <img src={group7} className="absolute inset-7 w-auto h-auto object-cover"/>
-                      7
+                    <div className="flex relative flex-col  w-[200px] max-md:py-24 max-md:pr-5 max-md:mt-10 max-md:text-4xl">
+                      <img src={group4} className="relative  inset-7 -mt-8 object-cover"/>
+  
                     </div>
                   </div>
-                  <div className="flex flex-col ml-5 pl-20 w-[39%] max-md:ml-0 max-md:w-full">
-                  <img src={blurcircle} alt="" className="absolute w-[150px] h-[150px] mt-72 ml-0 object-cover" />
-                    <div className="flex relative flex-col grow px-8 pt-60 pb-32 font-light text-center text-white whitespace-nowrap aspect-[0.209] rounded-[65px] text-[159px] w-[100px] max-md:py-24 max-md:pr-5 max-md:mt-10 max-md:text-4xl">
-                      <img src={group8} className="absolute inset-7 w-auto h-auto object-cover"/>
-                      8
+                  <div className="flex flex-col ml-0 pl-10 w-[34%] max-md:ml-0 max-md:w-full">
+
+                    <div className="flex relative flex-col  w-[200px] max-md:py-24 max-md:pr-5 max-md:mt-10 max-md:text-4xl">
+                      <img src={group7} className="absolute inset-7 -mt-8 object-cover"/>
+                      
+                    </div>
+                  </div>
+                  <div className="flex flex-col ml-0 pl-20 w-[34%] max-md:ml-0 max-md:w-full">
+
+                    <div className="flex relative flex-col  w-[200px] max-md:py-24 max-md:pr-5 max-md:mt-10 max-md:text-4xl">
+                      <img src={group8} className="absolute inset-7 -mt-8 object-cover"/>
+  
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col items-start pl-24 mt-8 max-md:max-w-full">
+              <div className="flex flex-col items-start pl-24 mt-0 max-md:max-w-full">
               <img src={breathingword} alt="" />
-                <div className="self-stretch mt-7 text-3xl leading-loose uppercase text-slate-400 tracking-[6.4px] max-md:max-w-full">
+                <div className="self-stretch mt-8 text-2xl leading-loose uppercase text-slate-400 tracking-[6.4px] max-md:max-w-full">
                   QUICK RELAXATION for calm & focus{" "}
                 </div>
                 <button className="px-14 py-5 mt-16 max-w-full text-lg font-medium tracking-wider text-white bg-teal-600 w-[221px] max-md:px-5 max-md:mt-10">
@@ -116,9 +128,11 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col ml-5 w-[31%] max-md:ml-0 max-md:w-full">
-            <div className="flex flex-col justify-center items-center px-20 mt-72 w-full bg-emerald-600 rounded-full aspect-square max-md:px-5 max-md:py-24 max-md:mt-10">
-              <img src={logocircle} alt="" />
+          <div className="flex flex-col ml-5 w-[55%] max-md:ml-0 max-md:w-full relative">
+            <div className="flex justify-center items-center px-20 mt-64 rounded-full aspect-square max-md:px-5 max-md:py-24 max-md:mt-10 relative">
+               <img src={base} alt="" className="absolute w-96 h-96 object-cover rounded-full" />
+               <img src={breath} alt="" className="absolute w-64 h-64 object-cover rounded-full" />
+               <img src={logocirclewithstyle} alt="" className="absolute inset-0 m-auto w-[100%] h-[100%] rounded-full object-cover" />
             </div>
           </div>
         </div>
@@ -129,30 +143,25 @@ export default function Home() {
 
 
     
-      <div className="flex relative flex-col items-center px-1.5 pt-80 pb-44 mt-0 w-full min-h-[3973px] max-md:py-24 max-md:mt-0 max-md:max-w-full">
-       
-        
-        <div className="flex overflow-hidden relative flex-col justify-center items-center self-stretch px-20 py-16 mt-9 font-bold bg-slate-600 bg-opacity-50 max-md:px-5 max-md:max-w-full">
-          <div className="flex relative flex-col pt-4 pr-2.5 pl-20 w-full max-w-[1446px] min-h-[864px] pb-[774px] rounded-[202px] max-md:pb-24 max-md:pl-5 max-md:max-w-full">
-           
-            <div className="flex relative gap-10 self-center ml-36 max-w-full text-xl tracking-widest text-fuchsia-300 w-[379px]">
-              <div className="grow shrink w-[156px]">WHY CHOOSE US</div>
-              
-            </div>
-            <div className="relative self-end mt-3.5 mb-0 text-6xl leading-snug text-white max-md:mb-2.5 max-md:max-w-full max-md:text-4xl">
-              All about Relax On, all the time
-            </div>
+      <div className="flex relative flex-col items-center px-0 pt-80 pb-0 mt-0 w-full min-h-[3973px] max-md:py-24 max-md:mt-0 max-md:max-w-full">
+        <div className="flex overflow-hidden relative flex-col justify-center items-center self-stretch px-20 py-14 -mt-80 font-bold bg-slate-800 bg-opacity-50 max-md:px-5 max-md:max-w-full">
+          <div className="flex relative flex-col pt-5 pr-2.5 pl-10 w-full max-w-[1446px] min-h-[750px] pb-[0px] rounded-[202px] max-md:pb-24 max-md:pl-5 max-md:max-w-full">
+           <img src={phoneSelection} alt="" /> 
           </div>
         </div>
+
+
+        <div className="flex relative flex-col items-center px-0 pt-80 pb-0 mt-0 w-full min-h-[3973px] max-md:py-24 max-md:mt-0 max-md:max-w-full">
+       <div className="flex overflow-hidden relative flex-col justify-center items-center self-stretch px-0 py-14 -mt-80 font-bold bg-slate-800 bg-opacity-50 max-md:px-5 max-md:max-w-full">
+         <div className="flex relative flex-col pt-0 pr-0 pl-0 w-full max-w-[1446px] min-h-[[750]px] pb-[0px] rounded-[202px] max-md:pb-24 max-md:pl-5 max-md:max-w-full">
+          <img src={frame2} alt="" />
+         </div>
+       </div>
+       </div>
+
+
         <div className="flex relative flex-col mt-10 mb-0 w-full max-w-[1463px] max-md:mb-2.5 max-md:max-w-full">
-          <div className="flex gap-5 justify-between items-center self-center max-w-full text-xl font-semibold tracking-widest text-center text-fuchsia-300 w-[397px]">
-           
-            <div className="self-stretch">OUR CONTENT</div>
-           
-          </div>
-          <div className="self-center mt-5 text-6xl font-bold leading-snug text-center text-white max-md:max-w-full max-md:text-4xl">
-            Let go of stress and anxiety with us
-          </div>
+         
           <div className="mt-20 max-md:mt-10 max-md:max-w-full">
             <div className="flex gap-5 max-md:flex-col">
               <div className="flex flex-col w-[33%] max-md:ml-0 max-md:w-full">
@@ -285,5 +294,6 @@ export default function Home() {
     </div>
 </div>
 </div>
+
   );
 }

@@ -25,7 +25,7 @@ export default function Login() {
       });
 
       console.log("User logged in:", user);
-      alert("User Logged in succefull !");
+      alert("User Logged in succesfull !");
     } catch (error) {
       console.error("Error during login:", error);
       alert("An error occurred. Please try again later.");
@@ -75,7 +75,7 @@ export default function Login() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="email"
-            placeholder="Enter your E-mail"
+            placeholder="Enter Your E-mail"
             className="px-8 py-6 mt-3 max-w-full rounded-md border border-solid bg-zinc-800 border-slate-400 w-[426px] max-md:px-5 text-white"
           />
               <div className="mt-12 text-gray-500 max-md:mt-10">Enter your password*</div>
@@ -84,7 +84,7 @@ export default function Login() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             type="password"
-            placeholder="Create your password"
+            placeholder="Enter Your Password"
             className="px-8 py-6 mt-3 max-w-full rounded-md border border-solid bg-zinc-800 border-slate-400 w-[426px] max-md:px-5 text-white"
           />
        
