@@ -18,7 +18,7 @@ export default function Login() {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      // Optionally, authenticate with your backend
+      // Optionally, authenticate with our backend
       await axios.post("http://localhost:5000/api/login", {
         email,
         password
@@ -37,7 +37,7 @@ export default function Login() {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
 
-      // Optionally, authenticate with your backend
+      // Optionally, authenticate with our backend
       await axios.post("http://localhost:5000/api/login-google", {
         email: user.email,
         name: user.displayName
