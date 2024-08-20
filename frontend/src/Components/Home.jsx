@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React from "react";
 import YogaBackgroundArt from '../assets/Yoga background art.png'
 import YogaGirlRightSide from '../assets/Yoga girl right side.png'
