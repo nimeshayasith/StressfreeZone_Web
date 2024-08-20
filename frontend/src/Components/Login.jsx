@@ -10,7 +10,7 @@ import Meditation_2 from '../assets/Meditation_2.svg';
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
+  
 
   const navigate = useNavigate();
 
@@ -36,10 +36,10 @@ export default function Login() {
   const handleForgotPassword = async () =>{
     try{
       await sendPasswordResetEmail(auth,email);
-      setMessage("Password resest email sent succuessfully");
+      alert("Password resest email sent succuessfully");
     }catch(error){
       console.error("Error sending password reset email:",error)
-      setMessage("Failed to send password reset email:",error)
+      alert("Failed to send password reset email:",error)
 
     }
   }
@@ -106,7 +106,7 @@ export default function Login() {
             className=" cursor-pointer">Admin</button>
 
           <button onClick={handleForgotPassword} className="cursor-pointer">Forget password</button>
-          {message && <p className="mt-5 text-teal-400">{message}</p>}
+          
         </div>
         <button onClick={handleLogin} className="w-full bg-teal-500 text-white py-3 rounded mt-5">
           Login
