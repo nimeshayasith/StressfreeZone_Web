@@ -119,7 +119,7 @@ export default function Login() {
 
         <button className="flex px-20 w-full bg-black text-white py-3 rounded mt-5" onClick={handleGoogleLogin}>
         <img src={googlelogo} alt='googlelogo' className='rounded-lg mx-6 '/>
-          Login with Google
+          Continue with Google
         </button>
 
         <p className="flex gap-20 mt-10 text-center text-white ">
