@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth, googleProvider } from "../firebaseConfig";
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup, sendPasswordResetEmail } from "firebase/auth";
 import axios from "axios";
 import logo_icon from '../assets/logo1.svg';
 import Meditation_2 from '../assets/Meditation_2.svg';
@@ -10,6 +10,7 @@ import Meditation_2 from '../assets/Meditation_2.svg';
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("")
 
   const navigate = useNavigate();
 
@@ -29,6 +30,15 @@ export default function Login() {
     } catch (error) {
       console.error("Error during login:", error);
       alert("An error occurred. Please try again later.");
+    }
+  };
+  const handlePasswordReset = async () => {
+    try {
+      await sendPasswordResetEmail(auth, email);
+      setMessage("Password reset email sent successfully!");
+    } catch (error) {
+      console.error("Error sending password reset email:", error);
+      setMessage("Failed to send password reset email. Please try again.");
     }
   };
 
@@ -93,8 +103,9 @@ export default function Login() {
             <button onClick={() => navigate("/adminlogin")}
             className=" cursor-pointer">Admin</button>
 
-          <button  className="cursor-pointer">Forget password</button>
-          </div>
+          <button onClick={handlePasswordReset} className="cursor-pointer">Forget password</button>
+          {message && <p className="mt-5 text-teal-400">{message}</p>}
+        </div>
         <button onClick={handleLogin} className="w-full bg-teal-500 text-white py-3 rounded mt-5">
           Login
         </button>
