@@ -1,5 +1,6 @@
-import React  from "react";
-import { useNavigate } from "react-router-dom";
+// eslint-disable-next-line no-unused-vars
+import React from "react";
+import {useNavigate} from "react-router-dom"
 import YogaBackgroundArt from '../assets/Yoga background art.png'
 import YogaGirlRightSide from '../assets/Yoga girl right side.png'
 import logo_icon from '../assets/logo1.svg'
