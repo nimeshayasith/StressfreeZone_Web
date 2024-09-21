@@ -2,14 +2,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth, googleProvider } from "../firebaseConfig";
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup, sendPasswordResetEmail } from "firebase/auth";
 import axios from "axios";
 import logo_icon from '../assets/logo1.svg';
 import Meditation_2 from '../assets/Meditation_2.svg';
+import googlelogo from '../assets/google_logo.jpeg';
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  
 
   const navigate = useNavigate();
 
@@ -31,6 +33,17 @@ export default function Login() {
       alert("An error occurred. Please try again later.");
     }
   };
+
+  const handleForgotPassword = async () =>{
+    try{
+      await sendPasswordResetEmail(auth,email);
+      alert("Password resest email sent succuessfully");
+    }catch(error){
+      console.error("Error sending password reset email:",error)
+      alert("Failed to send password reset email:",error)
+
+    }
+  }
 
   const handleGoogleLogin = async () => {
     try {
@@ -93,26 +106,29 @@ export default function Login() {
             <button onClick={() => navigate("/adminlogin")}
             className=" cursor-pointer">Admin</button>
 
-          <button  className="cursor-pointer">Forget password</button>
-          </div>
+          <button onClick={handleForgotPassword} className="cursor-pointer">Forget password</button>
+          
+        </div>
         <button onClick={handleLogin} className="w-full bg-teal-500 text-white py-3 rounded mt-5">
           Login
         </button>
 
         
         <p className='w-full text-center mt-10 text-teal-50'>Or</p>
-        <div id="googleSignInButton" className="mt-10 w-full"></div>
 
-        
-        <button className="mt-6 text-center text-green-400" onClick={handleGoogleLogin}>Login with Google</button>
 
-        <p className="flex gap-48 mt-10 text-center text-white ">
-          Do not have an account? {" "}
+        <button className="flex px-20 w-full bg-black text-white py-3 rounded mt-5" onClick={handleGoogleLogin}>
+        <img src={googlelogo} alt='googlelogo' className='rounded-lg mx-6 '/>
+          Continue with Google
+        </button>
+
+        <p className="flex gap-20 mt-10 text-center text-white ">
+          If you do not have an account? {" "}
           <span
             onClick={() => navigate("/register")}
             className="text-teal-400 cursor-pointer"
           >
-            Register
+            Create a account
           </span>
         </p>
       </div>

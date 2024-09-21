@@ -151,7 +151,7 @@ const handleClick = () => {
         </div>
 
 
-        <div className="flex relative flex-col items-center px-0 pt-80 pb-0 mt-0 w-full min-h-[3973px] max-md:py-24 max-md:mt-0 max-md:max-w-full">
+        <div className="flex relative flex-col items-center px-0 pt-80 pb-0 mt-0 w-full min-h-[200px] max-md:py-24 max-md:mt-0 max-md:max-w-full">
        <div className="flex overflow-hidden relative flex-col justify-center items-center self-stretch px-0 py-14 -mt-80 font-bold bg-slate-800 bg-opacity-50 max-md:px-5 max-md:max-w-full">
          <div className="flex relative flex-col pt-0 pr-0 pl-0 w-full max-w-[1446px] min-h-[[750]px] pb-[0px] rounded-[202px] max-md:pb-24 max-md:pl-5 max-md:max-w-full">
           <img src={frame2} alt="" />
@@ -160,106 +160,184 @@ const handleClick = () => {
        </div>
 
 
-        <div className="flex relative flex-col mt-10 mb-0 w-full max-w-[1463px] max-md:mb-2.5 max-md:max-w-full">
+        <div className="flex relative flex-col mt-0 mb-0 w-full max-w-[1463px] max-md:mb-2.5 max-md:max-w-full">
          
-          <div className="mt-20 max-md:mt-10 max-md:max-w-full">
+          <div className="mt-0 max-md:mt-10 max-md:max-w-full">
             <div className="flex gap-5 max-md:flex-col">
               <div className="flex flex-col w-[33%] max-md:ml-0 max-md:w-full">
-                <div className="flex relative flex-col px-7 pt-72 min-h-[439px] rounded-[50px] max-md:px-5 max-md:pt-24 max-md:mt-10 max-md:max-w-full">
+                <div className="flex relative flex-col px-7 pt-0 min-h-[439px] rounded-[50px] max-md:px-5 max-md:pt-24 max-md:mt-10 max-md:max-w-full">
                  
-                  <div className="flex relative z-10 flex-col px-16 py-10 bg-slate-600 rounded-[50px] max-md:px-5">
-                    <div className="self-center text-4xl font-medium text-center text-white leading-[50px] w-[367px]">
-                      Body and Mind Relaxation
-                    </div>
-                    <div className="mt-6 text-lg leading-8 text-center text-white">
-                      You can choose the both, Mind relaxation Techniques.....
-                    </div>
-                    <div className="self-start mt-5 ml-14 text-lg font-medium tracking-wider text-white max-md:ml-2.5">
-                      Learn More
-                    </div>
-                    <div className="flex relative flex-col justify-center self-center px-5 py-px mt-3.5 max-w-full aspect-[87.5] w-[175px]">
-                     
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full">
-               
-              </div>
-              <div className="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full">
-               
-              </div>
-            </div>
-          </div>
-          <div className="mt-10 max-md:max-w-full">
-            <div className="flex gap-5 max-md:flex-col">
-              <div className="flex flex-col w-[33%] max-md:ml-0 max-md:w-full">
-                <div className="flex relative flex-col px-6 pt-56 w-full min-h-[439px] rounded-[50px] max-md:px-5 max-md:pt-24 max-md:mt-10 max-md:max-w-full">
-                 
-                  <div className="flex relative gap-0.5 self-end mr-28 max-md:mr-2.5">
-                    
-                  </div>
-                  <div className="flex relative z-10 flex-col items-center px-16 pt-9 pb-4 mt-16 font-medium text-white bg-slate-600 max-md:px-5 max-md:mt-10">
-                    <div className="text-4xl text-center leading-[50px] w-[329px]">
-                      Stress Detection System
-                    </div>
-                    <div className="self-stretch mt-4 text-lg leading-8 text-center">
-                      You can track your stress with this our product. This is
-                      new technological Feature
-                    </div>
-                    <div className="mt-4 text-lg tracking-wider">
-                      Learn More
-                    </div>
-                   
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full">
-                <div className="flex relative flex-col px-6 pt-56 w-full min-h-[439px] rounded-[50px] max-md:px-5 max-md:pt-24 max-md:mt-10 max-md:max-w-full">
-                 
-                  <div className="flex relative gap-0.5 self-end mr-28 max-md:mr-2.5">
-                    
-                    
-                  </div>
-                  <div className="flex relative z-10 flex-col items-center px-16 pt-9 pb-4 mt-16 text-white bg-slate-600 rounded-[50px] max-md:px-5 max-md:mt-10">
-                    <div className="text-4xl text-center leading-[50px] w-[329px]">
-                      Stress Detection System
-                    </div>
-                    <div className="self-stretch mt-4 text-lg leading-8 text-center">
-                      You can track your stress with this our product. This is
-                      new technological Feature
-                    </div>
-                    <div className="mt-4 text-lg font-medium tracking-wider">
-                      Learn More
-                    </div>
-                   
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full">
-                <div className="flex relative flex-col grow px-7 pt-56 text-white min-h-[439px] rounded-[50px] max-md:px-5 max-md:pt-24 max-md:mt-10 max-md:max-w-full">
+
                 
-                  <div className="flex relative z-10 flex-col items-center pt-9 mt-16 bg-slate-600 rounded-[50px] max-md:mt-10">
-                    <div className="text-4xl text-center leading-[50px] w-[286px]">
-                      Educational Content
-                    </div>
-                    <div className="mt-6 ml-4 text-lg leading-8 text-center">
-                      You can learn how to control your stress level within some
-                      guidance articles .
-                    </div>
-                    <div className="flex relative flex-col self-stretch px-20 pb-5 mt-5 w-full text-lg font-medium tracking-wider aspect-[9.465] rounded-[50px] max-md:px-5">
-                     
-                      <div className="relative z-10 self-center mt-0">
-                        Learn More
-                      </div>
-                     
-                    </div>
-                  </div>
+
+              <img
+                loading="lazy"
+                srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/633eda11d41fb908cbf1a7d371e3778a86febcb1159c6abd43bc360c6fa1006c?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/633eda11d41fb908cbf1a7d371e3778a86febcb1159c6abd43bc360c6fa1006c?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/633eda11d41fb908cbf1a7d371e3778a86febcb1159c6abd43bc360c6fa1006c?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/633eda11d41fb908cbf1a7d371e3778a86febcb1159c6abd43bc360c6fa1006c?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/633eda11d41fb908cbf1a7d371e3778a86febcb1159c6abd43bc360c6fa1006c?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/633eda11d41fb908cbf1a7d371e3778a86febcb1159c6abd43bc360c6fa1006c?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/633eda11d41fb908cbf1a7d371e3778a86febcb1159c6abd43bc360c6fa1006c?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/633eda11d41fb908cbf1a7d371e3778a86febcb1159c6abd43bc360c6fa1006c?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29"
+                className="object-cover absolute inset-0 size-full"
+              />
+              <div className="flex relative z-10 flex-col px-16 py-10 bg-slate-600 rounded-[50px] max-md:px-5">
+                <div className="self-center text-4xl font-medium text-center text-white leading-[50px] w-[367px]">
+                  Body and Mind Relaxation
+                </div>
+                <div className="mt-6 text-lg leading-8 text-center text-white">
+                  You can choose the both, Mind relaxation Techniques.....
+                </div>
+                <div className="self-start mt-5 ml-14 text-lg font-medium tracking-wider text-white max-md:ml-2.5">
+                  Learn More
+                </div>
+                <div className="flex relative flex-col justify-center self-center px-5 py-px mt-3.5 max-w-full aspect-[87.5] w-[175px]">
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/80e08067244a55a5f94a8accaf39010d97f5c7e98054014b8ebe7379c46450da?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29"
+                    className="object-cover absolute inset-0 size-full"
+                  />
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/65c732432b32db78f7696e7a7aad3ab43a02b5b6db2a05ac7839d9665ece605e?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29"
+                    className="object-contain w-full aspect-[142.86]"
+                  />
                 </div>
               </div>
             </div>
           </div>
-         
+          <div className="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full">
+            <img
+              loading="lazy"
+              srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/780e209c-e35b-4e37-a899-284604a025af?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/780e209c-e35b-4e37-a899-284604a025af?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/780e209c-e35b-4e37-a899-284604a025af?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/780e209c-e35b-4e37-a899-284604a025af?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/780e209c-e35b-4e37-a899-284604a025af?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/780e209c-e35b-4e37-a899-284604a025af?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/780e209c-e35b-4e37-a899-284604a025af?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/780e209c-e35b-4e37-a899-284604a025af?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29"
+              className="object-contain w-full aspect-[0.82] rounded-[50px] max-md:mt-10 max-md:max-w-full"
+            />
+          </div>
+<div className="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full">
+            <img
+              loading="lazy"
+              srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/2a18a5f4-dfa0-4e9f-b0ef-203af28c8b66?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/2a18a5f4-dfa0-4e9f-b0ef-203af28c8b66?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/2a18a5f4-dfa0-4e9f-b0ef-203af28c8b66?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/2a18a5f4-dfa0-4e9f-b0ef-203af28c8b66?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/2a18a5f4-dfa0-4e9f-b0ef-203af28c8b66?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/2a18a5f4-dfa0-4e9f-b0ef-203af28c8b66?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/2a18a5f4-dfa0-4e9f-b0ef-203af28c8b66?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/2a18a5f4-dfa0-4e9f-b0ef-203af28c8b66?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29"
+              className="object-contain grow w-full aspect-[0.81] rounded-[50px] max-md:mt-10 max-md:max-w-full"
+            />
+          </div>
+        </div>
+      </div>
+      <div className="mt-10 w-full max-md:max-w-full">
+        <div className="flex gap-5 max-md:flex-col">
+          <div className="flex flex-col w-[33%] max-md:ml-0 max-md:w-full">
+            <div className="flex relative flex-col px-6 pt-56 w-full min-h-[439px] rounded-[50px] max-md:px-5 max-md:pt-24 max-md:mt-10 max-md:max-w-full">
+              <img
+                loading="lazy"
+                srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/edd57564f8d6c02c7530bddcf4d6c3ff91e99722071072fa8ff66606f316456a?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/edd57564f8d6c02c7530bddcf4d6c3ff91e99722071072fa8ff66606f316456a?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/edd57564f8d6c02c7530bddcf4d6c3ff91e99722071072fa8ff66606f316456a?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/edd57564f8d6c02c7530bddcf4d6c3ff91e99722071072fa8ff66606f316456a?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/edd57564f8d6c02c7530bddcf4d6c3ff91e99722071072fa8ff66606f316456a?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/edd57564f8d6c02c7530bddcf4d6c3ff91e99722071072fa8ff66606f316456a?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/edd57564f8d6c02c7530bddcf4d6c3ff91e99722071072fa8ff66606f316456a?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/edd57564f8d6c02c7530bddcf4d6c3ff91e99722071072fa8ff66606f316456a?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29"
+                className="object-cover absolute inset-0 size-full"
+              />
+<div className="flex relative gap-0.5 self-end mr-28 max-md:mr-2.5">
+                <img
+                  loading="lazy"
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/785146d6a3a43f3e0309b81a05e0999ce33b1afc8fdd0cdc3f78c1ded3e6ed54?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29"
+                  className="object-contain shrink-0 w-full aspect-[1.5]"
+                />
+                <img
+                  loading="lazy"
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/ff766470818b161cd2cb2de19d6b4ebdd519e8842256e326e62529552203c6ae?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29"
+                  className="object-contain shrink-0 w-full aspect-[1.88]"
+                />
+              </div>
+              <div className="flex relative z-10 flex-col items-center px-16 pt-9 pb-4 mt-16 font-medium text-white bg-slate-600 max-md:px-5 max-md:mt-10">
+                <div className="text-4xl text-center leading-[50px] w-[329px]">
+                  Stress Detection System
+                </div>
+                <div className="self-stretch mt-4 text-lg leading-8 text-center">
+                  You can track your stress with this our product. This is new
+                  technological Feature
+                </div>
+                <div className="mt-4 text-lg tracking-wider">Learn More</div>
+                <img
+                  loading="lazy"
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/439136ebfe2356d65f462da3c3005291ff4c5930498bfe5256dad6162b1f3fb6?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29"
+                  className="object-contain mt-3 w-32 max-w-full aspect-[62.5]"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full">
+            <div className="flex relative flex-col px-6 pt-56 w-full min-h-[439px] rounded-[50px] max-md:px-5 max-md:pt-24 max-md:mt-10 max-md:max-w-full">
+              <img
+                loading="lazy"
+                srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/2af8cabef6df2137fb05768e3959e9423fa51a54e232506c4c80e328f35bd8ab?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/2af8cabef6df2137fb05768e3959e9423fa51a54e232506c4c80e328f35bd8ab?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/2af8cabef6df2137fb05768e3959e9423fa51a54e232506c4c80e328f35bd8ab?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/2af8cabef6df2137fb05768e3959e9423fa51a54e232506c4c80e328f35bd8ab?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/2af8cabef6df2137fb05768e3959e9423fa51a54e232506c4c80e328f35bd8ab?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/2af8cabef6df2137fb05768e3959e9423fa51a54e232506c4c80e328f35bd8ab?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/2af8cabef6df2137fb05768e3959e9423fa51a54e232506c4c80e328f35bd8ab?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/2af8cabef6df2137fb05768e3959e9423fa51a54e232506c4c80e328f35bd8ab?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29"
+                className="object-cover absolute inset-0 size-full"
+              />
+              <div className="flex relative gap-0.5 self-end mr-28 max-md:mr-2.5">
+                <img
+                  loading="lazy"
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/fe50e46d2f68310eee4e7560cc4c1089dda15f0a074d58bf3c5343a44a7ad864?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29"
+                  className="object-contain shrink-0 w-full aspect-[1.5]"
+                />
+ <img
+                  loading="lazy"
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/c7a8ce625454134059542c700292fef50560e3f6d46fb5219615ecea0627514c?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29"
+                  className="object-contain shrink-0 w-full aspect-[1.88]"
+                />
+              </div>
+              <div className="flex relative z-10 flex-col items-center px-16 pt-9 pb-4 mt-16 text-white bg-slate-600 rounded-[50px] max-md:px-5 max-md:mt-10">
+                <div className="text-4xl text-center leading-[50px] w-[329px]">
+                  Stress Detection System
+                </div>
+                <div className="self-stretch mt-4 text-lg leading-8 text-center">
+                  You can track your stress with this our product. This is new
+                  technological Feature
+                </div>
+                <div className="mt-4 text-lg font-medium tracking-wider">
+                  Learn More
+                </div>
+                <img
+                  loading="lazy"
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/751116a8765d14cb885a6549e4363e4d5c1143842c4793bd7a8b13bc1c6868ae?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29"
+                  className="object-contain mt-3 w-32 max-w-full aspect-[62.5]"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full">
+            <div className="flex relative flex-col grow px-7 pt-56 text-white min-h-[439px] rounded-[50px] max-md:px-5 max-md:pt-24 max-md:mt-10 max-md:max-w-full">
+              <img
+                loading="lazy"
+                srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/d6e33aa6536459b03687206416e18fad97385fac4a7eb3b4a38e97174da6a6a6?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/d6e33aa6536459b03687206416e18fad97385fac4a7eb3b4a38e97174da6a6a6?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/d6e33aa6536459b03687206416e18fad97385fac4a7eb3b4a38e97174da6a6a6?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/d6e33aa6536459b03687206416e18fad97385fac4a7eb3b4a38e97174da6a6a6?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/d6e33aa6536459b03687206416e18fad97385fac4a7eb3b4a38e97174da6a6a6?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/d6e33aa6536459b03687206416e18fad97385fac4a7eb3b4a38e97174da6a6a6?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/d6e33aa6536459b03687206416e18fad97385fac4a7eb3b4a38e97174da6a6a6?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/d6e33aa6536459b03687206416e18fad97385fac4a7eb3b4a38e97174da6a6a6?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29"
+                className="object-cover absolute inset-0 size-full"
+              />
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/869679aa44d39ed7c40e9b5828b777d29ea6c105a14eb20bcc15b5ba0e4d621f?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29"
+                className="object-contain self-end mr-24 w-3.5 aspect-[1.75] max-md:mr-2.5"
+              />
+              <div className="flex relative z-10 flex-col items-center pt-9 mt-16 bg-slate-600 rounded-[50px] max-md:mt-10">
+                <div className="text-4xl text-center leading-[50px] w-[286px]">
+                  Educational Content
+                </div>
+                <div className="mt-6 ml-4 text-lg leading-8 text-center">
+                  You can learn how to control your stress level within some
+                  guidance articles .
+                </div>
+                <div className="flex relative flex-col self-stretch px-20 pb-5 mt-5 w-full text-lg font-medium tracking-wider aspect-[9.465] rounded-[50px] max-md:px-5">
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/22b70e0f95ac676681456f470a15085c1cc4189be3894a1fd2328c5d9d0a2613?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29"
+                    className="object-cover absolute inset-0 size-full"
+                  />
+                  <div className="relative z-10 self-center mt-0">
+                    Learn More
+                  </div>
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/12aa8f53ef7f9370185dc6bff76fe4feee239825b1dad27ec73d40e5ddc4e512?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29"
+                    className="object-contain self-end mt-3.5 max-w-full aspect-[250] w-[225px]"
+                  />
+                </div>
+            
+      </div>
+      <img
+        loading="lazy"
+        src="https://cdn.builder.io/api/v1/image/assets/TEMP/4b7efb277e508c7a90a67fe92cd5d974064ad4d2c0a5a4817f33b22364ba9b68?placeholderIfAbsent=true&apiKey=594a3f9e0e4b48d680109c1d93406c29"
+        className="object-contain mt-56 ml-72 w-3 aspect-[1.5] max-md:mt-10 max-md:ml-2.5"
+      />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div className="flex flex-col items-center self-center px-16 py-24 ml-3 max-w-full mt-[817px] rounded-[50px] w-[1011px] max-md:px-5 max-md:mt-10">
