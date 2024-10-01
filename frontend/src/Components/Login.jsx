@@ -28,6 +28,7 @@ export default function Login() {
 
       console.log("User logged in:", user);
       alert("User Logged in succesfull !");
+      navigate('/dashboard'); 
     } catch (error) {
       console.error("Error during login:", error);
       alert("An error occurred. Please try again later.");
