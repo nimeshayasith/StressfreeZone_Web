@@ -13,6 +13,13 @@ import breath from '../assets/breath.png'
 import base from '../assets/base.png'
 import phoneSelection from '../assets/Phone Selection.png'
 import frame2 from '../assets/Frame 2.png'
+import placeholder1 from '../assets/placeholder1.png'
+import placeholder3 from '../assets/placeholder3.png'
+import placeholder4 from '../assets/placeholder4.png'
+import placeholder6 from '../assets/placeholder6.png'
+import arrow from '../assets/vector.png'
+import MeditationBackground from '../assets/meditation background.png'
+import Footer from "./Footer";
 
 
 
@@ -141,129 +148,228 @@ const handleClick = () => {
     </div>
  
 
-
-
     
-      <div className="flex relative flex-col items-center px-0 pt-80 pb-0 mt-0 w-full min-h-[3973px] max-md:py-24 max-md:mt-0 max-md:max-w-full">
+      <div className="flex relative flex-col items-center px-0 pt-96 pb-0 mt-6 w-full min-h-[900px] max-md:py-24 max-md:mt-0 max-md:max-w-full">
         <div className="flex overflow-hidden relative flex-col justify-center items-center self-stretch px-20 py-14 -mt-80 font-bold bg-slate-800 bg-opacity-50 max-md:px-5 max-md:max-w-full">
-          <div className="flex relative flex-col pt-5 pr-2.5 pl-10 w-full max-w-[1446px] min-h-[750px] pb-[0px] rounded-[202px] max-md:pb-24 max-md:pl-5 max-md:max-w-full">
+          <div className="flex relative flex-col pt-5 pr-2.5 pl-10 w-full max-w-[1446px] min-h-[650px] pb-[0px] rounded-[202px] max-md:pb-24 max-md:pl-5 max-md:max-w-full">
            <img src={phoneSelection} alt="" /> 
           </div>
         </div>
+        </div>
 
 
-        <div className="flex relative flex-col items-center px-0 pt-80 pb-0 mt-0 w-full min-h-[3973px] max-md:py-24 max-md:mt-0 max-md:max-w-full">
+        <div className="flex relative flex-col items-center px-0 pt-80 pb-0 mt-0 w-full min-h-[200px] max-md:py-24 max-md:mt-0 max-md:max-w-full">
        <div className="flex overflow-hidden relative flex-col justify-center items-center self-stretch px-0 py-14 -mt-80 font-bold bg-slate-800 bg-opacity-50 max-md:px-5 max-md:max-w-full">
-         <div className="flex relative flex-col pt-0 pr-0 pl-0 w-full max-w-[1446px] min-h-[[750]px] pb-[0px] rounded-[202px] max-md:pb-24 max-md:pl-5 max-md:max-w-full">
+         <div className="flex relative flex-col pt-0 pr-0 pl-0 w-full max-w-[1446px] min-h-[[650]px] pb-[0px] rounded-[202px] max-md:pb-24 max-md:pl-5 max-md:max-w-full">
           <img src={frame2} alt="" />
          </div>
        </div>
        </div>
+       
+      
+       <div className="text-center text-white mb-0 mt-12">
+ <hr />OUR CONTENT
+  </div>
+       <div className="text-center text-white text-3xl font-bold mb-10 mt-2">
+    Let go of stress and anxiety with us <hr />
+  </div>
+    <div className="flex relative flex-col items-center px-0 pt-24 pb-0 mt-6 w-full min-h-[1500px] max-md:py-24 max-md:mt-0 max-md:max-w-full">
+    
+  
+      <div className="mt-10 w-full max-md:max-w-full">
+      
+        <div className="flex gap-5 -mt-36 pr-16 max-md:flex-col">
 
 
-        <div className="flex relative flex-col mt-10 mb-0 w-full max-w-[1463px] max-md:mb-2.5 max-md:max-w-full">
-         
-          <div className="mt-20 max-md:mt-10 max-md:max-w-full">
-            <div className="flex gap-5 max-md:flex-col">
-              <div className="flex flex-col w-[33%] max-md:ml-0 max-md:w-full">
-                <div className="flex relative flex-col px-7 pt-72 min-h-[439px] rounded-[50px] max-md:px-5 max-md:pt-24 max-md:mt-10 max-md:max-w-full">
-                 
-                  <div className="flex relative z-10 flex-col px-16 py-10 bg-slate-600 rounded-[50px] max-md:px-5">
-                    <div className="self-center text-4xl font-medium text-center text-white leading-[50px] w-[367px]">
-                      Body and Mind Relaxation
-                    </div>
-                    <div className="mt-6 text-lg leading-8 text-center text-white">
-                      You can choose the both, Mind relaxation Techniques.....
-                    </div>
-                    <div className="self-start mt-5 ml-14 text-lg font-medium tracking-wider text-white max-md:ml-2.5">
-                      Learn More
-                    </div>
-                    <div className="flex relative flex-col justify-center self-center px-5 py-px mt-3.5 max-w-full aspect-[87.5] w-[175px]">
-                     
-                    </div>
-                  </div>
+          <div className="flex flex-col w-[33%]  max-md:ml-0 max-md:w-full">
+            <div className="flex relative flex-col px-6 pt-56 w-full min-h-[439px] rounded-[50px] max-md:px-5 max-md:pt-24 max-md:mt-10 max-md:max-w-full">
+            <img src={placeholder1} alt="placeholder" className="object-cover absolute inset-0 size-full rounded-3xl" />
+              <div className="flex relative z-10 flex-col items-center px-16 pt-9 pb-4 mt-16 font-medium text-white bg-slate-600 max-md:px-5 max-md:mt-10 rounded-xl">
+                <div className="text-4xl text-center leading-[50px] w-[329px]">
+                  Body and Mined Relaxation
                 </div>
-              </div>
-              <div className="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full">
-               
-              </div>
-              <div className="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full">
-               
+                <div className="self-stretch mt-4 text-lg leading-8 text-center">
+                  You can choose the both Mind relaxation techniques...
+                </div>
+                <div className="mt-4 text-lg tracking-wider">
+                <button>Learn More</button>
+                <hr />
+                </div>
               </div>
             </div>
           </div>
-          <div className="mt-10 max-md:max-w-full">
-            <div className="flex gap-5 max-md:flex-col">
-              <div className="flex flex-col w-[33%] max-md:ml-0 max-md:w-full">
-                <div className="flex relative flex-col px-6 pt-56 w-full min-h-[439px] rounded-[50px] max-md:px-5 max-md:pt-24 max-md:mt-10 max-md:max-w-full">
-                 
-                  <div className="flex relative gap-0.5 self-end mr-28 max-md:mr-2.5">
-                    
-                  </div>
-                  <div className="flex relative z-10 flex-col items-center px-16 pt-9 pb-4 mt-16 font-medium text-white bg-slate-600 max-md:px-5 max-md:mt-10">
-                    <div className="text-4xl text-center leading-[50px] w-[329px]">
-                      Stress Detection System
-                    </div>
-                    <div className="self-stretch mt-4 text-lg leading-8 text-center">
-                      You can track your stress with this our product. This is
-                      new technological Feature
-                    </div>
-                    <div className="mt-4 text-lg tracking-wider">
-                      Learn More
-                    </div>
-                   
-                  </div>
+          
+        
+
+             
+
+          <div className="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full">
+            <div className="flex relative flex-col px-6 pt-56 w-full min-h-[439px] rounded-[50px] max-md:px-5 max-md:pt-24 max-md:mt-10 max-md:max-w-full">
+              <img src={placeholder1}  alt="" className="rounded-3xl object-cover absolute inset-0 size-full"/>
+     
+              <div className="flex relative  rounded-xl z-10 flex-col items-center px-16 pt-9 pb-4 mt-16 font-medium text-white bg-slate-600 max-md:px-5 max-md:mt-10">
+                <div className="text-4xl text-center leading-[50px] w-[329px]">
+                  Schedule Reminder Service
+                </div>
+                <div className="self-stretch mt-4 text-lg leading-8 text-center">
+                You can schedule your exercises reminders through this... 
+                </div>
+                <div className="mt-4 text-lg tracking-wider">
+                <button>Learn More</button>
+                <hr />
                 </div>
               </div>
-              <div className="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full">
-                <div className="flex relative flex-col px-6 pt-56 w-full min-h-[439px] rounded-[50px] max-md:px-5 max-md:pt-24 max-md:mt-10 max-md:max-w-full">
-                 
-                  <div className="flex relative gap-0.5 self-end mr-28 max-md:mr-2.5">
-                    
-                    
-                  </div>
-                  <div className="flex relative z-10 flex-col items-center px-16 pt-9 pb-4 mt-16 text-white bg-slate-600 rounded-[50px] max-md:px-5 max-md:mt-10">
-                    <div className="text-4xl text-center leading-[50px] w-[329px]">
-                      Stress Detection System
-                    </div>
-                    <div className="self-stretch mt-4 text-lg leading-8 text-center">
-                      You can track your stress with this our product. This is
-                      new technological Feature
-                    </div>
-                    <div className="mt-4 text-lg font-medium tracking-wider">
-                      Learn More
-                    </div>
-                   
-                  </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col ml-5  w-[33%] max-md:ml-0 max-md:w-full">
+            <div className="flex relative flex-col px-6 pt-56 w-full min-h-[439px] rounded-[50px] max-md:px-5 max-md:pt-24 max-md:mt-10 max-md:max-w-full">
+              <img src={placeholder3} alt="" className="rounded-3xl object-cover absolute inset-0 size-full"
+              />
+       
+              <div className="flex relative rounded-xl z-10 flex-col items-center px-16 pt-9 pb-4 mt-16 font-medium text-white bg-slate-600 max-md:px-5 max-md:mt-10">
+                <div className="text-4xl text-center leading-[50px] w-[329px]">
+                  Meditation and Soundscape
                 </div>
-              </div>
-              <div className="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full">
-                <div className="flex relative flex-col grow px-7 pt-56 text-white min-h-[439px] rounded-[50px] max-md:px-5 max-md:pt-24 max-md:mt-10 max-md:max-w-full">
+                <div className="self-stretch mt-4 text-lg leading-8 text-center">
                 
-                  <div className="flex relative z-10 flex-col items-center pt-9 mt-16 bg-slate-600 rounded-[50px] max-md:mt-10">
-                    <div className="text-4xl text-center leading-[50px] w-[286px]">
-                      Educational Content
-                    </div>
-                    <div className="mt-6 ml-4 text-lg leading-8 text-center">
-                      You can learn how to control your stress level within some
-                      guidance articles .
-                    </div>
-                    <div className="flex relative flex-col self-stretch px-20 pb-5 mt-5 w-full text-lg font-medium tracking-wider aspect-[9.465] rounded-[50px] max-md:px-5">
-                     
-                      <div className="relative z-10 self-center mt-0">
-                        Learn More
-                      </div>
-                     
-                    </div>
-                  </div>
+                 
+                </div>
+                <div className="mt-4 text-lg tracking-wider">
+                <button>Learn More</button>
+                <hr />
                 </div>
               </div>
             </div>
           </div>
-         
+            </div>
+
+            <div className="flex gap-5 pr-16  max-md:flex-col">
+            <div className="flex flex-col mt-10 w-[33%] max-md:ml-0 max-md:w-full">
+            <div className="flex relative flex-col px-6 pt-56 w-full min-h-[439px] rounded-[50px] max-md:px-5 max-md:pt-24 max-md:mt-10 max-md:max-w-full">
+              <img src={placeholder3} alt="" className="rounded-3xl object-cover absolute inset-0 size-full"
+              />
+       
+              <div className="flex relative z-10 rounded-xl flex-col items-center px-16 pt-9 pb-4 mt-16 font-medium text-white bg-slate-600 max-md:px-5 max-md:mt-10">
+                <div className="text-4xl text-center leading-[50px] w-[329px]">
+                  Stress Detection System
+                </div>
+                <div className="self-stretch mt-4 text-lg leading-8 text-center">
+                  You can track your stress with this our product. This is new
+                  technological Feature
+                </div>
+                <div className="mt-4 text-lg tracking-wider">
+                <button>Learn More</button>
+                <hr />
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        
+
+             
+
+          <div className="flex flex-col ml-5 mt-10 w-[33%] max-md:ml-0 max-md:w-full">
+            <div className="flex relative flex-col px-6 pt-56 w-full min-h-[439px] rounded-[50px] max-md:px-5 max-md:pt-24 max-md:mt-10 max-md:max-w-full">
+              <img src={placeholder4} alt="" className="rounded-3xl object-cover absolute inset-0 size-full"
+              />
+       
+              <div className="flex relative z-10 rounded-xl flex-col items-center px-16 pt-9 pb-4 mt-16 font-medium text-white bg-slate-600 max-md:px-5 max-md:mt-10">
+                <div className="text-4xl text-center leading-[50px] w-[329px]">
+                  Stress Detection System
+                </div>
+                <div className="self-stretch mt-4 text-lg leading-8 text-center">
+                  You can track your stress with this our product. This is new
+                  technological Feature
+                </div>
+                <div className="mt-4 text-lg tracking-wider">
+                <button>Learn More</button>
+                <hr />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col mt-10 ml-5 w-[33%] max-md:ml-0 max-md:w-full">
+            <div className="flex relative flex-col px-6 pt-56 w-full min-h-[439px] rounded-[50px] max-md:px-5 max-md:pt-24 max-md:mt-10 max-md:max-w-full">
+              <img src={placeholder6} alt="" className="rounded-3xl object-cover absolute inset-0 size-full"
+              />
+       
+              <div className="flex relative z-10 flex-col rounded-xl items-center px-16 pt-9 pb-4 mt-16 font-medium text-white bg-slate-600 max-md:px-5 max-md:mt-10">
+                <div className="text-4xl text-center leading-[50px] w-[329px]">
+                  Educational Content
+                </div>
+                <div className="self-stretch mt-4 text-lg leading-8 text-center">
+                  You can learn how to control your stress level within some guidance articles
+                </div>
+                <div className="mt-4 text-lg tracking-wider">
+                <button>Learn More</button>
+                <hr />
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+            </div>
+          </div>
+        </div>
+       
+
+       
+<div className="relative flex overflow-hidden flex-col mb-28 items-center justify-center px-16 pb-52 bg-slate-700/50 bg-opacity-50 max-md:px-5 max-md:pb-24">
+  {/* Meditation Image with Text Overlay */}
+  <div className="w-full max-w-[1407px] max-md:max-w-full flex justify-center relative">
+    <div>
+      <img src={MeditationBackground} alt="" className="flex items-center" />
+      {/* Text overlaying the image */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <h1 className="text-white text-4xl font-bold">Sweet Review from our clients</h1>
+      </div>
+    </div>
+  </div>
+
+  {/* Section for three columns, immediately after the text */}
+  <div className="w-full flex justify-center -mt-20">
+    <div className="flex gap-5 w-full max-w-[1407px] max-md:flex-col">
+      
+      {/* Column 1 */}
+      <div className="flex flex-col w-[33%] max-md:w-full">
+        <div className="flex flex-col px-6 pt-10 pb-10 min-h-[260px] bg-slate-950 text-center">
+          <p className="text-white text-2xl">Jane Froster <hr /></p>
+          <p className="text-white">“Lorem ipsum dolor sit amet, consec tetur adi piscing elit. Praesent tellus leo, vesti bulum a ipsum sed, suscipit sodales ex. Vestibulum id varius risus. Fusce tempus tellus sed.”</p>
         </div>
       </div>
-      <div className="flex flex-col items-center self-center px-16 py-24 ml-3 max-w-full mt-[817px] rounded-[50px] w-[1011px] max-md:px-5 max-md:mt-10">
+      
+      {/* Column 2 */}
+      <div className="flex flex-col w-[33%] max-md:w-full">
+        <div className="flex flex-col px-6 pt-10 pb-10 min-h-[260px] bg-slate-950 text-center">
+          <p className="text-white text-2xl">Ninna Aguero <hr /></p>
+          <p className="text-white">“Lorem ipsum dolor sit amet, consec tetur adi piscing elit. Praesent tellus leo, vesti bulum a ipsum sed, suscipit sodales ex. Vestibulum id varius risus. Fusce tempus tellus sed.”</p>
+        </div>
+      </div>
+      
+      {/* Column 3 */}
+      <div className="flex flex-col w-[33%] max-md:w-full">
+        <div className="flex flex-col px-6 pt-10 pb-10 min-h-[260px] bg-slate-950 text-center">
+          <p className="text-white text-2xl">Samantha Krik <hr /></p>
+          <p className="text-white">“Lorem ipsum dolor sit amet, consec tetur adi piscing elit. Praesent tellus leo, vesti bulum a ipsum sed, suscipit sodales ex. Vestibulum id varius risus. Fusce tempus tellus sed.”</p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+ 
+      
+
+      <div className=" bg-slate-600">
+      <div className="flex flex-col items-center self-center px-10 py-10 ml-36 max-w-full mt-[36px] w-[1011px] max-md:px-5 max-md:mt-10">
         <div className="text-5xl font-bold tracking-tight leading-tight text-center text-white max-md:max-w-full max-md:text-4xl">
           Try our 100% free Plan 7 days
         </div>
@@ -278,9 +384,9 @@ const handleClick = () => {
               </div>
             </div>
             <div className="flex flex-col ml-5 w-3/12 max-md:ml-0 max-md:w-full">
-              <div className="grow gap-2.5 self-stretch px-9 py-2 w-full text-base font-bold text-center text-white bg-teal-500 rounded min-h-[40px] max-md:px-5 max-md:mt-10">
-                Signup for Free
-              </div>
+              <button className="grow gap-2.5 self-stretch px-9 py-2 w-full text-base font-bold text-center text-white bg-teal-500 rounded min-h-[40px] max-md:px-5 max-md:mt-10">
+                Signup for Free 
+              </button>
             </div>
           </div>
         </div>
@@ -292,8 +398,11 @@ const handleClick = () => {
           We accept Visa, Credit Card, Mastercard and Debit Card
         </div>
       </div>
+      </div>
     </div>
 </div>
+
+<Footer />
 </div>
 
   );
