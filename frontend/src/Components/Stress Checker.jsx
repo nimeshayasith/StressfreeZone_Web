@@ -24,7 +24,7 @@ const StressChecker = () => {
   return (
     
     <div className=" min-h-[1100px] w-full  px-4 py-10 bg-gray-800 relative">
-          <img src={YogaBackgroundArt} alt=""  className="object-cover opacity-40 absolute pl-44 pt-0 w-auto h-auto size-full bg-no-repeat bg-cover bg-fixed "/>
+          <img src={YogaBackgroundArt} alt=""  className="object-cover opacity-40 absolute pl-72 pt-8 w-auto h-auto size-full bg-no-repeat bg-cover bg-fixed "/>
       <div className="flex w-full">
        
    {/* Sidebar */}
@@ -166,7 +166,7 @@ const StressChecker = () => {
       </p>
     </section>
     </main>
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex mt-8 mb-8 justify-center items-center h-auto">
 
     <div>
       <div className="flex rounded-3xl mb-5 bg-zinc-400 p-4 bg-opacity-90 max-w-[575px] min-h-[20px]" role="region" aria-label="Content area">
@@ -195,26 +195,43 @@ const StressChecker = () => {
  
 
     {/* below */}
-    <div className="bg-black/30 p-4 shadow-md rounded-md border border-gray-300">
-  <h2 className="gap-10 self-stretch max-w-full text-2xl leading-none text-white w-[370px]">
-        Quick Relaxation
-      </h2>
+    
+    <div className="relative flex p-4 shadow-md rounded-md border border-gray-300 overflow-hidden flex-col mb-0 items-center justify-center px-16 pb-12 bg-black/50 bg-opacity-50 max-md:px-5 max-md:pb-24">
+  {/* Meditation Image with Text Overlay */}
+  <div className="w-full max-w-[1407px] max-md:max-w-full flex justify-center relative">
+    <div>
 
-      <article className="flex relative text-white  flex-col mt-6 w-full rounded-xl min-h-[78px] max-md:max-w-full">
-      <div className="flex relative  flex-col mb-4 bg-slate-950 items-start py-6 pr-20 pl-6 rounded-xl max-md:px-5 max-md:max-w-full">
-        <h3 className="text-sm">Hard Plan</h3>
-        <p className="text-xs font-light">Lorem ipsum dolor sit amet consectetur. Id amet orci viverra id.</p>
+      {/* Text overlaying the image */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <h1 className="text-white text-3xl mt-16 font-bold">Sweet Review from our clients</h1>
       </div>
-      <div className="flex relative flex-col mb-4 bg-slate-950 items-start py-6 pr-20 pl-6 rounded-xl max-md:px-5 max-md:max-w-full">
-        <h3 className="text-sm">Hard Plan</h3>
-        <p className="text-xs font-light">Lorem ipsum dolor sit amet consectetur. Id amet orci viverra id.</p>
-      </div>
-      <div className="flex relative flex-col bg-slate-950 items-start py-6 pr-20 pl-6 rounded-xl max-md:px-5 max-md:max-w-full">
-        <h3 className="text-sm">Hard Plan</h3>
-        <p className="text-xs font-light">Lorem ipsum dolor sit amet consectetur. Id amet orci viverra id.</p>
-      </div>
-    </article> 
+    </div>
   </div>
+
+  {/* Section for three columns, immediately after the text */}
+  <div className="w-full flex justify-center mt-20 ">
+    <div className="flex gap-5 w-full max-w-[1407px]  max-md:flex-col">
+      
+      {/* Column 1 */}
+      <div className="flex flex-col w-[50%] max-md:w-full">
+        <div className="flex flex-col px-6 pt-10 pb-10 min-h-[260px] rounded-2xl bg-teal-950 text-center">
+          <p className="text-white text-2xl">Jane Froster <hr /></p>
+          <p className="text-white">“Lorem ipsum dolor sit amet, consec tetur adi piscing elit. Praesent tellus leo, vesti bulum a ipsum sed, suscipit sodales ex. Vestibulum id varius risus. Fusce tempus tellus sed.”</p>
+        </div>
+      </div>
+      
+      {/* Column 2 */}
+      <div className="flex flex-col w-[50%] max-md:w-full">
+        <div className="flex flex-col px-6 pt-10 pb-10 min-h-[260px] rounded-2xl bg-teal-950 text-center">
+          <p className="text-white text-2xl">Ninna Aguero <hr /></p>
+          <p className="text-white">“Lorem ipsum dolor sit amet, consec tetur adi piscing elit. Praesent tellus leo, vesti bulum a ipsum sed, suscipit sodales ex. Vestibulum id varius risus. Fusce tempus tellus sed.”</p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+  
 
         </main>
       </div>
