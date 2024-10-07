@@ -8,6 +8,7 @@ import AboutUsPage from './Components/About Us';
 import ContactUsPage from './Components/Contact Us';
 import PremierPlanPage from './Components/Premier Plan';
 import MobileAppPage from './Components/Mobile App';
+import Dashboard from './Components/Dashboard';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/contactus" element={<ContactUsPage />} />
         <Route path="/premierplan" element={<PremierPlanPage />} />
         <Route path="/mobileapp" element={<MobileAppPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
 
       </Routes>
     </Router>
