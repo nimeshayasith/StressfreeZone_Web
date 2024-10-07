@@ -18,6 +18,7 @@ import personsimplerun from '../assets/PersonSimpleRun.png'
 import pic1 from '../assets/pic1.png'
 import pic2 from '../assets/pic2.png'
 import pic3 from '../assets/pic3.png'
+import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
   return (
@@ -30,102 +31,93 @@ const Dashboard = () => {
   <aside className="w-1/5 bg-gray-900 text-white p-9 rounded-md shadow-lg mt-5">
   <nav>
     <ul className="space-y-6 lg:space-y-10"> {/* Adds gap between the list items */}
-      <li>
+    <li>
       <div className='flex items-center space-x-3 lg:space-x-5'>
   <img src={dashboard} alt=""  />
-  <a
-    href="#section1" 
+  <Link to="/dashboard"
     className="relative inline-block text-gray-400 hover:text-gray-300 transition duration-300 before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-1 before:bg-gray-300 before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100">
     DashBoard
-  </a>
+    </Link> 
 </div>
 
       </li>
       <li>
       <div className='flex items-center space-x-3 lg:space-x-5'>
   <img src={stresschecker} alt="" />
-  <a
-    href="#section1"
+  <Link to="/stresschecker"
     className="relative inline-block text-gray-400 hover:text-gray-300 transition duration-300 before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-1 before:bg-gray-300 before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100">
-   Stress Checker
-  </a>
+    Stress Checker
+    </Link> 
 </div>
 
       </li>
       <li>
       <div className='flex items-center space-x-3 lg:space-x-5'>
   <img src={myday} alt=""  />
-  <a
-    href="#section1"
+  <Link to="/myday"
     className="relative inline-block text-gray-400 hover:text-gray-300 transition duration-300 before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-1 before:bg-gray-300 before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100">
     My Day
-  </a>
+    </Link> 
 </div>
 
       </li>
       <li>
       <div className='flex items-center space-x-3 lg:space-x-5'>
   <img src={movements} alt=""  />
-  <a
-    href="#section1"
+  <Link to="/movements"
     className="relative inline-block text-gray-400 hover:text-gray-300 transition duration-300 before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-1 before:bg-gray-300 before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100">
-   Movements
-  </a>
+    Movements
+    </Link> 
 </div>
 
       </li>
       <li>
       <div className='flex items-center space-x-3 lg:space-x-5'>
   <img src={meditation} alt=""  />
-  <a
-    href="#section1"
+  <Link to="/meditation"
     className="relative inline-block text-gray-400 hover:text-gray-300 transition duration-300 before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-1 before:bg-gray-300 before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100">
     Meditation
-  </a>
+    </Link> 
 </div>
 
       </li>
       <li>
       <div className='flex items-center space-x-3 lg:space-x-5'>
   <img src={soundscape} alt=""  />
-  <a
-    href="#section1"
+  <Link to="/soundscape"
     className="relative inline-block text-gray-400 hover:text-gray-300 transition duration-300 before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-1 before:bg-gray-300 before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100">
     Soundscape
-  </a>
+    </Link> 
 </div>
 
       </li>
       <li>
       <div className='flex items-center space-x-3 lg:space-x-5'>
   <img src={workrelief} alt=""  />
-  <a
-    href="#section1"
+  <Link to="/workrelief"
     className="relative inline-block text-gray-400 hover:text-gray-300 transition duration-300 before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-1 before:bg-gray-300 before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100">
-   Work Relief
-  </a>
+    Work Relief
+    </Link> 
 </div>
 
       </li>
       <li>
       <div className='flex items-center space-x-3 lg:space-x-5'>
   <img src={learnmore} alt=""  />
-  <a
-    href="#section1"
+  <Link to="/learnmore"
     className="relative inline-block text-gray-400 hover:text-gray-300 transition duration-300 before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-1 before:bg-gray-300 before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100">
-   Learn More
-  </a>
+    Learn More
+    </Link> 
 </div>
 
       </li>
       <li>
       <div className='flex items-center space-x-3 lg:space-x-5'>
   <img src={userprofile} alt="" />
-  <a
-    href="#section1"
+  <Link to="/userprofile"
     className="relative inline-block text-gray-400 hover:text-gray-300 transition duration-300 before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-1 before:bg-gray-300 before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100">
-    User Profile
-  </a>
+   User Profile
+    </Link> 
 </div>
 
       </li>

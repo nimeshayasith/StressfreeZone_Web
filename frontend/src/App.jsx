@@ -9,6 +9,7 @@ import ContactUsPage from './Components/Contact Us';
 import PremierPlanPage from './Components/Premier Plan';
 import MobileAppPage from './Components/Mobile App';
 import Dashboard from './Components/Dashboard';
+import StressChecker from './Components/Stress Checker';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/premierplan" element={<PremierPlanPage />} />
         <Route path="/mobileapp" element={<MobileAppPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/stresschecker" element={<StressChecker />} />
 
       </Routes>
     </Router>
