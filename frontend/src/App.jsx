@@ -4,6 +4,13 @@ import Register from './Components/Register';
 import Login from './Components/Login';
 import AdminLogin from './Components/Admin login';
 import Home from './Components/Home';
+import AboutUsPage from './Components/About Us';
+import ContactUsPage from './Components/Contact Us';
+import PremierPlanPage from './Components/Premier Plan';
+import MobileAppPage from './Components/Mobile App';
+import Dashboard from './Components/Dashboard';
+import StressChecker from './Components/Stress Checker';
+
 
 function App() {
   return (
@@ -13,6 +20,13 @@ function App() {
         <Route path="/login" element={< Login/>} />
         <Route path="/register" element={<Register />} />
         <Route path="/adminlogin" element={<AdminLogin />} />
+        <Route path="/aboutus" element={<AboutUsPage />} />
+        <Route path="/contactus" element={<ContactUsPage />} />
+        <Route path="/premierplan" element={<PremierPlanPage />} />
+        <Route path="/mobileapp" element={<MobileAppPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/stresschecker" element={<StressChecker />} />
+
       </Routes>
     </Router>
   );
