@@ -10,17 +10,12 @@ import workrelief from '../assets/workrelief.png';
 import learnmore from '../assets/stresschecker.png';
 import userprofile from '../assets/userprofile.png';
 import stressfreezoneicon from '../assets/stressfreezoneicon.png';
-import quickrelaxationbackground from '../assets/quickrelaxationbackground.png';
-import progresscircle from '../assets/progresscircle.png'
-import chefhat from '../assets/ChefHat.png'
-import drop from '../assets/Drop.png'
-import personsimplerun from '../assets/PersonSimpleRun.png'
-import pic1 from '../assets/pic1.png'
-import pic2 from '../assets/pic2.png'
-import pic3 from '../assets/pic3.png'
+
+import Greeting from './Greeting';
+
 import { Link } from 'react-router-dom';
 
-const StressChecker = () => {
+const MyDay = () => {
   return (
     
     <div className=" min-h-[1100px] w-full  px-4 py-10 bg-gray-800 relative">
@@ -117,7 +112,8 @@ const StressChecker = () => {
   <Link to="/userprofile"
     className="relative inline-block text-gray-400 hover:text-gray-300 transition duration-300 before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-1 before:bg-gray-300 before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100">
    User Profile
-    </Link>
+    </Link> 
+
 </div>
 
       </li>
@@ -144,86 +140,18 @@ const StressChecker = () => {
         
        
   {/* above */}
-  <div className="bg-black/30 p-4 mb-10  shadow-md rounded-md border border-gray-300">
- 
-    <main className="w-full max-w-[800px] mx-auto text-center">
-    <header className="py-px mt-8 text-base leading-6">
-      <h1>
-        <span className="text-3xl font-bold text-white">Find Your Path to Calm with </span>
-        <span className="text-3xl font-bold text-green-500">Stress-Free Zone</span>
-      </h1>
-    </header>
-    <section className="mt-6">
-      <p className="italic text-white">
-        Discover your stress levels with our personalized stress checker. Answer a few questions and gain insights into your current mental state, helping you navigate towards a calmer and more balanced life.
-      </p>
-    </section>
-    </main>
-    <div className="flex mt-8 mb-8 justify-center items-center h-auto">
-
-    <div>
-      <div className="flex rounded-3xl mb-5 bg-zinc-400 p-4 bg-opacity-90 max-w-[575px] min-h-[20px]" role="region" aria-label="Content area">
-        What type of therapy are you looking for?
-      </div>
-      <div className="flex flex-col rounded-3xl space-y-3 bg-zinc-500 p-4 bg-opacity-90 max-w-[575px] min-h-[51px]">
-        <div className="flex rounded-3xl bg-zinc-400 p-4 bg-opacity-90 max-w-[575px] min-h-[51px]">
-          Individual (for self)
-        </div>
-        <div className="flex rounded-3xl bg-zinc-400 p-4 bg-opacity-90 max-w-[575px] min-h-[51px]">
-          Individual (for self)
-        </div>
-        <div className="flex rounded-3xl bg-zinc-400 p-4 bg-opacity-90 max-w-[575px] min-h-[51px]">
-          Individual (for self)
-        </div>
-        <div className="flex rounded-3xl bg-zinc-400 p-4 bg-opacity-90 max-w-[575px] min-h-[51px]">
-          Individual (for self)
-        </div>
-      </div>
-    
-  </div>
-</div>
-
-  </div>
+  <div className="bg-black/30 p-4 mb-10 shadow-md rounded-md border border-gray-300">
+      <main className="w-full ml-6 max-w-[800px] mx-auto">
+        <header className="p-4 mt-2 text-2xl  text-white ">
+          {/* Add the Greeting component here */}
+          <Greeting />
+        </header>
+      </main>
+    </div>
 
  
 
-    {/* below */}
-    
-    <div className="relative flex p-4 shadow-md rounded-md border border-gray-300 overflow-hidden flex-col mb-0 items-center justify-center px-16 pb-12 bg-black/50 bg-opacity-50 max-md:px-5 max-md:pb-24">
-  {/* Meditation Image with Text Overlay */}
-  <div className="w-full max-w-[1407px] max-md:max-w-full flex justify-center relative">
-    <div>
 
-      {/* Text overlaying the image */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <h1 className="text-white text-3xl mt-16 font-bold">Sweet Review from our clients</h1>
-      </div>
-    </div>
-  </div>
-
-  {/* Section for three columns, immediately after the text */}
-  <div className="w-full flex justify-center mt-20 ">
-    <div className="flex gap-5 w-full max-w-[1407px]  max-md:flex-col">
-      
-      {/* Column 1 */}
-      <div className="flex flex-col w-[50%] max-md:w-full">
-        <div className="flex flex-col px-6 pt-10 pb-10 min-h-[260px] rounded-2xl bg-teal-950 text-center">
-          <p className="text-white text-2xl">Jane Froster <hr /></p>
-          <p className="text-white">“Lorem ipsum dolor sit amet, consec tetur adi piscing elit. Praesent tellus leo, vesti bulum a ipsum sed, suscipit sodales ex. Vestibulum id varius risus. Fusce tempus tellus sed.”</p>
-        </div>
-      </div>
-      
-      {/* Column 2 */}
-      <div className="flex flex-col w-[50%] max-md:w-full">
-        <div className="flex flex-col px-6 pt-10 pb-10 min-h-[260px] rounded-2xl bg-teal-950 text-center">
-          <p className="text-white text-2xl">Ninna Aguero <hr /></p>
-          <p className="text-white">“Lorem ipsum dolor sit amet, consec tetur adi piscing elit. Praesent tellus leo, vesti bulum a ipsum sed, suscipit sodales ex. Vestibulum id varius risus. Fusce tempus tellus sed.”</p>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-</div>
   
 
         </main>
@@ -232,4 +160,4 @@ const StressChecker = () => {
   );
 };
 
-export default StressChecker;
+export default MyDay;

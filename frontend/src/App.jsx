@@ -10,6 +10,8 @@ import PremierPlanPage from './Components/Premier Plan';
 import MobileAppPage from './Components/Mobile App';
 import Dashboard from './Components/Dashboard';
 import StressChecker from './Components/Stress Checker';
+import MyDay from './Components/My Day';
+
 
 
 function App() {
@@ -26,6 +28,9 @@ function App() {
         <Route path="/mobileapp" element={<MobileAppPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/stresschecker" element={<StressChecker />} />
+        <Route path="/myday" element={<MyDay />} />
+   
+
 
       </Routes>
     </Router>
