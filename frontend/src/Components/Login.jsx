@@ -52,10 +52,10 @@ export default function Login() {
       const user = result.user;
 
       // Optionally, authenticate with our backend
-      await axios.post("http://localhost:5000/api/login-google", {
+     /* await axios.post("http://localhost:5000/api/login-google", {
         email: user.email,
         name: user.displayName
-      });
+      });*/
 
       console.log("User logged in with Google:", user);
     } catch (error) {
