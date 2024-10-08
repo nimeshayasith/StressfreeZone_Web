@@ -43,6 +43,7 @@ export default function AdminLogin() {
           alert("Invalid email or password.");
         }
       })
+      
       .catch((error) => {
         console.error("Error during login:", error);
         alert("An error occurred. Please try again later.");

@@ -26,7 +26,6 @@ function App() {
         <Route path="/mobileapp" element={<MobileAppPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/stresschecker" element={<StressChecker />} />
-
       </Routes>
     </Router>
   );
