@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link} from "react-router-dom"
-import YogaBackgroundArt from '../assets/Yoga background art.png'
-import TheGirl from '../assets/The Girl.png'
-import logo_icon from '../assets/logo1.svg'
+import YogaBackgroundArt from '../../assets/Yoga background art.png'
+import TheGirl from '../../assets/The Girl.png'
+import logo_icon from '../../assets/logo1.svg'
 
 const AboutUsPage = () => {
     return (

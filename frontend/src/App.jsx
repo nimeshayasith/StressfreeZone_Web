@@ -1,16 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Register from './Components/Register';
-import Login from './Components/Login';
-import AdminLogin from './Components/Admin login';
-import Home from './Components/Home';
-import AboutUsPage from './Components/About Us';
-import ContactUsPage from './Components/Contact Us';
-import PremierPlanPage from './Components/Premier Plan';
-import MobileAppPage from './Components/Mobile App';
-import Dashboard from './Components/Dashboard';
-import StressChecker from './Components/Stress Checker';
-import MyDay from './Components/My Day';
+import Register from './Components/Home/Register';
+import Login from './Components/Home/Login';
+import AdminLogin from './Components/Home/Admin login';
+import Home from './Components/Home/Home';
+import AboutUsPage from './Components/Home/About Us';
+import ContactUsPage from './Components/Home/Contact Us';
+import PremierPlanPage from './Components/Home/Premier Plan';
+import MobileAppPage from './Components/Home/Mobile App';
+import Dashboard from './Components/Dashboard/Dashboard';
+import StressChecker from './Components/Stress Checker/Stress Checker';
+import MyDay from './Components/My Day/My Day';
+
 
 
 
