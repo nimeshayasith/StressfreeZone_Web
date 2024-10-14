@@ -14,7 +14,11 @@ import MyDay from './Components/My Day/My Day';
 import Meditation from './Components/Meditation/Meditation';
 import DeepRelax from './Components/Meditation/Deep Relax';
 import QuickRelax from './Components/Meditation/Quick Relax';
-
+import Movements from './Components/Movements/Movements';
+import WorkRelief from './Components/Work Relief/Work Relief';
+import LearnMore from './Components/Learn More/Learn More';
+import Soundscape from './Components/Soundscape/Soundscape';
+import UserProfile from './Components/User Profile/User Profile';
 
 
 
@@ -36,9 +40,11 @@ function App() {
         <Route path="/meditation" element={<Meditation />} />
         <Route path="/quickrelax" element={<QuickRelax />} />
         <Route path="/deeprelax" element={<DeepRelax />} />
-   
-
-
+        <Route path="/movements" element={<Movements />} />
+        <Route path="/workrelief" element={<WorkRelief />} />
+        <Route path="/learnmore" element={<LearnMore />} />
+        <Route path="/soundscape" element={<Soundscape />} />
+        <Route path="/userprofile" element={<UserProfile />} />
       </Routes>
     </Router>
   );
