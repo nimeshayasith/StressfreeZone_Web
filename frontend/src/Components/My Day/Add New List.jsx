@@ -1,8 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function AddNewList() {
-  const [lists, setLists] = useState([]);
+  const [lists, setLists] = useState(() => {
+    // Get saved lists from localStorage on initial load
+    const savedLists = localStorage.getItem('lists');
+    return savedLists ? JSON.parse(savedLists) : [];
+  });
   const [newListName, setNewListName] = useState('');
+
+  // Save lists to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem('lists', JSON.stringify(lists));
+  }, [lists]);
 
   // Function to add a new list
   const addNewList = () => {
@@ -16,10 +25,18 @@ function AddNewList() {
   const addNewTask = (index) => {
     if (lists[index].newTask) {
       const updatedLists = [...lists];
-      updatedLists[index].tasks.push(updatedLists[index].newTask);
+      updatedLists[index].tasks.push({ name: updatedLists[index].newTask, completed: false });
       updatedLists[index].newTask = ''; // Reset task input field for this list
       setLists(updatedLists);
     }
+  };
+
+  // Function to toggle task completion
+  const toggleTaskCompletion = (listIndex, taskIndex) => {
+    const updatedLists = [...lists];
+    const task = updatedLists[listIndex].tasks[taskIndex];
+    task.completed = !task.completed; // Toggle the completed state
+    setLists(updatedLists);
   };
 
   // Handle typing in task input field for a specific list
@@ -30,21 +47,19 @@ function AddNewList() {
   };
 
   return (
-    <div className="min-h-screen p-8">
-      <h1 className="text-4xl font-bold mb-8 text-center">To-Do List</h1>
-      
+    <div className='min-h-screen p-8'>
       {/* Section to add new list */}
-      <div className="flex gap-4 mb-6">
+      <div className="flex gap-4 mb-6 ">
         <input
           type="text"
           className="border p-2 w-full"
-          placeholder="Enter new list name"
+          placeholder="Enter new list title"
           value={newListName}
           onChange={(e) => setNewListName(e.target.value)}
         />
         <button
           onClick={addNewList}
-          className="bg-blue-500 text-white p-2 rounded hover:bg-blue-700"
+          className="bg-cyan-800 text-white p-2 rounded hover:bg-blue-700"
         >
           Add List
         </button>
@@ -67,7 +82,7 @@ function AddNewList() {
               />
               <button
                 onClick={() => addNewTask(index)}
-                className="bg-green-500 text-white p-2 rounded hover:bg-green-700"
+                className="bg-cyan-950 text-white p-2 rounded hover:bg-green-700"
               >
                 Add Task
               </button>
@@ -76,7 +91,17 @@ function AddNewList() {
             {/* Display all tasks for this list */}
             <ul className="list-disc pl-6 space-y-2">
               {list.tasks.map((task, taskIndex) => (
-                <li key={taskIndex} className="text-lg">{task}</li>
+                <li key={taskIndex} className="text-lg flex items-center">
+                  <input
+                    type="checkbox"
+                    checked={task.completed}
+                    onChange={() => toggleTaskCompletion(index, taskIndex)}
+                    className="mr-2"
+                  />
+                  <span className={`${task.completed ? 'line-through text-gray-500' : ''}`}>
+                    {task.name}
+                  </span>
+                </li>
               ))}
             </ul>
           </div>

@@ -10,39 +10,33 @@ import workrelief from '../../assets/workrelief.png';
 import learnmore from '../../assets/stresschecker.png';
 import userprofile from '../../assets/userprofile.png';
 import stressfreezoneicon from '../../assets/stressfreezoneicon.png';
-import plus from '../../assets/plus.png';
-
-import Greeting from './Greeting';
-import AddNewList from './Add New List';
-
+import pic1 from '../../assets/pic1.png'
+import pic2 from '../../assets/pic2.png'
+import pic3 from '../../assets/pic3.png'
 import { Link } from 'react-router-dom';
 
-const MyDay = () => {
+const Dashboard = () => {
   return (
-    <div className="min-h-[1100px] w-full px-4 py-10 bg-gray-800 relative">
-      {/* Background Image */}
-      <img
-        src={YogaBackgroundArt}
-        alt=""
-        className="object-cover opacity-40 absolute w-full h-full bg-no-repeat bg-cover bg-fixed"
-      />
-      
-      {/* Main Layout */}
-      <div className="relative flex w-full z-10"> {/* Added z-10 and relative here */}
-        {/* Sidebar */}
-        <aside className="w-1/5 bg-gray-900 text-white p-9 rounded-md shadow-lg mt-5">
-          <nav>
-            <ul className="space-y-6 lg:space-y-10">
-              {/* Sidebar Items */}
-              <li>
-                <div className='flex items-center space-x-3 lg:space-x-5'>
-                  <img src={dashboard} alt="" />
-                  <Link to="/dashboard" className="relative inline-block text-gray-400 hover:text-gray-300 transition duration-300 hover:before:scale-x-100">
-                    Dashboard
-                  </Link>
-                </div>
-              </li>
-              <li>
+    
+    <div className=" min-h-[2970px] w-full  px-4 py-10 bg-gray-800 relative">
+          <img src={YogaBackgroundArt} alt=""  className="object-cover opacity-40 absolute pl-44 pt-0 w-auto h-auto size-full bg-no-repeat bg-cover bg-fixed "/>
+      <div className="flex w-full">
+       
+   {/* Sidebar */}
+  <aside className="w-1/5 bg-gray-900 text-white p-9 rounded-md shadow-lg mt-5">
+  <nav>
+    <ul className="space-y-6 lg:space-y-10"> {/* Adds gap between the list items */}
+    <li>
+      <div className='flex items-center space-x-3 lg:space-x-5'>
+  <img src={dashboard} alt=""  />
+  <Link to="/dashboard"
+    className="relative inline-block text-gray-400 hover:text-gray-300 transition duration-300 before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-1 before:bg-gray-300 before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100">
+    DashBoard
+    </Link> 
+</div>
+
+      </li>
+      <li>
       <div className='flex items-center space-x-3 lg:space-x-5'>
   <img src={stresschecker} alt="" />
   <Link to="/stresschecker"
@@ -119,51 +113,93 @@ const MyDay = () => {
     className="relative inline-block text-gray-400 hover:text-gray-300 transition duration-300 before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-1 before:bg-gray-300 before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100">
    User Profile
     </Link> 
-
 </div>
 
       </li>
-            </ul>
-          </nav>
-        </aside>
+    </ul>
+  </nav>
+</aside>
 
-        {/* Main Content */}
-        <main className="flex-1 p-6 rounded-md shadow-lg ml-6 relative">
-          {/* Top Row with Greeting */}
+
+        {/* Main content area */}
+        <main className="flex-1 p-6 rounded-md shadow-lg ml-6">
+          {/* Top row */}
           <div className="bg-teal-800 p-4 shadow-md rounded-md mb-6">
-            <div className='flex items-center space-x-3 lg:space-x-5'>
-              <img src={stressfreezoneicon} alt="" />
-              <a href="#section1" className="relative font-bold text-3xl text-white">
-                Stress Free Zone
-              </a>
-            </div>
-          </div>
+          <div className='flex items-center space-x-3 lg:space-x-5'>
+  <img src={stressfreezoneicon} alt=""  />
+  <a
+    href="#section1" 
+    className="relative  font-bold text-3xl text-white ">
+    Stress Free Zone
+  </a>
+</div>
+ </div>
 
-          {/* Greeting and AddNewList */}
-          <div className="bg-black/30 p-4 mb-10 shadow-md rounded-md border border-gray-300 relative z-20">
-            <header className="p-4 mt-2 text-2xl text-white">
-              <Greeting />
-            </header>
-            
-            {/* Add New List Section */}
-            <div className="p-4 mb-5 shadow-md rounded-md border border-gray-300">
-              <li>
-                <div className='flex items-center space-x-3 lg:space-x-5'>
-                  <img src={myday} alt="lll" />
-                  <Link to="/myday" className="relative inline-block text-gray-400 hover:text-gray-300 transition duration-300 hover:before:scale-x-100">
-                    My Day
-                  </Link>
-                </div>
-              </li>
+         
+ <div className="flex space-x-4 mt-4 relative z-10">
+ <Link to="/quickrelax" className="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300">
+    Quick Relax
+  
+  </Link>
+  <Link to="/deeprelax"  className="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300">
+    Deep Relax
 
-              {/* AddNewList Component */}
-              <AddNewList />
-            </div>
-          </div>
+  </Link>
+</div>
+
+          
+
+<main className="flex flex-col mb-5 mt-10 p-7 bg-black bg-opacity-20">
+ 
+
+  <section className="grid grid-cols-3 gap-6 mt-2 max-md:grid-cols-1">
+    {/* Card 1 */}
+    <div className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg">
+      <img src={pic1} alt="Meditation 1" className="w-full h-auto rounded" />
+      <h3 className="text-white text-lg mt-3">Morning Calm</h3>
+      <p className="text-white text-sm font-light">A peaceful start to your day</p>
+    </div>
+
+    {/* Card 2 */}
+    <div className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg">
+      <img src={pic2} alt="Meditation 2" className="w-full h-auto rounded" />
+      <h3 className="text-white text-lg mt-3">Evening Relaxation</h3>
+      <p className="text-white text-sm font-light">Unwind and recharge</p>
+    </div>
+
+    {/* Card 3 */}
+    <div className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg">
+      <img src={pic3} alt="Meditation 3" className="w-full h-auto rounded" />
+      <h3 className="text-white text-lg mt-3">Mindful Moments</h3>
+      <p className="text-white text-sm font-light">Practice mindfulness daily</p>
+    </div>
+
+        {/* Card 1 */}
+        <div className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg">
+      <img src={pic1} alt="Meditation 1" className="w-full h-auto rounded" />
+      <h3 className="text-white text-lg mt-3">Morning Calm</h3>
+      <p className="text-white text-sm font-light">A peaceful start to your day</p>
+    </div>
+
+    {/* Card 2 */}
+    <div className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg">
+      <img src={pic2} alt="Meditation 2" className="w-full h-auto rounded" />
+      <h3 className="text-white text-lg mt-3">Evening Relaxation</h3>
+      <p className="text-white text-sm font-light">Unwind and recharge</p>
+    </div>
+
+    {/* Card 3 */}
+    <div className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg">
+      <img src={pic3} alt="Meditation 3" className="w-full h-auto rounded" />
+      <h3 className="text-white text-lg mt-3">Mindful Moments</h3>
+      <p className="text-white text-sm font-light">Practice mindfulness daily</p>
+    </div>
+  </section>
+</main>
         </main>
       </div>
     </div>
   );
 };
 
-export default MyDay;
+export default Dashboard;

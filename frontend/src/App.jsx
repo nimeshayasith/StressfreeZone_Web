@@ -11,6 +11,9 @@ import MobileAppPage from './Components/Home/Mobile App';
 import Dashboard from './Components/Dashboard/Dashboard';
 import StressChecker from './Components/Stress Checker/Stress Checker';
 import MyDay from './Components/My Day/My Day';
+import Meditation from './Components/Meditation/Meditation';
+import DeepRelax from './Components/Meditation/Deep Relax';
+import QuickRelax from './Components/Meditation/Quick Relax';
 
 
 
@@ -30,6 +33,9 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/stresschecker" element={<StressChecker />} />
         <Route path="/myday" element={<MyDay />} />
+        <Route path="/meditation" element={<Meditation />} />
+        <Route path="/quickrelax" element={<QuickRelax />} />
+        <Route path="/deeprelax" element={<DeepRelax />} />
    
 
 
