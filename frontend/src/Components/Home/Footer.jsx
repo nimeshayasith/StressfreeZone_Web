@@ -7,7 +7,7 @@ import twitter from '../../assets/twitter_icon.png';
 
 const Footer = () => {
   return (
-    <footer className="bg-slate-800 text-white py-20 px-5">
+    <footer className="bg-slate-700 text-white py-20 px-5">
       <div className="container mx-auto flex flex-col items-center">
         {/* Footer Content with Three Columns */}
         <header className="flex gap-10 items-start justify-between w-full max-w-6xl font-semibold text-white">
