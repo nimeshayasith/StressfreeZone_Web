@@ -40,8 +40,6 @@ function App() {
         <Route path="/mobileapp" element={<MobileAppPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/stresschecker" element={<StressChecker />} />
-<<<<<<< HEAD
-=======
         <Route path="/myday" element={<MyDay />} />
         <Route path="/meditation" element={<Meditation />} />
         <Route path="/quickrelax" element={<QuickRelax />} />
@@ -55,7 +53,6 @@ function App() {
         <Route path="/learnmorehome" element={<LearnMoreHome />} />
         <Route path="/stresscheckerhome" element={<StressCheckerHome />} />
         <Route path="/movementshome" element={<MovementsHome />} />
->>>>>>> 1d73932e61353f2e6b10c9b85499d0b8de20502c
       </Routes>
     </Router>
   );
