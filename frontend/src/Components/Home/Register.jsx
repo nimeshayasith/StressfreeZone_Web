@@ -17,27 +17,20 @@ export default function Register() {
 
     const handleRegister = async () => {
       try {
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-  
-        // Store user data in Firestore
-        await setDoc(doc(db, "users", user.uid), {
-          name: name,
-          email: email,
-          uid: user.uid
-        });
-  
-        // Optionally, send data to our backend
-        await axios.post("http://localhost:5000/api/register", {
-          email,
+        // Make a request to the backend registration API
+        const response = await axios.post("http://localhost:5000/api/auth/signup", {
           name,
+          email,
           password
         });
   
-        console.log("User registered:", user);
-        alert("User registed Successfully !");
+        console.log("User registered:", response.data);
+        alert("User registered successfully!");
+  
+        // Navigate to login page after registration
+        navigate("/login");
       } catch (error) {
-        console.error("Error during registration:", error);
+        console.error("Error during registration:", error.response?.data || error.message);
         alert("Error during registration");
       }
     };  
