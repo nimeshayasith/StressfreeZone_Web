@@ -1,23 +1,23 @@
 import React from 'react';
-import YogaBackgroundArt from '../assets/Yoga background art.png';
-import dashboard from '../assets/dashboard.png';
-import stresschecker from '../assets/stresschecker.png';
-import myday from '../assets/myday.png';
-import movements from '../assets/movements.png';
-import meditation from '../assets/meditation.png';
-import soundscape from '../assets/soundscape.png';
-import workrelief from '../assets/workrelief.png';
-import learnmore from '../assets/stresschecker.png';
-import userprofile from '../assets/userprofile.png';
-import stressfreezoneicon from '../assets/stressfreezoneicon.png';
-import quickrelaxationbackground from '../assets/quickrelaxationbackground.png';
-import progresscircle from '../assets/progresscircle.png'
-import chefhat from '../assets/ChefHat.png'
-import drop from '../assets/Drop.png'
-import personsimplerun from '../assets/PersonSimpleRun.png'
-import pic1 from '../assets/pic1.png'
-import pic2 from '../assets/pic2.png'
-import pic3 from '../assets/pic3.png'
+import YogaBackgroundArt from '../../assets/Yoga background art.png';
+import dashboard from '../../assets/dashboard.png';
+import stresschecker from '../../assets/stresschecker.png';
+import myday from '../../assets/myday.png';
+import movements from '../../assets/movements.png';
+import meditation from '../../assets/meditation.png';
+import soundscape from '../../assets/soundscape.png';
+import workrelief from '../../assets/workrelief.png';
+import learnmore from '../../assets/stresschecker.png';
+import userprofile from '../../assets/userprofile.png';
+import stressfreezoneicon from '../../assets/stressfreezoneicon.png';
+import quickrelaxationbackground from '../../assets/quickrelaxationbackground.png';
+import progresscircle from '../../assets/progresscircle.png'
+import chefhat from '../../assets/ChefHat.png'
+import drop from '../../assets/Drop.png'
+import personsimplerun from '../../assets/PersonSimpleRun.png'
+import pic1 from '../../assets/pic1.png'
+import pic2 from '../../assets/pic2.png'
+import pic3 from '../../assets/pic3.png'
 import { Link } from 'react-router-dom';
 
 const Dashboard = () => {

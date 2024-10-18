@@ -1,15 +1,29 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Register from './Components/Register';
-import Login from './Components/Login';
-import AdminLogin from './Components/Admin login';
-import Home from './Components/Home';
-import AboutUsPage from './Components/About Us';
-import ContactUsPage from './Components/Contact Us';
-import PremierPlanPage from './Components/Premier Plan';
-import MobileAppPage from './Components/Mobile App';
-import Dashboard from './Components/Dashboard';
-import StressChecker from './Components/Stress Checker';
+import Register from './Components/Home/Register';
+import Login from './Components/Home/Login';
+import AdminLogin from './Components/Home/Admin login';
+import Home from './Components/Home/Home';
+import AboutUsPage from './Components/Home/About Us';
+import ContactUsPage from './Components/Home/Contact Us';
+import PremierPlanPage from './Components/Home/Premier Plan';
+import MobileAppPage from './Components/Home/Mobile App';
+import Dashboard from './Components/Dashboard/Dashboard';
+import StressChecker from './Components/Stress Checker/Stress Checker';
+import MyDay from './Components/My Day/My Day';
+import Meditation from './Components/Meditation/Meditation';
+import DeepRelax from './Components/Meditation/Deep Relax';
+import QuickRelax from './Components/Meditation/Quick Relax';
+import Movements from './Components/Movements/Movements';
+import WorkRelief from './Components/Work Relief/Work Relief';
+import LearnMore from './Components/Learn More/Learn More';
+import Soundscape from './Components/Soundscape/Soundscape';
+import UserProfile from './Components/User Profile/User Profile';
+import QuickRelaxation from './Components/Home/Quick Relaxation';
+import LearnMoreHome from './Components/Home/Learn More Home';
+import StressCheckerHome from './Components/Home/Stress Checker Home';
+import MovementsHome from './Components/Home/MovementsHome';
+
 
 
 function App() {
@@ -26,6 +40,22 @@ function App() {
         <Route path="/mobileapp" element={<MobileAppPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/stresschecker" element={<StressChecker />} />
+<<<<<<< HEAD
+=======
+        <Route path="/myday" element={<MyDay />} />
+        <Route path="/meditation" element={<Meditation />} />
+        <Route path="/quickrelax" element={<QuickRelax />} />
+        <Route path="/deeprelax" element={<DeepRelax />} />
+        <Route path="/movements" element={<Movements />} />
+        <Route path="/workrelief" element={<WorkRelief />} />
+        <Route path="/learnmore" element={<LearnMore />} />
+        <Route path="/soundscape" element={<Soundscape />} />
+        <Route path="/userprofile" element={<UserProfile />} />
+        <Route path="/quickrelaxation" element={<QuickRelaxation />} />
+        <Route path="/learnmorehome" element={<LearnMoreHome />} />
+        <Route path="/stresscheckerhome" element={<StressCheckerHome />} />
+        <Route path="/movementshome" element={<MovementsHome />} />
+>>>>>>> 1d73932e61353f2e6b10c9b85499d0b8de20502c
       </Routes>
     </Router>
   );

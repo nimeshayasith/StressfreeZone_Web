@@ -1,24 +1,24 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react";
 import {useNavigate,Link} from "react-router-dom"
-import YogaBackgroundArt from '../assets/Yoga background art.png'
-import YogaGirlRightSide from '../assets/Yoga girl right side.png'
-import logo_icon from '../assets/logo1.svg'
-import group4 from '../assets/Group 4.png'
-import group7 from '../assets/Group 7.png'
-import group8 from '../assets/Group 8.png'
-import breathingword from '../assets/BREATHING.png'
-import logocirclewithstyle from '../assets/logo with style.png'
-import breath from '../assets/breath.png'
-import base from '../assets/base.png'
-import phoneSelection from '../assets/Phone Selection.png'
-import frame2 from '../assets/Frame 2.png'
-import placeholder1 from '../assets/placeholder1.png'
-import placeholder3 from '../assets/placeholder3.png'
-import placeholder4 from '../assets/placeholder4.png'
-import placeholder6 from '../assets/placeholder6.png'
-import arrow from '../assets/vector.png'
-import MeditationBackground from '../assets/meditation background.png'
+import YogaBackgroundArt from '../../assets/Yoga background art.png'
+import YogaGirlRightSide from '../../assets/Yoga girl right side.png'
+import logo_icon from '../../assets/logo1.svg'
+import group4 from '../../assets/Group 4.png'
+import group7 from '../../assets/Group 7.png'
+import group8 from '../../assets/Group 8.png'
+import breathingword from '../../assets/BREATHING.png'
+import logocirclewithstyle from '../../assets/logo with style.png'
+import breath from '../../assets/breath.png'
+import base from '../../assets/base.png'
+import phoneSelection from '../../assets/Phone Selection.png'
+import frame2 from '../../assets/Frame 2.png'
+import placeholder1 from '../../assets/placeholder1.png'
+import placeholder3 from '../../assets/placeholder3.png'
+import placeholder4 from '../../assets/placeholder4.png'
+import placeholder6 from '../../assets/placeholder6.png'
+import arrow from '../../assets/vector.png'
+import MeditationBackground from '../../assets/meditation background.png'
 import Footer from "./Footer";
 
 
@@ -44,10 +44,10 @@ const handleClick = () => {
       <img src={logo_icon} alt="App Logo" className="object-contain w-44 max-w-full" />
       <div className="flex flex-col self-stretch my-auto min-w-[240px] w-[623px] max-md:max-w-full">
         <div className="flex flex-wrap gap-px justify-center items-center min-h-[51px]">
-          <button className="self-stretch my-auto  w-[150px]">Stress Checker</button>
-          <button className="self-stretch my-auto w-[150px]">Quick Relaxation</button>
-          <button className="self-stretch my-auto w-[150px]">Movements</button>
-          <button className="self-stretch my-auto w-[154px]">Learn more</button>
+          <Link to="/stresscheckerhome"> <button className="self-stretch my-auto  w-[150px]">Stress Checker</button></Link>
+          <Link to="/quickrelaxation"><button className="self-stretch my-auto w-[150px]">Quick Relaxation</button></Link>
+          <Link to="/movementshome"><button className="self-stretch my-auto w-[150px]">Movements</button></Link>
+          <Link to="/learnmorehome"><button className="self-stretch my-auto w-[154px]">Learn more</button></Link>
           
         </div>
         </div>

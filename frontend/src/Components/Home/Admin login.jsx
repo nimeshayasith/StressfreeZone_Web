@@ -1,8 +1,8 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import logo_icon from '../assets/logo1.svg';
-import Meditation_2 from '../assets/Meditation_2.svg';
+import logo_icon from '../../assets/logo1.svg';
+import Meditation_2 from '../../assets/Meditation_2.svg';
 
 export default function AdminLogin() {
   const [formData, setFormData] = useState({

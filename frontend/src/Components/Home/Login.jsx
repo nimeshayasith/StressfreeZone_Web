@@ -1,12 +1,12 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { auth, googleProvider } from "../firebaseConfig";
+import { auth, googleProvider } from "../../firebaseConfig";
 import { signInWithEmailAndPassword, signInWithPopup, sendPasswordResetEmail } from "firebase/auth";
 import axios from "axios";
-import logo_icon from '../assets/logo1.svg';
-import Meditation_2 from '../assets/Meditation_2.svg';
-import googlelogo from '../assets/google_logo.jpeg';
+import logo_icon from '../../assets/logo1.svg';
+import Meditation_2 from '../../assets/Meditation_2.svg';
+import googlelogo from '../../assets/google_logo.jpeg';
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -52,10 +52,10 @@ export default function Login() {
       const user = result.user;
 
       // Optionally, authenticate with our backend
-      await axios.post("http://localhost:5000/api/login-google", {
+     /* await axios.post("http://localhost:5000/api/login-google", {
         email: user.email,
         name: user.displayName
-      });
+      });*/
 
       console.log("User logged in with Google:", user);
     } catch (error) {

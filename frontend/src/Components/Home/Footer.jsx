@@ -1,13 +1,13 @@
 import React from 'react';
-import logo_icon from '../assets/logo.png';
-import facebook from '../assets/facebook_icon.png';
-import instagram from '../assets/instagram_icon.png';
-import linkedin from '../assets/linkedin_icon.png';
-import twitter from '../assets/twitter_icon.png';
+import logo_icon from '../../assets/logo.png';
+import facebook from '../../assets/facebook_icon.png';
+import instagram from '../../assets/instagram_icon.png';
+import linkedin from '../../assets/linkedin_icon.png';
+import twitter from '../../assets/twitter_icon.png';
 
 const Footer = () => {
   return (
-    <footer className="bg-slate-800 text-white py-20 px-5">
+    <footer className="bg-slate-700 text-white py-20 px-5">
       <div className="container mx-auto flex flex-col items-center">
         {/* Footer Content with Three Columns */}
         <header className="flex gap-10 items-start justify-between w-full max-w-6xl font-semibold text-white">

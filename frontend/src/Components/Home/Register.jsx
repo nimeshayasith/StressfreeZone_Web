@@ -1,9 +1,9 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import logo_icon from '../assets/logo1.svg';
-import Meditation_1 from '../assets/Meditation_1.svg';
-import { auth, db } from "../firebaseConfig";
+import logo_icon from '../../assets/logo1.svg';
+import Meditation_1 from '../../assets/Meditation_1.svg';
+import { auth, db } from "../../firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import axios from "axios";
