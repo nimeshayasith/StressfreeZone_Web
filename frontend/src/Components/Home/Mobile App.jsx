@@ -18,10 +18,10 @@ const MobileAppPage = () => {
 <img src={logo_icon} alt="App Logo" className="object-contain w-44 max-w-full" />
 <div className="flex flex-col self-stretch my-auto min-w-[240px] w-[623px] max-md:max-w-full">
   <div className="flex flex-wrap gap-px justify-center items-center min-h-[51px]">
-    <button className="self-stretch my-auto  w-[150px]">Stress Checker</button>
-    <button className="self-stretch my-auto w-[150px]">Quick Relaxation</button>
-    <button className="self-stretch my-auto w-[150px]">Movements</button>
-    <button className="self-stretch my-auto w-[154px]">Learn more</button>
+  <Link to="/stresscheckerhome"> <button className="self-stretch my-auto  w-[150px]">Stress Checker</button></Link>
+          <Link to="/quickrelaxation"><button className="self-stretch my-auto w-[150px]">Quick Relaxation</button></Link>
+          <Link to="/movementshome"><button className="self-stretch my-auto w-[150px]">Movements</button></Link>
+          <Link to="/learnmorehome"><button className="self-stretch my-auto w-[154px]">Learn more</button></Link>
     
   </div>
   </div>

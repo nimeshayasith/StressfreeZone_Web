@@ -2,7 +2,7 @@
 import React from "react";
 import {useNavigate,Link} from "react-router-dom"
 import YogaBackgroundArt from '../../assets/Yoga background art.png'
-import premierplanRightSide from '../../assets/premier plan.png'
+import movementshomeRightSide from '../../assets/movements home.png'
 import logo_icon from '../../assets/logo1.svg'
 import Footer from "./Footer";
 
@@ -25,9 +25,10 @@ export default function Home() {
       <img src={logo_icon} alt="App Logo" className="object-contain w-44 max-w-full" />
       <div className="flex flex-col self-stretch my-auto min-w-[240px] w-[623px] max-md:max-w-full">
         <div className="flex flex-wrap gap-px justify-center items-center min-h-[51px]">
+
         <Link to="/stresscheckerhome"> <button className="self-stretch my-auto  w-[150px]">Stress Checker</button></Link>
           <Link to="/quickrelaxation"><button className="self-stretch my-auto w-[150px]">Quick Relaxation</button></Link>
-          <Link to="/movementshome"><button className="self-stretch my-auto w-[150px]">Movements</button></Link>
+          <Link to="/movementshome"><button className="self-stretch my-auto text-teal-500 w-[150px]">Movements</button></Link>
           <Link to="/learnmorehome"><button className="self-stretch my-auto w-[154px]">Learn more</button></Link>
           
         </div>
@@ -38,7 +39,7 @@ export default function Home() {
             <Link to="/"><button className="self-stretch my-auto  w-[120px]">Home</button></Link>
             <Link to="/aboutus"><button className="self-stretch my-auto w-[120px]">About Us</button></Link>
             <Link to="/mobileapp"><button className="self-stretch my-auto w-[120px]">Mobile App</button></Link>
-            <Link to="/premierplan"><button className="self-stretch my-auto text-teal-500 w-[120px]">Premier plan</button></Link>
+            <Link to="/premierplan"><button className="self-stretch my-auto w-[120px]">Premier plan</button></Link>
           </div>
         </div>
       </div>
@@ -48,22 +49,19 @@ export default function Home() {
           <img src={YogaBackgroundArt} alt=""  className="object-cover absolute inset-0 size-full"/>
 
           <div className="relative text-5xl text-left font-bold text-white leading-[55px] max-md:max-w-full max-md:text-4xl max-md:leading-[49px]">
-         kk <br />
-            nn
-            <br /> mm
+          Your body holds the key to releasing the mind’s tension-move with purpose, breathe with intent<br />
+            
+            
           </div>
           <div className="relative mt-9 text-lg text-left leading-8 text-neutral-400 max-md:max-w-full">
-            Our mission is to provide users with effective tools and resources
-            to manage stress and enhance their overall mental well-being.
-            Through guided relaxation techniques, personalized mindfulness
-            exercises, <br />
+          Engage in guided movement sessions designed to release tension in your body. Whether you're at your desk or in a calm space, our movements will help you stay physically and mentally balanced. From yoga stretches to gentle exercises, find a session that suits you.<br />
           </div>
        
        
         </div>
 
         <div className="w-1/2 text-right">
-      <img src={premierplanRightSide} alt="" className="w-120 h-120 left-[100px] top-[100px] "/>
+      <img src={movementshomeRightSide} alt="" className="w-120 h-120 left-[100px] top-[100px] "/>
       </div>
     </div>
       </div>
