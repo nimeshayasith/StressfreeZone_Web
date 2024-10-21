@@ -130,9 +130,9 @@ const handleClick = () => {
                 <div className="self-stretch mt-8 text-2xl leading-loose uppercase text-slate-400 tracking-[6.4px] max-md:max-w-full">
                   QUICK RELAXATION for calm & focus{" "}
                 </div>
-                <button className="px-14 py-5 mt-16 max-w-full text-lg font-medium tracking-wider text-white bg-teal-600 w-[221px] max-md:px-5 max-md:mt-10">
+                <Link to="quickbreath"><button className="px-14 py-5 mt-16 max-w-full text-lg font-medium tracking-wider text-white bg-teal-600 w-[221px] max-md:px-5 max-md:mt-10">
                   Let’s Start
-                </button>
+                </button></Link>
               </div>
             </div>
           </div>

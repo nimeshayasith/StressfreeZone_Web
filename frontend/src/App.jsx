@@ -23,6 +23,7 @@ import QuickRelaxation from './Components/Home/Quick Relaxation';
 import LearnMoreHome from './Components/Home/Learn More Home';
 import StressCheckerHome from './Components/Home/Stress Checker Home';
 import MovementsHome from './Components/Home/MovementsHome';
+import BreathingExercise from './Components/Home/Quick Breathing Exercise';
 
 
 
@@ -53,6 +54,7 @@ function App() {
         <Route path="/learnmorehome" element={<LearnMoreHome />} />
         <Route path="/stresscheckerhome" element={<StressCheckerHome />} />
         <Route path="/movementshome" element={<MovementsHome />} />
+        <Route path="/quickbreath" element={<BreathingExercise />} />
       </Routes>
     </Router>
   );
