@@ -1,42 +1,94 @@
 import { useState, useEffect } from 'react';
 
 function AddNewList() {
-  const [lists, setLists] = useState(() => {
-    // Get saved lists from localStorage on initial load
-    const savedLists = localStorage.getItem('lists');
-    return savedLists ? JSON.parse(savedLists) : [];
-  });
+  const [lists, setLists] = useState([]);
   const [newListName, setNewListName] = useState('');
 
-  // Save lists to localStorage whenever they change
+  // Fetch lists from backend when the component loads
   useEffect(() => {
-    localStorage.setItem('lists', JSON.stringify(lists));
-  }, [lists]);
+    fetchLists();
+  }, []);
+
+  const fetchLists = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/lists/gettask', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}` // Assuming you store the token in localStorage
+        }
+      });
+      const data = await response.json();
+      setLists(data);
+    } catch (error) {
+      console.error('Error fetching lists:', error);
+    }
+  };
 
   // Function to add a new list
-  const addNewList = () => {
+  const addNewList = async () => {
     if (newListName) {
-      setLists([...lists, { name: newListName, tasks: [], newTask: '' }]);
-      setNewListName(''); // Reset the input field
+      try {
+        const response = await fetch('http://localhost:5000/api/lists/posttask', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          },
+          body: JSON.stringify({ name: newListName })
+        });
+
+        const newList = await response.json();
+        setLists([...lists, newList]);
+        setNewListName(''); // Reset the input field
+      } catch (error) {
+        console.error('Error adding list:', error);
+      }
     }
   };
 
   // Function to add a new task to a list
-  const addNewTask = (index) => {
+  const addNewTask = async (index) => {
     if (lists[index].newTask) {
-      const updatedLists = [...lists];
-      updatedLists[index].tasks.push({ name: updatedLists[index].newTask, completed: false });
-      updatedLists[index].newTask = ''; // Reset task input field for this list
-      setLists(updatedLists);
+      try {
+        const response = await fetch(`http://localhost:5000/api/lists/${lists[index]._id}/tasks`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          },
+          body: JSON.stringify({ name: lists[index].newTask })
+        });
+
+        const updatedList = await response.json();
+        const updatedLists = [...lists];
+        updatedLists[index] = updatedList;
+        setLists(updatedLists);
+      } catch (error) {
+        console.error('Error adding task:', error);
+      }
     }
   };
 
   // Function to toggle task completion
-  const toggleTaskCompletion = (listIndex, taskIndex) => {
-    const updatedLists = [...lists];
-    const task = updatedLists[listIndex].tasks[taskIndex];
-    task.completed = !task.completed; // Toggle the completed state
-    setLists(updatedLists);
+  const toggleTaskCompletion = async (listIndex, taskIndex) => {
+    try {
+      const taskId = lists[listIndex].tasks[taskIndex]._id;
+      const response = await fetch(`http://localhost:5000/api/lists/${lists[listIndex]._id}/tasks/${taskId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+
+      const updatedList = await response.json();
+      const updatedLists = [...lists];
+      updatedLists[listIndex] = updatedList;
+      setLists(updatedLists);
+    } catch (error) {
+      console.error('Error toggling task completion:', error);
+    }
   };
 
   // Handle typing in task input field for a specific list
