@@ -1,28 +1,55 @@
 import React, { useState, useEffect } from 'react';
+import backgroundexercise from '../../assets/backgroundexercise.png';
+import seawavespic from '../../assets/seawavespic.jpeg';
 
 const BreathingExercise = () => {
-  const [size, setSize] = useState(300); // Initial size of the circle
-  const [text, setText] = useState(''); // Text to display (Inhale, Hold, Exhale)
-  const [started, setStarted] = useState(false); // Track if exercise is started
+  const [size, setSize] = useState(300);
+  const [text, setText] = useState('');
+  const [started, setStarted] = useState(false);
+  const [seconds, setSeconds] = useState(0);
+  const [cycle, setCycle] = useState(1);
 
   useEffect(() => {
-    let timeout1, timeout2, timeout3;
+    let timeout1, timeout2, timeout3, interval;
 
-    if (started) {
+    if (started && cycle <= 4) {
       setText('Inhale');
-      setSize(150); // Decrease size for Inhale over 5 seconds
+      setSize(150);
+      setSeconds(5);
+
+      interval = setInterval(() => {
+        setSeconds((prev) => prev - 1);
+      }, 1000);
+
       timeout1 = setTimeout(() => {
+        clearInterval(interval);
         setText('Hold');
-        setSize(150); // Keep size unchanged during Hold
+        setSize(150);
+        setSeconds(5);
+
+        interval = setInterval(() => {
+          setSeconds((prev) => prev - 1);
+        }, 1000);
       }, 5000);
 
       timeout2 = setTimeout(() => {
+        clearInterval(interval);
         setText('Exhale');
-        setSize(300); // Increase size back to original for Exhale over 5 seconds
+        setSize(300);
+        setSeconds(5);
+
+        interval = setInterval(() => {
+          setSeconds((prev) => prev - 1);
+        }, 1000);
       }, 10000);
 
       timeout3 = setTimeout(() => {
-        setStarted(false); // Reset after the whole process
+        clearInterval(interval);
+        if (cycle < 4) {
+          setCycle((prevCycle) => prevCycle + 1);
+        } else {
+          setStarted(false);
+        }
       }, 15000);
     }
 
@@ -30,33 +57,59 @@ const BreathingExercise = () => {
       clearTimeout(timeout1);
       clearTimeout(timeout2);
       clearTimeout(timeout3);
+      clearInterval(interval);
     };
-  }, [started]);
+  }, [started, cycle]);
 
   const handleStart = () => {
+    setCycle(1);
     setStarted(true);
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <div
-        className="flex items-center justify-center bg-blue-500 rounded-full text-white text-2xl"
-        style={{
-          width: `${size}px`,
-          height: `${size}px`,
-          transition: 'width 5s ease, height 5s ease',
-        }}
-      >
-        {text}
-      </div>
-      {!started && (
-        <button
-          onClick={handleStart}
-          className="mt-8 bg-green-500 text-white px-4 py-2 rounded-lg"
+    <div className="relative flex items-center bg-black justify-center h-screen overflow-hidden">
+      {/*<div className="absolute inset-0 z-10">
+        <img src={backgroundexercise} alt="Background exercise" className="object-cover w-full h-full opacity-auto" />
+        <img src={seawavespic} alt="Sea waves" className="object-cover w-full h-full" />
+      </div>*/}
+
+      <section data-layername="texture" className="flex absolute inset-0 object-cover justify-center items-center px-20 py-16 max-md:px-5">
+      <img src={seawavespic}
+        alt="Textured background pattern"
+        className="object-contain w-full aspect-[1.8] max-w-[1320px] max-md:max-w-full" 
+      />
+              <img src={backgroundexercise} alt="Background exercise" className="object-cover absolute w-full h-full opacity-auto" />
+      <style jsx>{`
+        builder-component {
+          max-width: none !important;
+        }
+      `}</style>
+    </section>
+
+      <div className="relative z-20 flex flex-col items-center justify-center text-black">
+        <div className="mb-4 text-xl font-semibold">Cycle: {cycle}/4</div>
+        <div
+          className="flex items-center justify-center bg-zinc-800 transparent rounded-full text-white text-2xl"
+          style={{
+            width: `${size}px`,
+            height: `${size}px`,
+            transition: 'width 5s ease, height 5s ease',
+          }}
         >
-          Start
-        </button>
-      )}
+          {text}
+        </div>
+        <div className="mt-4 text-2xl">
+          {seconds > 0 && `${seconds} seconds`}
+        </div>
+        {!started && (
+          <button
+            onClick={handleStart}
+            className="mt-8 bg-slate-950 text-white px-4 py-2 rounded-lg"
+          >
+            Start
+          </button>
+        )}
+      </div>
     </div>
   );
 };
