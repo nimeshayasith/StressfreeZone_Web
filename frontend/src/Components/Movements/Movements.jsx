@@ -19,6 +19,10 @@ import pic1 from '../../assets/pic1.png'
 import pic2 from '../../assets/pic2.png'
 import pic3 from '../../assets/pic3.png'
 import { Link } from 'react-router-dom';
+import FaBell from '../../assets/FaBell.png';
+import FaLock from '../../assets/FaLock.png' ; // Importing icons for alarm and lock buttons
+
+
 
 const DeepRelax = () => {
   return (
@@ -149,47 +153,28 @@ const DeepRelax = () => {
 
 
   <section className="grid grid-cols-3 gap-6 mt-10 max-md:grid-cols-1">
-    {/* Card 1 */}
-    <div className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg">
-      <img src={pic1} alt="Meditation 1" className="w-full h-auto rounded" />
-      <h3 className="text-white text-lg mt-3">Morning Calm</h3>
-      <p className="text-white text-sm font-light">A peaceful start to your day</p>
-    </div>
+ {/* Thumbnail card example */}
+ {[{img: pic1, title: 'Morning Calm', desc: 'A peaceful start to your day', time: '10:30'},
+              {img: pic2, title: 'Evening Relaxation', desc: 'Unwind and recharge', time: '8:45'},
+              {img: pic3, title: 'Mindful Moments', desc: 'Practice mindfulness daily', time: '12:00'}].map((video, index) => (
+              <div key={index} className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg">
+                <img src={video.img} alt={`${video.title} Thumbnail`} className="w-full h-auto rounded" />
+                <h3 className="text-white text-lg mt-3">{video.title}</h3>
+                <p className="text-white text-sm font-light mb-2">{video.desc}</p>
 
-    {/* Card 2 */}
-    <div className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg">
-      <img src={pic2} alt="Meditation 2" className="w-full h-auto rounded" />
-      <h3 className="text-white text-lg mt-3">Evening Relaxation</h3>
-      <p className="text-white text-sm font-light">Unwind and recharge</p>
-    </div>
+                {/* Bottom section for video time and icons */}
+                <div className="flex items-center justify-between w-full mt-4">
+                  {/* Video time */}
+                  <span className="text-gray-300 text-xs font-semibold">{video.time}</span>
 
-    {/* Card 3 */}
-    <div className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg">
-      <img src={pic3} alt="Meditation 3" className="w-full h-auto rounded" />
-      <h3 className="text-white text-lg mt-3">Mindful Moments</h3>
-      <p className="text-white text-sm font-light">Practice mindfulness daily</p>
-    </div>
-
-        {/* Card 1 */}
-        <div className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg">
-      <img src={pic1} alt="Meditation 1" className="w-full h-auto rounded" />
-      <h3 className="text-white text-lg mt-3">Morning Calm</h3>
-      <p className="text-white text-sm font-light">A peaceful start to your day</p>
-    </div>
-
-    {/* Card 2 */}
-    <div className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg">
-      <img src={pic2} alt="Meditation 2" className="w-full h-auto rounded" />
-      <h3 className="text-white text-lg mt-3">Evening Relaxation</h3>
-      <p className="text-white text-sm font-light">Unwind and recharge</p>
-    </div>
-
-    {/* Card 3 */}
-    <div className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg">
-      <img src={pic3} alt="Meditation 3" className="w-full h-auto rounded" />
-      <h3 className="text-white text-lg mt-3">Mindful Moments</h3>
-      <p className="text-white text-sm font-light">Practice mindfulness daily</p>
-    </div>
+                  {/* Icons */}
+                  <div className="flex space-x-3">
+                    <img src={FaBell} alt="Alarm" className="w-4 h-4 cursor-pointer" />
+                    <img src={FaLock} alt="Lock" className="w-4 h-4 cursor-pointer" />
+                  </div>
+                </div>
+              </div>
+            ))}
   </section>
 </main>
         </main>
