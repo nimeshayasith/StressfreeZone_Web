@@ -68,12 +68,9 @@ const BreathingExercise = () => {
 
   return (
     <div className="relative flex items-center bg-black justify-center h-screen overflow-hidden">
-      {/*<div className="absolute inset-0 z-10">
-        <img src={backgroundexercise} alt="Background exercise" className="object-cover w-full h-full opacity-auto" />
-        <img src={seawavespic} alt="Sea waves" className="object-cover w-full h-full" />
-      </div>*/}
+     
 
-      <section data-layername="texture" className="flex absolute inset-0 object-cover justify-center items-center px-20 py-16 max-md:px-5">
+     {} <section data-layername="texture" className="flex absolute inset-0 object-cover justify-center items-center px-20 py-16 max-md:px-5">
       <img src={seawavespic}
         alt="Textured background pattern"
         className="object-contain w-full aspect-[1.8] max-w-[1320px] max-md:max-w-full" 
@@ -89,7 +86,7 @@ const BreathingExercise = () => {
       <div className="relative z-20 flex flex-col items-center justify-center text-black">
         <div className="mb-4 text-xl font-semibold">Cycle: {cycle}/4</div>
         <div
-          className="flex items-center justify-center bg-zinc-800 transparent rounded-full text-white text-2xl"
+          className="flex items-center justify-center bg-zinc-900 transparent rounded-full text-white text-2xl"
           style={{
             width: `${size}px`,
             height: `${size}px`,
