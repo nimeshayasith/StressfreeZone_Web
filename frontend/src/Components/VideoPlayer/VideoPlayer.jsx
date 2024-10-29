@@ -1,5 +1,5 @@
 import React from 'react';
-import sampleVideo from '../../assets/sample-video.mp4'; // Adjust the path if necessary
+import sampleVideo from '../../assets/sample-video.mp4' // Adjust the path if necessary
 
 const VideoPlayer = () => {
   return (
