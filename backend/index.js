@@ -1,52 +1,33 @@
-const express = require("express")
-const cors = require("cors")
-const bodyParser = require("body-parser")
+const express = require('express');
+const connectDB = require('./config/db');
+const authRoutes = require('./routes/authRoutes');
+const dotenv = require('dotenv');
+const cors = require('cors');
+const listRoutes = require('./routes/listRoutes')
 
-const admin = require("firebase-admin");
 
-const serviceAccount = require("./serviceAccountKey.json");
+//const { credential } = require('firebase-admin');
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://learning-a7662-default-rtdb.firebaseio.com"
-});
+dotenv.config();
+
+connectDB()
 
 const app = express()
-app.use(cors())
-app.use(bodyParser.json())
 
-app.post("/api/register", async (req, res) => {
-    try {
-      const { email, name, password } = req.body;
-      // Optionally, handle additional backend logic here
-      res.status(200).send("User registered successfully");
-    } catch (error) {
-      res.status(500).send(error.message);
-    }
-  });
-  
-  app.post("/api/login", async (req, res) => {
-    try {
-      const { email, password } = req.body;
-      // Optionally, handle additional backend logic here
-      res.status(200).send("User logged in successfully");
-    } catch (error) {
-      res.status(500).send(error.message);
-    }
-  });
-  
-  app.post("/api/login-google", async (req, res) => {
-    try {
-      const { email, name } = req.body;
-      // Optionally, handle additional backend logic here
-      res.status(200).send("User logged in with Google successfully");
-    } catch (error) {
-      res.status(500).send(error.message);
-    }
-  });
 
-const port = 5000
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials:true
+}))
 
-app.listen(port,()=>{
-    console.log(`server is running ${port}`)
-})
+// Bodyparser middleware
+app.use(express.json());
+
+
+app.use('/api/auth', authRoutes);
+app.use('/api/lists',listRoutes);
+
+
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
