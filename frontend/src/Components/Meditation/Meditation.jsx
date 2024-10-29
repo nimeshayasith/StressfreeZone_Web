@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useState} from 'react';
 import YogaBackgroundArt from '../../assets/Yoga background art.png';
 import dashboard from '../../assets/dashboard.png';
 import stresschecker from '../../assets/stresschecker.png';
@@ -10,12 +10,30 @@ import workrelief from '../../assets/workrelief.png';
 import learnmore from '../../assets/stresschecker.png';
 import userprofile from '../../assets/userprofile.png';
 import stressfreezoneicon from '../../assets/stressfreezoneicon.png';
-import pic1 from '../../assets/pic1.png'
-import pic2 from '../../assets/pic2.png'
+import video1 from '../../assets/video1.mp4';
+import video2 from '../../assets/video2.mp4';
+import video3 from '../../assets/video3.mp4';
+import pic1 from '../../assets/pic1.png';
+import pic2 from '../../assets/pic2.png';
 import pic3 from '../../assets/pic3.png'
 import { Link } from 'react-router-dom';
+import FaBell from '../../assets/FaBell.png';
+import FaLock from '../../assets/FaLock.png' ; // Importing icons for alarm and lock buttons
+
 
 const Dashboard = () => {
+  const [playingVideo, setPlayingVideo] = useState(null); // Track the currently playing video
+
+  const videos = [
+    { src: video1, thumbnail:pic1, title: 'Morning Calm', desc: 'A peaceful start to your day', time: '10:30' },
+    { src: video2, thumbnail:pic2, title: 'Evening Relaxation', desc: 'Unwind and recharge', time: '8:45' },
+    { src: video3, thumbnail:pic3, title: 'Mindful Moments', desc: 'Practice mindfulness daily', time: '12:00' },
+    { src: video1, thumbnail:pic1, title: 'Morning Calm', desc: 'A peaceful start to your day', time: '10:30' },
+    { src: video2, thumbnail:pic2, title: 'Evening Relaxation', desc: 'Unwind and recharge', time: '8:45' },
+    { src: video3, thumbnail:pic3, title: 'Mindful Moments', desc: 'Practice mindfulness daily', time: '12:00' }
+  ];
+
+
   return (
     
     <div className=" min-h-[2970px] w-full  px-4 py-10 bg-gray-800 relative">
@@ -149,52 +167,43 @@ const Dashboard = () => {
 
           
 
-<main className="flex flex-col mb-5 mt-10 p-7 bg-black bg-opacity-20">
+<main className="flex flex-col mb-5 mt-0 p-7 bg-black bg-opacity-20">
  
 
-  <section className="grid grid-cols-3 gap-6 mt-2 max-md:grid-cols-1">
-    {/* Card 1 */}
-    <div className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg">
-      <img src={pic1} alt="Meditation 1" className="w-full h-auto rounded" />
-      <h3 className="text-white text-lg mt-3">Morning Calm</h3>
-      <p className="text-white text-sm font-light">A peaceful start to your day</p>
+<div className="min-h-screen w-full px-4 py-10 bg-gray-800 relative">
+      <div className="grid grid-cols-3 gap-6 mt-10 max-md:grid-cols-1">
+        {videos.map((video, index) => (
+          <div key={index} className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg">
+            {/* Conditional rendering for video and thumbnail */}
+            {playingVideo === index ? (
+              <video
+                src={video.src}
+                controls
+                className="w-full h-auto rounded"
+                onClick={() => setPlayingVideo(null)} // Stop playing on click
+                autoPlay
+              />
+            ) : (
+              <img
+                src={video.thumbnail} // Thumbnail image
+                alt={`${video.title} Thumbnail`}
+                className="w-full h-auto rounded cursor-pointer"
+                onClick={() => setPlayingVideo(index)} // Play on click
+              />
+            )}
+            <h3 className="text-white text-lg mt-3">{video.title}</h3>
+            <p className="text-white text-sm font-light mb-2">{video.desc}</p>
+            <div className="flex items-center justify-between w-full mt-4">
+              <span className="text-gray-300 text-xs font-semibold">{video.time}</span>
+              <div className="flex space-x-3">
+                <img src={FaBell} alt="Alarm" className="w-4 h-4 cursor-pointer" />
+                <img src={FaLock} alt="Lock" className="w-4 h-4 cursor-pointer" />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
-
-    {/* Card 2 */}
-    <div className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg">
-      <img src={pic2} alt="Meditation 2" className="w-full h-auto rounded" />
-      <h3 className="text-white text-lg mt-3">Evening Relaxation</h3>
-      <p className="text-white text-sm font-light">Unwind and recharge</p>
-    </div>
-
-    {/* Card 3 */}
-    <div className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg">
-      <img src={pic3} alt="Meditation 3" className="w-full h-auto rounded" />
-      <h3 className="text-white text-lg mt-3">Mindful Moments</h3>
-      <p className="text-white text-sm font-light">Practice mindfulness daily</p>
-    </div>
-
-        {/* Card 1 */}
-        <div className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg">
-      <img src={pic1} alt="Meditation 1" className="w-full h-auto rounded" />
-      <h3 className="text-white text-lg mt-3">Morning Calm</h3>
-      <p className="text-white text-sm font-light">A peaceful start to your day</p>
-    </div>
-
-    {/* Card 2 */}
-    <div className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg">
-      <img src={pic2} alt="Meditation 2" className="w-full h-auto rounded" />
-      <h3 className="text-white text-lg mt-3">Evening Relaxation</h3>
-      <p className="text-white text-sm font-light">Unwind and recharge</p>
-    </div>
-
-    {/* Card 3 */}
-    <div className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg">
-      <img src={pic3} alt="Meditation 3" className="w-full h-auto rounded" />
-      <h3 className="text-white text-lg mt-3">Mindful Moments</h3>
-      <p className="text-white text-sm font-light">Practice mindfulness daily</p>
-    </div>
-  </section>
 </main>
         </main>
       </div>
