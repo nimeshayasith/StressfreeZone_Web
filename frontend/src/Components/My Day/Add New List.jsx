@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react';
+import editIcon from '../../assets/edit.png';
+import deleteIcon from '../../assets/delete.png';
+import updateIcon from '../../assets/update.png';
 
 function AddNewList() {
   const [lists, setLists] = useState(() => {
@@ -116,28 +119,19 @@ function AddNewList() {
                 <h2 className="text-2xl font-semibold mb-4">{list.name}</h2>
               )}
               
-              {/* Edit and Update Buttons for List */}
+              {/* Edit, Update, and Delete Buttons for List */}
               <div className="flex gap-2">
                 {editingListIndex === index ? (
-                  <button
-                    onClick={() => updateListName(index)}
-                    className="bg-green-500  text-white p-2 rounded-2xl hover:bg-green-700"
-                  >
-                    Update
+                  <button onClick={() => updateListName(index)} className="p-2">
+                    <img src={updateIcon} alt="Update" className="h-6 w-6" />
                   </button>
                 ) : (
-                  <button
-                    onClick={() => startEditingListName(index)}
-                    className="bg-blue-500 text-white p-2 rounded-2xl hover:bg-blue-700"
-                  >
-                    Edit List
+                  <button onClick={() => startEditingListName(index)} className="p-2">
+                    <img src={editIcon} alt="Edit" className="h-6 w-6" />
                   </button>
                 )}
-                <button
-                  onClick={() => deleteList(index)}
-                  className="bg-red-500 text-white p-2 rounded-2xl hover:bg-red-700"
-                >
-                  Delete List
+                <button onClick={() => deleteList(index)} className="p-2">
+                  <img src={deleteIcon} alt="Delete" className="h-6 w-6" />
                 </button>
               </div>
             </div>
@@ -184,28 +178,19 @@ function AddNewList() {
                     )}
                   </div>
 
-                  {/* Edit and Update Buttons for Task */}
-                  <div className="flex gap-2 ">
+                  {/* Edit, Update, and Delete Buttons for Task */}
+                  <div className="flex gap-2">
                     {editingTaskIndex?.list === index && editingTaskIndex?.task === taskIndex ? (
-                      <button
-                        onClick={() => updateTaskName(index, taskIndex)}
-                        className="bg-green-500 text-white p-2 rounded-2xl hover:bg-green-800"
-                      >
-                        Update
+                      <button onClick={() => updateTaskName(index, taskIndex)} className="p-2">
+                        <img src={updateIcon} alt="Update" className="h-6 w-6" />
                       </button>
                     ) : (
-                      <button
-                        onClick={() => startEditingTaskName(index, taskIndex, task.name)}
-                        className="bg-blue-500 text-white p-2 rounded-2xl hover:bg-blue-700"
-                      >
-                        Edit Task
+                      <button onClick={() => startEditingTaskName(index, taskIndex, task.name)} className="p-2">
+                        <img src={editIcon} alt="Edit" className="h-6 w-6" />
                       </button>
                     )}
-                    <button
-                      onClick={() => deleteTask(index, taskIndex)}
-                      className="bg-red-500 text-white p-2 rounded-2xl hover:bg-red-700"
-                    >
-                      Delete Task
+                    <button onClick={() => deleteTask(index, taskIndex)} className="p-2">
+                      <img src={deleteIcon} alt="Delete" className="h-6 w-6" />
                     </button>
                   </div>
                 </li>
