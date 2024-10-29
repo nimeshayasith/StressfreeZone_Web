@@ -5,6 +5,7 @@ import YogaBackgroundArt from '../../assets/Yoga background art.png'
 import movementshomeRightSide from '../../assets/movements home.png'
 import logo_icon from '../../assets/logo1.svg'
 import Footer from "./Footer";
+import sampleVideo from '../../assets/sample-video.mp4'; 
 
 
 
@@ -68,98 +69,27 @@ export default function Home() {
 
 
       <div className="flex overflow-hidden flex-col justify-center items-center px-20 py-14 bg-gray-900 max-md:px-5 mb-16">
-      <div className="flex flex-col items-center w-full max-w-[1455px] max-md:max-w-full">
-        <h1 className="text-5xl font-bold text-center text-white leading-[58px] max-md:text-4xl max-md:leading-[54px]">
-          Pick a plan that's <br /> right for you
-        </h1>
-        <p className="mt-12 text-base leading-7 text-center text-white max-md:mt-10">
-          Pricing plans for businesses at every stage of growth. <br /> Try our risk-free for 14 days. No credit card required.
-        </p>
-        <div className="flex mt-24 max-w-full text-xl leading-normal text-center w-[612px] max-md:mt-10">
-      <button className="flex-auto gap-3.5 self-stretch px-24 py-4 text-white whitespace-nowrap bg-emerald-400 rounded-md min-h-[66px] max-md:px-5">
-        Monthly
-      </button>
-      <div className="flex flex-auto gap-4 items-center py-4 pr-14 pl-24 text-emerald-400 bg-white rounded-md border border-emerald-400 border-solid min-h-[66px] max-md:px-5">
-        <span className="self-stretch my-auto">Yearly</span>
-        <span className="gap-3.5 self-stretch pr-2.5 pl-2.5 my-auto h-8 bg-amber-200 rounded-md w-[110px]">
-          Save 20%
-        </span>
-      </div>
-    </div>
-        <div className="self-stretch mt-24 max-md:mt-10 max-md:max-w-full">
-        <div className="grid grid-cols-3 gap-4 p-5">
-      <div className="bg-white h-auto rounded ">
-        <div className="p-4">
-          <button className="bg-gray-200 rounded p-2 font-semibold">Monthly</button>
-          <div className="p-2 mb-1 text-blue-300">For all individuals and starters who
-          want to start with domaining.</div>
-          <hr />
-<h1 className="font-bold text-5xl mt-2 p-2  ">$5</h1>
-<p className="text-blue-300 font-semibold mb-2 p-2">Per member,Per month</p>
-          <hr />
-          <ul class="list-disc list-inside text-md text-blue-300 p-2 mb-2">
-    <li >Access to All content</li>
-    <li >1k lookups / per month</li>
-    <li >No API credits</li>
-    <li >10 Monitoring Quota</li>
-    <li >60 minutes Monitoring interval</li>
-    <li >20% discount on backorders</li>
-  </ul>
-  <button className="bg-blue-400 p-2 rounded font-semibold mt-3"> Start free 7-day trial</button>
-  <p className="text-sm items-center text-zinc-500 mt-2">No credit card required</p>
-     </div>
-      </div>
-
-      <div className="bg-purple-500 h-auto rounded">
-      <div className="p-4">
-          <button className="bg-gray-200 rounded p-2 font-semibold">Yearly</button>
-          <div className="p-2 mb-1 text-white">For professional domain names
-          investors with a big portfolio.</div>
-          <hr />
-<h1 className="font-bold text-5xl mt-2 p-2">$50</h1>
-<p className="text-white font-semibold mb-2 p-2">Per member,Per month</p>
-          <hr />
-          <ul class="list-disc list-inside text-md text-white p-2 mb-2">
-    <li >Access to All content</li>
-    <li >1k lookups / per month</li>
-    <li >Access both Sinhala and English content</li>
-    <li >30K API credits / per month</li>
-    <li >60 minutes Monitoring interval</li>
-  </ul>
-  <button className="bg-orange-200 p-2 font-semibold rounded mt-3"> Start free 7-day trial</button>
-  <p className="text-sm items-center text-white mt-2">No credit card required</p>
-        </div>
-        </div>
-
-      <div className="bg-white h-auto rounded">
-      <div className="p-4">
-          <button className="bg-gray-200 rounded p-2 font-semibold">Unlimited</button>
-          <div className="p-2 mb-1 text-blue-300">For all individuals and starters who
-          want to start with domaining.</div>
-          <hr />
-          
-<h1 className="font-bold text-5xl p-2 mt-2">$150</h1>
-<p className="text-blue-300 font-semibold mb-2 p-2">Per member,Per month</p>
-          <hr />
-          <ul class="list-disc list-inside text-md text-blue-300 p-2 mb-2">
-    <li >Access to All features</li>
-    <li >1k lookups </li>
-    <li >30K API credits</li>
-    <li >10 Monitoring Quota</li>
-    <li >60 minutes Monitoring interval</li>
-    <li >20% discount on backorders</li>
-    <li >Domain Name Appraisal</li>
-    <li >1p Monitoring</li>
-    <li >Backlink Monitoring</li>
-  </ul>
-
-  <button className="bg-blue-400 p-2 rounded font-semibold mt-3"> Start free 7-day trial</button>
-  <p className="text-sm items-center text-zinc-500 mt-y">No credit card required</p>
-        </div>
-      </div>
-    </div>
-        </div>
-      </div>
+      <section className="flex flex-col items-center text-center max-w-[677px]">
+      <h1 className="text-5xl font-bold text-violet-600 max-md:max-w-full max-md:text-4xl">
+        30 days for <span className="text-violet-600">$55</span>
+      </h1>
+      <p className="mt-5 mb-8 w-full text-lg text-neutral-500 max-md:max-w-full">
+        All students are eligible to try our{" "}
+        <span className="text-violet-600">30 Day UNLIMITED</span> Intro Special
+        once. Take as many classes as you want, either in studio or online, for 30
+        days straight.
+      </p>
+    </section>
+      <video
+        className="w-full max-w-5xl rounded-lg shadow-lg"
+        controls
+        autoPlay
+        loop
+        muted
+      >
+        <source src={sampleVideo} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
     </div>
 
 

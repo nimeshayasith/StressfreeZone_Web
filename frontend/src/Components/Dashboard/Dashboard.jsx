@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useState} from 'react';
 import YogaBackgroundArt from '../../assets/Yoga background art.png';
 import dashboard from '../../assets/dashboard.png';
 import stresschecker from '../../assets/stresschecker.png';
@@ -15,12 +15,30 @@ import progresscircle from '../../assets/progresscircle.png'
 import chefhat from '../../assets/ChefHat.png'
 import drop from '../../assets/Drop.png'
 import personsimplerun from '../../assets/PersonSimpleRun.png'
-import pic1 from '../../assets/pic1.png'
-import pic2 from '../../assets/pic2.png'
+import video1 from '../../assets/video1.mp4';
+import video2 from '../../assets/video2.mp4';
+import video3 from '../../assets/video3.mp4';
+import pic1 from '../../assets/pic1.png';
+import pic2 from '../../assets/pic2.png';
 import pic3 from '../../assets/pic3.png'
 import { Link } from 'react-router-dom';
+import FaBell from '../../assets/FaBell.png';
+import FaLock from '../../assets/FaLock.png' ; // Importing icons for alarm and lock buttons
+
 
 const Dashboard = () => {
+  const [playingVideo, setPlayingVideo] = useState(null); // Track the currently playing video
+
+  const videos = [
+    { src: video1, thumbnail:pic1, title: 'Morning Calm', desc: 'A peaceful start to your day', time: '10:30' },
+    { src: video2, thumbnail:pic2, title: 'Evening Relaxation', desc: 'Unwind and recharge', time: '8:45' },
+    { src: video3, thumbnail:pic3, title: 'Mindful Moments', desc: 'Practice mindfulness daily', time: '12:00' },
+    { src: video1, thumbnail:pic1, title: 'Morning Calm', desc: 'A peaceful start to your day', time: '10:30' },
+    { src: video2, thumbnail:pic2, title: 'Evening Relaxation', desc: 'Unwind and recharge', time: '8:45' },
+    { src: video3, thumbnail:pic3, title: 'Mindful Moments', desc: 'Practice mindfulness daily', time: '12:00' }
+  ];
+
+
   return (
     <div className="min-h-[2970px] w-full px-4 py-10 bg-gray-800 relative">
       <img
@@ -101,6 +119,7 @@ const Dashboard = () => {
               </div>
             </div>
 
+<<<<<<< HEAD
             {/* Right column */}
             <div className="bg-black/30 p-4 shadow-md rounded-md border border-gray-300">
               <h2 className="text-2xl text-white w-[370px]">Daily Progress</h2>
@@ -112,6 +131,248 @@ const Dashboard = () => {
                 />
               </div>
             </div>
+=======
+  {/* Right column */}
+  <div className="bg-black/30 p-4 shadow-md rounded-md border border-gray-300">
+  <h2 className="gap-10 self-stretch max-w-full text-2xl leading-none text-white w-[370px]">
+        Daily Progress
+      </h2>
+      <div className="flex gap-5 items-start p-3 mt-6 bg-white rounded-[122.619px]">
+      <img src={progresscircle} alt='' className="object-contain w-[181px]"
+      />
+    </div>
+  </div>
+
+    {/* Left column */}
+    <div className="bg-black/30 p-4 shadow-md rounded-md border border-gray-300">
+  <h2 className="gap-10 self-stretch max-w-full text-2xl leading-none text-white w-[370px]">
+        Quick Relaxation
+      </h2>
+
+      <article className="flex relative text-white  flex-col mt-6 w-full rounded-xl min-h-[78px] max-md:max-w-full">
+      <div className="flex relative  flex-col mb-4 bg-slate-950 items-start py-6 pr-20 pl-6 rounded-xl max-md:px-5 max-md:max-w-full">
+        <h3 className="text-sm">Hard Plan</h3>
+        <p className="text-xs font-light">Lorem ipsum dolor sit amet consectetur. Id amet orci viverra id.</p>
+      </div>
+      <div className="flex relative flex-col mb-4 bg-slate-950 items-start py-6 pr-20 pl-6 rounded-xl max-md:px-5 max-md:max-w-full">
+        <h3 className="text-sm">Hard Plan</h3>
+        <p className="text-xs font-light">Lorem ipsum dolor sit amet consectetur. Id amet orci viverra id.</p>
+      </div>
+      <div className="flex relative flex-col bg-slate-950 items-start py-6 pr-20 pl-6 rounded-xl max-md:px-5 max-md:max-w-full">
+        <h3 className="text-sm">Hard Plan</h3>
+        <p className="text-xs font-light">Lorem ipsum dolor sit amet consectetur. Id amet orci viverra id.</p>
+      </div>
+    </article> 
+  </div>
+
+  {/* Right column */}
+  <div className="bg-black/30 p-4 shadow-md rounded-md border border-gray-300">
+  <h2 className="gap-10 self-stretch max-w-full text-2xl leading-none text-white w-[370px]">
+        Quick Relaxation
+      </h2>
+
+      <article className="flex relative text-white  flex-col mt-6 w-full rounded-xl min-h-[78px] max-md:max-w-full">
+      <div className="flex relative mb-4 bg-white/30 flex-col  items-start py-6 pr-20 pl-6 rounded-xl max-md:px-5 max-md:max-w-full">
+      <div className="flex items-center space-x-4">
+  <img src={personsimplerun} alt="Person running" />
+  <div>
+    <h3 className="text-sm">Morning Run</h3>
+    <p className="text-xs font-light">07.00 am   Park   45 min</p>
+  </div>
+</div>
+      </div>
+      <div className="flex relative mb-4 bg-white/30 flex-col  items-start py-6 pr-20 pl-6 rounded-xl max-md:px-5 max-md:max-w-full">
+      <div className="flex items-center space-x-4">
+  <img src={drop} alt="Person running" />
+  <div>
+    <h3 className="text-sm">1.5L of water daily</h3>
+    <p className="text-xs font-light">All day   Park </p>
+  </div>
+</div>
+      </div>
+
+      <div className="flex relative  bg-white/30 flex-col  items-start py-6 pr-20 pl-6 rounded-xl max-md:px-5 max-md:max-w-full">
+      <div className="flex items-center space-x-4">
+  <img src={chefhat} alt="Person running" />
+  <div>
+    <h3 className="text-sm">Cooking mealpreps for 3 days</h3>
+    <p className="text-xs font-light">11.00 am    Home   2h</p>
+  </div>
+</div>
+      </div>
+    </article>
+  </div>
+</div>
+
+<main className="flex flex-col mb-5 mt-10 p-7 bg-black bg-opacity-20">
+  <header className="flex relative gap-10 items-start w-full font-bold text-white max-w-[1145px] pr-[807px] max-md:pr-5 max-md:max-w-full">
+    <h1 className="z-0 text-2xl">Movements</h1>
+  </header>
+
+  <div className="min-h-screen w-full px-4 py-10  mt-0 relative">
+      <div className="grid grid-cols-3 gap-6 mt-0 max-md:grid-cols-1">
+        {videos.map((video, index) => (
+          <div key={index} className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg">
+            {/* Conditional rendering for video and thumbnail */}
+            {playingVideo === index ? (
+              <video
+                src={video.src}
+                controls
+                className="w-full h-auto rounded"
+                onClick={() => setPlayingVideo(null)} // Stop playing on click
+                autoPlay
+              />
+            ) : (
+              <img
+                src={video.thumbnail} // Thumbnail image
+                alt={`${video.title} Thumbnail`}
+                className="w-full h-auto rounded cursor-pointer"
+                onClick={() => setPlayingVideo(index)} // Play on click
+              />
+            )}
+            <h3 className="text-white text-lg mt-3">{video.title}</h3>
+            <p className="text-white text-sm font-light mb-2">{video.desc}</p>
+            <div className="flex items-center justify-between w-full mt-4">
+              <span className="text-gray-300 text-xs font-semibold">{video.time}</span>
+              <div className="flex space-x-3">
+                <img src={FaBell} alt="Alarm" className="w-4 h-4 cursor-pointer" />
+                <img src={FaLock} alt="Lock" className="w-4 h-4 cursor-pointer" />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+</main>
+
+
+
+<main className="flex flex-col mb-5 mt-10 p-7 bg-black bg-opacity-20">
+  <header className="flex relative gap-10 items-start w-full font-bold text-white max-w-[1145px] pr-[807px] max-md:pr-5 max-md:max-w-full">
+    <h1 className="z-0 text-2xl">Meditations</h1>
+  </header>
+
+  <div className="min-h-screen w-full px-4 py-10  mt-0 relative">
+      <div className="grid grid-cols-3 gap-6 mt-0 max-md:grid-cols-1">
+        {videos.map((video, index) => (
+          <div key={index} className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg">
+            {/* Conditional rendering for video and thumbnail */}
+            {playingVideo === index ? (
+              <video
+                src={video.src}
+                controls
+                className="w-full h-auto rounded"
+                onClick={() => setPlayingVideo(null)} // Stop playing on click
+                autoPlay
+              />
+            ) : (
+              <img
+                src={video.thumbnail} // Thumbnail image
+                alt={`${video.title} Thumbnail`}
+                className="w-full h-auto rounded cursor-pointer"
+                onClick={() => setPlayingVideo(index)} // Play on click
+              />
+            )}
+            <h3 className="text-white text-lg mt-3">{video.title}</h3>
+            <p className="text-white text-sm font-light mb-2">{video.desc}</p>
+            <div className="flex items-center justify-between w-full mt-4">
+              <span className="text-gray-300 text-xs font-semibold">{video.time}</span>
+              <div className="flex space-x-3">
+                <img src={FaBell} alt="Alarm" className="w-4 h-4 cursor-pointer" />
+                <img src={FaLock} alt="Lock" className="w-4 h-4 cursor-pointer" />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+</main>
+
+
+
+<main className="flex flex-col mb-5 mt-20 p-7 bg-black bg-opacity-20">
+  <header className="flex relative gap-10 items-start w-full font-bold text-white max-w-[1145px] pr-[807px] max-md:pr-5 max-md:max-w-full">
+    <h1 className="z-0 text-2xl">Soundscape</h1>
+  </header>
+
+  <div className="min-h-screen w-full px-4 py-10  mt-0 relative">
+      <div className="grid grid-cols-3 gap-6 mt-0 max-md:grid-cols-1">
+        {videos.map((video, index) => (
+          <div key={index} className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg">
+            {/* Conditional rendering for video and thumbnail */}
+            {playingVideo === index ? (
+              <video
+                src={video.src}
+                controls
+                className="w-full h-auto rounded"
+                onClick={() => setPlayingVideo(null)} // Stop playing on click
+                autoPlay
+              />
+            ) : (
+              <img
+                src={video.thumbnail} // Thumbnail image
+                alt={`${video.title} Thumbnail`}
+                className="w-full h-auto rounded cursor-pointer"
+                onClick={() => setPlayingVideo(index)} // Play on click
+              />
+            )}
+            <h3 className="text-white text-lg mt-3">{video.title}</h3>
+            <p className="text-white text-sm font-light mb-2">{video.desc}</p>
+            <div className="flex items-center justify-between w-full mt-4">
+              <span className="text-gray-300 text-xs font-semibold">{video.time}</span>
+              <div className="flex space-x-3">
+                <img src={FaBell} alt="Alarm" className="w-4 h-4 cursor-pointer" />
+                <img src={FaLock} alt="Lock" className="w-4 h-4 cursor-pointer" />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+</main>
+
+
+<main className="flex flex-col mb-5 mt-20 p-7 bg-black bg-opacity-20">
+  <header className="flex relative gap-10 items-start w-full font-bold text-white max-w-[1145px] pr-[807px] max-md:pr-5 max-md:max-w-full">
+    <h1 className="z-0 text-2xl">Work Relief</h1>
+  </header>
+
+  <div className="min-h-screen w-full px-4 py-10  mt-0 relative">
+      <div className="grid grid-cols-3 gap-6 mt-0 max-md:grid-cols-1">
+        {videos.map((video, index) => (
+          <div key={index} className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg">
+            {/* Conditional rendering for video and thumbnail */}
+            {playingVideo === index ? (
+              <video
+                src={video.src}
+                controls
+                className="w-full h-auto rounded"
+                onClick={() => setPlayingVideo(null)} // Stop playing on click
+                autoPlay
+              />
+            ) : (
+              <img
+                src={video.thumbnail} // Thumbnail image
+                alt={`${video.title} Thumbnail`}
+                className="w-full h-auto rounded cursor-pointer"
+                onClick={() => setPlayingVideo(index)} // Play on click
+              />
+            )}
+            <h3 className="text-white text-lg mt-3">{video.title}</h3>
+            <p className="text-white text-sm font-light mb-2">{video.desc}</p>
+            <div className="flex items-center justify-between w-full mt-4">
+              <span className="text-gray-300 text-xs font-semibold">{video.time}</span>
+              <div className="flex space-x-3">
+                <img src={FaBell} alt="Alarm" className="w-4 h-4 cursor-pointer" />
+                <img src={FaLock} alt="Lock" className="w-4 h-4 cursor-pointer" />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+</main>
+>>>>>>> 9bd8c65651e9b0e4e78da66934cd1c3ec53d9026
 
             {/* Left column */}
             <div className="bg-black/30 p-4 shadow-md rounded-md border border-gray-300">
