@@ -1,6 +1,6 @@
 const express = require('express');
-const { protect } = require('../middleware/authMiddleware'); // Ensure this exists and is imported correctly
-const List = require('../models/List'); // Ensure the model is defined correctly
+const { protect } = require('../middleware/authMiddleware'); 
+const List = require('../models/List'); 
 
 const router = express.Router();
 
