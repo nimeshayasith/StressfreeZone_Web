@@ -41,23 +41,25 @@ const handleClick = () => {
       <div className="flex flex-wrap gap-10 text-lg leading-8 text-center text-white">
 
       <div className="flex flex-wrap gap-0 justify-between items-center self-start min-h-[51px] max-md:max-w-full">
-      <img src={logo_icon} alt="App Logo" className="object-contain w-44 max-w-full" />
+      <div className="flex flex-wrap  items-center gap-2 px-4 justify-between">
+      <img src={logo_icon} alt="App Logo" className="w-24 md:w-32 lg:w-40 object-contain" />
       <div className="flex flex-col self-stretch my-auto min-w-[240px] w-[623px] max-md:max-w-full">
-        <div className="flex flex-wrap gap-px justify-center items-center min-h-[51px]">
-          <button className="self-stretch my-auto  w-[150px]">Stress Checker</button>
-          <button className="self-stretch my-auto w-[150px]">Quick Relaxation</button>
-          <button className="self-stretch my-auto w-[150px]">Movements</button>
-          <button className="self-stretch my-auto w-[154px]">Learn more</button>
+        <div className="flex flex-wrap justify-center -mt-4">
+          <Link to="/stresscheckerhome"> <button className="self-stretch my-auto  w-[150px]">Stress Checker</button></Link>
+          <Link to="/quickrelaxation"><button className="self-stretch my-auto w-[150px]">Quick Relaxation</button></Link>
+          <Link to="/movementshome"><button className="self-stretch my-auto w-[150px]">Movements</button></Link>
+          <Link to="/learnmorehome"><button className="self-stretch my-auto w-[154px]">Learn more</button></Link>
           
         </div>
         </div>
         <div className="flex gap-0.5 justify-center items-center self-stretch my-auto min-h-[51px] min-w-[240px] w-[480px] max-md:max-w-full">
         <div className="flex flex-col self-stretch my-auto min-w-[240px] w-[480px] max-md:max-w-full">
-          <div className="flex justify-center items-center min-h-[51px]">
+          <div className="flex flex-wrap justify-center -mt-4">
             <Link to="/"><button className="self-stretch my-auto text-teal-500 w-[120px]">Home</button></Link>
             <Link to="/aboutus"><button className="self-stretch my-auto w-[120px]">About Us</button></Link>
             <Link to="/mobileapp"><button className="self-stretch my-auto w-[120px]">Mobile App</button></Link>
             <Link to="/premierplan"><button className="self-stretch my-auto w-[120px]">Premier plan</button></Link>
+          </div>
           </div>
         </div>
       </div>
@@ -130,9 +132,9 @@ const handleClick = () => {
                 <div className="self-stretch mt-8 text-2xl leading-loose uppercase text-slate-400 tracking-[6.4px] max-md:max-w-full">
                   QUICK RELAXATION for calm & focus{" "}
                 </div>
-                <button className="px-14 py-5 mt-16 max-w-full text-lg font-medium tracking-wider text-white bg-teal-600 w-[221px] max-md:px-5 max-md:mt-10">
+                <Link to="quickbreath"><button className="px-14 py-5 mt-16 max-w-full text-lg font-medium tracking-wider text-white bg-teal-600 w-[221px] max-md:px-5 max-md:mt-10">
                   Let’s Start
-                </button>
+                </button></Link>
               </div>
             </div>
           </div>
