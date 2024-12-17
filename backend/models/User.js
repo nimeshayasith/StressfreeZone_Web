@@ -7,6 +7,9 @@ const userSchema = new mongoose.Schema({
   //googleId: { type: String },
   //resetPasswordToken: String,
   //resetPasswordExpires: Date,
+},
+{
+  timestamps: true,
 });
 
 module.exports = mongoose.model('User', userSchema);

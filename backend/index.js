@@ -3,7 +3,8 @@ const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
 const dotenv = require('dotenv');
 const cors = require('cors');
-const listRoutes = require('./routes/listRoutes')
+const listRoutes = require('./routes/listRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 
 
 //const { credential } = require('firebase-admin');
@@ -26,6 +27,7 @@ app.use(express.json());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/lists',listRoutes);
+app.use('/api/admin',adminRoutes);
 
 
 
