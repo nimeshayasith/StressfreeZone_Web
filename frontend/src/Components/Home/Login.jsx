@@ -38,7 +38,7 @@ export default function Login() {
   const handleForgotPassword = async () =>{
     try{
       await sendPasswordResetEmail(auth,email);
-      alert("Password resest email sent succuessfully");
+      alert("Password reset email sent succuessfully");
     }catch(error){
       console.error("Error sending password reset email:",error)
       alert("Failed to send password reset email:",error)
