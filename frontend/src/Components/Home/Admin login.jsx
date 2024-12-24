@@ -1,52 +1,36 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react';
+import React, { useEffect,useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo_icon from '../../assets/logo1.svg';
 import Meditation_2 from '../../assets/Meditation_2.svg';
+import axios from "axios";
 
 export default function AdminLogin() {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+  const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
-  const changeHandler = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
-  const login = () => {
-    if (!formData.email || !formData.password) {
-      alert("Please enter both email and password.");
-      return;
-    }
 
-    // Example API call
-    fetch("https://example.com/api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: formData.email,
-        password: formData.password,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
-          console.log("Login successful!", data);
-          // Navigate to dashboard or home page
-          navigate("/");
-        } else {
-          alert("Invalid email or password.");
-        }
-      })
-      .catch((error) => {
-        console.error("Error during login:", error);
-        alert("An error occurred. Please try again later.");
+  const handleLogin = async () => {
+    try {
+      // Authenticate with the backend
+      const response = await axios.post("http://localhost:5000/api/admin/admin_login", {
+        email,
+        password
       });
+
+      const { token } = response.data; // Getting token from response
+      localStorage.setItem('token', token); // Save token to localStorage if needed
+
+      console.log("User logged in successfully:", response.data);
+      alert("User Logged in successfully!");
+      navigate("/dashboard"); 
+    } catch (error) {
+      console.error("Error during login:", error);
+      alert("An error occurred. Please try again later.");
+    }
   };
 
   
@@ -74,8 +58,8 @@ export default function AdminLogin() {
               <div className="mt-12  text-gray-500 max-md:mt-10">Enter the Email-Address*</div>
               <input
             name="email"
-            value={formData.email}
-            onChange={changeHandler}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             type="email"
             placeholder="Enter your E-mail"
             className="px-8 py-6 mt-3 max-w-full rounded-md border border-solid bg-zinc-800 border-slate-400 w-[426px] max-md:px-5 text-white"
@@ -83,15 +67,15 @@ export default function AdminLogin() {
               <div className="mt-12 text-gray-500 max-md:mt-10">Enter your password*</div>
              <input
             name="password"
-            value={formData.password}
-            onChange={changeHandler}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             type="password"
             placeholder="Create your password"
             className="px-8 py-6 mt-3 max-w-full rounded-md border border-solid bg-zinc-800 border-slate-400 w-[426px] max-md:px-5 text-white"
           />
        
       
-        <button onClick={login} className="w-full bg-teal-500 text-white py-3 rounded mt-10">
+        <button onClick={handleLogin} className="w-full bg-teal-500 text-white py-3 rounded mt-10">
           Login
         </button>
         </div>
