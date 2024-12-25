@@ -4,10 +4,7 @@ import deleteIcon from '../../assets/delete.png';
 import updateIcon from '../../assets/update.png';
 
 function AddNewList() {
-  const [lists, setLists] = useState(() => {
-    const savedLists = localStorage.getItem('lists');
-    return savedLists ? JSON.parse(savedLists) : [];
-  });
+  const [lists, setLists] = useState([]);
   const [newListName, setNewListName] = useState('');
   const [editingListIndex, setEditingListIndex] = useState(null);
   const [editingListName, setEditingListName] = useState('');
@@ -15,22 +12,69 @@ function AddNewList() {
   const [editingTaskName, setEditingTaskName] = useState('');
 
   useEffect(() => {
-    localStorage.setItem('lists', JSON.stringify(lists));
-  }, [lists]);
+    fetchLists();
+  }, []);
 
-  const addNewList = () => {
-    if (newListName) {
-      setLists([...lists, { name: newListName, tasks: [], newTask: '' }]);
-      setNewListName('');
+  const fetchLists = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/lists/gettask', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}` 
+        }
+      });
+      if(!response.ok) throw new Error('Error fetching lists');
+      const data = await response.json();
+      setLists(data);
+    } catch (error) {
+      console.error('Error fetching lists:', error);
     }
   };
 
-  const addNewTask = (index) => {
+  const addNewList = async() => {
+    if (newListName) {
+      try{
+        const respose = await fetch('http://localhost:5000/api/lists/posttask',{
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          },
+          body: JSON.stringify({ name: newListName}),
+        });
+        if(!respose.ok) throw new Error('Error adding new list');
+        const newList = await respose.json();
+        setLists([...lists, newList]);
+        setNewListName('');
+      }catch(error){
+        console.log('Error adding new list:',error);
+      }
+      
+    }
+  };
+
+  const addNewTask = async(index) => {
     if (lists[index].newTask) {
-      const updatedLists = [...lists];
-      updatedLists[index].tasks.push({ name: updatedLists[index].newTask, completed: false });
-      updatedLists[index].newTask = '';
-      setLists(updatedLists);
+      try{
+        const response = await fetch(`http://localhost:5000/api/lists/${lists[index]._id}/tasks`,{
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          },
+          body: JSON.stringify({ name: lists[index].newTask}),
+        });
+        if(!response.ok) throw new Error('Error adding new task');
+        const updatedList = await response.json();
+        const updatedLists = [...lists];
+        updatedLists[index] = updatedList;
+        setLists(updatedLists);
+        //setLists((prev) => prev.map((list) => (list._id === updatedList._id ? updatedList : list)));
+      }catch(error){
+        console.error('Error adding new task:', error);
+      }
+
     }
   };
 
@@ -47,9 +91,23 @@ function AddNewList() {
     setLists(updatedLists);
   };
 
-  const deleteList = (index) => {
-    const updatedLists = lists.filter((_, i) => i !== index);
-    setLists(updatedLists);
+  const deleteList = async(index) => {
+    try{
+      const listId = lists[index]._id;
+      const response = await fetch(`http://localhost:5000/api/lists/${listId}`,{
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        }
+      })
+      if(!response.ok) throw new Error('Error deleting list');
+
+      const updatedLists = lists.filter((_, i) => i !== index);
+      setLists(updatedLists);
+    }catch(error){
+      console.error('Error deleting list:',error);
+    }
+    
   };
 
   const startEditingListName = (index) => {
@@ -57,18 +115,48 @@ function AddNewList() {
     setEditingListName(lists[index].name);
   };
 
-  const updateListName = (index) => {
-    const updatedLists = [...lists];
-    updatedLists[index].name = editingListName;
-    setLists(updatedLists);
-    setEditingListIndex(null);
-    setEditingListName('');
+  const updateListName = async(index) => {
+    const listId = lists[index]._id;
+    try{
+      const response = await fetch(`http://localhost:5000/api/lists/${listId}`,{
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+        body: JSON.stringify({name:editingListName}),
+      });
+      if (!response.ok) throw new Error('Error updating list name');
+      const updatedList = await response.json();
+      const updatedLists = [...lists];
+      updatedLists[index].name = editingListName;
+      setLists(updatedLists);
+      setEditingListIndex(null);
+      setEditingListName('');
+
+    }catch(error){
+      console.error('Error updating list name:',error);
+    }
+    
   };
 
-  const deleteTask = (listIndex, taskIndex) => {
-    const updatedLists = [...lists];
-    updatedLists[listIndex].tasks = updatedLists[listIndex].tasks.filter((_, i) => i !== taskIndex);
-    setLists(updatedLists);
+  const deleteTask = async(listIndex, taskIndex) => {
+    try{
+      const taskId = lists[listIndex].tasks[taskIndex]._id;
+      const response = await fetch(`http://localhost:5000/api/lists/${lists[listIndex]._id}/tasks/${taskId}`,{
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      if(!response.ok) throw new Error('Error deleting task');
+      const updatedLists = [...lists];
+      updatedLists[listIndex].tasks = updatedLists[listIndex].tasks.filter((_, i) => i !== taskIndex);
+      setLists(updatedLists);
+    }catch(error){
+      console.error('Error deleting task:',error)
+    }
+    
   };
 
   const startEditingTaskName = (listIndex, taskIndex, taskName) => {
@@ -76,12 +164,29 @@ function AddNewList() {
     setEditingTaskName(taskName);
   };
 
-  const updateTaskName = (listIndex, taskIndex) => {
-    const updatedLists = [...lists];
-    updatedLists[listIndex].tasks[taskIndex].name = editingTaskName;
-    setLists(updatedLists);
-    setEditingTaskIndex(null);
-    setEditingTaskName('');
+  const updateTaskName = async(listIndex, taskIndex) => {
+    const listId = lists[listIndex]._id;
+    const taskId = lists[listIndex].tasks[taskIndex]._id;
+
+    try{
+      const response = await fetch(`http://localhost:5000/api/lists/${listId}/tasks/${taskId}`,{
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+        body: JSON.stringify({ name: editingTaskName }), 
+      });
+      if(!response) throw new Error('Error updating task name');
+      const updatedList = await response.json();
+      const updatedLists = [...lists];
+      updatedLists[listIndex].tasks[taskIndex].name = editingTaskName;
+      setLists(updatedLists);
+      setEditingTaskIndex(null);
+      setEditingTaskName('');    
+    }catch(error){
+      console.error('Error updating task name:',error);
+    }
   };
 
   return (

@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Register from './Components/Home/Register';
 import Login from './Components/Home/Login';
-import AdminLogin from './Components/Admin/Admin login';
+import AdminLogin from './Components/Home/Admin login';
 import Home from './Components/Home/Home';
 import AboutUsPage from './Components/Home/About Us';
 import ContactUsPage from './Components/Home/Contact Us';
@@ -25,7 +25,8 @@ import StressCheckerHome from './Components/Home/Stress Checker Home';
 import MovementsHome from './Components/Home/MovementsHome';
 import BreathingExercise from './Components/Home/Quick Breathing Exercise';
 import VideoPlayer from './Components/VideoPlayer/VideoPlayer';
-import AddVideos from './Components/Admin/Add Videos';
+import AdminHome from './Components/Home/Admin Home';
+
 
 
 
@@ -58,7 +59,7 @@ function App() {
         <Route path="/movementshome" element={<MovementsHome />} />
         <Route path="/quickbreath" element={<BreathingExercise />} />
         <Route path="/video" element={<VideoPlayer />} />
-        <Route path="/add-video" element={<AddVideos />} />
+        <Route path="/adminhome" element={<AdminHome />} /> 
       </Routes>
     </Router>
   );
