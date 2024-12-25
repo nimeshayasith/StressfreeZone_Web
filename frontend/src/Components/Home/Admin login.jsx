@@ -1,11 +1,15 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect,useState } from 'react';
+import React, { useEffect,useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo_icon from '../../assets/logo1.svg';
 import Meditation_2 from '../../assets/Meditation_2.svg';
 import axios from "axios";
+import axios from "axios";
 
 export default function AdminLogin() {
+  const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -60,6 +64,8 @@ export default function AdminLogin() {
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             type="email"
             placeholder="Enter your E-mail"
             className="px-8 py-6 mt-3 max-w-full rounded-md border border-solid bg-zinc-800 border-slate-400 w-[426px] max-md:px-5 text-white"
@@ -69,12 +75,15 @@ export default function AdminLogin() {
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             type="password"
             placeholder="Create your password"
             className="px-8 py-6 mt-3 max-w-full rounded-md border border-solid bg-zinc-800 border-slate-400 w-[426px] max-md:px-5 text-white"
           />
        
       
+        <button onClick={handleLogin} className="w-full bg-teal-500 text-white py-3 rounded mt-10">
         <button onClick={handleLogin} className="w-full bg-teal-500 text-white py-3 rounded mt-10">
           Login
         </button>
