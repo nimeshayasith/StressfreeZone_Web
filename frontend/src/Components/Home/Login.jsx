@@ -59,13 +59,15 @@ export default function Login() {
   };
 
   const handleForgotPassword = async () =>{
-    try{
-      await sendPasswordResetEmail(auth,email);
-      alert("Password resest email sent succuessfully");
-    }catch(error){
-      console.error("Error sending password reset email:",error)
-      alert("Failed to send password reset email:",error)
-
+    try {
+      if(!email){
+        console.log("Enter the email address..... ");
+      }
+      await axios.post('http://localhost:5000/api/auth/forgot-password', { email });
+      alert('Password reset email sent successfully');
+    } catch (error) {
+      console.error('Error sending password reset email:', error);
+      alert('Failed to send password reset email.');
     }
   }
 
