@@ -7,6 +7,7 @@ const listRoutes = require('./routes/listRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 
 
+
 //const { credential } = require('firebase-admin');
 
 dotenv.config();
@@ -28,6 +29,7 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/lists',listRoutes);
 app.use('/api/admin',adminRoutes);
+
 
 
 

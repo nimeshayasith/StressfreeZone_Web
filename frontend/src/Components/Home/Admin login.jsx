@@ -1,16 +1,18 @@
 // eslint-disable-next-line no-unused-vars
+
 import React, { useEffect,useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo_icon from '../../assets/logo1.svg';
 import Meditation_2 from '../../assets/Meditation_2.svg';
 import axios from "axios";
 
+
 export default function AdminLogin() {
   const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+ 
 
   const navigate = useNavigate();
-
 
 
   const handleLogin = async () => {
@@ -19,6 +21,7 @@ export default function AdminLogin() {
       const response = await axios.post("http://localhost:5000/api/admin/admin_login", {
         email,
         password
+
       });
 
       const { token } = response.data; // Getting token from response
@@ -26,7 +29,7 @@ export default function AdminLogin() {
 
       console.log("User logged in successfully:", response.data);
       alert("User Logged in successfully!");
-      navigate("/dashboard"); 
+      navigate("/adminhome"); 
     } catch (error) {
       console.error("Error during login:", error);
       alert("An error occurred. Please try again later.");
@@ -60,6 +63,7 @@ export default function AdminLogin() {
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+      
             type="email"
             placeholder="Enter your E-mail"
             className="px-8 py-6 mt-3 max-w-full rounded-md border border-solid bg-zinc-800 border-slate-400 w-[426px] max-md:px-5 text-white"
@@ -69,12 +73,14 @@ export default function AdminLogin() {
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+
             type="password"
             placeholder="Create your password"
             className="px-8 py-6 mt-3 max-w-full rounded-md border border-solid bg-zinc-800 border-slate-400 w-[426px] max-md:px-5 text-white"
           />
        
       
+  
         <button onClick={handleLogin} className="w-full bg-teal-500 text-white py-3 rounded mt-10">
           Login
         </button>
