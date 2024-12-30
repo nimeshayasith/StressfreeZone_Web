@@ -1,24 +1,16 @@
 import { useState, useEffect } from 'react';
 
 function AddNewList() {
-<<<<<<< HEAD
-  const [lists, setLists] = useState([]);
-=======
   const [lists, setLists] = useState(() => {
     const savedLists = localStorage.getItem('lists');
     return savedLists ? JSON.parse(savedLists) : [];
   });
->>>>>>> 9bd8c65651e9b0e4e78da66934cd1c3ec53d9026
   const [newListName, setNewListName] = useState('');
   const [editingListIndex, setEditingListIndex] = useState(null);
   const [editingListName, setEditingListName] = useState('');
   const [editingTaskIndex, setEditingTaskIndex] = useState(null);
   const [editingTaskName, setEditingTaskName] = useState('');
 
-<<<<<<< HEAD
-  // Fetch lists from backend when the component loads
-=======
->>>>>>> 9bd8c65651e9b0e4e78da66934cd1c3ec53d9026
   useEffect(() => {
     fetchLists();
   }, []);
