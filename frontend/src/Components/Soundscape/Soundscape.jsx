@@ -1,4 +1,4 @@
-import React ,{useState} from 'react';
+import React ,{useState, useEffect} from 'react';
 import YogaBackgroundArt from '../../assets/Yoga background art.png';
 import dashboard from '../../assets/dashboard.png';
 import stresschecker from '../../assets/stresschecker.png';
@@ -10,28 +10,38 @@ import workrelief from '../../assets/workrelief.png';
 import learnmore from '../../assets/stresschecker.png';
 import userprofile from '../../assets/userprofile.png';
 import stressfreezoneicon from '../../assets/stressfreezoneicon.png';
-import video1 from '../../assets/video1.mp4';
+/*import video1 from '../../assets/video1.mp4';
 import video2 from '../../assets/video2.mp4';
 import video3 from '../../assets/video3.mp4';
 import pic1 from '../../assets/pic1.png';
 import pic2 from '../../assets/pic2.png';
-import pic3 from '../../assets/pic3.png'
+import pic3 from '../../assets/pic3.png'*/
 import { Link } from 'react-router-dom';
 import FaBell from '../../assets/FaBell.png';
 import FaLock from '../../assets/FaLock.png' ; // Importing icons for alarm and lock buttons
 
 
 const Soundscape = () => {
+  const [videos, setVideos] = useState([]); // Store fetched videos
   const [playingVideo, setPlayingVideo] = useState(null); // Track the currently playing video
 
-  const videos = [
-    { src: video1, thumbnail:pic1, title: 'Morning Calm', desc: 'A peaceful start to your day', time: '10:30' },
-    { src: video2, thumbnail:pic2, title: 'Evening Relaxation', desc: 'Unwind and recharge', time: '8:45' },
-    { src: video3, thumbnail:pic3, title: 'Mindful Moments', desc: 'Practice mindfulness daily', time: '12:00' },
-    { src: video1, thumbnail:pic1, title: 'Morning Calm', desc: 'A peaceful start to your day', time: '10:30' },
-    { src: video2, thumbnail:pic2, title: 'Evening Relaxation', desc: 'Unwind and recharge', time: '8:45' },
-    { src: video3, thumbnail:pic3, title: 'Mindful Moments', desc: 'Practice mindfulness daily', time: '12:00' }
-  ];
+  useEffect(() => {
+    // Fetch videos from the database by category 'Soundscape'
+    const fetchVideos = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/videos/Soundscape'); // Replace with your backend URL
+        if (!response.ok) {
+          throw new Error('Failed to fetch videos');
+        }
+        const data = await response.json();
+        setVideos(data); // Update videos state with fetched data
+      } catch (error) {
+        console.error('Error fetching videos:', error);
+      }
+    };
+
+    fetchVideos();
+  }, []);
 
   return (
     
@@ -162,11 +172,11 @@ const Soundscape = () => {
 <div className="min-h-screen w-full px-4 py-10  mt-0 relative">
       <div className="grid grid-cols-3 gap-6 mt-0 max-md:grid-cols-1">
         {videos.map((video, index) => (
-          <div key={index} className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg">
+          <div key={video._id} className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg">
             {/* Conditional rendering for video and thumbnail */}
             {playingVideo === index ? (
               <video
-                src={video.src}
+                src={video.url}
                 controls
                 className="w-full h-auto rounded"
                 onClick={() => setPlayingVideo(null)} // Stop playing on click
