@@ -12,13 +12,13 @@ export default function AdminLogin() {
   const navigate = useNavigate();
 
 
-
   const handleLogin = async () => {
     try {
       // Authenticate with the backend
       const response = await axios.post("http://localhost:5000/api/admin/admin_login", {
         email,
         password
+
       });
 
       const { token } = response.data; // Getting token from response

@@ -4,6 +4,8 @@ const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 
+
+
 // Sign Up with Email & Password
 exports.signup = async (req, res) => {
   const { name, email, password } = req.body;
@@ -46,6 +48,7 @@ exports.login = async (req, res) => {
     res.status(500).send('Server error');
   }
 };
+
 
 // Forgot password 
 exports.forgotPassword = async (req,res) => {
@@ -126,6 +129,7 @@ exports.resetPassword = async (req, res) => {
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error');
+
   }
 };
 
