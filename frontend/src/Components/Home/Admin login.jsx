@@ -26,7 +26,7 @@ export default function AdminLogin() {
 
       console.log("User logged in successfully:", response.data);
       alert("User Logged in successfully!");
-      navigate("/dashboard"); 
+      navigate("/adminhome"); 
     } catch (error) {
       console.error("Error during login:", error);
       alert("An error occurred. Please try again later.");
