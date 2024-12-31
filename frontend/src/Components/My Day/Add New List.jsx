@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
+import editIcon from '../../assets/edit.png';
+import deleteIcon from '../../assets/delete.png';
+import updateIcon from '../../assets/update.png';
 
 function AddNewList() {
-  const [lists, setLists] = useState(() => {
-    const savedLists = localStorage.getItem('lists');
-    return savedLists ? JSON.parse(savedLists) : [];
-  });
+  const [lists, setLists] = useState([]);
   const [newListName, setNewListName] = useState('');
   const [editingListIndex, setEditingListIndex] = useState(null);
   const [editingListName, setEditingListName] = useState('');
@@ -21,9 +21,10 @@ function AddNewList() {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('token')}` // Assuming you store the token in localStorage
+          Authorization: `Bearer ${localStorage.getItem('token')}` 
         }
       });
+      if(!response.ok) throw new Error('Error fetching lists');
       const data = await response.json();
       setLists(data);
     } catch (error) {
@@ -31,85 +32,49 @@ function AddNewList() {
     }
   };
 
-<<<<<<< HEAD
-  // Function to add a new list
-  const addNewList = async () => {
+  const addNewList = async() => {
     if (newListName) {
-      try {
-        const response = await fetch('http://localhost:5000/api/lists/posttask', {
+      try{
+        const respose = await fetch('http://localhost:5000/api/lists/posttask',{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${localStorage.getItem('token')}`
           },
-          body: JSON.stringify({ name: newListName })
+          body: JSON.stringify({ name: newListName}),
         });
-
-        const newList = await response.json();
+        if(!respose.ok) throw new Error('Error adding new list');
+        const newList = await respose.json();
         setLists([...lists, newList]);
-        setNewListName(''); // Reset the input field
-      } catch (error) {
-        console.error('Error adding list:', error);
+        setNewListName('');
+      }catch(error){
+        console.log('Error adding new list:',error);
       }
+      
     }
   };
 
-  // Function to add a new task to a list
-  const addNewTask = async (index) => {
+  const addNewTask = async(index) => {
     if (lists[index].newTask) {
-      try {
-        const response = await fetch(`http://localhost:5000/api/lists/${lists[index]._id}/tasks`, {
+      try{
+        const response = await fetch(`http://localhost:5000/api/lists/${lists[index]._id}/tasks`,{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${localStorage.getItem('token')}`
           },
-          body: JSON.stringify({ name: lists[index].newTask })
+          body: JSON.stringify({ name: lists[index].newTask}),
         });
-
+        if(!response.ok) throw new Error('Error adding new task');
         const updatedList = await response.json();
         const updatedLists = [...lists];
         updatedLists[index] = updatedList;
         setLists(updatedLists);
-      } catch (error) {
-        console.error('Error adding task:', error);
+        //setLists((prev) => prev.map((list) => (list._id === updatedList._id ? updatedList : list)));
+      }catch(error){
+        console.error('Error adding new task:', error);
       }
-    }
-  };
 
-  // Function to toggle task completion
-  const toggleTaskCompletion = async (listIndex, taskIndex) => {
-    try {
-      const taskId = lists[listIndex].tasks[taskIndex]._id;
-      const response = await fetch(`http://localhost:5000/api/lists/${lists[listIndex]._id}/tasks/${taskId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('token')}`
-        }
-      });
-
-      const updatedList = await response.json();
-      const updatedLists = [...lists];
-      updatedLists[listIndex] = updatedList;
-      setLists(updatedLists);
-    } catch (error) {
-      console.error('Error toggling task completion:', error);
-    }
-=======
-  const addNewList = () => {
-    if (newListName) {
-      setLists([...lists, { name: newListName, tasks: [], newTask: '' }]);
-      setNewListName('');
-    }
-  };
-
-  const addNewTask = (index) => {
-    if (lists[index].newTask) {
-      const updatedLists = [...lists];
-      updatedLists[index].tasks.push({ name: updatedLists[index].newTask, completed: false });
-      updatedLists[index].newTask = '';
-      setLists(updatedLists);
     }
   };
 
@@ -118,7 +83,6 @@ function AddNewList() {
     const task = updatedLists[listIndex].tasks[taskIndex];
     task.completed = !task.completed;
     setLists(updatedLists);
->>>>>>> 9bd8c65651e9b0e4e78da66934cd1c3ec53d9026
   };
 
   const handleTaskInputChange = (index, value) => {
@@ -127,9 +91,23 @@ function AddNewList() {
     setLists(updatedLists);
   };
 
-  const deleteList = (index) => {
-    const updatedLists = lists.filter((_, i) => i !== index);
-    setLists(updatedLists);
+  const deleteList = async(index) => {
+    try{
+      const listId = lists[index]._id;
+      const response = await fetch(`http://localhost:5000/api/lists/${listId}`,{
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        }
+      })
+      if(!response.ok) throw new Error('Error deleting list');
+
+      const updatedLists = lists.filter((_, i) => i !== index);
+      setLists(updatedLists);
+    }catch(error){
+      console.error('Error deleting list:',error);
+    }
+    
   };
 
   const startEditingListName = (index) => {
@@ -137,18 +115,48 @@ function AddNewList() {
     setEditingListName(lists[index].name);
   };
 
-  const updateListName = (index) => {
-    const updatedLists = [...lists];
-    updatedLists[index].name = editingListName;
-    setLists(updatedLists);
-    setEditingListIndex(null);
-    setEditingListName('');
+  const updateListName = async(index) => {
+    const listId = lists[index]._id;
+    try{
+      const response = await fetch(`http://localhost:5000/api/lists/${listId}`,{
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+        body: JSON.stringify({name:editingListName}),
+      });
+      if (!response.ok) throw new Error('Error updating list name');
+      const updatedList = await response.json();
+      const updatedLists = [...lists];
+      updatedLists[index].name = editingListName;
+      setLists(updatedLists);
+      setEditingListIndex(null);
+      setEditingListName('');
+
+    }catch(error){
+      console.error('Error updating list name:',error);
+    }
+    
   };
 
-  const deleteTask = (listIndex, taskIndex) => {
-    const updatedLists = [...lists];
-    updatedLists[listIndex].tasks = updatedLists[listIndex].tasks.filter((_, i) => i !== taskIndex);
-    setLists(updatedLists);
+  const deleteTask = async(listIndex, taskIndex) => {
+    try{
+      const taskId = lists[listIndex].tasks[taskIndex]._id;
+      const response = await fetch(`http://localhost:5000/api/lists/${lists[listIndex]._id}/tasks/${taskId}`,{
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      if(!response.ok) throw new Error('Error deleting task');
+      const updatedLists = [...lists];
+      updatedLists[listIndex].tasks = updatedLists[listIndex].tasks.filter((_, i) => i !== taskIndex);
+      setLists(updatedLists);
+    }catch(error){
+      console.error('Error deleting task:',error)
+    }
+    
   };
 
   const startEditingTaskName = (listIndex, taskIndex, taskName) => {
@@ -156,12 +164,29 @@ function AddNewList() {
     setEditingTaskName(taskName);
   };
 
-  const updateTaskName = (listIndex, taskIndex) => {
-    const updatedLists = [...lists];
-    updatedLists[listIndex].tasks[taskIndex].name = editingTaskName;
-    setLists(updatedLists);
-    setEditingTaskIndex(null);
-    setEditingTaskName('');
+  const updateTaskName = async(listIndex, taskIndex) => {
+    const listId = lists[listIndex]._id;
+    const taskId = lists[listIndex].tasks[taskIndex]._id;
+
+    try{
+      const response = await fetch(`http://localhost:5000/api/lists/${listId}/tasks/${taskId}`,{
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+        body: JSON.stringify({ name: editingTaskName }), 
+      });
+      if(!response) throw new Error('Error updating task name');
+      const updatedList = await response.json();
+      const updatedLists = [...lists];
+      updatedLists[listIndex].tasks[taskIndex].name = editingTaskName;
+      setLists(updatedLists);
+      setEditingTaskIndex(null);
+      setEditingTaskName('');    
+    }catch(error){
+      console.error('Error updating task name:',error);
+    }
   };
 
   return (
@@ -199,28 +224,19 @@ function AddNewList() {
                 <h2 className="text-2xl font-semibold mb-4">{list.name}</h2>
               )}
               
-              {/* Edit and Update Buttons for List */}
+              {/* Edit, Update, and Delete Buttons for List */}
               <div className="flex gap-2">
                 {editingListIndex === index ? (
-                  <button
-                    onClick={() => updateListName(index)}
-                    className="bg-green-500  text-white p-2 rounded-2xl hover:bg-green-700"
-                  >
-                    Update
+                  <button onClick={() => updateListName(index)} className="p-2">
+                    <img src={updateIcon} alt="Update" className="h-6 w-6" />
                   </button>
                 ) : (
-                  <button
-                    onClick={() => startEditingListName(index)}
-                    className="bg-blue-500 text-white p-2 rounded-2xl hover:bg-blue-700"
-                  >
-                    Edit List
+                  <button onClick={() => startEditingListName(index)} className="p-2">
+                    <img src={editIcon} alt="Edit" className="h-6 w-6" />
                   </button>
                 )}
-                <button
-                  onClick={() => deleteList(index)}
-                  className="bg-red-500 text-white p-2 rounded-2xl hover:bg-red-700"
-                >
-                  Delete List
+                <button onClick={() => deleteList(index)} className="p-2">
+                  <img src={deleteIcon} alt="Delete" className="h-6 w-6" />
                 </button>
               </div>
             </div>
@@ -267,28 +283,19 @@ function AddNewList() {
                     )}
                   </div>
 
-                  {/* Edit and Update Buttons for Task */}
-                  <div className="flex gap-2 ">
+                  {/* Edit, Update, and Delete Buttons for Task */}
+                  <div className="flex gap-2">
                     {editingTaskIndex?.list === index && editingTaskIndex?.task === taskIndex ? (
-                      <button
-                        onClick={() => updateTaskName(index, taskIndex)}
-                        className="bg-green-500 text-white p-2 rounded-2xl hover:bg-green-800"
-                      >
-                        Update
+                      <button onClick={() => updateTaskName(index, taskIndex)} className="p-2">
+                        <img src={updateIcon} alt="Update" className="h-6 w-6" />
                       </button>
                     ) : (
-                      <button
-                        onClick={() => startEditingTaskName(index, taskIndex, task.name)}
-                        className="bg-blue-500 text-white p-2 rounded-2xl hover:bg-blue-700"
-                      >
-                        Edit Task
+                      <button onClick={() => startEditingTaskName(index, taskIndex, task.name)} className="p-2">
+                        <img src={editIcon} alt="Edit" className="h-6 w-6" />
                       </button>
                     )}
-                    <button
-                      onClick={() => deleteTask(index, taskIndex)}
-                      className="bg-red-500 text-white p-2 rounded-2xl hover:bg-red-700"
-                    >
-                      Delete Task
+                    <button onClick={() => deleteTask(index, taskIndex)} className="p-2">
+                      <img src={deleteIcon} alt="Delete" className="h-6 w-6" />
                     </button>
                   </div>
                 </li>
