@@ -6,6 +6,7 @@ const nodemailer = require('nodemailer');
 
 
 
+
 // Sign Up with Email & Password
 exports.signup = async (req, res) => {
   const { name, email, password } = req.body;
@@ -68,15 +69,6 @@ exports.forgotPassword = async (req,res) => {
 
     const transporter = nodemailer.createTransport({
       service: 'Gmail',
-      auth: {
-        user: process.env.EMAIL,
-        pass: process.env.EMAIL_PASSWORD,
-      },
-    });
-
-    /*const resetURL = `${req.protocol}://${req.get(
-      'host'
-    )}/reset-password/${resetToken}`;*/
     const resetURL = `http://localhost:5173/reset-password/${resetToken}`;
 
     const mailOptions = {
@@ -125,6 +117,7 @@ exports.resetPassword = async (req, res) => {
 
     await user.save();
 
+
     res.status(200).json({ msg: 'Password reset successful' });
   } catch (err) {
     console.error(err.message);
@@ -132,4 +125,3 @@ exports.resetPassword = async (req, res) => {
 
   }
 };
-
