@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "description": "",
-  "description": "",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cloudinary": "^2.5.1",
@@ -22,10 +21,7 @@
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
     "express-session": "^1.18.1",
-    "firebase": "^10.14.0",
-    "firebase-admin": "^12.6.0",
     "google-auth-library": "^9.14.1",
-    "http": "^0.0.1-security",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.9.0",
     "mongoose": "^8.7.0",
