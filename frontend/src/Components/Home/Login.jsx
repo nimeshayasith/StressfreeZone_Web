@@ -2,7 +2,7 @@
 import React, { useEffect,useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth, googleProvider } from "../../firebaseConfig";
-import { signInWithRedirect,getRedirectResult, sendPasswordResetEmail } from "firebase/auth";
+import { signInWithPopup} from "firebase/auth";
 import axios from "axios";
 import logo_icon from '../../assets/logo1.svg';
 import Meditation_2 from '../../assets/Meditation_2.svg';
@@ -14,7 +14,7 @@ export default function Login() {
   
 
   const navigate = useNavigate();
-
+/*
   useEffect(() => {
     // Handle the redirect result after the page reloads
     getRedirectResult(auth)
@@ -36,7 +36,7 @@ export default function Login() {
       .catch((error) => {
         console.error("Error during Google login redirect:", error);
       });
-  }, []);
+  }, []);*/
 
   const handleLogin = async () => {
     try {
@@ -73,10 +73,19 @@ export default function Login() {
 
   const handleGoogleLogin = async () => {
     try {
-      // Initiate Google login
-      await signInWithRedirect(auth, googleProvider);
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+      const token = await user.getIdToken();
+      // Send the token to your backend or handle login success
+      const res = await axios.post("http://localhost:5000/api/auth/login-google", { token });
+      if (res.status === 200) {
+        localStorage.setItem('token', res.data.token);
+        alert("Logged in successfully!");
+        navigate("/dashboard");
+      }
     } catch (error) {
       console.error("Error during Google login:", error);
+      alert("Google login failed. Please try again.");
     }
   };
 
