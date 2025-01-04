@@ -25,13 +25,8 @@ import StressCheckerHome from './Components/Home/Stress Checker Home';
 import MovementsHome from './Components/Home/MovementsHome';
 import BreathingExercise from './Components/Home/Quick Breathing Exercise';
 import VideoPlayer from './Components/VideoPlayer/VideoPlayer';
-
 import ResetPassword from './Components/Home/ResetPassword';
-
-import AdminHome from './Components/Home/Admin Home';
-
-
-
+import AdminHome from './Components/Home/AdminHome';
 
 
 function App() {
@@ -63,8 +58,8 @@ function App() {
         <Route path="/movementshome" element={<MovementsHome />} />
         <Route path="/quickbreath" element={<BreathingExercise />} />
         <Route path="/video" element={<VideoPlayer />} />
-
         <Route path="/reset-password/:token" element={<ResetPassword />} />
+        <Route path="/adminhome" element={<AdminHome />} />
 
       </Routes>
     </Router>
