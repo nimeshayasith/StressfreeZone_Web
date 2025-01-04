@@ -16,7 +16,7 @@ const app = express()
 
 
 app.use(cors({
-    origin: 'https://stressfree-zone-web.vercel.app/',
+    origin: 'https://stressfreezone-web.onrender.com',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials:true
 }))
@@ -24,6 +24,9 @@ app.use(cors({
 // Bodyparser middleware
 app.use(express.json());
 
+app.get('/', (req, res) => {
+    res.send('Hello World!');   
+});
 
 app.use('/api/auth', authRoutes);
 app.use('/api/lists',listRoutes);
