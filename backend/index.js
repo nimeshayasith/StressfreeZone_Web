@@ -24,9 +24,6 @@ app.use(cors({
 // Bodyparser middleware
 app.use(express.json());
 
-app.get('/register', (req, res) => {
-    res.send('Hello World!');   
-});
 
 app.use('/api/auth', authRoutes);
 app.use('/api/lists',listRoutes);
