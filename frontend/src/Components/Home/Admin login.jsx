@@ -18,7 +18,7 @@ export default function AdminLogin() {
   const handleLogin = async () => {
     try {
       // Authenticate with the backend
-      const response = await axios.post("http://localhost:5000/api/admin/admin_login", {
+      const response = await axios.post("https://stressfreezone-web.onrender.com/api/admin/admin_login", {
         email,
         password
 
