@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const listRoutes = require('./routes/listRoutes');
 const adminRoutes = require('./routes/adminRoutes');
+
 const videoRoutes = require('./routes/videoRoutes');
 
 dotenv.config();
@@ -15,10 +16,10 @@ const app = express()
 
 
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: 'https://stressfreezone-web-frontend.onrender.com',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials:true,
-    methods: 'GET,POST',
-    allowedHeaders: 'Content-Type, Authorization',
+    allowedHeaders: 'Content-Type, Authorization'
 }))
 
 // Bodyparser middleware
@@ -34,6 +35,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/lists',listRoutes);
 app.use('/api/admin',adminRoutes);
 app.use('/api/videos', videoRoutes);
+
 
 
 const PORT = process.env.PORT || 5000;

@@ -1,3 +1,4 @@
+
 import React ,{useState, useEffect} from 'react';
 import YogaBackgroundArt from '../../assets/Yoga background art.png';
 import dashboard from '../../assets/dashboard.png';
@@ -157,28 +158,33 @@ const Dashboard = () => {
   </nav>
 </aside>
 
-
-        {/* Main content area */}
+       
         <main className="flex-1 p-6 rounded-md shadow-lg ml-6">
-          {/* Top row */}
+          
           <div className="bg-teal-800 p-4 shadow-md rounded-md mb-6">
-          <div className='flex items-center space-x-3 lg:space-x-5'>
-  <img src={stressfreezoneicon} alt=""  />
-  <a
-    href="#section1" 
-    className="relative  font-bold text-3xl text-white ">
-    Stress Free Zone
-  </a>
-</div>
 
+            <div className="flex items-center space-x-3 lg:space-x-5">
+              <img src={stressfreezoneicon} alt="Stress Free Zone Icon" />
+              <a href="#section1" className="relative font-bold text-3xl text-white">
+                Stress Free Zone
+              </a>
+            </div>
+            <div className="flex items-center space-x-3 lg:space-x-5">
+              <img src={stressfreezoneicon} alt="Stress Free Zone Icon" />
+              <a href="#section1" className="relative font-bold text-3xl text-white">
+                Stress Free Zone
+              </a>
+            </div>
           </div>
+
 
           {/* Username row */}
           <div className=" p-4 shadow-md rounded-md mb-6">
           <h3 className="text-2xl font-semibold text-white"><span>Hello! </span>{user?.name || 'Guest'}</h3>
+
           </div>
 
-          {/* 2-column grid below username row */}
+
           <div className="grid grid-cols-2 grid-row-2 gap-4">
   {/* Left column */}
   <div className="bg-black/30 p-4 shadow-md rounded-md border border-gray-300">
@@ -445,6 +451,7 @@ const Dashboard = () => {
 
 
 
+
         </main>
       </div>
     </div>
@@ -452,3 +459,5 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+

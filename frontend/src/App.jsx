@@ -62,6 +62,7 @@ function App() {
         <Route path="/reset-password/:token" element={<ResetPassword />} />
         <Route path="/adminhome" element={<AdminHome />} />
         <Route path="/videos" element={<VideoGallery/>}></Route>
+
       </Routes>
     </Router>
   );

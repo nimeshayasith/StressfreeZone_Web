@@ -11,14 +11,11 @@ import googlelogo from '../../assets/google_logo.jpeg';
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
-
   const navigate = useNavigate();
-
   const handleLogin = async () => {
     try {
       // Authenticate with the backend
-      const response = await axios.post("http://localhost:5000/api/auth/login", {
+      const response = await axios.post("https://stressfreezone-web.onrender.com/api/auth/login", {
         email,
         password
       });
@@ -40,7 +37,7 @@ export default function Login() {
       if(!email){
         console.log("Enter the email address..... ");
       }
-      await axios.post('http://localhost:5000/api/auth/forgot-password', { email });
+      await axios.post('https://stressfreezone-web.onrender.com/api/auth/forgot-password', { email });
       alert('Password reset email sent successfully');
     } catch (error) {
       console.error('Error sending password reset email:', error);

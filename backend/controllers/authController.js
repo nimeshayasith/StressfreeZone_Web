@@ -4,12 +4,17 @@ const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 
+
+
+
 // Sign Up with Email & Password
 exports.signup = async (req, res) => {
   const { name, email, password } = req.body;
   try {
     let user = await User.findOne({ email });
-    if (user) return res.status(400).json({ msg: 'User already exists' });
+    if (user) return res.status(400).json({ 
+      success: false,
+      msg: 'User already exists' });
 
     user = new User({ name, email, password });
     const salt = await bcrypt.genSalt(10);
@@ -20,10 +25,17 @@ exports.signup = async (req, res) => {
     const payload = { user: { id: user.id } };
     const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-    res.status(201).json({ token });
+    res.status(201).json({ 
+      success: true,
+      token,
+      msg: 'User created successfully'
+     });
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server error');
+    res.status(500).json({
+      success: false,
+      msg: 'Server error'
+    });
   }
 };
 
@@ -50,6 +62,7 @@ exports.login = async (req, res) => {
   }
 };
 
+
 // Forgot password 
 exports.forgotPassword = async (req,res) => {
   const {email} = req.body;
@@ -68,13 +81,10 @@ exports.forgotPassword = async (req,res) => {
 
     const transporter = nodemailer.createTransport({
       service: 'Gmail',
-      auth: {
-        user: process.env.EMAIL,
-        pass: process.env.EMAIL_PASSWORD,
-      },
     });
 
-    const resetURL = `http://localhost:5173/reset-password/${resetToken}`;
+    const resetURL = `https://stressfreezone-web-frontend.onrender.com/reset-password/${resetToken}`;
+
 
     const mailOptions = {
       to: user.email,
@@ -122,12 +132,12 @@ exports.resetPassword = async (req, res) => {
 
     await user.save();
 
+
     res.status(200).json({ msg: 'Password reset successful' });
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error');
-  }
-};
+
 
 exports.loginWithGoogle = async (req, res) => {
   const { token } = req.body;
@@ -161,3 +171,4 @@ exports.loginWithGoogle = async (req, res) => {
     res.status(500).json({ message: 'Google Sign-In failed', error });
   }
 };
+
