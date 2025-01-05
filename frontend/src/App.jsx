@@ -27,6 +27,7 @@ import BreathingExercise from './Components/Home/Quick Breathing Exercise';
 import VideoPlayer from './Components/VideoPlayer/VideoPlayer';
 import ResetPassword from './Components/Home/ResetPassword';
 import AdminHome from './Components/Home/AdminHome';
+import VideoGallery from './Components/Home/VideoGallery';
 
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
         <Route path="/video" element={<VideoPlayer />} />
         <Route path="/reset-password/:token" element={<ResetPassword />} />
         <Route path="/adminhome" element={<AdminHome />} />
+        <Route path="/videos" element={<VideoGallery/>}></Route>
 
       </Routes>
     </Router>

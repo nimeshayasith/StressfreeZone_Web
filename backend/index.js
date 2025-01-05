@@ -16,14 +16,20 @@ const app = express()
 
 
 app.use(cors({
-    origin: 'https://stressfreezone-web.onrender.com',
+    origin: 'https://stressfreezone-web-frontend.onrender.com',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials:true
+    credentials:true,
+    allowedHeaders: 'Content-Type, Authorization'
 }))
 
 // Bodyparser middleware
 app.use(express.json());
 
+app.use((req, res, next) => {
+    res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
+    res.setHeader('Cross-Origin-Embedder-Policy', 'require-corp');
+    next();
+  });
 
 app.use('/api/auth', authRoutes);
 app.use('/api/lists',listRoutes);
