@@ -14,29 +14,6 @@ export default function Login() {
   
 
   const navigate = useNavigate();
-/*
-  useEffect(() => {
-    // Handle the redirect result after the page reloads
-    getRedirectResult(auth)
-      .then(async (result) => {
-        if (result) {
-          const token = await result.user.getIdToken();
-
-          // Authenticate with your backend
-          const res = await axios.post("http://localhost:5000/api/auth/login-google", { token });
-
-          if (res.status === 200) {
-            alert("User Logged in successfully!");
-            navigate("/dashboard");
-          } else {
-            alert("Login failed. Please try again.");
-          }
-        }
-      })
-      .catch((error) => {
-        console.error("Error during Google login redirect:", error);
-      });
-  }, []);*/
 
   const handleLogin = async () => {
     try {
@@ -46,9 +23,9 @@ export default function Login() {
         password
       });
 
-      const { token } = response.data; // Getting token from response
+      const { token ,user} = response.data; // Getting token from response
       localStorage.setItem('token', token); // Save token to localStorage if needed
-
+      localStorage.setItem('user', JSON.stringify(user));
       console.log("User logged in successfully:", response.data);
       alert("User Logged in successfully!");
       navigate("/dashboard"); 
@@ -80,6 +57,7 @@ export default function Login() {
       const res = await axios.post("http://localhost:5000/api/auth/login-google", { token });
       if (res.status === 200) {
         localStorage.setItem('token', res.data.token);
+        localStorage.setItem('user', JSON.stringify(res.data.user));
         alert("Logged in successfully!");
         navigate("/dashboard");
       }

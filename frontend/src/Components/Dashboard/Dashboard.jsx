@@ -1,4 +1,4 @@
-import React ,{useState} from 'react';
+import React ,{useState, useEffect} from 'react';
 import YogaBackgroundArt from '../../assets/Yoga background art.png';
 import dashboard from '../../assets/dashboard.png';
 import stresschecker from '../../assets/stresschecker.png';
@@ -28,6 +28,20 @@ import FaLock from '../../assets/FaLock.png' ; // Importing icons for alarm and 
 
 const Dashboard = () => {
   const [playingVideo, setPlayingVideo] = useState(null); // Track the currently playing video
+  const [user, setUser] = useState(null);
+      
+    
+      // Mock function to simulate fetching user data
+      useEffect(() => {
+        // Fetch user details from localStorage
+        const storedUser = localStorage.getItem('user');
+        const token = localStorage.getItem('token');
+    
+        if (token && storedUser) {
+          setUser(JSON.parse(storedUser));
+        }
+      }, []);
+
 
   const videos = [
     { src: video1, thumbnail:pic1, title: 'Morning Calm', desc: 'A peaceful start to your day', time: '10:30' },
@@ -161,7 +175,7 @@ const Dashboard = () => {
 
           {/* Username row */}
           <div className=" p-4 shadow-md rounded-md mb-6">
-            <h3 className="text-2xl font-semibold text-white">Hi Kaweesha</h3>
+          <h3 className="text-2xl font-semibold text-white"><span>Hello! </span>{user?.name || 'Guest'}</h3>
           </div>
 
           {/* 2-column grid below username row */}

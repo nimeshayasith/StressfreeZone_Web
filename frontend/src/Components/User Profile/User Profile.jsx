@@ -14,30 +14,29 @@ import { Link , useNavigate} from 'react-router-dom';
 
 const UserProfile = () => {
   
-    const [user, setUser] = useState({
-      name: 'Kaveesha Madhushan', 
-      email: 'kaveeshamadushan0021@gmail.com',
-    });
-  
+    const [user, setUser] = useState(null);
     const navigate = useNavigate();
   
     // Mock function to simulate fetching user data
     useEffect(() => {
-      const fetchUserData = async () => {
-        // Replace with actual API call or context retrieval logic
-        const storedUser = JSON.parse(localStorage.getItem('user'));
-        if (storedUser) {
-          setUser(storedUser);
-        }
-      };
+      // Fetch user details from localStorage
+      const storedUser = localStorage.getItem('user');
+      const token = localStorage.getItem('token');
   
-      fetchUserData();
-    }, []);
+      if (token && storedUser) {
+        setUser(JSON.parse(storedUser));
+      } else {
+        navigate('/login');
+      }
+    }, [navigate]);
   
     const handleLogout = () => {
+      localStorage.removeItem('token'); 
+      localStorage.removeItem('user');
+      localStorage.removeItem("lists");
       navigate('/login');
       console.log("User logged out!");
-      // Perform logout logic here, such as clearing tokens or redirecting.
+      
     };
     
   
@@ -164,12 +163,18 @@ const UserProfile = () => {
     User Profile
   </h2>
   <div className="mb-4">
+  {user ? (
+  <>
     <p className="text-lg mb-2">
       <span className="font-semibold text-gray-300">Name:</span> {user.name}
     </p>
     <p className="text-lg">
       <span className="font-semibold text-gray-300">Email:</span> {user.email}
     </p>
+  </>
+  ) : (
+    <p className="text-gray-400 text-center">Loading user details...</p>
+  )}
   </div>
   <button
     onClick={handleLogout}

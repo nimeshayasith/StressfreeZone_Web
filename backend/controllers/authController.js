@@ -40,7 +40,10 @@ exports.login = async (req, res) => {
     const payload = { user: { id: user.id } };
     const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-    res.json({ token });
+    res.json({ 
+      token,
+      user: {name: user.name, email: user.email}
+     });
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error');
@@ -149,7 +152,10 @@ exports.loginWithGoogle = async (req, res) => {
     // Generate your own token (JWT) for session handling
     const yourToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
 
-    res.status(200).json({ message: 'Google Sign-In successful', token: yourToken, user });
+    res.status(200).json({ 
+      message: 'Google Sign-In successful', 
+      token: yourToken, 
+      user:  { name: user.name, email: user.email } });
   } catch (error) {
     console.error('Error during Google Sign-In:', error);
     res.status(500).json({ message: 'Google Sign-In failed', error });
