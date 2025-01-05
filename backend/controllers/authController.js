@@ -12,7 +12,9 @@ exports.signup = async (req, res) => {
   const { name, email, password } = req.body;
   try {
     let user = await User.findOne({ email });
-    if (user) return res.status(400).json({ msg: 'User already exists' });
+    if (user) return res.status(400).json({ 
+      success: false,
+      msg: 'User already exists' });
 
     user = new User({ name, email, password });
     const salt = await bcrypt.genSalt(10);
@@ -23,10 +25,17 @@ exports.signup = async (req, res) => {
     const payload = { user: { id: user.id } };
     const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-    res.status(201).json({ token });
+    res.status(201).json({ 
+      success: true,
+      token,
+      msg: 'User created successfully'
+     });
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server error');
+    res.status(500).json({
+      success: false,
+      msg: 'Server error'
+    });
   }
 };
 
