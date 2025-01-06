@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import YogaBackgroundArt from '../../assets/Yoga background art.png';
 import dashboard from '../../assets/dashboard.png';
 import stresschecker from '../../assets/stresschecker.png';
@@ -9,9 +10,36 @@ import workrelief from '../../assets/workrelief.png';
 import learnmore from '../../assets/stresschecker.png';
 import userprofile from '../../assets/userprofile.png';
 import stressfreezoneicon from '../../assets/stressfreezoneicon.png';
-import { Link } from 'react-router-dom';
+import { Link , useNavigate} from 'react-router-dom';
 
 const UserProfile = () => {
+  
+    const [user, setUser] = useState(null);
+    const navigate = useNavigate();
+  
+    // Mock function to simulate fetching user data
+    useEffect(() => {
+      // Fetch user details from localStorage
+      const storedUser = localStorage.getItem('user');
+      const token = localStorage.getItem('token');
+  
+      if (token && storedUser) {
+        setUser(JSON.parse(storedUser));
+      } else {
+        navigate('/login');
+      }
+    }, [navigate]);
+  
+    const handleLogout = () => {
+      localStorage.removeItem('token'); 
+      localStorage.removeItem('user');
+      localStorage.removeItem("lists");
+      navigate('/login');
+      console.log("User logged out!");
+      
+    };
+    
+  
   return (
     
     <div className=" min-h-[2970px] w-full  px-4 py-10 bg-gray-800 relative">
@@ -117,20 +145,44 @@ const UserProfile = () => {
 </aside>
 
 
-        {/* Main content area */}
-        <main className="flex-1 p-6 rounded-md shadow-lg ml-6">
+       {/* Main content area */}
+       <main className="flex-1 p-6 rounded-md shadow-lg ml-6">
           {/* Top row */}
           <div className="bg-teal-800 p-4 shadow-md rounded-md mb-6">
-          <div className='flex items-center space-x-3 lg:space-x-5'>
-  <img src={stressfreezoneicon} alt=""  />
-  <a
-    href="#section1" 
-    className="relative  font-bold text-3xl text-white ">
-    Stress Free Zone
-  </a>
-</div>
- </div>
+            <div className="flex items-center space-x-3 lg:space-x-5">
+              <img src={stressfreezoneicon} alt="" />
+              <a href="#section1" className="relative font-bold text-3xl text-white">
+                Stress Free Zone
+              </a>
+            </div>
+          </div>
 
+          {/* User Details */}
+          <div className="bg-gradient-to-r from-gray-700 to-gray-900 p-8 rounded-lg shadow-lg text-white max-w-md mx-auto">
+  <h2 className="text-3xl font-extrabold mb-6 border-b-2 border-gray-500 pb-2">
+    User Profile
+  </h2>
+  <div className="mb-4">
+  {user ? (
+  <>
+    <p className="text-lg mb-2">
+      <span className="font-semibold text-gray-300">Name:</span> {user.name}
+    </p>
+    <p className="text-lg">
+      <span className="font-semibold text-gray-300">Email:</span> {user.email}
+    </p>
+  </>
+  ) : (
+    <p className="text-gray-400 text-center">Loading user details...</p>
+  )}
+  </div>
+  <button
+    onClick={handleLogout}
+    className="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-6 rounded-md transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
+  >
+    Logout
+  </button>
+</div>
 
         </main>
       </div>
