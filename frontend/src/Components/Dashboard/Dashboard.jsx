@@ -169,12 +169,7 @@ const Dashboard = () => {
                 Stress Free Zone
               </a>
             </div>
-            <div className="flex items-center space-x-3 lg:space-x-5">
-              <img src={stressfreezoneicon} alt="Stress Free Zone Icon" />
-              <a href="#section1" className="relative font-bold text-3xl text-white">
-                Stress Free Zone
-              </a>
-            </div>
+           
           </div>
 
 

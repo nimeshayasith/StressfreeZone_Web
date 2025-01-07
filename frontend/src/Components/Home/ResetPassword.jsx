@@ -29,9 +29,13 @@ export default function ResetPassword() {
   return (
         <div className="min-h-screen w-full flex items-center justify-center px-20 py-14 bg-gray-800">
           <div className="flex flex-col self-start max-md:max-w-full w-1/2">
-            <div className="flex gap-2.5 mt-10 self-start font-semibold text-white">
+            <div className="flex gap-4 mt-10 self-start font-semibold text-white">
         
-          <img src={logo_icon} alt="App Logo" className="w-16 h-16" />
+<div className="animate-blink w-28 h-24  rounded-full bg-green-300 shadow-lg shadow-green-300/50  ">
+      
+     
+      <img src={logo_icon} alt="App Logo" className="relative w-24  md:w-32 lg:w-40 object-contain" />
+      </div>
     
           
           <div className="flex flex-col my-auto">

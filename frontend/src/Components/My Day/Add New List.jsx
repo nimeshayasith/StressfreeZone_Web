@@ -17,7 +17,7 @@ function AddNewList() {
 
   const fetchLists = async () => {
     try {
-      const response = await fetch('https://stressfreezone-web.onrender.com/api/lists/gettask', {
+      const response = await fetch('https://localhost:5000/api/lists/gettask', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ function AddNewList() {
   const addNewList = async() => {
     if (newListName) {
       try{
-        const respose = await fetch('https://stressfreezone-web.onrender.com/api/lists/posttask',{
+        const respose = await fetch('https://localhost:5000/api/lists/posttask',{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ function AddNewList() {
   const addNewTask = async(index) => {
     if (lists[index].newTask) {
       try{
-        const response = await fetch(`https://stressfreezone-web.onrender.com/api/lists/${lists[index]._id}/tasks`,{
+        const response = await fetch(`https://localhost:5000/api/lists/${lists[index]._id}/tasks`,{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -94,7 +94,7 @@ function AddNewList() {
   const deleteList = async(index) => {
     try{
       const listId = lists[index]._id;
-      const response = await fetch(`https://stressfreezone-web.onrender.com/api/lists/${listId}`,{
+      const response = await fetch(`https://localhost:5000/api/lists/${listId}`,{
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -118,7 +118,7 @@ function AddNewList() {
   const updateListName = async(index) => {
     const listId = lists[index]._id;
     try{
-      const response = await fetch(`https://stressfreezone-web.onrender.com/api/lists/${listId}`,{
+      const response = await fetch(`https://localhost:5000/api/lists/${listId}`,{
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -143,7 +143,7 @@ function AddNewList() {
   const deleteTask = async(listIndex, taskIndex) => {
     try{
       const taskId = lists[listIndex].tasks[taskIndex]._id;
-      const response = await fetch(`https://stressfreezone-web.onrender.com/api/lists/${lists[listIndex]._id}/tasks/${taskId}`,{
+      const response = await fetch(`https://localhost:5000/api/lists/${lists[listIndex]._id}/tasks/${taskId}`,{
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -169,7 +169,7 @@ function AddNewList() {
     const taskId = lists[listIndex].tasks[taskIndex]._id;
 
     try{
-      const response = await fetch(`https://stressfreezone-web.onrender.com/api/lists/${listId}/tasks/${taskId}`,{
+      const response = await fetch(`https://localhost:5000/api/lists/${listId}/tasks/${taskId}`,{
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

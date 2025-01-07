@@ -9,6 +9,7 @@ const AdminHome = () => {
     description: '',
     category: 'Movements', // Default category
     video: null,
+    image: null
   });
 
   // State for success and error messages
@@ -21,11 +22,14 @@ const AdminHome = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  // Handle video file selection
   const handleFileChange = (e) => {
-    setFormData({ ...formData, video: e.target.files[0] });
+    const { id, files } = e.target;
+    if (files && files[0]) {
+      setFormData({ ...formData, [id]: files[0] });
+    }
   };
-
+  
+  
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,7 +43,7 @@ const AdminHome = () => {
       formDataToSend.append('video', formData.video);
 
       try {
-        const response = await axios.post('https://stressfreezone-web.onrender.com/api/videos/upload', formDataToSend, {
+        const response = await axios.post('https://localhost:5000/api/videos/upload', formDataToSend, {
           headers: { 'Content-Type': 'multipart/form-data' },
         });
 
@@ -62,18 +66,22 @@ const AdminHome = () => {
   return (
     <div className="min-h-screen w-full flex items-center justify-center px-20 py-14 bg-gray-800">
       <div className="flex flex-col self-start max-md:max-w-full">
-        <div className="flex gap-2.5 mt-10 self-start font-semibold text-white">
-          <img src={logo_icon} alt="App Logo" className="w-16 h-16" />
+        <div className="flex gap-5 -mt-5 ml-6 self-start font-semibold text-white">
+      <div className="animate-blink w-28 h-24  rounded-full bg-green-300 shadow-lg shadow-green-300/50  ">
+            
+           
+            <img src={logo_icon} alt="App Logo" className="relative w-24  md:w-32 lg:w-40 object-contain" />
+            </div>
           <div className="flex flex-col my-auto">
             <h1 className="text-2xl font-bold">CALM MIND</h1>
             <p className="mt-1.5 text-base">STRESS FREE ZONE</p>
           </div>
         </div>
         <div className="p-6">
-          <form className="bg-white p-8 rounded-lg shadow-md mb-6 w-full max-w-3xl" onSubmit={handleSubmit}>
+          <form className="bg-gradient-to-r from-gray-700 to-gray-900 p-8 rounded-lg shadow-lg text-white max-w-md mx-auto" onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label className="block text-gray-700 font-bold mb-2" htmlFor="title">
-                Title
+              <label className="block text-white font-bold mb-2" htmlFor="title">
+                Title :
               </label>
               <input
                 type="text"
@@ -81,33 +89,33 @@ const AdminHome = () => {
                 name="title"
                 value={formData.title}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md"
+                className="px-8 py-3 mt-3 max-w-full rounded-md border border-solid bg-zinc-800 border-slate-400 w-[426px] max-md:px-5 text-white"
                 placeholder="Enter video title"
               />
             </div>
             <div className="mb-4">
-              <label className="block text-gray-700 font-bold mb-2" htmlFor="description">
-                Description
+              <label className="block text-white font-bold mb-2" htmlFor="description">
+                Description :
               </label>
               <textarea
                 id="description"
                 name="description"
                 value={formData.description}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md"
+                className="px-8 py-1 mt-3 max-w-full rounded-md border border-solid bg-zinc-800 border-slate-400 w-[426px] max-md:px-5 text-white"
                 placeholder="Enter video description"
               ></textarea>
             </div>
             <div className="mb-4">
-              <label className="block text-gray-700 font-bold mb-2" htmlFor="category">
-                Category
+              <label className="block text-white font-bold mb-2" htmlFor="category">
+                Category :
               </label>
               <select
                 id="category"
                 name="category"
                 value={formData.category}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md"
+                className="px-8 py-2 mt-3 max-w-full rounded-md border border-solid bg-zinc-800 border-slate-400 w-[426px] max-md:px-5 text-white"
               >
                 <option value="Movements">Movements</option>
                 <option value="Meditation">Meditation</option>
@@ -117,20 +125,37 @@ const AdminHome = () => {
               </select>
             </div>
             <div className="mb-4">
-              <label className="block text-gray-700 font-bold mb-2" htmlFor="video">
-                Upload Video
-              </label>
-              <input
-                type="file"
-                id="video"
-                accept="video/*"
-                onChange={handleFileChange}
-                className="w-full"
-              />
-            </div>
+  {/* Upload Video */}
+  <label className="block text-white font-bold mb-2" htmlFor="video">
+    Upload Video:
+  </label>
+  <input
+    type="file"
+    id="video"
+    accept="video/*"
+    onChange={handleFileChange}
+    className="w-full "
+  />
+</div>
+
+<div className="mb-4">
+  {/* Upload Image */}
+  <label className="block text-white font-bold mb-2" htmlFor="image">
+    Upload Image:
+  </label>
+  <input
+    type="file"
+    id="image"
+    accept="image/*"
+    onChange={handleFileChange}
+    className="w-full "
+  />
+</div>
+
+
             <button
               type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+              className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-blue-600"
             >
               Upload Video
             </button>
