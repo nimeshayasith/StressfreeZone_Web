@@ -69,7 +69,8 @@ const handleClick = () => {
       </div>
         {/*<img src={CircleGaps} alt=""  className="object-cover absolute flex mr-28"/>*/}
    <div className="flex relative flex-col items-start self-center pt-20 pr-12 pb-0 mt-0 mb-28 ml-24 max-w-full min-h-[503px] rounded-[202px] w-[568px] max-md:pt-24 max-md:pr-5">
-   <div className="absolute -bottom-48 -left-44 w-48 h-48 bg-teal-600 rounded-full animate-pulse blur-2xl"></div>
+   <div className="absolute -bottom-36 -left-44 w-56 h-56 bg-teal-600 rounded-full animate-pulse blur-2xl"></div>
+   <div className="absolute -bottom-80 -left-44 w-56 h-56 bg-teal-600 rounded-full animate-pulse blur-2xl"></div>
  
        <img src={YogaBackgroundArt} alt=""  className="object-cover absolute inset-0 size-full"/>
    
@@ -103,7 +104,8 @@ const handleClick = () => {
 
 
       <div className="flex overflow-hidden flex-col items-center px-8 pb-18 bg-slate-700/50 bg-opacity-50 max-md:px-2 max-md:pb-12">
-  <div className="ml-6 w-full max-w-[1000px] max-md:max-w-full">
+      
+  <div className="ml-6 w-full max-w-[1300px] max-md:max-w-full">
     <div className="flex gap-3 max-md:flex-col">
       <div className="flex flex-col w-[55%] max-md:ml-0 max-md:w-full">
         <div className="flex flex-col w-full max-md:mt-4 max-md:max-w-full">

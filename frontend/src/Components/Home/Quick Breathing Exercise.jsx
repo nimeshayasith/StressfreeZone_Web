@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import backgroundexercise from '../../assets/backgroundexercise.png';
+import quickbreathing from '../../assets/quickbreathing.jpg';
 import seawavespic from '../../assets/seawavespic.jpeg';
 
 const BreathingExercise = () => {
@@ -67,7 +67,7 @@ const BreathingExercise = () => {
   };
 
   return (
-    <div className="relative flex items-center bg-black justify-center h-screen overflow-hidden">
+    <div className="relative flex items-center bg-teal-900 justify-center h-screen overflow-hidden">
      
 
      {} <section data-layername="texture" className="flex absolute inset-0 object-cover justify-center items-center px-20 py-16 max-md:px-5">
@@ -75,7 +75,7 @@ const BreathingExercise = () => {
         alt="Textured background pattern"
         className="object-contain w-full aspect-[1.8] max-w-[1320px] max-md:max-w-full" 
       />
-              <img src={backgroundexercise} alt="Background exercise" className="object-cover absolute w-full h-full opacity-auto" />
+              <img src={quickbreathing} alt="Background exercise" className="object-cover absolute w-full h-full opacity-auto" />
       <style jsx>{`
         builder-component {
           max-width: none !important;
@@ -86,7 +86,7 @@ const BreathingExercise = () => {
       <div className="relative z-20 flex flex-col items-center justify-center text-black">
         <div className="mb-4 text-xl font-semibold">Cycle: {cycle}/4</div>
         <div
-          className="flex items-center justify-center bg-zinc-900 transparent rounded-full text-white text-2xl"
+          className="flex items-center justify-center bg-cyan-800 transparent rounded-full text-white text-2xl"
           style={{
             width: `${size}px`,
             height: `${size}px`,
