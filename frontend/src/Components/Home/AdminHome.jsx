@@ -43,7 +43,7 @@ const AdminHome = () => {
       formDataToSend.append('video', formData.video);
 
       try {
-        const response = await axios.post('https://localhost:5000/api/videos/upload', formDataToSend, {
+        const response = await axios.post('http://localhost:5000/api/videos/upload', formDataToSend, {
           headers: { 'Content-Type': 'multipart/form-data' },
         });
 
