@@ -18,7 +18,7 @@ export default function Register() {
     const handleRegister = async () => {
       try {
         // Make a request to the backend registration API
-        const response = await axios.post("http://localhost:5000/api/auth/signup", {
+        const response = await axios.post("https://localhost:5000/api/auth/signup", {
           name,
           email,
           password

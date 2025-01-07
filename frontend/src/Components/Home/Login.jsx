@@ -2,7 +2,7 @@
 import React, { useEffect,useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth, googleProvider } from "../../firebaseConfig";
-import { signInWithRedirect,getRedirectResult, sendPasswordResetEmail } from "firebase/auth";
+import { signInWithPopup} from "firebase/auth";
 import axios from "axios";
 import logo_icon from '../../assets/logo1.svg';
 import Meditation_2 from '../../assets/Meditation_2.svg';
@@ -11,33 +11,7 @@ import googlelogo from '../../assets/google_logo.jpeg';
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
-
   const navigate = useNavigate();
-
-  useEffect(() => {
-    // Handle the redirect result after the page reloads
-    getRedirectResult(auth)
-      .then(async (result) => {
-        if (result) {
-          const token = await result.user.getIdToken();
-
-          // Authenticate with your backend
-          const res = await axios.post("http://localhost:5000/api/auth/login-google", { token });
-
-          if (res.status === 200) {
-            alert("User Logged in successfully!");
-            navigate("/dashboard");
-          } else {
-            alert("Login failed. Please try again.");
-          }
-        }
-      })
-      .catch((error) => {
-        console.error("Error during Google login redirect:", error);
-      });
-  }, []);
-
   const handleLogin = async () => {
     try {
       // Authenticate with the backend
@@ -46,9 +20,9 @@ export default function Login() {
         password
       });
 
-      const { token } = response.data; // Getting token from response
+      const { token ,user} = response.data; // Getting token from response
       localStorage.setItem('token', token); // Save token to localStorage if needed
-
+      localStorage.setItem('user', JSON.stringify(user));
       console.log("User logged in successfully:", response.data);
       alert("User Logged in successfully!");
       navigate("/dashboard"); 
@@ -73,10 +47,20 @@ export default function Login() {
 
   const handleGoogleLogin = async () => {
     try {
-      // Initiate Google login
-      await signInWithRedirect(auth, googleProvider);
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+      const token = await user.getIdToken();
+      // Send the token to your backend or handle login success
+      const res = await axios.post("http://localhost:5000/api/auth/login-google", { token });
+      if (res.status === 200) {
+        localStorage.setItem('token', res.data.token);
+        localStorage.setItem('user', JSON.stringify(res.data.user));
+        alert("Logged in successfully!");
+        navigate("/dashboard");
+      }
     } catch (error) {
       console.error("Error during Google login:", error);
+      alert("Google login failed. Please try again.");
     }
   };
 

@@ -12,8 +12,6 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import StressChecker from './Components/Stress Checker/Stress Checker';
 import MyDay from './Components/My Day/My Day';
 import Meditation from './Components/Meditation/Meditation';
-import DeepRelax from './Components/Meditation/Deep Relax';
-import QuickRelax from './Components/Meditation/Quick Relax';
 import Movements from './Components/Movements/Movements';
 import WorkRelief from './Components/Work Relief/Work Relief';
 import LearnMore from './Components/Learn More/Learn More';
@@ -27,6 +25,7 @@ import BreathingExercise from './Components/Home/Quick Breathing Exercise';
 import VideoPlayer from './Components/VideoPlayer/VideoPlayer';
 import ResetPassword from './Components/Home/ResetPassword';
 import AdminHome from './Components/Home/AdminHome';
+import VideoGallery from './Components/Home/VideoGallery';
 
 
 function App() {
@@ -45,8 +44,6 @@ function App() {
         <Route path="/stresschecker" element={<StressChecker />} />
         <Route path="/myday" element={<MyDay />} />
         <Route path="/meditation" element={<Meditation />} />
-        <Route path="/quickrelax" element={<QuickRelax />} />
-        <Route path="/deeprelax" element={<DeepRelax />} />
         <Route path="/movements" element={<Movements />} />
         <Route path="/workrelief" element={<WorkRelief />} />
         <Route path="/learnmore" element={<LearnMore />} />
@@ -60,6 +57,8 @@ function App() {
         <Route path="/video" element={<VideoPlayer />} />
         <Route path="/reset-password/:token" element={<ResetPassword />} />
         <Route path="/adminhome" element={<AdminHome />} />
+        <Route path="/videos" element={<VideoGallery/>}></Route>
+
       </Routes>
     </Router>
   );

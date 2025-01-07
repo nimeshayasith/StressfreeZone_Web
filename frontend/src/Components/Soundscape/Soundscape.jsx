@@ -1,4 +1,4 @@
-import React ,{useState} from 'react';
+import React ,{useState, useEffect} from 'react';
 import YogaBackgroundArt from '../../assets/Yoga background art.png';
 import dashboard from '../../assets/dashboard.png';
 import stresschecker from '../../assets/stresschecker.png';
@@ -10,37 +10,48 @@ import workrelief from '../../assets/workrelief.png';
 import learnmore from '../../assets/stresschecker.png';
 import userprofile from '../../assets/userprofile.png';
 import stressfreezoneicon from '../../assets/stressfreezoneicon.png';
-import video1 from '../../assets/video1.mp4';
+/*import video1 from '../../assets/video1.mp4';
 import video2 from '../../assets/video2.mp4';
 import video3 from '../../assets/video3.mp4';
 import pic1 from '../../assets/pic1.png';
 import pic2 from '../../assets/pic2.png';
-import pic3 from '../../assets/pic3.png'
+import pic3 from '../../assets/pic3.png'*/
 import { Link } from 'react-router-dom';
 import FaBell from '../../assets/FaBell.png';
 import FaLock from '../../assets/FaLock.png' ; // Importing icons for alarm and lock buttons
 
 
 const Soundscape = () => {
+  const [videos, setVideos] = useState([]); // Store fetched videos
   const [playingVideo, setPlayingVideo] = useState(null); // Track the currently playing video
 
-  const videos = [
-    { src: video1, thumbnail:pic1, title: 'Morning Calm', desc: 'A peaceful start to your day', time: '10:30' },
-    { src: video2, thumbnail:pic2, title: 'Evening Relaxation', desc: 'Unwind and recharge', time: '8:45' },
-    { src: video3, thumbnail:pic3, title: 'Mindful Moments', desc: 'Practice mindfulness daily', time: '12:00' },
-    { src: video1, thumbnail:pic1, title: 'Morning Calm', desc: 'A peaceful start to your day', time: '10:30' },
-    { src: video2, thumbnail:pic2, title: 'Evening Relaxation', desc: 'Unwind and recharge', time: '8:45' },
-    { src: video3, thumbnail:pic3, title: 'Mindful Moments', desc: 'Practice mindfulness daily', time: '12:00' }
-  ];
+  useEffect(() => {
+    // Fetch videos from the database by category 'Soundscape'
+    const fetchVideos = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/videos/Soundscape'); // Replace with your backend URL
+        if (!response.ok) {
+          throw new Error('Failed to fetch videos');
+        }
+        const data = await response.json();
+        setVideos(data); // Update videos state with fetched data
+      } catch (error) {
+        console.error('Error fetching videos:', error);
+      }
+    };
+
+    fetchVideos();
+  }, []);
 
   return (
     
-    <div className=" min-h-[2970px] w-full  px-4 py-10 bg-gray-800 relative">
+    <div className=" min-h-[1170px] w-full  px-4 py-10 bg-gray-800 relative">
           <img src={YogaBackgroundArt} alt=""  className="object-cover opacity-40 absolute pl-44 pt-0 w-auto h-auto size-full bg-no-repeat bg-cover bg-fixed "/>
       <div className="flex w-full">
        
    {/* Sidebar */}
-  <aside className="w-1/5 bg-gray-900 text-white p-9 rounded-md shadow-lg mt-5">
+  <div className='flex'>
+  <aside className=" fixed w-1/5 bg-gray-900 text-white p-9 rounded-md shadow-lg mt-5 ml-3 border-2 border-teal-400">
   <nav>
     <ul className="space-y-6 lg:space-y-10"> {/* Adds gap between the list items */}
     <li>
@@ -94,10 +105,10 @@ const Soundscape = () => {
 
       </li>
       <li>
-      <div className='flex items-center space-x-3 lg:space-x-5'>
+      <div className='flex items-center space-x-3 lg:space-x-5 bg-teal-700 p-3 rounded-md'>
   <img src={soundscape} alt=""  />
   <Link to="/soundscape"
-    className="relative inline-block text-gray-400 hover:text-gray-300 transition duration-300 before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-1 before:bg-gray-300 before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100">
+    className="relative inline-block  hover:text-gray-300 transition duration-300 before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-1 before:bg-gray-300 before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100">
     Soundscape
     </Link> 
 </div>
@@ -136,10 +147,11 @@ const Soundscape = () => {
     </ul>
   </nav>
 </aside>
+</div>
 
 
         {/* Main content area */}
-        <main className="flex-1 p-6 rounded-md shadow-lg ml-6">
+        <main className="flex-1 p-6 rounded-md shadow-lg ml-80">
           {/* Top row */}
           <div className="bg-teal-800 p-4 shadow-md rounded-md mb-6">
           <div className='flex items-center space-x-3 lg:space-x-5'>
@@ -162,11 +174,11 @@ const Soundscape = () => {
 <div className="min-h-screen w-full px-4 py-10  mt-0 relative">
       <div className="grid grid-cols-3 gap-6 mt-0 max-md:grid-cols-1">
         {videos.map((video, index) => (
-          <div key={index} className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg">
+          <div key={video._id} className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg">
             {/* Conditional rendering for video and thumbnail */}
             {playingVideo === index ? (
               <video
-                src={video.src}
+                src={video.url}
                 controls
                 className="w-full h-auto rounded"
                 onClick={() => setPlayingVideo(null)} // Stop playing on click
