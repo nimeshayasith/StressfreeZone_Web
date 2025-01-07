@@ -16,13 +16,13 @@ const app = express()
 
 
 app.use(cors({
-    origin: 'https://stressfreezone-web-frontend.onrender.com',
+    origin: 'http://localhost:5173',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials:true,
     allowedHeaders: 'Content-Type, Authorization'
 }))
 
-// Bodyparser middleware
+
 app.use(express.json());
 
 app.use((req, res, next) => {
