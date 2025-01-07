@@ -16,7 +16,7 @@ const app = express()
 
 
 app.use(cors({
-    origin: 'https://stressfreezone-web-frontend.onrender.com',
+    origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials:true,
     allowedHeaders: 'Content-Type, Authorization'
