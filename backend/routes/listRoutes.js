@@ -2,6 +2,7 @@ const express = require('express');
 const { protect } = require('../middleware/authMiddleware'); 
 const List = require('../models/List'); 
 
+
 const router = express.Router();
 
 // Get all lists for a user
@@ -135,6 +136,7 @@ router.put('/:id/tasks/:taskId', protect, async (req, res) => {
   }
 });
 
+
 //update a task's completion status
 router.put('/:id/tasks/:taskId/completion', protect, async(req,res)=>{
   try{
@@ -156,7 +158,5 @@ router.put('/:id/tasks/:taskId/completion', protect, async(req,res)=>{
     res.status(500).json({message:'Error updating task completion status'});
   }
 });
-
-
 
 module.exports = router;

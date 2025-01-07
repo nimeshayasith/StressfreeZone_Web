@@ -22,7 +22,7 @@ const ContactUsPage = () => {
             <div className="flex flex-col mt-20 max-md:mt-10">
               <h2 className="self-start text-xl font-semibold tracking-widest text-fuchsia-300">
                 OUR CONTACT
-                <hr />
+                <hr/>
               </h2>
 
               <h1 className="self-start mt-12 text-6xl leading-snug text-white max-md:mt-10 max-md:text-4xl">
