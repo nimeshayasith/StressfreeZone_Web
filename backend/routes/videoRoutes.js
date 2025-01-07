@@ -18,19 +18,23 @@ cloudinary.config({
 });
 
 // Upload video
-router.post('/upload', upload.single('video'), async (req, res) => {
+router.post('/upload', upload.fields([{name: 'video'}, {name: 'thumbnail'}]), async (req, res) => {
     try {
         console.log('Request received at /upload');
         console.log('Request body:', req.body);
         console.log('Uploaded file:', req.file);
 
-        if (!req.file) {
-            return res.status(400).json({ error: 'Video file is required.' });
+        if (!req.files.video || !req.files.thumbnail) {
+            return res.status(400).json({ error: 'Video and thumbnail image files required.' });
         }
 
         console.log('Uploading video to Cloudinary...');
-        const result = await cloudinary.uploader.upload(req.file.path, { resource_type: 'video' });
-        console.log('Cloudinary upload result:', result);
+        const videoUploadResult = await cloudinary.uploader.upload(req.files.video[0].path, { resource_type: 'video' });
+        console.log('Cloudinary upload result:', videoUploadResult);
+
+        console.log('Uploading thumbnail to cloudinary...')
+        const thumbnailUploadResult = await cloudinary.uploader.upload(req.files.thumbnail[0].path, {resource_type: 'image'});
+        console.log('Cloudinary upload result:', thumbnailUploadResult);
 
         console.log('Saving video details to MongoDB...');
         const { title, description, category } = req.body;
@@ -39,7 +43,8 @@ router.post('/upload', upload.single('video'), async (req, res) => {
             title,
             description,
             category,
-            url: result.secure_url,
+            url: videoUploadResult.secure_url,
+            thumbnailUrl: thumbnailUploadResult.secure_url,
         });
 
         await newVideo.save();
