@@ -69,7 +69,8 @@ const handleClick = () => {
       </div>
         {/*<img src={CircleGaps} alt=""  className="object-cover absolute flex mr-28"/>*/}
    <div className="flex relative flex-col items-start self-center pt-20 pr-12 pb-0 mt-0 mb-28 ml-24 max-w-full min-h-[503px] rounded-[202px] w-[568px] max-md:pt-24 max-md:pr-5">
-   
+   <div className="absolute -bottom-48 -left-44 w-48 h-48 bg-teal-600 rounded-full animate-pulse blur-2xl"></div>
+ 
        <img src={YogaBackgroundArt} alt=""  className="object-cover absolute inset-0 size-full"/>
    
        <div className="relative text-4xl text-left font-bold text-white leading-[55px] max-md:max-w-full max-md:text-4xl max-md:leading-[49px]">

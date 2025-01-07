@@ -45,12 +45,13 @@ const WorkRelief = () => {
 
   return (
     
-    <div className=" min-h-[2970px] w-full  px-4 py-10 bg-gray-800 relative">
+    <div className=" min-h-[1100px] w-full  px-4 py-10 bg-gray-800 relative">
           <img src={YogaBackgroundArt} alt=""  className="object-cover opacity-40 absolute pl-44 pt-0 w-auto h-auto size-full bg-no-repeat bg-cover bg-fixed "/>
       <div className="flex w-full">
        
    {/* Sidebar */}
-  <aside className="w-1/5 bg-gray-900 text-white p-9 rounded-md shadow-lg mt-5">
+  <div className='flex'>
+  <aside className=" fixed w-1/5 bg-gray-900 text-white p-9 rounded-md shadow-lg mt-5 ml-3 border-2 border-teal-400">
   <nav>
     <ul className="space-y-6 lg:space-y-10"> {/* Adds gap between the list items */}
     <li>
@@ -114,10 +115,10 @@ const WorkRelief = () => {
 
       </li>
       <li>
-      <div className='flex items-center space-x-3 lg:space-x-5'>
+      <div className='flex items-center space-x-3 lg:space-x-5 bg-teal-700 p-3 rounded-md'>
   <img src={workrelief} alt=""  />
   <Link to="/workrelief"
-    className="relative inline-block text-gray-400 hover:text-gray-300 transition duration-300 before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-1 before:bg-gray-300 before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100">
+    className="relative inline-block hover:text-gray-300 transition duration-300 before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-1 before:bg-gray-300 before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100">
     Work Relief
     </Link> 
 </div>
@@ -146,10 +147,11 @@ const WorkRelief = () => {
     </ul>
   </nav>
 </aside>
+</div>
 
 
         {/* Main content area */}
-        <main className="flex-1 p-6 rounded-md shadow-lg ml-6">
+        <main className="flex-1 p-6 rounded-md shadow-lg ml-80">
           {/* Top row */}
           <div className="bg-teal-800 p-4 shadow-md rounded-md mb-6">
           <div className='flex items-center space-x-3 lg:space-x-5'>
