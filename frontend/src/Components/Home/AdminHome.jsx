@@ -7,7 +7,7 @@ const AdminHome = () => {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
-    category: 'Movements', // Default category
+    category: 'Movements', 
     video: null,
     image: null
   });
@@ -35,22 +35,23 @@ const AdminHome = () => {
     e.preventDefault();
 
     // Ensure all fields are filled
-    if (formData.title && formData.description && formData.category && formData.video) {
+    if (formData.title && formData.description && formData.category && formData.video && formData.image) {
       const formDataToSend = new FormData();
       formDataToSend.append('title', formData.title);
       formDataToSend.append('description', formData.description);
       formDataToSend.append('category', formData.category);
       formDataToSend.append('video', formData.video);
+      formDataToSend.append('thumbnail', formData.image)
 
       try {
-        const response = await axios.post('https://localhost:5000/api/videos/upload', formDataToSend, {
+        const response = await axios.post('http://localhost:5000/api/videos/upload', formDataToSend, {
           headers: { 'Content-Type': 'multipart/form-data' },
         });
 
         // Display success message
         setSuccessMessage(response.data.message);
         setErrorMessage('');
-        setFormData({ title: '', description: '', category: 'Movements', video: null });
+        setFormData({ title: '', description: '', category: 'Movements', video: null, image:null });
 
         // Clear success message after 3 seconds
         setTimeout(() => setSuccessMessage(''), 3000);

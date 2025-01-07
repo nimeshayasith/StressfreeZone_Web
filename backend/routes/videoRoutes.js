@@ -22,7 +22,7 @@ router.post('/upload', upload.fields([{name: 'video'}, {name: 'thumbnail'}]), as
     try {
         console.log('Request received at /upload');
         console.log('Request body:', req.body);
-        console.log('Uploaded file:', req.file);
+        //console.log('Uploaded file:', req.file);
 
         if (!req.files.video || !req.files.thumbnail) {
             return res.status(400).json({ error: 'Video and thumbnail image files required.' });
