@@ -35,40 +35,45 @@ const handleClick = () => {
     <div>
 
       
-    <div className="min-h-screen w-full flex items-center justify-center px-2 py-14 bg-gray-800">
+    <div className="min-h-screen w-full flex items-center justify-center px-2 py-8 bg-gray-800">
 
       <div className="flex flex-col px-20 w-full max-md:px-5 max-md:max-w-full">
       <div className="flex flex-wrap gap-10 text-lg leading-8 text-center text-white">
 
       <div className="flex flex-wrap gap-0 justify-between items-center self-start min-h-[51px] max-md:max-w-full">
-      <div className="flex flex-wrap  items-center gap-2 px-4 justify-between">
-      <img src={logo_icon} alt="App Logo" className="w-24 md:w-32 lg:w-40 object-contain" />
+
+      <div className="animate-blink w-28 h-24  rounded-full bg-green-300 shadow-lg shadow-green-300/50  ">
+      
+     
+      <img src={logo_icon} alt="App Logo" className="relative w-24  md:w-32 lg:w-40 object-contain" />
+      </div>
       <div className="flex flex-col self-stretch my-auto min-w-[240px] w-[623px] max-md:max-w-full">
-        <div className="flex flex-wrap justify-center -mt-4">
-          <Link to="/stresscheckerhome"> <button className="self-stretch my-auto  w-[150px]">Stress Checker</button></Link>
-          <Link to="/quickrelaxation"><button className="self-stretch my-auto w-[150px]">Quick Relaxation</button></Link>
-          <Link to="/movementshome"><button className="self-stretch my-auto w-[150px]">Movements</button></Link>
-          <Link to="/learnmorehome"><button className="self-stretch my-auto w-[154px]">Learn more</button></Link>
+        <div className="flex flex-wrap justify-center items-center min-h-[51px] ">
+          <Link to="/stresscheckerhome"> <button className="self-stretch my-auto  w-[150px] hover:text-teal-300 transition duration-300">Stress Checker</button></Link>
+          <Link to="/quickrelaxation"><button className="self-stretch my-auto w-[150px] hover:text-teal-300 transition duration-300">Quick Relaxation</button></Link>
+          <Link to="/movementshome"><button className="self-stretch my-auto w-[150px] hover:text-teal-300 transition duration-300">Movements</button></Link>
+          <Link to="/learnmorehome"><button className="self-stretch my-auto w-[154px] hover:text-teal-300 transition duration-300">Learn more</button></Link>
           
         </div>
         </div>
         <div className="flex gap-0.5 justify-center items-center self-stretch my-auto min-h-[51px] min-w-[240px] w-[480px] max-md:max-w-full">
         <div className="flex flex-col self-stretch my-auto min-w-[240px] w-[480px] max-md:max-w-full">
-          <div className="flex flex-wrap justify-center -mt-4">
+          <div className="flex justify-center items-center min-h-[51px]">
             <Link to="/"><button className="self-stretch my-auto text-teal-500 w-[120px]">Home</button></Link>
-            <Link to="/aboutus"><button className="self-stretch my-auto w-[120px]">About Us</button></Link>
-            <Link to="/mobileapp"><button className="self-stretch my-auto w-[120px]">Mobile App</button></Link>
-            <Link to="/premierplan"><button className="self-stretch my-auto w-[120px]">Premier plan</button></Link>
+            <Link to="/aboutus"><button className="self-stretch my-auto w-[120px] hover:text-teal-300 transition duration-300">About Us</button></Link>
+            <Link to="/mobileapp"><button className="self-stretch my-auto w-[120px] hover:text-teal-300 transition duration-300">Mobile App</button></Link>
+            <Link to="/premierplan"><button className="self-stretch my-auto w-[120px] hover:text-teal-300 transition duration-300">Premier plan</button></Link>
           </div>
           </div>
-        </div>
+        
       </div>
         {/*<img src={CircleGaps} alt=""  className="object-cover absolute flex mr-28"/>*/}
-        <div className="flex relative flex-col items-start self-center pt-20 pr-12 pb-0 mt-0 mb-28 ml-24 max-w-full min-h-[503px] rounded-[202px] w-[568px] max-md:pt-24 max-md:pr-5">
-
-          <img src={YogaBackgroundArt} alt=""  className="object-cover absolute inset-0 size-full"/>
-
-          <div className="relative text-5xl text-left font-bold text-white leading-[55px] max-md:max-w-full max-md:text-4xl max-md:leading-[49px]">
+   <div className="flex relative flex-col items-start self-center pt-20 pr-12 pb-0 mt-0 mb-28 ml-24 max-w-full min-h-[503px] rounded-[202px] w-[568px] max-md:pt-24 max-md:pr-5">
+   <div className="absolute -bottom-48 -left-44 w-48 h-48 bg-teal-600 rounded-full animate-pulse blur-2xl"></div>
+ 
+       <img src={YogaBackgroundArt} alt=""  className="object-cover absolute inset-0 size-full"/>
+   
+       <div className="relative text-4xl text-left font-bold text-white leading-[55px] max-md:max-w-full max-md:text-4xl max-md:leading-[49px]">
             Empowering Minds <br />
             to Achieve Stress-Free Living
             <br /> and Well-Being
@@ -80,15 +85,15 @@ const handleClick = () => {
             exercises, <br />
           </div>
        
-        <div className="flex gap-5 justify-between mt-16 ml-36 max-w-full text-lg font-medium tracking-wider text-white w-[360px] max-md:mt-10 max-md:ml-2.5">
+        <div className="flex gap-5 justify-between mt-12 ml-36 max-w-full text-lg font-medium tracking-wider text-white w-[360px] max-md:mt-10 max-md:ml-2.5">
           <button 
           onClick={handleClick} 
-          className="relative px-14 py-5 bg-teal-500 max-md:px-5">Try for free</button>
+          className="relative px-10 py-3 bg-teal-500 max-md:px-5">Try for free</button>
           <Link to="/contactus"><button className="relative self-start px-3 py-5">Contact Us</button></Link>
         </div>
         </div>
 
-        <div className="w-1/2 text-right">
+        <div className="w-1/2 text-right -mt-7">
       <img src={YogaGirlRightSide} alt="" className="w-120 h-120 left-[100px] top-[100px] "/>
       </div>
     </div>
@@ -97,57 +102,54 @@ const handleClick = () => {
 
 
 
-    <div className="flex overflow-hidden flex-col items-center px-16 pb-36 bg-slate-700/50 bg-opacity-50 max-md:px-5 max-md:pb-24">
-      <div className="ml-12 w-full max-w-[1407px] max-md:max-w-full">
-        <div className="flex gap-5 max-md:flex-col">
-          <div className="flex flex-col w-[65%] max-md:ml-0 max-md:w-full">
-            <div className="flex flex-col w-full max-md:mt-010 max-md:max-w-full">
-              <div className="max-w-full w-[550px]">
-                <div className="flex gap-5 max-md:flex-col pl-10">
-                <div className="flex flex-col mb-40 pl-0 w-[34%] max-md:ml-0 max-md:w-full">
-
-                    <div className="flex relative flex-col  w-[200px] max-md:py-24 max-md:pr-5 max-md:mt-10 max-md:text-4xl">
-                      <img src={group4} className="relative  inset-7 -mt-8 object-cover"/>
-  
-                    </div>
-                  </div>
-                  <div className="flex flex-col ml-0 pl-10 w-[34%] max-md:ml-0 max-md:w-full">
-
-                    <div className="flex relative flex-col  w-[200px] max-md:py-24 max-md:pr-5 max-md:mt-10 max-md:text-4xl">
-                      <img src={group7} className="absolute inset-7 -mt-8 object-cover"/>
-                      
-                    </div>
-                  </div>
-                  <div className="flex flex-col ml-0 pl-20 w-[34%] max-md:ml-0 max-md:w-full">
-
-                    <div className="flex relative flex-col  w-[200px] max-md:py-24 max-md:pr-5 max-md:mt-10 max-md:text-4xl">
-                      <img src={group8} className="absolute inset-7 -mt-8 object-cover"/>
-  
-                    </div>
-                  </div>
+      <div className="flex overflow-hidden flex-col items-center px-8 pb-18 bg-slate-700/50 bg-opacity-50 max-md:px-2 max-md:pb-12">
+  <div className="ml-6 w-full max-w-[1000px] max-md:max-w-full">
+    <div className="flex gap-3 max-md:flex-col">
+      <div className="flex flex-col w-[55%] max-md:ml-0 max-md:w-full">
+        <div className="flex flex-col w-full max-md:mt-4 max-md:max-w-full">
+          <div className="max-w-full w-[400px]">
+            <div className="flex gap-3 max-md:flex-col pl-6">
+              <div className="flex flex-col mb-20 pl-0 w-[30%] max-md:ml-0 max-md:w-full">
+                <div className="flex relative flex-col w-[150px] max-md:py-12 max-md:pr-3 max-md:mt-6 max-md:text-2xl">
+                  <img src={group4} className="relative inset-5 -mt-4 object-cover" />
                 </div>
               </div>
-              <div className="flex flex-col items-start pl-24 mt-0 max-md:max-w-full">
-              <img src={breathingword} alt="" />
-                <div className="self-stretch mt-8 text-2xl leading-loose uppercase text-slate-400 tracking-[6.4px] max-md:max-w-full">
-                  QUICK RELAXATION for calm & focus{" "}
+              <div className="flex flex-col ml-0 pl-6 w-[30%] max-md:ml-0 max-md:w-full">
+                <div className="flex relative flex-col w-[150px] max-md:py-12 max-md:pr-3 max-md:mt-6 max-md:text-2xl">
+                  <img src={group7} className="absolute inset-5 -mt-4 object-cover" />
                 </div>
-                <Link to="quickbreath"><button className="px-14 py-5 mt-16 max-w-full text-lg font-medium tracking-wider text-white bg-teal-600 w-[221px] max-md:px-5 max-md:mt-10">
-                  Let’s Start
-                </button></Link>
+              </div>
+              <div className="flex flex-col ml-0 pl-12 w-[30%] max-md:ml-0 max-md:w-full">
+                <div className="flex relative flex-col w-[150px] max-md:py-12 max-md:pr-3 max-md:mt-6 max-md:text-2xl">
+                  <img src={group8} className="absolute inset-5 -mt-4 object-cover" />
+                </div>
               </div>
             </div>
           </div>
-          <div className="flex flex-col ml-5 w-[55%] max-md:ml-0 max-md:w-full relative">
-            <div className="flex justify-center items-center px-20 mt-64 rounded-full aspect-square max-md:px-5 max-md:py-24 max-md:mt-10 relative">
-               <img src={base} alt="" className="absolute w-96 h-96 object-cover rounded-full" />
-               <img src={breath} alt="" className="absolute w-64 h-64 object-cover rounded-full" />
-               <img src={logocirclewithstyle} alt="" className="absolute inset-0 m-auto w-[100%] h-[100%] rounded-full object-cover" />
+          <div className="flex flex-col items-start pl-16 mt-0 mb-7 max-md:max-w-full">
+            <img src={breathingword} alt="" />
+            <div className="self-stretch mt-4 text-xl leading-loose uppercase text-slate-400 tracking-[4.8px] max-md:max-w-full">
+              QUICK RELAXATION for calm & focus
             </div>
+            <Link to="quickbreath">
+              <button className="px-10 py-3 mt-8 max-w-full text-base font-medium tracking-wider text-white bg-teal-600 w-[160px] max-md:px-4 max-md:mt-6">
+                Let’s Start
+              </button>
+            </Link>
           </div>
         </div>
       </div>
+      <div className="flex flex-col ml-3 w-[45%] max-md:ml-0 max-md:w-full relative">
+        <div className="flex justify-center items-center px-12 mt-32 rounded-full aspect-square max-md:px-2 max-md:py-12 max-md:mt-6 relative">
+          <img src={base} alt="" className="absolute w-72 h-72 object-cover rounded-full" />
+          <img src={breath} alt="" className="absolute w-48 h-48 object-cover rounded-full" />
+          <img src={logocirclewithstyle} alt="" className="absolute inset-0 m-auto w-[80%] h-[80%] rounded-full object-cover" />
+        </div>
+      </div>
     </div>
+  </div>
+</div>
+
  
 
     
@@ -175,7 +177,7 @@ const handleClick = () => {
        <div className="text-center text-white text-3xl font-bold mb-10 mt-2">
     Let go of stress and anxiety with us <hr />
   </div>
-    <div className="flex relative flex-col items-center px-0 pt-24 pb-0 mt-6 w-full min-h-[1500px] max-md:py-24 max-md:mt-0 max-md:max-w-full">
+    <div className="flex relative flex-col items-center px-0 pt-24 pb-0 mt-6 w-full min-h-[1300px] max-md:py-24 max-md:mt-0 max-md:max-w-full">
     
   
       <div className="mt-10 w-full max-md:max-w-full">
@@ -191,7 +193,8 @@ const handleClick = () => {
                   Body and Mined Relaxation
                 </div>
                 <div className="self-stretch mt-4 text-lg leading-8 text-center">
-                  You can choose the both Mind relaxation techniques...
+                  You can choose the both Mind relaxation 
+                  techniques from here
                 </div>
                 <div className="mt-4 text-lg tracking-wider">
                 <button>Learn More</button>
@@ -234,7 +237,7 @@ const handleClick = () => {
                   Meditation and Soundscape
                 </div>
                 <div className="self-stretch mt-4 text-lg leading-8 text-center">
-                
+                You can learn more about the meditation and soundscape from here
                  
                 </div>
                 <div className="mt-4 text-lg tracking-wider">
@@ -320,7 +323,7 @@ const handleClick = () => {
        
 
        
-<div className="relative flex overflow-hidden flex-col mb-28 items-center justify-center px-16 pb-52 bg-slate-700/50 bg-opacity-50 max-md:px-5 max-md:pb-24">
+<div className="relative flex overflow-hidden flex-col mb-16 items-center justify-center px-16 pb-52 bg-slate-700/50 bg-opacity-50 max-md:px-5 max-md:pb-24">
   {/* Meditation Image with Text Overlay */}
   <div className="w-full max-w-[1407px] max-md:max-w-full flex justify-center relative">
     <div>

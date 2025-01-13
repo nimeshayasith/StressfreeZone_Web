@@ -24,6 +24,8 @@ import FaLock from '../../assets/FaLock.png' ; // Importing icons for alarm and 
 const Movements = () => {
   const [videos, setVideos] = useState([]); // Store fetched videos
   const [playingVideo, setPlayingVideo] = useState(null); // Track the currently playing video
+  const [expandedDescriptions, setExpandedDescriptions] = useState({});
+
 
   useEffect(() => {
     // Fetch videos from the database by category 'Soundscape'
@@ -43,14 +45,22 @@ const Movements = () => {
     fetchVideos();
   }, []);
 
+  const toggleDescription = (index) => {
+    setExpandedDescriptions((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  };
+
   return (
     
-    <div className=" min-h-[2970px] w-full  px-4 py-10 bg-gray-800 relative">
+    <div className=" min-h-auto w-full  px-4 py-10 bg-gray-800 relative">
           <img src={YogaBackgroundArt} alt=""  className="object-cover opacity-40 absolute pl-44 pt-0 w-auto h-auto size-full bg-no-repeat bg-cover bg-fixed "/>
       <div className="flex w-full">
        
    {/* Sidebar */}
-  <aside className="w-1/5 bg-gray-900 text-white p-9 rounded-md shadow-lg mt-5">
+ <div className='flex'>
+  <aside className=" fixed w-1/5 bg-gray-900 text-white p-9 rounded-md shadow-lg mt-5 ml-3 border-2 border-teal-400">
   <nav>
     <ul className="space-y-6 lg:space-y-10"> {/* Adds gap between the list items */}
     <li>
@@ -84,10 +94,10 @@ const Movements = () => {
 
       </li>
       <li>
-      <div className='flex items-center space-x-3 lg:space-x-5'>
+      <div className='flex items-center space-x-3 lg:space-x-5 bg-teal-700 p-3 rounded-md'>
   <img src={movements} alt=""  />
   <Link to="/movements"
-    className="relative inline-block text-gray-400 hover:text-gray-300 transition duration-300 before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-1 before:bg-gray-300 before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100">
+    className="relative inline-block  hover:text-gray-300 transition duration-300 before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-1 before:bg-gray-300 before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100">
     Movements
     </Link> 
 </div>
@@ -146,10 +156,11 @@ const Movements = () => {
     </ul>
   </nav>
 </aside>
+</div>
 
 
         {/* Main content area */}
-        <main className="flex-1 p-6 rounded-md shadow-lg ml-6">
+        <main className="flex-1 p-6 rounded-md shadow-lg ml-80">
           {/* Top row */}
           <div className="bg-teal-800 p-4 shadow-md rounded-md mb-6">
           <div className='flex items-center space-x-3 lg:space-x-5'>
@@ -184,14 +195,26 @@ const Movements = () => {
               />
             ) : (
               <img
-                src={video.thumbnail} // Thumbnail image
+                src={video.thumbnailUrl} // Thumbnail image
                 alt={`${video.title} Thumbnail`}
                 className="w-full h-auto rounded cursor-pointer"
                 onClick={() => setPlayingVideo(index)} // Play on click
               />
             )}
             <h3 className="text-white text-lg mt-3">{video.title}</h3>
-            <p className="text-white text-sm font-light mb-2">{video.desc}</p>
+            <p className="text-black text-sm font-light mb-2">
+                    {expandedDescriptions[index] || video.description.length <= 100
+                      ? video.description
+                      : `${video.description.slice(0, 100)}...`}
+                  </p>
+                  {video.description.length > 100 && (
+                    <button
+                      onClick={() => toggleDescription(index)}
+                      className="text-yellow-300 text-xs underline mt-1"
+                    >
+                      {expandedDescriptions[index] ? 'See Less' : 'See More'}
+                    </button>
+                  )}
             <div className="flex items-center justify-between w-full mt-4">
               <span className="text-gray-300 text-xs font-semibold">{video.time}</span>
               <div className="flex space-x-3">

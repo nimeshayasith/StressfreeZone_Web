@@ -22,7 +22,7 @@ app.use(cors({
     allowedHeaders: 'Content-Type, Authorization'
 }))
 
-// Bodyparser middleware
+
 app.use(express.json());
 
 app.use((req, res, next) => {
@@ -35,7 +35,6 @@ app.use('/api/auth', authRoutes);
 app.use('/api/lists',listRoutes);
 app.use('/api/admin',adminRoutes);
 app.use('/api/videos', videoRoutes);
-
 
 
 const PORT = process.env.PORT || 5000;
