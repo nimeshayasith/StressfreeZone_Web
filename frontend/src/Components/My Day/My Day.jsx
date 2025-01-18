@@ -19,7 +19,7 @@ import { Link } from 'react-router-dom';
 
 const MyDay = () => {
   return (
-    <div className="min-h-[1100px] w-full px-4 py-10 bg-gray-800 relative">
+    <div className="min-h-auto w-full px-4 py-10 bg-gray-800 relative">
       {/* Background Image */}
       <img
         src={YogaBackgroundArt}
@@ -30,7 +30,8 @@ const MyDay = () => {
       {/* Main Layout */}
       <div className="relative flex w-full z-10"> {/* Added z-10 and relative here */}
         {/* Sidebar */}
-        <aside className="w-1/5 bg-gray-900 text-white p-9 rounded-md shadow-lg mt-5">
+        <div className='flex'>
+  <aside className=" fixed w-1/5 bg-gray-900 text-white p-9 rounded-md shadow-lg mt-5 ml-3 border-2 border-teal-400">
           <nav>
             <ul className="space-y-6 lg:space-y-10">
               {/* Sidebar Items */}
@@ -53,10 +54,10 @@ const MyDay = () => {
 
       </li>
       <li>
-      <div className='flex items-center space-x-3 lg:space-x-5'>
+      <div className='flex items-center space-x-3 lg:space-x-5 bg-teal-700 p-3 rounded-md'>
   <img src={myday} alt=""  />
   <Link to="/myday"
-    className="relative inline-block text-gray-400 hover:text-gray-300 transition duration-300 before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-1 before:bg-gray-300 before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100">
+    className="relative inline-block  hover:text-gray-300 transition duration-300 before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-1 before:bg-gray-300 before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100">
     My Day
     </Link> 
 </div>
@@ -126,9 +127,10 @@ const MyDay = () => {
             </ul>
           </nav>
         </aside>
+        </div>
 
         {/* Main Content */}
-        <main className="flex-1 p-6 rounded-md shadow-lg ml-6 relative">
+        <main className="flex-1 p-6 rounded-md shadow-lg ml-80 relative">
           {/* Top Row with Greeting */}
           <div className="bg-teal-800 p-4 shadow-md rounded-md mb-6">
             <div className='flex items-center space-x-3 lg:space-x-5'>

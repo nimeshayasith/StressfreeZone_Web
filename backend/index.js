@@ -22,7 +22,7 @@ app.use(cors({
     allowedHeaders: 'Content-Type, Authorization'
 }))
 
-// Bodyparser middleware
+
 app.use(express.json());
 
 app.use((req, res, next) => {
