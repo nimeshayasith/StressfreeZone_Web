@@ -25,7 +25,7 @@ import pic3 from '../../assets/pic3.png'
 import { Link } from 'react-router-dom';
 import FaBell from '../../assets/FaBell.png';
 import FaLock from '../../assets/FaLock.png' ; // Importing icons for alarm and lock buttons
-
+import ScrollToTop from '../../Components/ScrollToTop';
 
 const Dashboard = () => {
   const [playingVideo, setPlayingVideo] = useState(null); // Track the currently playing video

@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ScrollToTop from './Components/ScrollToTop'; 
 import Register from './Components/Home/Register';
 import Login from './Components/Home/Login';
 import AdminLogin from './Components/Home/Admin login';
@@ -31,6 +32,7 @@ import VideoGallery from './Components/Home/VideoGallery';
 function App() {
   return (
     <Router>
+      <ScrollToTop /> 
       <Routes>
         <Route path="/" element={< Home/>} />
         <Route path="/login" element={< Login/>} />
