@@ -3,7 +3,7 @@ import logo_icon from '../../assets/logo.png';
 import facebook from '../../assets/facebook_icon.png';
 import instagram from '../../assets/instagram_icon.png';
 import linkedin from '../../assets/linkedin_icon.png';
-import twitter from '../../assets/twitter_icon.png';
+import youtube from '../../assets/youtube_icon.png';
 
 const Footer = () => {
   return (
@@ -26,7 +26,7 @@ const Footer = () => {
   
           {/* Column 2: Footer Links */}
           <div className="flex flex-col gap-5 pl-16 mt-24 w-1/3">
-            <div className="flex flex-col">
+            <div className="flex flex-col gap-y-2">
               <a href="/about" className="hover:underline">About Us</a>
               <a href="/contact" className="hover:underline">Contact</a>
               <a href="/privacy" className="hover:underline">Privacy Policy</a>
@@ -62,8 +62,8 @@ const Footer = () => {
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
               <img src={facebook} alt="Facebook" className="w-6 h-6" />
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-              <img src={twitter} alt="Twitter" className="w-6 h-6" />
+            <a href="https://youtube.com/@stressfreezone-u4v?si=jFGVw_LuZWaI7w3e" target="_blank" rel="noopener noreferrer">
+              <img src={youtube} alt="Twitter" className="w-6 h-6" />
             </a>
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
               <img src={instagram} alt="Instagram" className="w-6 h-6" />

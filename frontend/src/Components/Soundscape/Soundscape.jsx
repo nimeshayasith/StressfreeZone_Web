@@ -186,7 +186,7 @@ const Soundscape = () => {
               />
             ) : (
               <img
-                src={video.thumbnail} // Thumbnail image
+                src={video.thumbnailUrl} // Thumbnail image
                 alt={`${video.title} Thumbnail`}
                 className="w-full h-auto rounded cursor-pointer"
                 onClick={() => setPlayingVideo(index)} // Play on click
