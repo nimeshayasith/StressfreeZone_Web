@@ -7,6 +7,7 @@ const listSchema = new mongoose.Schema({
     {
       name: { type: String, required: true },
       completed: { type: Boolean, default: false },
+      dueDate: { type: Date},
     },
   ],
 });

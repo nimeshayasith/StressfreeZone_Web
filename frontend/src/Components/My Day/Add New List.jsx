@@ -10,6 +10,7 @@ function AddNewList() {
   const [editingListName, setEditingListName] = useState('');
   const [editingTaskIndex, setEditingTaskIndex] = useState(null);
   const [editingTaskName, setEditingTaskName] = useState('');
+  const [editingTaskDueDate, setEditingTaskDueDate] = useState('');
 
   useEffect(() => {
     fetchLists();
@@ -24,7 +25,7 @@ function AddNewList() {
           Authorization: `Bearer ${localStorage.getItem('token')}` 
         }
       });
-      if(!response.ok) throw new Error('Error fetching lists');
+      if (!response.ok) throw new Error('Error fetching lists');
       const data = await response.json();
       setLists(data);
     } catch (error) {
@@ -32,49 +33,49 @@ function AddNewList() {
     }
   };
 
-  const addNewList = async() => {
+  const addNewList = async () => {
     if (newListName) {
-      try{
-        const respose = await fetch('https://localhost:5000/api/lists/posttask',{
+      try {
+        const response = await fetch('http://localhost:5000/api/lists/posttask', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${localStorage.getItem('token')}`
           },
-          body: JSON.stringify({ name: newListName}),
+          body: JSON.stringify({ name: newListName }),
         });
-        if(!respose.ok) throw new Error('Error adding new list');
-        const newList = await respose.json();
+        if (!response.ok) throw new Error('Error adding new list');
+        const newList = await response.json();
         setLists([...lists, newList]);
         setNewListName('');
-      }catch(error){
-        console.log('Error adding new list:',error);
+      } catch (error) {
+        console.log('Error adding new list:', error);
       }
-      
     }
   };
 
-  const addNewTask = async(index) => {
+  const addNewTask = async (index) => {
     if (lists[index].newTask) {
-      try{
-        const response = await fetch(`https://localhost:5000/api/lists/${lists[index]._id}/tasks`,{
+      try {
+        const response = await fetch(`http://localhost:5000/api/lists/${lists[index]._id}/tasks`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${localStorage.getItem('token')}`
           },
-          body: JSON.stringify({ name: lists[index].newTask}),
+          body: JSON.stringify({ 
+            name: lists[index].newTask,
+            dueDate: lists[index].newTaskDueDate 
+          }),
         });
-        if(!response.ok) throw new Error('Error adding new task');
+        if (!response.ok) throw new Error('Error adding new task');
         const updatedList = await response.json();
         const updatedLists = [...lists];
         updatedLists[index] = updatedList;
         setLists(updatedLists);
-        //setLists((prev) => prev.map((list) => (list._id === updatedList._id ? updatedList : list)));
-      }catch(error){
+      } catch (error) {
         console.error('Error adding new task:', error);
       }
-
     }
   };
 
@@ -91,23 +92,28 @@ function AddNewList() {
     setLists(updatedLists);
   };
 
-  const deleteList = async(index) => {
-    try{
+  const handleTaskDueDateChange = (index, value) => {
+    const updatedLists = [...lists];
+    updatedLists[index].newTaskDueDate = value;
+    setLists(updatedLists);
+  };
+
+  const deleteList = async (index) => {
+    try {
       const listId = lists[index]._id;
-      const response = await fetch(`https://localhost:5000/api/lists/${listId}`,{
+      const response = await fetch(`http://localhost:5000/api/lists/${listId}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         }
-      })
-      if(!response.ok) throw new Error('Error deleting list');
+      });
+      if (!response.ok) throw new Error('Error deleting list');
 
       const updatedLists = lists.filter((_, i) => i !== index);
       setLists(updatedLists);
-    }catch(error){
-      console.error('Error deleting list:',error);
+    } catch (error) {
+      console.error('Error deleting list:', error);
     }
-    
   };
 
   const startEditingListName = (index) => {
@@ -115,16 +121,16 @@ function AddNewList() {
     setEditingListName(lists[index].name);
   };
 
-  const updateListName = async(index) => {
+  const updateListName = async (index) => {
     const listId = lists[index]._id;
-    try{
-      const response = await fetch(`https://localhost:5000/api/lists/${listId}`,{
+    try {
+      const response = await fetch(`http://localhost:5000/api/lists/${listId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
-        body: JSON.stringify({name:editingListName}),
+        body: JSON.stringify({ name: editingListName }),
       });
       if (!response.ok) throw new Error('Error updating list name');
       const updatedList = await response.json();
@@ -134,29 +140,27 @@ function AddNewList() {
       setEditingListIndex(null);
       setEditingListName('');
 
-    }catch(error){
-      console.error('Error updating list name:',error);
+    } catch (error) {
+      console.error('Error updating list name:', error);
     }
-    
   };
 
-  const deleteTask = async(listIndex, taskIndex) => {
-    try{
+  const deleteTask = async (listIndex, taskIndex) => {
+    try {
       const taskId = lists[listIndex].tasks[taskIndex]._id;
-      const response = await fetch(`https://localhost:5000/api/lists/${lists[listIndex]._id}/tasks/${taskId}`,{
+      const response = await fetch(`http://localhost:5000/api/lists/${lists[listIndex]._id}/tasks/${taskId}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
-      if(!response.ok) throw new Error('Error deleting task');
+      if (!response.ok) throw new Error('Error deleting task');
       const updatedLists = [...lists];
       updatedLists[listIndex].tasks = updatedLists[listIndex].tasks.filter((_, i) => i !== taskIndex);
       setLists(updatedLists);
-    }catch(error){
-      console.error('Error deleting task:',error)
+    } catch (error) {
+      console.error('Error deleting task:', error)
     }
-    
   };
 
   const startEditingTaskName = (listIndex, taskIndex, taskName) => {
@@ -164,12 +168,17 @@ function AddNewList() {
     setEditingTaskName(taskName);
   };
 
-  const updateTaskName = async(listIndex, taskIndex) => {
+  const startEditingTaskDueDate = (listIndex, taskIndex, taskDueDate) => {
+    setEditingTaskIndex({ list: listIndex, task: taskIndex });
+    setEditingTaskDueDate(taskDueDate);
+  };
+
+  const updateTaskName = async (listIndex, taskIndex) => {
     const listId = lists[listIndex]._id;
     const taskId = lists[listIndex].tasks[taskIndex]._id;
 
-    try{
-      const response = await fetch(`https://localhost:5000/api/lists/${listId}/tasks/${taskId}`,{
+    try {
+      const response = await fetch(`http://localhost:5000/api/lists/${listId}/tasks/${taskId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -177,16 +186,47 @@ function AddNewList() {
         },
         body: JSON.stringify({ name: editingTaskName }), 
       });
-      if(!response) throw new Error('Error updating task name');
+      if (!response) throw new Error('Error updating task name');
       const updatedList = await response.json();
       const updatedLists = [...lists];
       updatedLists[listIndex].tasks[taskIndex].name = editingTaskName;
       setLists(updatedLists);
       setEditingTaskIndex(null);
       setEditingTaskName('');    
-    }catch(error){
-      console.error('Error updating task name:',error);
+    } catch (error) {
+      console.error('Error updating task name:', error);
     }
+  };
+
+  const updateTaskDueDate = async (listIndex, taskIndex) => {
+    const listId = lists[listIndex]._id;
+    const taskId = lists[listIndex].tasks[taskIndex]._id;
+
+    try {
+      const response = await fetch(`http://localhost:5000/api/lists/${listId}/tasks/${taskId}/duedate`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+        body: JSON.stringify({ dueDate: editingTaskDueDate }), 
+      });
+      if (!response) throw new Error('Error updating task due date');
+      const updatedList = await response.json();
+      const updatedLists = [...lists];
+      updatedLists[listIndex].tasks[taskIndex].dueDate = editingTaskDueDate;
+      setLists(updatedLists);
+      setEditingTaskIndex(null);
+      setEditingTaskDueDate('');    
+    } catch (error) {
+      console.error('Error updating task due date:', error);
+    }
+  };
+
+  const formatDate = (dateString) => {
+    if (!dateString) return ''; // Handle empty or undefined dates
+    const date = new Date(dateString);
+    return date.toISOString().split('T')[0]; // Extract only the date part
   };
 
   return (
@@ -208,102 +248,168 @@ function AddNewList() {
         </button>
       </div>
 
-      {/* Display all lists */}
-      <div className="space-y-8">
-        {lists.map((list, index) => (
-          <div key={index} className="bg-white shadow-md p-4 rounded-md">
-            <div className="flex justify-between mb-3 items-center">
-              {editingListIndex === index ? (
-                <input
-                  type="text"
-                  value={editingListName}
-                  onChange={(e) => setEditingListName(e.target.value)}
-                  className="border p-1 rounded w-11/12 mr-2"
-                />
-              ) : (
-                <h2 className="text-2xl font-semibold mb-4">{list.name}</h2>
-              )}
-              
-              {/* Edit, Update, and Delete Buttons for List */}
+      {/* Lists and tasks */}
+      {lists.map((list, listIndex) => (
+        <div key={list._id} className="bg-white border p-4 mb-4">
+          {/* List title and actions */}
+          {editingListIndex === listIndex ? (
+            <div className="flex items-center gap-4">
+              <input
+                type="text"
+                className="border p-2 flex-1"
+                value={editingListName}
+                onChange={(e) => setEditingListName(e.target.value)}
+              />
+              <button
+                onClick={() => updateListName(listIndex)}
+                className="bg-green-600 text-white p-2"
+              >
+                Save
+              </button>
+              <button
+                onClick={() => setEditingListIndex(null)}
+                className="bg-gray-400 text-white p-2"
+              >
+                Cancel
+              </button>
+            </div>
+          ) : (
+            <div className="flex items-center justify-between">
+              <h3 className="text-lg font-bold">{list.name}</h3>
               <div className="flex gap-2">
-                {editingListIndex === index ? (
-                  <button onClick={() => updateListName(index)} className="p-2">
-                    <img src={updateIcon} alt="Update" className="h-6 w-6" />
-                  </button>
-                ) : (
-                  <button onClick={() => startEditingListName(index)} className="p-2">
-                    <img src={editIcon} alt="Edit" className="h-6 w-6" />
-                  </button>
-                )}
-                <button onClick={() => deleteList(index)} className="p-2">
-                  <img src={deleteIcon} alt="Delete" className="h-6 w-6" />
+                <button
+                  onClick={() => startEditingListName(listIndex)}
+                  className="p-2"
+                >
+                  <img src={editIcon} alt="Edit" className="h-5 w-5" />
+                </button>
+                <button
+                  onClick={() => deleteList(listIndex)}
+                  className="p-2"
+                >
+                  <img src={deleteIcon} alt="Delete" className="h-5 w-5" />
                 </button>
               </div>
             </div>
+          )}
 
-            {/* Section to add new task to this list */}
-            <div className="flex gap-4 mb-4">
-              <input
-                type="text"
-                className="border p-2 w-10/12"
-                placeholder={`Add new task to ${list.name}`}
-                value={list.newTask}
-                onChange={(e) => handleTaskInputChange(index, e.target.value)}
-              />
-              <button
-                onClick={() => addNewTask(index)}
-                className="bg-cyan-950 text-white p-2 rounded hover:bg-green-700"
+          {/* Add task */}
+          <div className="flex gap-4 mt-4">
+            <input
+              type="text"
+              className="border p-2 flex-1"
+              placeholder="Enter new task"
+              value={list.newTask || ''}
+              onChange={(e) => handleTaskInputChange(listIndex, e.target.value)}
+            />
+            <input
+              type="date"
+              className="border p-2"
+              value={list.newTaskDueDate || ''}
+              onChange={(e) => handleTaskDueDateChange(listIndex, e.target.value)}
+            />
+            <button
+              onClick={() => addNewTask(listIndex)}
+              className="bg-blue-600 text-white p-2"
+            >
+              Add Task
+            </button>
+          </div>
+
+          {/* Tasks */}
+          <ul className="mt-4">
+            {list.tasks.map((task, taskIndex) => (
+              <li
+                key={task._id}
+                className={`p-2 flex items-center justify-between ${
+                  task.completed ? 'line-through text-gray-500' : ''
+                }`}
               >
-                Add Task
-              </button>
-            </div>
-
-            {/* Display all tasks for this list */}
-            <ul className="list-disc pl-6 space-y-2">
-              {list.tasks.map((task, taskIndex) => (
-                <li key={taskIndex} className="text-lg flex items-center justify-between">
-                  <div className="flex items-center">
+                {/* Task name */}
+                {editingTaskIndex?.list === listIndex &&
+                editingTaskIndex?.task === taskIndex ? (
+                  <div className="flex items-center gap-4">
                     <input
-                      type="checkbox"
-                      checked={task.completed}
-                      onChange={() => toggleTaskCompletion(index, taskIndex)}
-                      className="mr-2"
+                      type="text"
+                      className="border p-2 flex-1"
+                      value={editingTaskName}
+                      onChange={(e) => setEditingTaskName(e.target.value)}
                     />
-                    {editingTaskIndex?.list === index && editingTaskIndex?.task === taskIndex ? (
-                      <input
-                        type="text"
-                        value={editingTaskName}
-                        onChange={(e) => setEditingTaskName(e.target.value)}
-                        className="border p-1 rounded w-10/12"
-                      />
-                    ) : (
-                      <span className={`${task.completed ? 'line-through text-gray-500' : ''}`}>
-                        {task.name}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Edit, Update, and Delete Buttons for Task */}
-                  <div className="flex gap-2">
-                    {editingTaskIndex?.list === index && editingTaskIndex?.task === taskIndex ? (
-                      <button onClick={() => updateTaskName(index, taskIndex)} className="p-2">
-                        <img src={updateIcon} alt="Update" className="h-6 w-6" />
-                      </button>
-                    ) : (
-                      <button onClick={() => startEditingTaskName(index, taskIndex, task.name)} className="p-2">
-                        <img src={editIcon} alt="Edit" className="h-6 w-6" />
-                      </button>
-                    )}
-                    <button onClick={() => deleteTask(index, taskIndex)} className="p-2">
-                      <img src={deleteIcon} alt="Delete" className="h-6 w-6" />
+                    <input
+                      type="date"
+                      className="border p-2"
+                      value={editingTaskDueDate}
+                      onChange={(e) => setEditingTaskDueDate(e.target.value)}
+                    />
+                    <button
+                      onClick={() => {
+                        updateTaskName(listIndex, taskIndex);
+                        updateTaskDueDate(listIndex, taskIndex);
+                      }}
+                      className="bg-green-600 text-white p-2"
+                    >
+                      Save
+                    </button>
+                    <button
+                      onClick={() => setEditingTaskIndex(null)}
+                      className="bg-gray-400 text-white p-2"
+                    >
+                      Cancel
                     </button>
                   </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
+                ) : (
+                  <div className="flex items-center gap-4">
+                    <span>{task.name}</span>
+                    <span>{formatDate(task.dueDate)}</span>
+                  </div>
+                )}
+
+                {/* Actions */}
+                <div className="flex gap-2">
+                  <button
+                    onClick={() =>
+                      startEditingTaskName(listIndex, taskIndex, task.name)
+                    }
+                    className="p-2"
+                  >
+                    <img src={editIcon} alt="Edit" className="h-5 w-5" />
+                  </button>
+                  <button
+                    onClick={() =>
+                      startEditingTaskDueDate(
+                        listIndex,
+                        taskIndex,
+                        task.dueDate
+                      )
+                    }
+                    className="p-2"
+                  >
+                    <img src={updateIcon} alt="Update Due Date" className="h-5 w-5" />
+                  </button>
+                  <button
+                    onClick={() => deleteTask(listIndex, taskIndex)}
+                    className="p-2"
+                  >
+                    <img src={deleteIcon} alt="Delete" className="h-5 w-5" />
+                  </button>
+                  <button
+                    onClick={() =>
+                      toggleTaskCompletion(listIndex, taskIndex)
+                    }
+                    className={`p-2 ${
+                      task.completed
+                        ? 'bg-green-600 text-white'
+                        : 'bg-gray-400 text-white'
+                    }`}
+                  >
+                    {task.completed ? 'Completed' : 'Mark Complete'}
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
   );
 }

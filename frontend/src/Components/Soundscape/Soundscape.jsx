@@ -24,6 +24,7 @@ import FaLock from '../../assets/FaLock.png' ; // Importing icons for alarm and 
 const Soundscape = () => {
   const [videos, setVideos] = useState([]); // Store fetched videos
   const [playingVideo, setPlayingVideo] = useState(null); // Track the currently playing video
+  const [expandedDescriptions, setExpandedDescriptions] = useState({});
 
   useEffect(() => {
     // Fetch videos from the database by category 'Soundscape'
@@ -42,6 +43,13 @@ const Soundscape = () => {
 
     fetchVideos();
   }, []);
+
+  const toggleDescription = (index) => {
+    setExpandedDescriptions((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  };
 
   return (
     
@@ -186,14 +194,26 @@ const Soundscape = () => {
               />
             ) : (
               <img
-                src={video.thumbnail} // Thumbnail image
+                src={video.thumbnailUrl} // Thumbnail image
                 alt={`${video.title} Thumbnail`}
                 className="w-full h-auto rounded cursor-pointer"
                 onClick={() => setPlayingVideo(index)} // Play on click
               />
             )}
-            <h3 className="text-white text-lg mt-3">{video.title}</h3>
-            <p className="text-white text-sm font-light mb-2">{video.desc}</p>
+            <h3 className="text-green-300 text-lg mt-3">{video.title}</h3>
+            <p className="text-white text-sm font-light mb-2">
+                    {expandedDescriptions[index] || video.description.length <= 100
+                      ? video.description
+                      : `${video.description.slice(0, 100)}...`}
+                  </p>
+                  {video.description.length > 100 && (
+                    <button
+                      onClick={() => toggleDescription(index)}
+                      className="text-green-600 text-xs underline mt-1"
+                    >
+                      {expandedDescriptions[index] ? 'See Less' : 'See More'}
+                    </button>
+                  )}
             <div className="flex items-center justify-between w-full mt-4">
               <span className="text-gray-300 text-xs font-semibold">{video.time}</span>
               <div className="flex space-x-3">
