@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useState  } from 'react';
 import YogaBackgroundArt from '../../assets/Yoga background art.png';
 import dashboard from '../../assets/dashboard.png';
 import stresschecker from '../../assets/stresschecker.png';
@@ -10,21 +10,88 @@ import workrelief from '../../assets/workrelief.png';
 import learnmore from '../../assets/stresschecker.png';
 import userprofile from '../../assets/userprofile.png';
 import stressfreezoneicon from '../../assets/stressfreezoneicon.png';
-import quickrelaxationbackground from '../../assets/quickrelaxationbackground.png';
-import progresscircle from '../../assets/progresscircle.png'
-import chefhat from '../../assets/ChefHat.png'
-import drop from '../../assets/Drop.png'
-import personsimplerun from '../../assets/PersonSimpleRun.png'
-import pic1 from '../../assets/pic1.png'
-import pic2 from '../../assets/pic2.png'
-import pic3 from '../../assets/pic3.png'
-import { Link } from 'react-router-dom';
+import { Link ,useNavigate} from 'react-router-dom';
+
 
 const StressChecker = () => {
+  const navigate = useNavigate();
+    // Sample questions
+    
+      const [currentQuestion, setCurrentQuestion] = useState(0);
+      const [answers, setAnswers] = useState([]);
+    
+      const questions = [
+        "I eat at least one hot, balanced meal a day",
+        "I get 7-9 hours of least at least four nights a week",
+        "I exercise to the point of perspiration at least twice a week",
+        "I have a network of friends, family and acquaintances on whom I can rely",
+        "I am able to speak openly about my feelings when angry, stressed or worried",
+        "I do something for fun at least once a week",
+        "I take quiet time for myself during the day",
+        "My income covers my daily living costs",
+        "I am calm when I am kept waiting/stuck in traffic/late for an appointment",
+        "I feel organised and in control",
+        "I recognise when I am not coping well under pressure and I know how to deal with it",
+        "On average how many cigarettes do you smoke per day?",
+        "On average how often do you drink alcohol per week?",
+        "On average I drink fewer than two cups of coffee (or tea or cola) a day",
+        
+      ];
+    
+      const options = [
+        { value: 1, label: "Very Good" },
+        { value: 2, label: "Good" },
+        { value: 3, label: "Satisfactory" },
+        { value: 4, label: "Bad" },
+        { value: 5, label: "Very Bad" },
+      ];
+    
+      const stressMapping = {
+        1: 0,
+        2: 25,
+        3: 50,
+        4: 75,
+        5: 100,
+      };
+    
+      const handleOptionSelect = (value) => {
+        const updatedAnswers = [...answers];
+        updatedAnswers[currentQuestion] = value;
+        setAnswers(updatedAnswers);
+      };
+    
+      const handleNext = () => {
+        if (currentQuestion < questions.length - 1) {
+          setCurrentQuestion(currentQuestion + 1);
+        }
+      };
+    
+      const handlePrevious = () => {
+        if (currentQuestion > 0) {
+          setCurrentQuestion(currentQuestion - 1);
+        }
+      };
+    
+      const handleSubmit = () => {
+        console.log("Submit button clicked");
+    const totalStress = answers.reduce((total, answer) => total + stressMapping[answer], 0);
+    const averageStress = (totalStress / answers.length);
+
+    console.log(`Average Stress: ${averageStress}`);
+        if (averageStress >= 0 && averageStress <= 10) {
+          navigate("/levela"); // Redirect to low-stress page
+        } else if (averageStress > 10 && averageStress <= 50) {
+          navigate("/levelb"); // Redirect to moderate-stress page
+        } else if (averageStress > 50 && averageStress <= 80) {
+          navigate("/levelc"); // Redirect to high-stress page
+        } else if (averageStress > 80 && averageStress <= 100) {
+          navigate("/leveld"); // Redirect to very-high-stress page
+        }
+      };
   return (
     
-    <div className=" min-h-[1100px] w-full  px-4 py-10 bg-gray-800 relative">
-          <img src={YogaBackgroundArt} alt=""  className="object-cover opacity-40 absolute pl-72 pt-8 w-auto h-auto size-full bg-no-repeat bg-cover bg-fixed "/>
+    <div className=" min-h-[1100px] w-full  px-4 py-10 bg-gray-800">
+          <img src={YogaBackgroundArt} alt=""  className="object-cover opacity-40 absolute pl-72 pt-8 w-auto h-auto size-full bg-no-repeat bg-cover bg-fixed pointer-events-none"/>
       <div className="flex w-full">
        
    {/* Sidebar */}
@@ -128,10 +195,10 @@ const StressChecker = () => {
 </div>
 
 
-        {/* Main content area */}
+      {/* Main content area */}
         <main className="flex-1 p-6 rounded-md shadow-lg ml-80">
           {/* Top row */}
-          <div className="bg-teal-800 p-4 shadow-md rounded-md mb-6">
+         <div className="bg-teal-800 p-4 shadow-md rounded-md mb-6">
           <div className='flex items-center space-x-3 lg:space-x-5'>
   <img src={stressfreezoneicon} alt=""  />
   <a
@@ -148,84 +215,69 @@ const StressChecker = () => {
   {/* above */}
   <div className="bg-black/30 p-4 mb-10  shadow-md rounded-md border border-gray-300">
  
-    <main className="w-full max-w-[800px] mx-auto text-center">
+   <main className="w-full max-w-[800px] mx-auto text-center">
     <header className="py-px mt-8 text-base leading-6">
-      <h1>
+   
         <span className="text-3xl font-bold text-white">Find Your Path to Calm with </span>
-        <span className="text-3xl font-bold text-green-500">Stress-Free Zone</span>
-      </h1>
+        <span className="text-3xl font-bold text-green-500">Stress-Free Zone....</span>
+        <h1 className='text-white text-xl mt-4 mb-4'>Please select most relevant answer </h1>
     </header>
-    <section className="mt-6">
-      <p className="italic text-white">
-        Discover your stress levels with our personalized stress checker. Answer a few questions and gain insights into your current mental state, helping you navigate towards a calmer and more balanced life.
-      </p>
-    </section>
-    </main>
-    <div className="flex mt-8 mb-8 justify-center items-center h-auto">
-
-    <div>
-      <div className="flex rounded-3xl mb-5 bg-zinc-400 p-4 bg-opacity-90 max-w-[575px] min-h-[20px]" role="region" aria-label="Content area">
-        What type of therapy are you looking for?
-      </div>
-      <div className="flex flex-col rounded-3xl space-y-3 bg-zinc-500 p-4 bg-opacity-90 max-w-[575px] min-h-[51px]">
-        <div className="flex rounded-3xl bg-zinc-400 p-4 bg-opacity-90 max-w-[575px] min-h-[51px]">
-          Individual (for self)
-        </div>
-        <div className="flex rounded-3xl bg-zinc-400 p-4 bg-opacity-90 max-w-[575px] min-h-[51px]">
-          Individual (for self)
-        </div>
-        <div className="flex rounded-3xl bg-zinc-400 p-4 bg-opacity-90 max-w-[575px] min-h-[51px]">
-          Individual (for self)
-        </div>
-        <div className="flex rounded-3xl bg-zinc-400 p-4 bg-opacity-90 max-w-[575px] min-h-[51px]">
-          Individual (for self)
-        </div>
-      </div>
     
-  </div>
-</div>
+    </main> 
+    <div className="flex justify-center items-center mb-8">
+      <div className="bg-white shadow-md rounded p-6 w-96 ">
+     
 
+        <p className="mb-4">{questions[currentQuestion]}</p>
+
+        <div className="mb-4">
+          {options.map((option) => (
+            <label key={option.value} className="block mb-2">
+              <input
+                type="radio"
+                name="answer"
+                value={option.value}
+                checked={answers[currentQuestion] === option.value}
+                onChange={() => handleOptionSelect(option.value)}
+                className="mr-2"
+              />
+              {option.label}
+            </label>
+          ))}
+        </div>
+
+        <div className="flex justify-between">
+          <button
+            onClick={handlePrevious}
+            disabled={currentQuestion === 0}
+            className="px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50"
+          >
+            Previous
+          </button>
+          {currentQuestion < questions.length - 1 ? (
+            <button
+              onClick={handleNext}
+              className="px-4 py-2 bg-green-500 text-white rounded"
+            >
+              Next
+            </button>
+          ) : (
+            <button
+              onClick={handleSubmit}
+              className="px-4 py-2 bg-purple-500 text-white rounded"
+            >
+              Submit
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+   
   </div>
 
  
 
-    {/* below */}
-    
-    <div className="relative flex p-4 shadow-md rounded-md border border-gray-300 overflow-hidden flex-col mb-0 items-center justify-center px-16 pb-12 bg-black/50 bg-opacity-50 max-md:px-5 max-md:pb-24">
-  {/* Meditation Image with Text Overlay */}
-  <div className="w-full max-w-[1407px] max-md:max-w-full flex justify-center relative">
-    <div>
-
-      {/* Text overlaying the image */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <h1 className="text-white text-3xl mt-16 font-bold">Sweet Review from our clients</h1>
-      </div>
-    </div>
-  </div>
-
-  {/* Section for three columns, immediately after the text */}
-  <div className="w-full flex justify-center mt-20 ">
-    <div className="flex gap-5 w-full max-w-[1407px]  max-md:flex-col">
-      
-      {/* Column 1 */}
-      <div className="flex flex-col w-[50%] max-md:w-full">
-        <div className="flex flex-col px-6 pt-10 pb-10 min-h-[260px] rounded-2xl bg-teal-950 text-center">
-          <p className="text-white text-2xl">Jane Froster <hr /></p>
-          <p className="text-white">“Lorem ipsum dolor sit amet, consec tetur adi piscing elit. Praesent tellus leo, vesti bulum a ipsum sed, suscipit sodales ex. Vestibulum id varius risus. Fusce tempus tellus sed.”</p>
-        </div>
-      </div>
-      
-      {/* Column 2 */}
-      <div className="flex flex-col w-[50%] max-md:w-full">
-        <div className="flex flex-col px-6 pt-10 pb-10 min-h-[260px] rounded-2xl bg-teal-950 text-center">
-          <p className="text-white text-2xl">Ninna Aguero <hr /></p>
-          <p className="text-white">“Lorem ipsum dolor sit amet, consec tetur adi piscing elit. Praesent tellus leo, vesti bulum a ipsum sed, suscipit sodales ex. Vestibulum id varius risus. Fusce tempus tellus sed.”</p>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-</div>
+  
   
 
         </main>

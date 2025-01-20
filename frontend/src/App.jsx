@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ScrollToTop from './Components/ScrollToTop'; 
 import Register from './Components/Home/Register';
 import Login from './Components/Home/Login';
 import AdminLogin from './Components/Home/Admin login';
@@ -26,11 +27,17 @@ import VideoPlayer from './Components/VideoPlayer/VideoPlayer';
 import ResetPassword from './Components/Home/ResetPassword';
 import AdminHome from './Components/Home/AdminHome';
 import VideoGallery from './Components/Home/VideoGallery';
+import StressLevel1 from './Components/Levelpages/StressLevel1';
+import StressLevel2 from './Components/Levelpages/StressLevel2';
+import StressLevel3 from './Components/Levelpages/StressLevel3';
+import StressLevel4 from './Components/Levelpages/StressLevel4';
+
 
 
 function App() {
   return (
     <Router>
+      <ScrollToTop /> 
       <Routes>
         <Route path="/" element={< Home/>} />
         <Route path="/login" element={< Login/>} />
@@ -57,8 +64,11 @@ function App() {
         <Route path="/video" element={<VideoPlayer />} />
         <Route path="/reset-password/:token" element={<ResetPassword />} />
         <Route path="/adminhome" element={<AdminHome />} />
-        <Route path="/videos" element={<VideoGallery/>}></Route>
-
+        <Route path="/videos" element={<VideoGallery/>}/>
+        <Route path="/levela" element={<StressLevel1/>}/>
+        <Route path="/levelb" element={<StressLevel2/>}/>
+        <Route path="/levelc" element={<StressLevel3/>}/>
+        <Route path="/leveld" element={<StressLevel4/>}/>
       </Routes>
     </Router>
   );
