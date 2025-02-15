@@ -79,13 +79,13 @@ const StressChecker = () => {
 
     console.log(`Average Stress: ${averageStress}`);
         if (averageStress >= 0 && averageStress <= 10) {
-          navigate("/myday"); // Redirect to low-stress page
+          navigate("/levela"); // Redirect to low-stress page
         } else if (averageStress > 10 && averageStress <= 50) {
-          navigate("/learnmore"); // Redirect to moderate-stress page
+          navigate("/levelb"); // Redirect to moderate-stress page
         } else if (averageStress > 50 && averageStress <= 80) {
-          navigate("/userprofile"); // Redirect to high-stress page
+          navigate("/levelc"); // Redirect to high-stress page
         } else if (averageStress > 80 && averageStress <= 100) {
-          navigate("/soundscape"); // Redirect to very-high-stress page
+          navigate("/leveld"); // Redirect to very-high-stress page
         }
       };
   return (
