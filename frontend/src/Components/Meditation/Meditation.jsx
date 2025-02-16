@@ -48,7 +48,7 @@ const Dashboard = () => {
   };
 
   const handleVideoPlay = (index) => {
-    if (videoViews >= 1) {
+    if (videoViews >= 3) {
       // Show premium prompt if the user has already watched one video
       setShowPremiumPrompt(true);
       setPlayingVideo(null); // Stop the video from playing
