@@ -125,9 +125,11 @@ exports.resetPassword = async (req, res) => {
     res.status(200).json({ msg: 'Password reset successful' });
   } catch (err) {
     console.error(err.message);
+
     res.status(500).send('Server error');
   }
 };
+
 
 exports.loginWithGoogle = async (req, res) => {
   const { token } = req.body;

@@ -16,7 +16,11 @@ const app = express()
 
 
 app.use(cors({
-    origin: 'http://localhost:5173',
+
+
+
+    origin: '*',
+
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials:true,
     allowedHeaders: 'Content-Type, Authorization'
@@ -35,7 +39,6 @@ app.use('/api/auth', authRoutes);
 app.use('/api/lists',listRoutes);
 app.use('/api/admin',adminRoutes);
 app.use('/api/videos', videoRoutes);
-
 
 
 const PORT = process.env.PORT || 5000;
