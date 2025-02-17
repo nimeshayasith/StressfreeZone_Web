@@ -25,6 +25,7 @@ const Soundscape = () => {
   const [videos, setVideos] = useState([]); // Store fetched videos
   const [playingVideo, setPlayingVideo] = useState(null); // Track the currently playing video
   const [expandedDescriptions, setExpandedDescriptions] = useState({});
+  const [showPremiumPrompt, setShowPremiumPrompt] = useState(false); // Control the premium prompt visibility
 
   useEffect(() => {
     // Fetch videos from the database by category 'Soundscape'
@@ -49,6 +50,24 @@ const Soundscape = () => {
       ...prev,
       [index]: !prev[index],
     }));
+  };
+  const handleVideoPlay = (index) => {
+    if (index >= 3) {
+      // Show premium prompt if the video is beyond the first 3
+      setShowPremiumPrompt(true);
+      setPlayingVideo(null); // Stop the video from playing
+    } else {
+      // Allow the video to play
+      setPlayingVideo(index);
+    }
+  };
+
+  const closePremiumPrompt = () => {
+    setShowPremiumPrompt(false);
+  };
+
+  const redirectToPremium = () => {
+    window.location.href = '/premierplan'; // Redirect to premium subscription page
   };
 
   return (
@@ -197,7 +216,7 @@ const Soundscape = () => {
                 src={video.thumbnailUrl} // Thumbnail image
                 alt={`${video.title} Thumbnail`}
                 className="w-full h-auto rounded cursor-pointer"
-                onClick={() => setPlayingVideo(index)} // Play on click
+                onClick={() => handleVideoPlay(index)} // Play on click// Play on click
               />
             )}
             <h3 className="text-green-300 text-lg mt-3">{video.title}</h3>
@@ -228,7 +247,27 @@ const Soundscape = () => {
 </main>
         </main>
       </div>
-    </div>
+      {showPremiumPrompt && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+            <h2 className="text-xl font-bold mb-4">Upgrade to Premium</h2>
+            <p className="mb-4">You need a premium subscription to access this video.</p>
+            <button
+              onClick={redirectToPremium}
+              className="bg-teal-600 text-white px-4 py-2 rounded-md mr-2 hover:bg-teal-700 transition-colors duration-300"
+            >
+              Get Premium
+            </button>
+            <button
+              onClick={closePremiumPrompt}
+              className="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition-colors duration-300"
+            >
+              Close
+            </button>
+          </div>
+          </div>
+          )}
+      </div>
   );
 };
 

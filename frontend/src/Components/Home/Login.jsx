@@ -7,6 +7,9 @@ import axios from "axios";
 import logo_icon from '../../assets/logo1.svg';
 import Meditation_2 from '../../assets/Meditation_2.svg';
 import googlelogo from '../../assets/google_logo.jpeg';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -20,52 +23,66 @@ export default function Login() {
         password
       });
 
-      const { token ,user} = response.data; // Getting token from response
-      localStorage.setItem('token', token); // Save token to localStorage if needed
+      const { token, user } = response.data;
+      localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(user));
-      console.log("User logged in successfully:", response.data);
-      alert("User Logged in successfully!");
-      navigate("/dashboard"); 
+      
+      toast.success("Logged in successfully!", { position: "top-right" });
+      setTimeout(() => {
+         navigate("/dashboard");
+      }, 2000); 
     } catch (error) {
       console.error("Error during login:", error);
-      alert("An error occurred. Please try again later.");
+      toast.error("Login failed! Please check your credentials.", { position: "top-right" });
     }
   };
 
-  const handleForgotPassword = async () =>{
+  const handleForgotPassword = async () => {
     try {
-      if(!email){
-        console.log("Enter the email address..... ");
+      if (!email) {
+        toast.warn("Please enter your email address.", { position: "top-right" });
+        return;
       }
-      await axios.post('http://localhost:5000/api/auth/forgot-password', { email });
-      alert('Password reset email sent successfully');
+  
+      await axios.post("http://localhost:5000/api/auth/forgot-password", { email });
+  
+      toast.success("Password reset email sent successfully!", { position: "top-right" });
+  
     } catch (error) {
-      console.error('Error sending password reset email:', error);
-      alert('Failed to send password reset email.');
+      console.error("Error sending password reset email:", error);
+      toast.error("Failed to send password reset email.", { position: "top-right" });
     }
-  }
-
+  };
+  
   const handleGoogleLogin = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
       const token = await user.getIdToken();
-      // Send the token to your backend or handle login success
+  
       const res = await axios.post("http://localhost:5000/api/auth/login-google", { token });
+  
       if (res.status === 200) {
-        localStorage.setItem('token', res.data.token);
-        localStorage.setItem('user', JSON.stringify(res.data.user));
-        alert("Logged in successfully!");
-        navigate("/dashboard");
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+  
+        toast.success("Logged in successfully!", { position: "top-right" });
+  
+        // Delay navigation to allow toast notification to display
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 2000);
       }
     } catch (error) {
       console.error("Error during Google login:", error);
-      alert("Google login failed. Please try again.");
+      toast.error("Google login failed. Please try again.", { position: "top-right" });
     }
   };
+  
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center px-20 py-14 bg-gray-800">
+      <ToastContainer />
       <div className="flex flex-col self-start max-md:max-w-full w-1/2 ml-20">
         <div className="flex gap-2.5 mt-5 self-start font-semibold text-white">
     

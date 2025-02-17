@@ -142,6 +142,8 @@ const handleClick = () => {
         </div>
       </div>
       <div className="flex flex-col ml-3 w-[45%] max-md:ml-0 max-md:w-full relative">
+      <div className="absolute -bottom-32 -left-44 w-56 h-56 bg-teal-600 rounded-full animate-pulse blur-2xl"></div>
+      <div className="absolute -bottom-80 -left-44 w-56 h-56 bg-teal-600 rounded-full animate-pulse blur-2xl"></div>
         <div className="flex justify-center items-center px-12 mt-32 rounded-full aspect-square max-md:px-2 max-md:py-12 max-md:mt-6 relative">
           <img src={base} alt="" className="absolute w-72 h-72 object-cover rounded-full" />
           <img src={breath} alt="" className="absolute w-48 h-48 object-cover rounded-full" />

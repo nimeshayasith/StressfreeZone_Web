@@ -1,4 +1,4 @@
-import React , {useState , useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import YogaBackgroundArt from '../../assets/Yoga background art.png';
 import dashboard from '../../assets/dashboard.png';
 import stresschecker from '../../assets/stresschecker.png';
@@ -10,25 +10,19 @@ import workrelief from '../../assets/workrelief.png';
 import learnmore from '../../assets/stresschecker.png';
 import userprofile from '../../assets/userprofile.png';
 import stressfreezoneicon from '../../assets/stressfreezoneicon.png';
-import video1 from '../../assets/video1.mp4';
-import video2 from '../../assets/video2.mp4';
-import video3 from '../../assets/video3.mp4';
-import pic1 from '../../assets/pic1.png';
-import pic2 from '../../assets/pic2.png';
-import pic3 from '../../assets/pic3.png'
 import relax from '../../assets/relax.jpg';
 import { Link } from 'react-router-dom';
 import FaBell from '../../assets/FaBell.png';
-import FaLock from '../../assets/FaLock.png' ; // Importing icons for alarm and lock buttons
+import FaLock from '../../assets/FaLock.png';
 
-
-const Dashboard = () => {
+const Meditation = () => {
   const [videos, setVideos] = useState([]); // Store fetched videos
   const [playingVideo, setPlayingVideo] = useState(null); // Track the currently playing video
   const [expandedDescriptions, setExpandedDescriptions] = useState({});
+  const [showPremiumPrompt, setShowPremiumPrompt] = useState(false); // Control the premium prompt visibility
 
   useEffect(() => {
-    // Fetch videos from the database by category 'Soundscape'
+    // Fetch videos from the database by category 'Meditation'
     const fetchVideos = async () => {
       try {
         const response = await fetch('http://localhost:5000/api/videos/Meditation'); // Replace with your backend URL
@@ -52,14 +46,35 @@ const Dashboard = () => {
     }));
   };
 
+  const handleVideoPlay = (index) => {
+    if (index >= 3) {
+      // Show premium prompt if the video is beyond the first 3
+      setShowPremiumPrompt(true);
+      setPlayingVideo(null); // Stop the video from playing
+    } else {
+      // Allow the video to play
+      setPlayingVideo(index);
+    }
+  };
+
+  const closePremiumPrompt = () => {
+    setShowPremiumPrompt(false);
+  };
+
+  const redirectToPremium = () => {
+    window.location.href = '/premierplan'; // Redirect to premium subscription page
+  };
+
   return (
-    
-    <div className=" min-h-auto w-full  px-4 py-10 bg-gray-800 relative">
-          <img src={YogaBackgroundArt} alt=""  className="object-cover opacity-40 absolute pl-44 pt-0 w-auto h-auto size-full bg-no-repeat bg-cover bg-fixed "/>
+    <div className="min-h-auto w-full px-4 py-10 bg-gray-800 relative">
+      <img
+        src={YogaBackgroundArt}
+        alt=""
+        className="object-cover opacity-40 absolute pl-44 pt-0 w-auto h-auto size-full bg-no-repeat bg-cover bg-fixed"
+      />
       <div className="flex w-full">
-       
-   {/* Sidebar */}
-  <div className='flex'>
+        {/* Sidebar */}
+        <div className='flex'>
   <aside className=" fixed w-1/5 bg-gray-900 text-white p-9 rounded-md shadow-lg mt-5 ml-3 border-2 border-teal-400">
   <nav>
     <ul className="space-y-6 lg:space-y-10"> {/* Adds gap between the list items */}
@@ -158,78 +173,98 @@ const Dashboard = () => {
 </aside>
 </div>
 
-
         {/* Main content area */}
         <main className="flex-1 p-6 rounded-md shadow-lg ml-80">
           {/* Top row */}
           <div className="bg-teal-800 p-4 shadow-md rounded-md mb-6">
-          <div className='flex items-center space-x-3 lg:space-x-5'>
-  <img src={stressfreezoneicon} alt=""  />
-  <a
-    href="#section1" 
-    className="relative  font-bold text-3xl text-white ">
-    Stress Free Zone
-  </a>
-</div>
- </div>
-
- 
-          
-
-<main className="flex flex-col mb-5 mt-0 p-7 bg-black bg-opacity-20">
- 
-
-<div className="min-h-screen w-full px-4 py-10 bg-gray-800 relative">
-      <div className="grid grid-cols-3 gap-6 mt-10 max-md:grid-cols-1">
-        {videos.map((video, index) => (
-          <div key={video._id} className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg">
-            {/* Conditional rendering for video and thumbnail */}
-            {playingVideo === index ? (
-              <video
-                src={video.url}
-                controls
-                className="w-full h-auto rounded"
-                onClick={() => setPlayingVideo(null)} // Stop playing on click
-                autoPlay
-              />
-            ) : (
-              <img
-                src={relax} // Thumbnail image
-                alt={`${video.title} Thumbnail`}
-                className="w-full h-auto rounded cursor-pointer"
-                onClick={() => setPlayingVideo(index)} // Play on click
-              />
-            )}
-            <h3 className="text-white text-lg mt-3">{video.title}</h3>
-            <p className="text-black text-sm font-light mb-2">
-                    {expandedDescriptions[index] || video.description.length <= 100
-                      ? video.description
-                      : `${video.description.slice(0, 100)}...`}
-                  </p>
-                  {video.description.length > 100 && (
-                    <button
-                      onClick={() => toggleDescription(index)}
-                      className="text-yellow-300 text-xs underline mt-1"
-                    >
-                      {expandedDescriptions[index] ? 'See Less' : 'See More'}
-                    </button>
-                  )}
-            <div className="flex items-center justify-between w-full mt-4">
-              <span className="text-gray-300 text-xs font-semibold">{video.time}</span>
-              <div className="flex space-x-3">
-                <img src={FaBell} alt="Alarm" className="w-4 h-4 cursor-pointer" />
-                <img src={FaLock} alt="Lock" className="w-4 h-4 cursor-pointer" />
-              </div>
+            <div className="flex items-center space-x-3 lg:space-x-5">
+              <img src={stressfreezoneicon} alt="" />
+              <a
+                href="#section1"
+                className="relative font-bold text-3xl text-white"
+              >
+                Stress Free Zone
+              </a>
             </div>
           </div>
-        ))}
-      </div>
-    </div>
-</main>
+
+          <main className="flex flex-col mb-5 mt-0 p-7 bg-black bg-opacity-20">
+            <div className="min-h-screen w-full px-4 py-10 bg-gray-800 relative">
+              <div className="grid grid-cols-3 gap-6 mt-10 max-md:grid-cols-1">
+                {videos.map((video, index) => (
+                  <div
+                    key={video._id}
+                    className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg"
+                  >
+                    {/* Conditional rendering for video and thumbnail */}
+                    {playingVideo === index ? (
+                      <video
+                        src={video.url}
+                        controls
+                        className="w-full h-auto rounded"
+                        onClick={() => setPlayingVideo(null)} // Stop playing on click
+                        autoPlay
+                      />
+                    ) : (
+                      <img
+                        src={relax} // Thumbnail image
+                        alt={`${video.title} Thumbnail`}
+                        className="w-full h-auto rounded cursor-pointer"
+                        onClick={() => handleVideoPlay(index)} // Play on click
+                      />
+                    )}
+                    <h3 className="text-white text-lg mt-3">{video.title}</h3>
+                    <p className="text-black text-sm font-light mb-2">
+                      {expandedDescriptions[index] || video.description.length <= 100
+                        ? video.description
+                        : `${video.description.slice(0, 100)}...`}
+                    </p>
+                    {video.description.length > 100 && (
+                      <button
+                        onClick={() => toggleDescription(index)}
+                        className="text-yellow-300 text-xs underline mt-1"
+                      >
+                        {expandedDescriptions[index] ? 'See Less' : 'See More'}
+                      </button>
+                    )}
+                    <div className="flex items-center justify-between w-full mt-4">
+                      <span className="text-gray-300 text-xs font-semibold">{video.time}</span>
+                      <div className="flex space-x-3">
+                        <img src={FaBell} alt="Alarm" className="w-4 h-4 cursor-pointer" />
+                        <img src={FaLock} alt="Lock" className="w-4 h-4 cursor-pointer" />
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </main>
         </main>
       </div>
+
+      {/* Premium Prompt Modal */}
+      {showPremiumPrompt && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+            <h2 className="text-xl font-bold mb-4">Upgrade to Premium</h2>
+            <p className="mb-4">You need a premium subscription to access this video.</p>
+            <button
+              onClick={redirectToPremium}
+              className="bg-teal-600 text-white px-4 py-2 rounded-md mr-2 hover:bg-teal-700 transition-colors duration-300"
+            >
+              Get Premium
+            </button>
+            <button
+              onClick={closePremiumPrompt}
+              className="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition-colors duration-300"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
-export default Dashboard;
+export default Meditation;
