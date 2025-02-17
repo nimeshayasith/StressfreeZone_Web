@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
 import FaBell from '../../assets/FaBell.png';
 import FaLock from '../../assets/FaLock.png';
 
-const Dashboard = () => {
+const Meditation = () => {
   const [videos, setVideos] = useState([]); // Store fetched videos
   const [playingVideo, setPlayingVideo] = useState(null); // Track the currently playing video
   const [expandedDescriptions, setExpandedDescriptions] = useState({});
@@ -267,4 +267,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Meditation;
