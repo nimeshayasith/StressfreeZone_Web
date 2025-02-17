@@ -1,58 +1,84 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import "react-toastify/dist/ReactToastify.css";
-import logo_icon from "../../assets/logo1.svg"; // Update the path accordingly
-import Meditation_2 from "../../assets/Meditation_2.svg"; // Update the path accordingly
+import logo_icon from "../../assets/logo1.svg";
+import Meditation_2 from "../../assets/Meditation_2.svg";
 
 export default function Premier() {
-  const [cardNumber, setCardNumber] = useState("");
-  const [expireDate, setExpireDate] = useState("");
-  const [cvc, setCvc] = useState("");
+  const stripe = useStripe();
+  const elements = useElements();
   const [country, setCountry] = useState("");
   const [cardholderName, setCardholderName] = useState("");
-  const [cardError, setCardError] = useState("");
-
+  const [processing, setProcessing] = useState(false);
   const navigate = useNavigate();
 
-  // Luhn Algorithm for Credit Card Validation
-  const isValidCardNumber = (num) => {
-    let sum = 0;
-    let shouldDouble = false;
-    const digits = num.replace(/\D/g, "").split("").reverse().map(Number);
-
-    for (let digit of digits) {
-      let val = digit;
-      if (shouldDouble) {
-        val *= 2;
-        if (val > 9) val -= 9;
-      }
-      sum += val;
-      shouldDouble = !shouldDouble;
-    }
-
-    return sum % 10 === 0;
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setProcessing(true);
 
-    if (!isValidCardNumber(cardNumber)) {
-      setCardError("Invalid card number. Please enter a real one.");
-      toast.error("Invalid card number!");
+    if (!stripe || !elements) {
       return;
     }
 
-    console.log("Billing Details Submitted:", {
-      cardNumber,
-      expireDate,
-      cvc,
-      country,
-      cardholderName,
-    });
+    try {
+      const { error: createError, paymentMethod } = await stripe.createPaymentMethod({
+        type: 'card',
+        card: elements.getElement(CardElement),
+        billing_details: {
+          name: cardholderName,
+        },
+      });
 
-    // Navigate to the Success Page
-    navigate("/successpage");
+      if (createError) {
+        throw createError;
+      }
+
+      const token = localStorage.getItem('token');
+      const response = await fetch('http://localhost:5000/api/payment/create-subscription', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          paymentMethodId: paymentMethod.id,
+          country: country,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Payment failed');
+      }
+
+      navigate("/successpage");
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setProcessing(false);
+    }
+  };
+
+  const cardElementOptions = {
+    style: {
+      base: {
+        color: "#ffffff",
+        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+        fontSmoothing: "antialiased",
+        fontSize: "16px",
+        "::placeholder": {
+          color: "#aab7c4",
+        },
+        backgroundColor: "#374151",
+      },
+      invalid: {
+        color: "#fa755a",
+        iconColor: "#fa755a",
+      },
+    },
+    hidePostalCode: true,
   };
 
   return (
@@ -73,7 +99,6 @@ export default function Premier() {
           <h1 className="text-3xl font-semibold text-white">Payment Information</h1>
           <p className="mt-0 text-lg leading-loose">Review your payment details before proceeding.</p>
 
-          {/* Billing Form */}
           <form onSubmit={handleSubmit} className="w-full">
             <label className="block mb-2">Cardholder Name</label>
             <input
@@ -86,55 +111,9 @@ export default function Premier() {
               required
             />
 
-            <label className="block mb-2">Card Number</label>
-            <input
-              type="text"
-              value={cardNumber}
-              onChange={(e) => {
-                const value = e.target.value.replace(/\D/g, "").slice(0, 16); // Allow only numbers, max 16 digits
-                setCardNumber(value);
-                setCardError(""); // Reset error when typing
-              }}
-              placeholder="1234 5678 9012 3456"
-              maxLength={19}
-              className="w-full px-4 py-2 mb-2 rounded bg-gray-700 text-white border border-gray-600 placeholder-gray-400"
-              required
-            />
-            {cardError && <p className="text-red-500 text-sm mb-3">{cardError}</p>}
-
-            <div className="flex gap-4 mb-4">
-              <div className="w-1/2">
-                <label className="block mb-2">Expiration Date</label>
-                <input
-                  type="text"
-                  value={expireDate}
-                  onChange={(e) => {
-                    let value = e.target.value.replace(/\D/g, "").slice(0, 4); // Allow only numbers, max 4 characters
-                    if (value.length >= 2) value = value.slice(0, 2) + "/" + value.slice(2);
-                    setExpireDate(value);
-                  }}
-                  placeholder="MM/YY"
-                  maxLength={5}
-                  className="w-full px-4 py-2 rounded bg-gray-700 text-white border border-gray-600 placeholder-gray-400"
-                  required
-                />
-              </div>
-
-              <div className="w-1/2">
-                <label className="block mb-2">Security Code (CVC)</label>
-                <input
-                  type="text"
-                  value={cvc}
-                  onChange={(e) => {
-                    const value = e.target.value.replace(/\D/g, "").slice(0, 3); // Only numbers, max 3 digits
-                    setCvc(value);
-                  }}
-                  placeholder="CVC"
-                  maxLength={3}
-                  className="w-full px-4 py-2 rounded bg-gray-700 text-white border border-gray-600 placeholder-gray-400"
-                  required
-                />
-              </div>
+            <label className="block mb-2">Card Details</label>
+            <div className="w-full px-4 py-2 mb-4 rounded bg-gray-700 text-white border border-gray-600">
+              <CardElement options={cardElementOptions} />
             </div>
 
             <label className="block mb-2">Country</label>
@@ -148,8 +127,12 @@ export default function Premier() {
               required
             />
 
-            <button type="submit" className="w-full bg-teal-500 text-white py-3 rounded mt-3">
-              Get Started
+            <button 
+              type="submit" 
+              className="w-full bg-teal-500 text-white py-3 rounded mt-3 disabled:opacity-50"
+              disabled={processing || !stripe}
+            >
+              {processing ? "Processing..." : "Get Started"}
             </button>
           </form>
         </div>
@@ -157,6 +140,7 @@ export default function Premier() {
 
       {/* Right Side Image */}
       <div className="w-1/2 text-right">
+        {/* Keep existing annual membership component */}
         <div className="max-w-lg rounded-lg overflow-hidden shadow-lg bg-slate-900 p-6">
           <h2 className="text-2xl text-slate-300 font-bold mb-4">Annual Membership</h2>
           <p className="text-lg text-gray-400 mb-4">7-Day Free Trial</p>

@@ -5,7 +5,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const listRoutes = require('./routes/listRoutes');
 const adminRoutes = require('./routes/adminRoutes');
-
+const paymentRoutes = require('./routes/payment');
 const videoRoutes = require('./routes/videoRoutes');
 
 dotenv.config();
@@ -39,6 +39,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/lists',listRoutes);
 app.use('/api/admin',adminRoutes);
 app.use('/api/videos', videoRoutes);
+app.use('/api/payment',paymentRoutes);
 
 
 const PORT = process.env.PORT || 5000;
