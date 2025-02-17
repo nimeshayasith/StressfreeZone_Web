@@ -19,7 +19,6 @@ const Dashboard = () => {
   const [videos, setVideos] = useState([]); // Store fetched videos
   const [playingVideo, setPlayingVideo] = useState(null); // Track the currently playing video
   const [expandedDescriptions, setExpandedDescriptions] = useState({});
-  const [videoViews, setVideoViews] = useState(0); // Track the number of videos watched
   const [showPremiumPrompt, setShowPremiumPrompt] = useState(false); // Control the premium prompt visibility
 
   useEffect(() => {
@@ -48,14 +47,13 @@ const Dashboard = () => {
   };
 
   const handleVideoPlay = (index) => {
-    if (videoViews >= 3) {
-      // Show premium prompt if the user has already watched one video
+    if (index >= 3) {
+      // Show premium prompt if the video is beyond the first 3
       setShowPremiumPrompt(true);
       setPlayingVideo(null); // Stop the video from playing
     } else {
-      // Allow the video to play and increment the view count
+      // Allow the video to play
       setPlayingVideo(index);
-      setVideoViews((prev) => prev + 1);
     }
   };
 
@@ -249,19 +247,19 @@ const Dashboard = () => {
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-6 rounded-lg shadow-lg text-center">
             <h2 className="text-xl font-bold mb-4">Upgrade to Premium</h2>
-            <p className="mb-4">You've reached the limit for free videos. Upgrade to premium to continue watching.</p>
+            <p className="mb-4">You need a premium subscription to access this video.</p>
             <button
-  onClick={redirectToPremium}
-  className="bg-teal-600 text-white px-4 py-2 rounded-md mr-2 hover:bg-teal-700 transition-colors duration-300"
->
-  Get Premium
-</button>
-<button
-  onClick={closePremiumPrompt}
-  className="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition-colors duration-300"
->
-  Close
-</button>
+              onClick={redirectToPremium}
+              className="bg-teal-600 text-white px-4 py-2 rounded-md mr-2 hover:bg-teal-700 transition-colors duration-300"
+            >
+              Get Premium
+            </button>
+            <button
+              onClick={closePremiumPrompt}
+              className="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition-colors duration-300"
+            >
+              Close
+            </button>
           </div>
         </div>
       )}
