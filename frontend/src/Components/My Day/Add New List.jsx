@@ -121,8 +121,8 @@ function AddNewList() {
     setEditingListName(lists[index].name);
   };
 
-  const updateListName = async (index) => {
-    const listId = lists[index]._id;
+  const updateListName = async () => {
+    const listId = lists[editingListIndexindex]._id;
     try {
       const response = await fetch(`http://localhost:5000/api/lists/${listId}`, {
         method: 'PUT',
@@ -135,7 +135,7 @@ function AddNewList() {
       if (!response.ok) throw new Error('Error updating list name');
       const updatedList = await response.json();
       const updatedLists = [...lists];
-      updatedLists[index].name = editingListName;
+      updatedLists[editingListIndex] = updatedList;
       setLists(updatedLists);
       setEditingListIndex(null);
       setEditingListName('');
@@ -261,7 +261,7 @@ function AddNewList() {
                 onChange={(e) => setEditingListName(e.target.value)}
               />
               <button
-                onClick={() => updateListName(listIndex)}
+                onClick={updateListName}//
                 className="bg-green-600 text-white p-2"
               >
                 Save
