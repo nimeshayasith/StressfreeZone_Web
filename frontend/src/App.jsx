@@ -33,13 +33,16 @@ import StressLevel3 from './Components/Levelpages/StressLevel3';
 import StressLevel4 from './Components/Levelpages/StressLevel4';
 import PremierDetails from './Components/Home/Premiere';
 import SuccessPage from './Components/Home/SuccessPage';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 
-
+const stripePromise = loadStripe("pk_test_51QrCNfBlwh3mSIcZc5PgVLscB34U6jlrr5cYre0nf7uqt2gk7u39mpScoqYISliyBtguuKv5kOfTQQBwqEVUD5kW00EoQe92CY");
 
 
 function App() {
   return (
-    <Router>
+    <Elements stripe={stripePromise}>
+      <Router>
       <ScrollToTop /> 
       <Routes>
         <Route path="/" element={< Home/>} />
@@ -76,6 +79,7 @@ function App() {
         <Route path="/successpage" element={<SuccessPage/>}/>
       </Routes>
     </Router>
+    </Elements>
   );
 }
 
