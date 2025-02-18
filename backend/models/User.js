@@ -7,6 +7,10 @@ const userSchema = new mongoose.Schema({
   googleId: { type: String },
   resetPasswordToken: String,
   resetPasswordExpires: Date,
+  premium: {type: Boolean, default: false},
+  stripeCustomerId:String,
+  subscriptionId:String,
+  trialEnd:Date,
 },
 {
   timestamps: true,
