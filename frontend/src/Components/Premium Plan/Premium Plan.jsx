@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import "react-toastify/dist/ReactToastify.css";
 import logo_icon from "../../assets/logo1.svg";
-import Meditation_2 from "../../assets/Meditation_2.svg";
+
 
 export default function Premier() {
   const stripe = useStripe();
@@ -129,11 +129,18 @@ export default function Premier() {
 
             <button 
               type="submit" 
-              className="w-full bg-teal-500 text-white py-3 rounded mt-3 disabled:opacity-50"
+              className="w-full bg-teal-500 hover:bg-cyan-800 text-white py-3 rounded mt-3 disabled:opacity-50"
               disabled={processing || !stripe}
             >
               {processing ? "Processing..." : "Get Started"}
             </button>
+
+            <button
+      className="w-full bg-red-500 hover:bg-red-800 text-white py-3 rounded mt-3 disabled:opacity-50"
+      onClick={() => navigate(-1)} // Navigate to the previous page
+    >
+      Back
+    </button>
           </form>
         </div>
       </div>
@@ -163,9 +170,7 @@ export default function Premier() {
               <span className="text-gray-300">Customized Wellness Plans</span>
             </li>
           </ul>
-          <button className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-800 transition duration-300">
-            Start Free Trial
-          </button>
+        
         </div>
       </div>
     </div>
