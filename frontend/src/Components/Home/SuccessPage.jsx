@@ -30,7 +30,7 @@ export default function SuccessPage() {
           </p>
 
           {/* Back to Home Button */}
-          <Link to="/login">
+          <Link to="/dashboard">
             <button className="w-full p-4 bg-teal-500 text-white py-3 rounded mt-6">
               Back to Home
             </button>

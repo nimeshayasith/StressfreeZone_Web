@@ -15,29 +15,29 @@ import { Link } from 'react-router-dom';
 import FaBell from '../../assets/FaBell.png';
 import FaLock from '../../assets/FaLock.png';
 
+
 const Meditation = () => {
   const [videos, setVideos] = useState([]); // Store fetched videos
   const [playingVideo, setPlayingVideo] = useState(null); // Track the currently playing video
   const [expandedDescriptions, setExpandedDescriptions] = useState({});
   const [showPremiumPrompt, setShowPremiumPrompt] = useState(false); // Control the premium prompt visibility
 
-  useEffect(() => {
-    // Fetch videos from the database by category 'Meditation'
-    const fetchVideos = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/api/videos/Meditation'); // Replace with your backend URL
-        if (!response.ok) {
-          throw new Error('Failed to fetch videos');
-        }
-        const data = await response.json();
-        setVideos(data); // Update videos state with fetched data
-      } catch (error) {
-        console.error('Error fetching videos:', error);
+useEffect(() => {
+  const fetchVideos = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/videos/Meditation');
+      if (!response.ok) {
+        throw new Error('Failed to fetch videos');
       }
-    };
+      const data = await response.json();
+      setVideos(data);
+    } catch (error) {
+      console.error('Error fetching videos:', error);
+    }
+  };
 
-    fetchVideos();
-  }, []);
+  fetchVideos();
+}, []);
 
   const toggleDescription = (index) => {
     setExpandedDescriptions((prev) => ({
@@ -48,7 +48,7 @@ const Meditation = () => {
 
   const handleVideoPlay = (index) => {
     if (index >= 3) {
-      // Show premium prompt if the video is beyond the first 3
+     
       setShowPremiumPrompt(true);
       setPlayingVideo(null); // Stop the video from playing
     } else {
@@ -77,7 +77,7 @@ const Meditation = () => {
         <div className='flex'>
   <aside className=" fixed w-1/5 bg-gray-900 text-white p-9 rounded-md shadow-lg mt-5 ml-3 border-2 border-teal-400">
   <nav>
-    <ul className="space-y-6 lg:space-y-10"> {/* Adds gap between the list items */}
+    <ul className="space-y-6 lg:space-y-8"> {/* Adds gap between the list items */}
     <li>
       <div className='flex items-center space-x-3 lg:space-x-5'>
   <img src={dashboard} alt=""  />
@@ -87,6 +87,19 @@ const Meditation = () => {
     </Link> 
 </div>
 
+      </li>
+      <li>
+        <div className='flex items-center space-x-3 lg:space-x-5'>
+          <img src={dashboard} alt="" />
+          <Link to="/billing"
+            className="relative inline-block text-gray-400 hover:text-gray-300 transition duration-300 
+              before:content-[''] before:absolute before:left-0 before:bottom-0 
+              before:w-full before:h-1 before:bg-gray-300 before:scale-x-0 
+              before:origin-left before:transition-transform before:duration-300 
+              hover:before:scale-x-100"> 
+            Premier Plan
+          </Link> 
+        </div>
       </li>
       <li>
       <div className='flex items-center space-x-3 lg:space-x-5'>
@@ -191,50 +204,54 @@ const Meditation = () => {
           <main className="flex flex-col mb-5 mt-0 p-7 bg-black bg-opacity-20">
             <div className="min-h-screen w-full px-4 py-10 bg-gray-800 relative">
               <div className="grid grid-cols-3 gap-6 mt-10 max-md:grid-cols-1">
-                {videos.map((video, index) => (
-                  <div
-                    key={video._id}
-                    className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg"
-                  >
-                    {/* Conditional rendering for video and thumbnail */}
-                    {playingVideo === index ? (
-                      <video
-                        src={video.url}
-                        controls
-                        className="w-full h-auto rounded"
-                        onClick={() => setPlayingVideo(null)} // Stop playing on click
-                        autoPlay
-                      />
-                    ) : (
-                      <img
-                        src={relax} // Thumbnail image
-                        alt={`${video.title} Thumbnail`}
-                        className="w-full h-auto rounded cursor-pointer"
-                        onClick={() => handleVideoPlay(index)} // Play on click
-                      />
-                    )}
-                    <h3 className="text-white text-lg mt-3">{video.title}</h3>
-                    <p className="text-black text-sm font-light mb-2">
-                      {expandedDescriptions[index] || video.description.length <= 100
-                        ? video.description
-                        : `${video.description.slice(0, 100)}...`}
-                    </p>
-                    {video.description.length > 100 && (
-                      <button
-                        onClick={() => toggleDescription(index)}
-                        className="text-yellow-300 text-xs underline mt-1"
-                      >
-                        {expandedDescriptions[index] ? 'See Less' : 'See More'}
-                      </button>
-                    )}
-                    <div className="flex items-center justify-between w-full mt-4">
-                      <span className="text-gray-300 text-xs font-semibold">{video.time}</span>
-                      <div className="flex space-x-3">
-                        <img src={FaBell} alt="Alarm" className="w-4 h-4 cursor-pointer" />
-                        <img src={FaLock} alt="Lock" className="w-4 h-4 cursor-pointer" />
-                      </div>
-                    </div>
-                  </div>
+              {videos.map((video, index) => (
+  <div
+    key={video._id}
+    className="flex flex-col items-center bg-white bg-opacity-10 p-4 rounded-lg"
+  >
+    {/* Conditional rendering for video and thumbnail */}
+    {playingVideo === index ? (
+      <video
+        src={video.url}
+        controls
+        className="w-full h-auto rounded"
+        onClick={() => setPlayingVideo(null)}
+        autoPlay
+      />
+    ) : (
+      
+        <img
+          src={relax} // Thumbnail image
+          alt={`${video.title} Thumbnail`}
+          className="w-full h-auto rounded cursor-pointer"
+          onClick={() => handleVideoPlay(index)}
+        />
+        
+     
+    )}
+    <h3 className="text-white text-lg mt-3">{video.title}</h3>
+    <p className="text-black text-sm font-light mb-2">
+      {expandedDescriptions[index] || video.description.length <= 100
+        ? video.description
+        : `${video.description.slice(0, 100)}...`}
+    </p>
+    {video.description.length > 100 && (
+      <button
+        onClick={() => toggleDescription(index)}
+        className="text-yellow-300 text-xs underline mt-1"
+      >
+        {expandedDescriptions[index] ? 'See Less' : 'See More'}
+      </button>
+    )}
+    <div className="flex items-center justify-between w-full mt-4">
+      <span className="text-gray-300 text-xs font-semibold">{video.time}</span>
+      <div className="flex space-x-3">
+        <img src={FaBell} alt="Alarm" className="w-4 h-4 cursor-pointer" />
+        <img src={FaLock} alt="Lock" className="w-4 h-4 cursor-pointer" />
+      </div>
+    </div>
+  </div>
+
                 ))}
               </div>
             </div>
@@ -242,27 +259,28 @@ const Meditation = () => {
         </main>
       </div>
 
-      {/* Premium Prompt Modal */}
       {showPremiumPrompt && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg text-center">
-            <h2 className="text-xl font-bold mb-4">Upgrade to Premium</h2>
-            <p className="mb-4">You need a premium subscription to access this video.</p>
-            <button
-              onClick={redirectToPremium}
-              className="bg-teal-600 text-white px-4 py-2 rounded-md mr-2 hover:bg-teal-700 transition-colors duration-300"
-            >
-              Get Premium
-            </button>
-            <button
-              onClick={closePremiumPrompt}
-              className="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition-colors duration-300"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
+  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+    <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+      <h2 className="text-xl font-bold mb-4">Upgrade to Premium</h2>
+      <p className="mb-4">
+      You need a premium subscription to access this video.
+      </p>
+      <button
+        onClick={redirectToPremium}
+        className="bg-teal-600 text-white px-4 py-2 rounded-md mr-2 hover:bg-teal-700 transition-colors duration-300"
+      >
+        Get Premium
+      </button>
+      <button
+        onClick={closePremiumPrompt}
+        className="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition-colors duration-300"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+)}
     </div>
   );
 };
