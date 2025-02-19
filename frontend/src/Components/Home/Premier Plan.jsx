@@ -17,7 +17,7 @@ const Home = () => {
         <p>Do you want to start your 7-day free trial?</p>
         <button
           onClick={() => {
-            navigate("/billing");
+            navigate("/login");
             toast.dismiss();
           }}
           style={{ marginRight: '10px', padding: '10px 10px', background: 'green', color: 'white', border: 'none', borderRadius: '5px' }}
