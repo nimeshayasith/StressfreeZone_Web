@@ -5,25 +5,22 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const listRoutes = require('./routes/listRoutes');
 const adminRoutes = require('./routes/adminRoutes');
-
 const videoRoutes = require('./routes/videoRoutes');
 
 dotenv.config();
 
-connectDB()
+connectDB();
 
 const app = express()
 
 
 app.use(cors({
-
     origin: '*',
-
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials:true,
     allowedHeaders: 'Content-Type, Authorization'
 }))
-
+//mongodb+srv://kaveesha:owdkmw1234@cluster0.ozrec1x.mongodb.net/myDatabase?retryWrites=true&w=majority&appName=Cluster0
 
 app.use(express.json());
 
