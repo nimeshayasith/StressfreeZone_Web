@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react";
-import {useNavigate,Link} from "react-router-dom"
+import {useNavigate,Link , useLocation} from "react-router-dom"
 import YogaBackgroundArt from '../../assets/Yoga background art.png'
 import YogaGirlRightSide from '../../assets/Yoga girl right side.png'
 import logo_icon from '../../assets/logo1.svg'
@@ -27,6 +27,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function Home() {
   const navigate = useNavigate();
+  const location = useLocation();
 
 const handleClick = () => {
   navigate('/login');
@@ -118,30 +119,44 @@ const handleClick = () => {
    <div className="absolute -bottom-36 -left-44 w-56 h-56 bg-teal-600 rounded-full animate-pulse blur-2xl"></div>
    <div className="absolute -bottom-80 -left-44 w-56 h-56 bg-teal-600 rounded-full animate-pulse blur-2xl"></div>
  
-       <img src={YogaBackgroundArt} alt=""  className="object-cover absolute inset-0 size-full"/>
-   
-       <div className="relative text-4xl text-left font-bold text-white leading-[55px] max-md:max-w-full max-md:text-4xl max-md:leading-[49px]">
-            Empowering Minds <br />
-            to Achieve Stress-Free Living
-            <br /> and Well-Being
-          </div>
-          <div className="relative mt-9 text-lg text-left leading-8 text-neutral-400 max-md:max-w-full">
-            Our mission is to provide users with effective tools and resources
-            to manage stress and enhance their overall mental well-being.
-            Through guided relaxation techniques, personalized mindfulness
-            exercises, <br />
-          </div>
+   <img
+                src={YogaBackgroundArt}
+                alt=""
+                className="object-cover absolute inset-0 size-full"
+              />
+              <div className="relative text-3xl md:text-4xl text-left font-bold text-white leading-[55px] max-md:max-w-full max-md:text-4xl max-md:leading-[49px]">
+                Empowering Minds <br />
+                to Achieve Stress-Free Living
+                <br /> and Well-Being
+              </div>
+              <div className="relative mt-9 text-lg text-left leading-8 text-neutral-400 max-md:max-w-full">
+                Our mission is to provide users with effective tools and resources
+                to manage stress and enhance their overall mental well-being.
+                Through guided relaxation techniques, personalized mindfulness
+                exercises, <br />
+              </div>
        
-        <div className="flex gap-5 justify-between mt-12 ml-36 max-w-full text-lg font-medium tracking-wider text-white w-[360px] max-md:mt-10 max-md:ml-2.5">
-          <button 
-          onClick={handleClick} 
-          className="relative px-10 py-3 bg-teal-500 max-md:px-5">Try for free</button>
-          <Link to="/contactus"><button className="relative self-start px-3 py-5">Contact Us</button></Link>
-        </div>
-        </div>
+          <div className="flex gap-5 justify-between mt-12 ml-0 md:ml-36 max-w-full text-lg font-medium tracking-wider text-white w-[360px] max-md:mt-10 max-md:ml-2.5">
+                <button
+                  onClick={handleClick}
+                  className="relative px-10 py-3 bg-teal-500 max-md:px-5"
+                >
+                  Try for free
+                </button>
+                <Link to="/contactus">
+                  <button className="relative self-start px-3 py-5">
+                    Contact Us
+                  </button>
+                </Link>
+              </div>
+            </div>
 
-        <div className="w-1/2 text-right -mt-7">
-      <img src={YogaGirlRightSide} alt="" className="w-120 h-120 left-[100px] top-[100px] "/>
+        <div className="w-full md:w-1/2 text-right -mt-7">
+              <img
+                src={YogaGirlRightSide}
+                alt=""
+                className="w-full md:w-120 h-auto md:h-120"
+              />
       </div>
     </div>
       </div>
@@ -227,13 +242,14 @@ const handleClick = () => {
       ))}
 
       {/* Button to Show Relaxation Tip */}
+      
       <button
         className="fixed bottom-10 right-10 bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300"
         onClick={showRelaxationTip}
       >
         Get a Relaxation Tip
       </button>
-
+      
       {/* Toast Container */}
       <ToastContainer />
     </div>
