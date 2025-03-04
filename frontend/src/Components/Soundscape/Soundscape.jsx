@@ -19,6 +19,7 @@ import pic3 from '../../assets/pic3.png'*/
 import { Link } from 'react-router-dom';
 import FaBell from '../../assets/FaBell.png';
 import FaLock from '../../assets/FaLock.png' ; // Importing icons for alarm and lock buttons
+import premier from '../../assets/premiere.png'
 
 
 const Soundscape = () => {
@@ -80,7 +81,7 @@ const Soundscape = () => {
   <div className='flex'>
   <aside className=" fixed w-1/5 bg-gray-900 text-white p-9 rounded-md shadow-lg mt-4 ml-3 border-2 border-teal-400">
   <nav>
-    <ul className="space-y-6 lg:space-y-8"> {/* Adds gap between the list items */}
+    <ul className="space-y-6 lg:space-y-7"> {/* Adds gap between the list items */}
     <li>
       <div className='flex items-center space-x-3 lg:space-x-5'>
   <img src={dashboard} alt=""  />
@@ -94,7 +95,7 @@ const Soundscape = () => {
       
     <li>
       <div className='flex items-center space-x-3 lg:space-x-5'>
-        <img src={dashboard} alt="" />
+        <img src={premier} alt="" />
         <Link to="/billing"
           className="relative inline-block text-gray-400 hover:text-gray-300 transition duration-300 
             before:content-[''] before:absolute before:left-0 before:bottom-0 
