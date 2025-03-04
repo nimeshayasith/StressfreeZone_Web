@@ -64,7 +64,7 @@ const Dashboard = () => {
    <div className='flex'>
   <aside className="fixed  w-1/5 bg-gray-900 text-white p-9 rounded-md shadow-lg mt-5 ml-3 border-2 border-teal-400">
   <nav>
-    <ul className="space-y-6 lg:space-y-8"> {/* Adds gap between the list items */}
+    <ul className="space-y-6 lg:space-y-7"> {/* Adds gap between the list items */}
     <li>
       <div className='flex items-center space-x-3 lg:space-x-5  bg-teal-700 p-3 rounded-md'>
   <img src={dashboard} alt=""  />
