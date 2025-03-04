@@ -22,6 +22,7 @@ import video3 from '../../assets/video3.mp4';
 import pic1 from '../../assets/pic1.png';
 import pic2 from '../../assets/pic2.png';
 import pic3 from '../../assets/pic3.png'
+import premier from '../../assets/premiere.png'
 import { Link } from 'react-router-dom';
 import FaBell from '../../assets/FaBell.png';
 import FaLock from '../../assets/FaLock.png' ; // Importing icons for alarm and lock buttons
@@ -77,7 +78,7 @@ const Dashboard = () => {
       </li>
 <li>
   <div className='flex items-center space-x-3 lg:space-x-5'>
-    <img src={dashboard} alt="" />
+    <img src={premier} alt="" />
     <Link to="/billing"
       className="relative inline-block text-gray-400 hover:text-gray-300 transition duration-300 
         before:content-[''] before:absolute before:left-0 before:bottom-0 

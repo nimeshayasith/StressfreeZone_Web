@@ -11,6 +11,7 @@ import learnmore from '../../assets/stresschecker.png';
 import userprofile from '../../assets/userprofile.png';
 import stressfreezoneicon from '../../assets/stressfreezoneicon.png';
 import plus from '../../assets/plus.png';
+import premier from '../../assets/premiere.png'
 
 import Greeting from './Greeting';
 import AddNewList from './Add New List';
@@ -45,7 +46,7 @@ const MyDay = () => {
               </li>
 <li>
   <div className='flex items-center space-x-3 lg:space-x-5'>
-    <img src={dashboard} alt="" />
+    <img src={premier} alt="" />
     <Link to="/billing"
       className="relative inline-block text-gray-400 hover:text-gray-300 transition duration-300 
         before:content-[''] before:absolute before:left-0 before:bottom-0 
