@@ -57,7 +57,7 @@ router.post('/upload', upload.fields([{name: 'video'}, {name: 'thumbnail'}]), as
     }
 });
 
-// Get videos by category
+// Get videos by category.......
 router.get('/:category', async (req, res) => {
     try {
         const videos = await Video.find({ category: req.params.category });

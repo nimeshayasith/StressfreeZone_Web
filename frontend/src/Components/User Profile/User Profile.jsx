@@ -12,6 +12,7 @@ import userprofile from '../../assets/userprofile.jpg';
 import userprofileicon from '../../assets/userprofile.png';
 import stressfreezoneicon from '../../assets/stressfreezoneicon.png';
 import { Link , useNavigate} from 'react-router-dom';
+import premier from '../../assets/premiere.png'
 
 const UserProfile = () => {
   
@@ -35,7 +36,7 @@ const UserProfile = () => {
       localStorage.removeItem('token'); 
       localStorage.removeItem('user');
       localStorage.removeItem("lists");
-      navigate('/login');
+      navigate('/');
       console.log("User logged out!");
       
     };
@@ -58,7 +59,7 @@ const UserProfile = () => {
   <div className='flex'>
   <aside className=" fixed w-1/5 bg-gray-900 text-white p-9 rounded-md shadow-lg mt-5 ml-3 border-2 border-teal-400">
   <nav>
-    <ul className="space-y-6 lg:space-y-10"> {/* Adds gap between the list items */}
+    <ul className="space-y-6 lg:space-y-7"> {/* Adds gap between the list items */}
     <li>
       <div className='flex items-center space-x-3 lg:space-x-5'>
   <img src={dashboard} alt=""  />
@@ -69,6 +70,20 @@ const UserProfile = () => {
 </div>
 
       </li>
+      
+       <li>
+         <div className='flex items-center space-x-3 lg:space-x-5'>
+           <img src={premier} alt="" />
+           <Link to="/billing"
+             className="relative inline-block text-gray-400 hover:text-gray-300 transition duration-300 
+               before:content-[''] before:absolute before:left-0 before:bottom-0 
+               before:w-full before:h-1 before:bg-gray-300 before:scale-x-0 
+               before:origin-left before:transition-transform before:duration-300 
+               hover:before:scale-x-100"> 
+             Premier Plan
+           </Link> 
+         </div>
+       </li>
       <li>
       <div className='flex items-center space-x-3 lg:space-x-5'>
   <img src={stresschecker} alt="" />

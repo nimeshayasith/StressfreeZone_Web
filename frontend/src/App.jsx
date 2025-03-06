@@ -27,11 +27,22 @@ import VideoPlayer from './Components/VideoPlayer/VideoPlayer';
 import ResetPassword from './Components/Home/ResetPassword';
 import AdminHome from './Components/Home/AdminHome';
 import VideoGallery from './Components/Home/VideoGallery';
+import StressLevel1 from './Components/Levelpages/StressLevel1';
+import StressLevel2 from './Components/Levelpages/StressLevel2';
+import StressLevel3 from './Components/Levelpages/StressLevel3';
+import StressLevel4 from './Components/Levelpages/StressLevel4';
+import SuccessPage from './Components/Home/SuccessPage';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import BillingPage from './Components/Premium Plan/Premium Plan';
+
+const stripePromise = loadStripe("pk_test_51QrCNfBlwh3mSIcZc5PgVLscB34U6jlrr5cYre0nf7uqt2gk7u39mpScoqYISliyBtguuKv5kOfTQQBwqEVUD5kW00EoQe92CY");
 
 
 function App() {
   return (
-    <Router>
+    <Elements stripe={stripePromise}>
+      <Router>
       <ScrollToTop /> 
       <Routes>
         <Route path="/" element={< Home/>} />
@@ -59,10 +70,16 @@ function App() {
         <Route path="/video" element={<VideoPlayer />} />
         <Route path="/reset-password/:token" element={<ResetPassword />} />
         <Route path="/adminhome" element={<AdminHome />} />
-        <Route path="/videos" element={<VideoGallery/>}></Route>
-
+        <Route path="/videos" element={<VideoGallery/>}/>
+        <Route path="/levela" element={<StressLevel1/>}/>
+        <Route path="/levelb" element={<StressLevel2/>}/>
+        <Route path="/levelc" element={<StressLevel3/>}/>
+        <Route path="/leveld" element={<StressLevel4/>}/>
+        <Route path="/successpage" element={<SuccessPage/>}/>
+        <Route path="/billing" element={<BillingPage/>}/>
       </Routes>
     </Router>
+    </Elements>
   );
 }
 

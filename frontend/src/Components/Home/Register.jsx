@@ -7,6 +7,8 @@ import { auth, db } from "../../firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -17,26 +19,34 @@ export default function Register() {
 
     const handleRegister = async () => {
       try {
-        // Make a request to the backend registration API
-        const response = await axios.post("https://localhost:5000/api/auth/signup", {
-          name,
-          email,
-          password
-        });
+        // Check if fields are empty
+        if (!name || !email || !password) {
+          toast.warn("Please fill in all fields!", { position: "top-right" });
+          return;
+        }
+  
+        // Send registration request to backend
+        const response = await axios.post(
+          "http://localhost:5000/api/auth/signup",
+          { name, email, password }
+        );
   
         console.log("User registered:", response.data);
-        alert("User registered successfully!");
+        toast.success("User registered successfully!", { position: "top-right" });
   
-        // Navigate to login page after registration
-        navigate("/login");
+        // Delay navigation to allow toast message to be visible
+        setTimeout(() => {
+          navigate("/login");
+        }, 2000);
       } catch (error) {
         console.error("Error during registration:", error.response?.data || error.message);
-        alert("Error during registration");
+        toast.error(error.response?.data?.message || "Registration failed!", { position: "top-right" });
       }
-    };  
+    };
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center px-20 py-14 bg-gray-800">
+      <ToastContainer autoClose={2000} />
       <div className="flex flex-col self-start max-md:max-w-full w-1/2 ml-20">
         <div className="flex gap-2.5 mt-5 self-start font-semibold text-white">
       {/* Logo */}

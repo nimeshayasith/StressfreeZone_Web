@@ -10,21 +10,17 @@ import workrelief from '../../assets/workrelief.png';
 import learnmore from '../../assets/stresschecker.png';
 import userprofile from '../../assets/userprofile.png';
 import stressfreezoneicon from '../../assets/stressfreezoneicon.png';
-import video1 from '../../assets/video1.mp4';
-import video2 from '../../assets/video2.mp4';
-import video3 from '../../assets/video3.mp4';
-import pic1 from '../../assets/pic1.png';
-import pic2 from '../../assets/pic2.png';
-import pic3 from '../../assets/pic3.png'
 import { Link } from 'react-router-dom';
 import FaBell from '../../assets/FaBell.png';
 import FaLock from '../../assets/FaLock.png' ; // Importing icons for alarm and lock buttons
+import premier from '../../assets/premiere.png'
 
 
 const Movements = () => {
   const [videos, setVideos] = useState([]); // Store fetched videos
   const [playingVideo, setPlayingVideo] = useState(null); // Track the currently playing video
   const [expandedDescriptions, setExpandedDescriptions] = useState({});
+  const [showPremiumPrompt, setShowPremiumPrompt] = useState(false); // Control the premium prompt visibility
 
 
   useEffect(() => {
@@ -51,6 +47,24 @@ const Movements = () => {
       [index]: !prev[index],
     }));
   };
+  const handleVideoPlay = (index) => {
+    if (index >= 3) {
+      // Show premium prompt if the video is beyond the first 3
+      setShowPremiumPrompt(true);
+      setPlayingVideo(null); // Stop the video from playing
+    } else {
+      // Allow the video to play
+      setPlayingVideo(index);
+    }
+  };
+
+  const closePremiumPrompt = () => {
+    setShowPremiumPrompt(false);
+  };
+
+  const redirectToPremium = () => {
+    window.location.href = '/premierplan'; // Redirect to premium subscription page
+  };
 
   return (
     
@@ -62,7 +76,7 @@ const Movements = () => {
  <div className='flex'>
   <aside className=" fixed w-1/5 bg-gray-900 text-white p-9 rounded-md shadow-lg mt-5 ml-3 border-2 border-teal-400">
   <nav>
-    <ul className="space-y-6 lg:space-y-10"> {/* Adds gap between the list items */}
+    <ul className="space-y-6 lg:space-y-7"> {/* Adds gap between the list items */}
     <li>
       <div className='flex items-center space-x-3 lg:space-x-5'>
   <img src={dashboard} alt=""  />
@@ -73,6 +87,20 @@ const Movements = () => {
 </div>
 
       </li>
+      
+        <li>
+          <div className='flex items-center space-x-3 lg:space-x-5'>
+            <img src={premier} alt="" />
+            <Link to="/billing"
+              className="relative inline-block text-gray-400 hover:text-gray-300 transition duration-300 
+                before:content-[''] before:absolute before:left-0 before:bottom-0 
+                before:w-full before:h-1 before:bg-gray-300 before:scale-x-0 
+                before:origin-left before:transition-transform before:duration-300 
+                hover:before:scale-x-100"> 
+              Premier Plan
+            </Link> 
+          </div>
+        </li>
       <li>
       <div className='flex items-center space-x-3 lg:space-x-5'>
   <img src={stresschecker} alt="" />
@@ -198,7 +226,7 @@ const Movements = () => {
                 src={video.thumbnailUrl} // Thumbnail image
                 alt={`${video.title} Thumbnail`}
                 className="w-full h-auto rounded cursor-pointer"
-                onClick={() => setPlayingVideo(index)} // Play on click
+                onClick={() => handleVideoPlay(index)}// Play on click
               />
             )}
             <h3 className="text-white text-lg mt-3">{video.title}</h3>
@@ -229,6 +257,25 @@ const Movements = () => {
 </main>
         </main>
       </div>
+      {showPremiumPrompt && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+            <h2 className="text-xl font-bold mb-4">Upgrade to Premium</h2>
+            <p className="mb-4">You need a premium subscription to access this video.</p>
+            <button
+              onClick={redirectToPremium}
+              className="bg-teal-600 text-white px-4 py-2 rounded-md mr-2 hover:bg-teal-700 transition-colors duration-300"
+            >
+              Get Premium
+            </button>
+            <button
+              onClick={closePremiumPrompt}
+              className="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition-colors duration-300"
+            >
+              Close
+            </button>
+          </div>
+          </div>)}
     </div>
   );
 };

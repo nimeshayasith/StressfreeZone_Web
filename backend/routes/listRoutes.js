@@ -34,7 +34,7 @@ router.post('/posttask', protect, async (req, res) => {
 // Add a task to a specific list
 router.post('/:id/tasks', protect, async (req, res) => {
   try {
-    const { name } = req.body;
+    const { name, dueDate } = req.body; // Extract dueDate from request body
     const list = await List.findById(req.params.id);
 
     if (!list) {
@@ -45,7 +45,7 @@ router.post('/:id/tasks', protect, async (req, res) => {
       return res.status(401).json({ message: 'Not authorized' });
     }
 
-    list.tasks.push({ name, completed: false });
+    list.tasks.push({ name, completed: false, dueDate }); // Add dueDate to the task
     await list.save();
     res.json(list);
   } catch (error) {
@@ -156,6 +156,29 @@ router.put('/:id/tasks/:taskId/completion', protect, async(req,res)=>{
     res.json(list);
   }catch(error){
     res.status(500).json({message:'Error updating task completion status'});
+  }
+});
+
+// Update a task's due date
+router.put('/:id/tasks/:taskId/dueDate', protect, async (req, res) => {
+  try {
+    const { dueDate } = req.body;
+    const list = await List.findById(req.params.id);
+
+    if (!list) {
+      return res.status(404).json({ message: 'List not found' });
+    }
+
+    if (list.user.toString() !== req.user._id.toString()) {
+      return res.status(401).json({ message: 'Not authorized' });
+    }
+
+    const task = list.tasks.id(req.params.taskId);
+    task.dueDate = dueDate; // Update the task's dueDate
+    await list.save();
+    res.json(list);
+  } catch (error) {
+    res.status(500).json({ message: 'Error updating due date' });
   }
 });
 

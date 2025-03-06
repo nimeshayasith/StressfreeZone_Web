@@ -125,9 +125,11 @@ exports.resetPassword = async (req, res) => {
     res.status(200).json({ msg: 'Password reset successful' });
   } catch (err) {
     console.error(err.message);
+
     res.status(500).send('Server error');
   }
 };
+
 
 
 exports.loginWithGoogle = async (req, res) => {
@@ -160,5 +162,28 @@ exports.loginWithGoogle = async (req, res) => {
   } catch (error) {
     console.error('Error during Google Sign-In:', error);
     res.status(500).json({ message: 'Google Sign-In failed', error });
+  }
+};
+
+exports.updateUserDetails = async (req, res) => {
+  const { birthday, height, weight, gender } = req.body;
+
+  try {
+    const user = await User.findById(req.user.id);
+    if (!user) return res.status(404).json({ msg: 'User not found' });
+
+    // Update user details
+    if (birthday) user.birthday = birthday;
+    if (height) user.height = height;
+    if (weight) user.weight = weight;
+    if (gender) user.gender = gender;
+  
+
+    await user.save();
+
+    res.status(200).json({ msg: 'User details updated successfully', user });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
   }
 };
