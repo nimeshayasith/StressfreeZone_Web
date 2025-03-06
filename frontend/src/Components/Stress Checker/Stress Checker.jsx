@@ -50,6 +50,7 @@ const StressChecker = () => {
         4: 75,
         5: 100,
       };
+      
     
       const handleOptionSelect = (value) => {
         const updatedAnswers = [...answers];
