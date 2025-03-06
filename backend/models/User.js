@@ -5,12 +5,19 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String},
   googleId: { type: String },
+  birthday: { type: Date},
+  height: { type: Number},
+  weight: { type: Number},
+  gender:{ type: String
+  , enum: ['Male', 'Female'], 
+  default: 'Male'},
   resetPasswordToken: String,
   resetPasswordExpires: Date,
   premium: {type: Boolean, default: false},
   stripeCustomerId:String,
   subscriptionId:String,
   trialEnd:Date,
+
 },
 {
   timestamps: true,
