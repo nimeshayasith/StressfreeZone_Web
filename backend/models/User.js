@@ -13,6 +13,10 @@ const userSchema = new mongoose.Schema({
   default: 'Male'},
   resetPasswordToken: String,
   resetPasswordExpires: Date,
+  premium: {type: Boolean, default: false},
+  stripeCustomerId:String,
+  subscriptionId:String,
+  trialEnd:Date,
 
 },
 {
