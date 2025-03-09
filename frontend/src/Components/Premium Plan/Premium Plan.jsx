@@ -106,9 +106,7 @@ export default function Premier() {
 
         {/* Payment Information */}
         <div className="flex flex-col items-start text-base font-medium max-w-[426px] text-slate-400 mt-10">
-       
           <p className="mt-0 text-lg leading-loose">Review your payment details before proceeding.</p>
-
           <form onSubmit={handleSubmit} className="w-full">
             <label className="block mb-2">Cardholder Name</label>
             <input

@@ -87,7 +87,6 @@ const Movements = () => {
 </div>
 
       </li>
-      
         <li>
           <div className='flex items-center space-x-3 lg:space-x-5'>
             <img src={premier} alt="" />
