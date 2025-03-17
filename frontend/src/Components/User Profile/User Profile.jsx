@@ -38,10 +38,9 @@ const UserProfile = () => {
       localStorage.removeItem("lists");
       navigate('/');
       console.log("User logged out!");
-      
     };
     const handleDeleteAccount = () => {
-      if (window.confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
+      if (window.confirm("Are you sure you want to delete your account? This action can not be undone.")) {
         // Perform account deletion logic here
         console.log("Account deleted.");
       }
