@@ -13,6 +13,7 @@
     "@stripe/react-stripe-js": "^3.1.1",
     "@stripe/stripe-js": "^5.6.0",
     "axios": "^1.7.4",
+    "crypto-browserify": "^3.12.1",
     "firebase": "^10.13.0",
     "install": "^0.13.0",
     "react": "^18.3.1",
@@ -35,7 +36,7 @@
     "globals": "^15.9.0",
     "postcss": "^8.4.41",
     "tailwindcss": "^3.4.9",
-    "vite": "^5.4.14"
+    "vite": "^6.2.2"
   },
   "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
   "main": "eslint.config.js",
