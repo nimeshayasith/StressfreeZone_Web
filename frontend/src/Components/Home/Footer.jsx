@@ -27,17 +27,17 @@ const Footer = () => {
           {/* Column 2: Footer Links */}
           <div className="flex flex-col gap-5 pl-16 mt-24 w-1/3">
             <div className="flex flex-col gap-y-2">
-              <a href="/about" className="hover:underline">About Us</a>
-              <a href="/contact" className="hover:underline">Contact</a>
-              <a href="/privacy" className="hover:underline">Privacy Policy</a>
-              <a href="/terms" className="hover:underline">Terms of Service</a>
+{            /*  <a href="/aboutus" className="hover:underline">About Us</a>*/}
+              <a href="/contactus" className="hover:underline">Contact</a>
+              <a href="/privacypolicy" className="hover:underline">Privacy Policy</a>
+              <a href="/termsofconditions" className="hover:underline">Terms of Service</a>
             </div>
           </div>
   
           {/* Column 3: Social Media Icons */}
           <div className="flex flex-col gap-5 w-1/3">
             <div className="flex gap-4">
-            <div className="bg-slate-900 p-6 rounded-lg max-w-md mx-auto mt-10">
+            <div className="bg-slate-900 p-8 rounded-lg max-w-md mx-auto mt-10">
       <h2 className="text-xl font-bold mb-4">Subscribe to Our Newsletter</h2>
       <input
         type="email"
@@ -56,7 +56,7 @@ const Footer = () => {
         {/* Bottom Row for Copyright Statement and Social Media Icons */}
         <div className="flex justify-between items-center w-full max-w-6xl mt-5 mb-3">
           <div className="text-gray-400 text-center">
-            <p>&copy; 2024 Your Company Name. All Rights Reserved.</p>
+            <p>&copy; 2024 SFZ. All Rights Reserved.</p>
           </div>
           <div className="flex gap-4">
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
