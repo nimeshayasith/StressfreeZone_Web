@@ -8,15 +8,15 @@ router.post('/create-payment-intent', protect, async (req, res) => {
   try {
     const { amount } = req.body;
 
-    // Get user from middleware (req.user)
+    
     const user = await User.findById(req.user._id);
     if (!user) return res.status(404).json({ error: 'User not found' });
 
-    // Create Stripe payment intent
+    
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: amount * 100, // Convert to cents
+      amount: amount * 100, 
       currency: 'usd',
-      metadata: { userId: user._id.toString() }, // Track user in Stripe
+      metadata: { userId: user._id.toString() }, 
     });
 
     res.json({ clientSecret: paymentIntent.client_secret });
