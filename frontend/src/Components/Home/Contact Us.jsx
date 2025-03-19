@@ -20,23 +20,22 @@ const ContactUsPage = () => {
           {/* Left side - Description */}
           <div className="flex flex-col w-1/3 max-md:w-full">
             <div className="flex flex-col mt-0 max-md:mt-10">
-              <h2 className="self-start text-xl font-semibold tracking-widest text-fuchsia-300">
+              <h2 className="self-start text-xl font-semibold tracking-widest text-fuchsia-00">
                 OUR CONTACT
                 <hr/>
               </h2>
 
-              <h1 className="self-start mt-12 text-6xl leading-snug text-white max-md:mt-10 max-md:text-4xl">
+              <h1 className="self-start mt-12 text-6xl leading-snug text-slate-900 max-md:mt-10 max-md:text-4xl">
                 Get in touch with us
               </h1>
               <p className="mt-8 text-lg leading-8 text-neutral-400 max-md:mt-5">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-                tellus leo, vestibulum a ipsum sed, suscipit sodales ex.
+              We’d love to hear from you! Whether you have questions, feedback, or need support, our team is here to help. Reach out to us via email or the form below, and we’ll get back to you as soon as possible.
               </p>
             </div>
           </div>
 
           {/* Right side - Form */}
-          <div className="flex w-2/3 -mt-14 flex-col bg-black bg-opacity-40 border border-white px-10 py-20 max-md:w-full max-md:mt-10">
+          <div className="flex w-2/3 -mt-14 flex-col bg-black bg-opacity-40 border border-white rounded-md px-10 py-20 max-md:w-full max-md:mt-10">
             <form className="flex flex-col w-full text-2xl font-semibold text-white">
               {/* First Name and Last Name in the same row */}
               <div className="flex gap-9 w-full">
