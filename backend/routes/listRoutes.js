@@ -5,7 +5,7 @@ const List = require('../models/List');
 
 const router = express.Router();
 
-// Get all lists for a user
+
 router.get('/gettask', protect, async (req, res) => {
   try {
     const lists = await List.find({ user: req.user._id });
@@ -15,7 +15,7 @@ router.get('/gettask', protect, async (req, res) => {
   }
 });
 
-// Create a new list
+
 router.post('/posttask', protect, async (req, res) => {
   try {
     const { name } = req.body;
@@ -31,7 +31,7 @@ router.post('/posttask', protect, async (req, res) => {
   }
 });
 
-// Add a task to a specific list
+
 router.post('/:id/tasks', protect, async (req, res) => {
   try {
     const { name, dueDate } = req.body; // Extract dueDate from request body
@@ -136,26 +136,25 @@ router.put('/:id/tasks/:taskId', protect, async (req, res) => {
   }
 });
 
-
 //update a task's completion status
-router.put('/:id/tasks/:taskId/completion', protect, async(req,res)=>{
-  try{
-    const {completed} = req.body;
-    const list = await List.findById(req.params.id);
+router.put('/:listId/tasks/:taskId/toggle', protect, async (req, res) => {
+  try {
+    const { listId, taskId } = req.params;
 
-    if(!list){
-      return res.status(404).json({message:'List not found'});
-    }
+    const list = await List.findById(listId);
+    if (!list) return res.status(404).json({ message: 'List not found' });
 
-    if(!list.user.toString() !== req.user._id.toString()){
-      return res.status(401).json({message:'Not authorized'});
-    }
-    const task = list.tasks.id(req.params.taskId);
-    task.completed = completed;
+    const task = list.tasks.id(taskId);
+    if (!task) return res.status(404).json({ message: 'Task not found' });
+
+    // Toggle completion status
+    task.completed = !task.completed;
     await list.save();
-    res.json(list);
-  }catch(error){
-    res.status(500).json({message:'Error updating task completion status'});
+
+    res.status(200).json(list);
+  } catch (error) {
+    console.error('Error toggling task completion:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 });
 

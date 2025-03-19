@@ -79,11 +79,28 @@ function AddNewList() {
     }
   };
 
-  const toggleTaskCompletion = (listIndex, taskIndex) => {
-    const updatedLists = [...lists];
-    const task = updatedLists[listIndex].tasks[taskIndex];
-    task.completed = !task.completed;
-    setLists(updatedLists);
+  const toggleTaskCompletion = async (listIndex, taskIndex) => {
+    try {
+      const listId = lists[listIndex]._id;
+      const taskId = lists[listIndex].tasks[taskIndex]._id;
+  
+      const response = await fetch(`http://localhost:5000/api/lists/${listId}/tasks/${taskId}/toggle`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+  
+      if (!response.ok) throw new Error('Error updating task completion status');
+  
+      const updatedList = await response.json();
+      const updatedLists = [...lists];
+      updatedLists[listIndex] = updatedList;
+      setLists(updatedLists);
+    } catch (error) {
+      console.error('Error toggling task completion:', error);
+    }
   };
 
   const handleTaskInputChange = (index, value) => {
