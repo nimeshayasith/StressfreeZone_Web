@@ -76,6 +76,9 @@ const StressChecker = () => {
     const averageStress = (totalStress / answers.length);
 
     console.log(`Average Stress: ${averageStress}`);
+
+     // Save the stress level result in localStorage
+  localStorage.setItem('stressLevel', averageStress); 
         if (averageStress >= 0 && averageStress <= 10) {
           navigate("/levela"); // Redirect to low-stress page
         } else if (averageStress > 10 && averageStress <= 50) {

@@ -13,24 +13,14 @@ import userprofile from '../../assets/userprofile.png';
 import stressfreezoneicon from '../../assets/stressfreezoneicon.png';
 import quickrelaxationbackground from '../../assets/quickrelaxationbackground.png';
 import progresscircle from '../../assets/progresscircle.png'
-import chefhat from '../../assets/ChefHat.png'
-import drop from '../../assets/Drop.png'
-import personsimplerun from '../../assets/PersonSimpleRun.png'
-import video1 from '../../assets/video1.mp4';
-import video2 from '../../assets/video2.mp4';
-import video3 from '../../assets/video3.mp4';
-import pic1 from '../../assets/pic1.png';
-import pic2 from '../../assets/pic2.png';
-import pic3 from '../../assets/pic3.png'
 import premier from '../../assets/premiere.png'
 import { Link } from 'react-router-dom';
-import FaBell from '../../assets/FaBell.png';
-import FaLock from '../../assets/FaLock.png' ; // Importing icons for alarm and lock buttons
-import ScrollToTop from '../../Components/ScrollToTop';
+
 
 const Dashboard = () => {
-  const [playingVideo, setPlayingVideo] = useState(null); // Track the currently playing video
   const [user, setUser] = useState(null);
+  const [upcomingTasks, setUpcomingTasks] = useState([]);
+  const [stressLevel, setStressLevel] = useState(null);
       
     
       // Mock function to simulate fetching user data
@@ -45,15 +35,69 @@ const Dashboard = () => {
       }, []);
 
 
-  const videos = [
-    { src: video1, thumbnail:pic1, title: 'Morning Calm', desc: 'A peaceful start to your day', time: '10:30' },
-    { src: video2, thumbnail:pic2, title: 'Evening Relaxation', desc: 'Unwind and recharge', time: '8:45' },
-    { src: video3, thumbnail:pic3, title: 'Mindful Moments', desc: 'Practice mindfulness daily', time: '12:00' },
-    { src: video1, thumbnail:pic1, title: 'Morning Calm', desc: 'A peaceful start to your day', time: '10:30' },
-    { src: video2, thumbnail:pic2, title: 'Evening Relaxation', desc: 'Unwind and recharge', time: '8:45' },
-    { src: video3, thumbnail:pic3, title: 'Mindful Moments', desc: 'Practice mindfulness daily', time: '12:00' }
-  ];
+  // Fetch upcoming tasks with due dates
+  useEffect(() => {
+    fetchUpcomingTasks();
+  }, []);
 
+
+  // Fetch stress level result from localStorage
+  useEffect(() => {
+    const storedStressLevel = localStorage.getItem('stressLevel');
+    if (storedStressLevel) {
+      setStressLevel(parseFloat(storedStressLevel));
+    }
+  }, []);
+
+  const fetchUpcomingTasks = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/lists/gettask', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      if (!response.ok) throw new Error('Error fetching tasks');
+      const data = await response.json();
+
+      // Filter tasks with due dates and sort them
+      const tasksWithDueDates = data
+        .flatMap((list) =>
+          list.tasks
+            .filter((task) => task.dueDate) // Filter tasks with due dates
+            .map((task) => ({
+              ...task,
+              listName: list.name, // Include the list name
+            }))
+        )
+        .sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate)) // Sort by due date
+        .slice(0, 3); // Only take the first 3 tasks
+
+      setUpcomingTasks(tasksWithDueDates);
+    } catch (error) {
+      console.error('Error fetching upcoming tasks:', error);
+    }
+  };
+
+  // Format the due date
+  const formatDate = (dateString) => {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    });
+  };
+  // Determine stress level category
+  const getStressLevelCategory = (stressLevel) => {
+    if (stressLevel >= 0 && stressLevel <= 10) return "Low Stress";
+    if (stressLevel > 10 && stressLevel <= 50) return "Moderate Stress";
+    if (stressLevel > 50 && stressLevel <= 80) return "High Stress";
+    if (stressLevel > 80 && stressLevel <= 100) return "Very High Stress";
+    return "No Stress Data";
+  };
 
   return (
     
@@ -219,16 +263,22 @@ const Dashboard = () => {
       </div>
   </div>
 
-  {/* Right column */}
-  <div className="bg-black/30 p-4 shadow-md rounded-md border border-gray-300">
-  <h2 className="gap-10 self-stretch max-w-full text-2xl leading-none text-white w-[370px]">
-        Daily Progress
-      </h2>
-      <div className="flex gap-5 items-start p-3 mt-6 bg-white rounded-[122.619px]">
-      <img src={progresscircle} alt='' className="object-contain w-[181px]"
-      />
-    </div>
-  </div>
+   {/* Right Column: Stress Level Result */}
+   <div className="bg-black/30 p-4 shadow-md rounded-md border border-gray-300">
+              <h2 className="text-2xl text-white mb-4">Your Stress Level</h2>
+              {stressLevel !== null ? (
+                <div className="space-y-4">
+                  <p className="text-xl font-semibold">
+                    {getStressLevelCategory(stressLevel)}
+                  </p>
+                  <p className="text-gray-400">
+                    <span className="font-medium">Score:</span> {stressLevel.toFixed(2)}
+                  </p>
+                </div>
+              ) : (
+                <p className="text-gray-400">No stress level data available.</p>
+              )}
+            </div>
 
     {/* Left column */}
     <div className="bg-black/30 p-4 shadow-md rounded-md border border-gray-300">
@@ -252,43 +302,33 @@ const Dashboard = () => {
     </article> 
   </div>
 
-  {/* Right column */}
+  {/* Right Column: Upcoming Events */}
   <div className="bg-black/30 p-4 shadow-md rounded-md border border-gray-300">
-  <h2 className="gap-10 self-stretch max-w-full text-2xl leading-none text-white w-[370px]">
-        Quick Relaxation
-      </h2>
+              <h2 className="text-2xl text-white mb-4">Upcoming Events</h2>
+              {upcomingTasks.length > 0 ? (
+                <div className="space-y-4">
+                  {upcomingTasks.map((task, index) => (
+                    <div
+                      key={index}
+                      className="bg-gray-700 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                    >
+                      <h3 className="text-xl font-semibold">{task.name}</h3>
+                      <p className="text-gray-400">
+                        <span className="font-medium">Due:</span> {formatDate(task.dueDate)}
+                      </p>
+                      <p className="text-gray-400">
+                        <span className="font-medium">List:</span> {task.listName}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-gray-400">No upcoming events found.</p>
+              )}
+            </div>
 
-      <article className="flex relative text-white  flex-col mt-6 w-full rounded-xl min-h-[78px] max-md:max-w-full">
-      <div className="flex relative mb-4 bg-white/30 flex-col  items-start py-6 pr-20 pl-6 rounded-xl max-md:px-5 max-md:max-w-full">
-      <div className="flex items-center space-x-4">
-  <img src={personsimplerun} alt="Person running" />
-  <div>
-    <h3 className="text-sm">Morning Run</h3>
-    <p className="text-xs font-light">07.00 am   Park   45 min</p>
-  </div>
-</div>
-      </div>
-      <div className="flex relative mb-4 bg-white/30 flex-col  items-start py-6 pr-20 pl-6 rounded-xl max-md:px-5 max-md:max-w-full">
-      <div className="flex items-center space-x-4">
-  <img src={drop} alt="Person running" />
-  <div>
-    <h3 className="text-sm">1.5L of water daily</h3>
-    <p className="text-xs font-light">All day   Park </p>
-  </div>
-</div>
-      </div>
 
-      <div className="flex relative  bg-white/30 flex-col  items-start py-6 pr-20 pl-6 rounded-xl max-md:px-5 max-md:max-w-full">
-      <div className="flex items-center space-x-4">
-  <img src={chefhat} alt="Person running" />
-  <div>
-    <h3 className="text-sm">Cooking mealpreps for 3 days</h3>
-    <p className="text-xs font-light">11.00 am    Home   2h</p>
-  </div>
-</div>
-      </div>
-    </article>
-  </div>
+
 </div>
 
 
