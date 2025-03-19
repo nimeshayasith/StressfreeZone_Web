@@ -19,7 +19,7 @@ const ContactUsPage = () => {
         <div className="flex gap-14 mb-16 w-full max-w-[1200px] max-md:flex-col">
           {/* Left side - Description */}
           <div className="flex flex-col w-1/3 max-md:w-full">
-            <div className="flex flex-col mt-20 max-md:mt-10">
+            <div className="flex flex-col mt-0 max-md:mt-10">
               <h2 className="self-start text-xl font-semibold tracking-widest text-fuchsia-300">
                 OUR CONTACT
                 <hr/>
@@ -36,7 +36,7 @@ const ContactUsPage = () => {
           </div>
 
           {/* Right side - Form */}
-          <div className="flex w-2/3 flex-col bg-black bg-opacity-40 border border-white px-10 py-20 max-md:w-full max-md:mt-10">
+          <div className="flex w-2/3 -mt-14 flex-col bg-black bg-opacity-40 border border-white px-10 py-20 max-md:w-full max-md:mt-10">
             <form className="flex flex-col w-full text-2xl font-semibold text-white">
               {/* First Name and Last Name in the same row */}
               <div className="flex gap-9 w-full">

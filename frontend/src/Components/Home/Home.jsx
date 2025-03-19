@@ -246,7 +246,7 @@ const handleClick = () => {
       {/* Button to Show Relaxation Tip */}
       
       <button
-        className="fixed bottom-10 right-10 bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300"
+        className="fixed bottom-10 right-10 bg-slate-700 text-white py-2 px-4 rounded-full hover:bg-slate-900 transition duration-300"
         onClick={showRelaxationTip}
       >
         Get a Relaxation Tip
@@ -266,24 +266,23 @@ const handleClick = () => {
     <div className="flex relative flex-col items-center px-0 pt-24 pb-0 mt-6 w-full min-h-[1300px] max-md:py-24 max-md:mt-0 max-md:max-w-full">
     
   
-      <div className="mt-10 w-full max-md:max-w-full">
+      <div className="mt-10 w-full max-md:max-w-full mb-16">
       
-        <div className="flex gap-5 -mt-36 pr-16 max-md:flex-col">
+        <div className="flex gap-5 -mt-36 pr-16 max-md:flex-col ">
 
 
           <div className="flex flex-col w-[33%]  max-md:ml-0 max-md:w-full">
             <div className="flex relative flex-col px-6 pt-56 w-full min-h-[439px] rounded-[50px] max-md:px-5 max-md:pt-24 max-md:mt-10 max-md:max-w-full">
-            <img src={placeholder1} alt="placeholder" className="object-cover absolute inset-0 size-full rounded-3xl" />
-              <div className="flex relative z-10 flex-col items-center px-16 pt-9 pb-4 mt-16 font-medium text-white bg-slate-600 max-md:px-5 max-md:mt-10 rounded-xl">
-                <div className="text-4xl text-center leading-[50px] w-[329px]">
-                  Body and Mined Relaxation
+            <img src={placeholder1} alt="placeholder" className="object-cover absolute inset-0  size-full rounded-3xl" />
+              <div className="flex relative z-10 flex-col items-center px-16 pt-9 pb-2 mt-16 font-medium text-white bg-slate-600 max-md:px-5 max-md:mt-10 rounded-xl">
+                <div className="text-3xl text-center leading-[50px] w-[329px]">
+                  Body and Mind Relaxation
                 </div>
                 <div className="self-stretch mt-4 text-lg leading-8 text-center">
-                  You can choose the both Mind relaxation 
-                  techniques from here
+                A holistic approach to achieving mental and physical calmness through techniques like deep breathing, progressive muscle relaxation, and mindfulness. These practices help reduce stress, improve focus, and promote overall well-being.
                 </div>
                 <div className="mt-4 text-lg tracking-wider">
-                <button>Learn More</button>
+                <Link to ="login"><button >Learn More</button></Link>
                 <hr />
                 </div>
               </div>
@@ -299,14 +298,14 @@ const handleClick = () => {
               <img src={placeholder1}  alt="" className="rounded-3xl object-cover absolute inset-0 size-full"/>
      
               <div className="flex relative  rounded-xl z-10 flex-col items-center px-16 pt-9 pb-4 mt-16 font-medium text-white bg-slate-600 max-md:px-5 max-md:mt-10">
-                <div className="text-4xl text-center leading-[50px] w-[329px]">
+                <div className="text-3xl text-center leading-[50px] w-[329px]">
                   Schedule Reminder Service
                 </div>
                 <div className="self-stretch mt-4 text-lg leading-8 text-center">
-                You can schedule your exercises reminders through this... 
+                A tool or app that helps users manage their time effectively by sending reminders for tasks, appointments, or self-care activities. It ensures users stay organized and maintain a balanced routine, reducing stress and improving productivity. 
                 </div>
                 <div className="mt-4 text-lg tracking-wider">
-                <button>Learn More</button>
+                <Link to ="login"><button>Learn More</button></Link>
                 <hr />
                 </div>
               </div>
@@ -319,15 +318,15 @@ const handleClick = () => {
               />
        
               <div className="flex relative rounded-xl z-10 flex-col items-center px-16 pt-9 pb-4 mt-16 font-medium text-white bg-slate-600 max-md:px-5 max-md:mt-10">
-                <div className="text-4xl text-center leading-[50px] w-[329px]">
-                  Meditation and Soundscape
+                <div className="text-3xl text-center leading-[50px] w-[329px]">
+                  Meditation
                 </div>
                 <div className="self-stretch mt-4 text-lg leading-8 text-center">
-                You can learn more about the meditation and soundscape from here
+                A practice of training the mind to achieve a state of clarity, focus, and inner peace. Techniques include guided meditation, mindfulness, and visualization, which help reduce stress, improve emotional health, and increase self-awareness.
                  
                 </div>
-                <div className="mt-4 text-lg tracking-wider">
-                <button>Learn More</button>
+                <div className="mt-16 text-lg tracking-wider">
+                <Link to ="login"><button>Learn More</button></Link>
                 <hr />
                 </div>
               </div>
@@ -342,15 +341,14 @@ const handleClick = () => {
               />
        
               <div className="flex relative z-10 rounded-xl flex-col items-center px-16 pt-9 pb-4 mt-16 font-medium text-white bg-slate-600 max-md:px-5 max-md:mt-10">
-                <div className="text-4xl text-center leading-[50px] w-[329px]">
+                <div className="text-3xl text-center leading-[50px] w-[329px]">
                   Stress Detection System
                 </div>
                 <div className="self-stretch mt-4 text-lg leading-8 text-center">
-                  You can track your stress with this our product. This is new
-                  technological Feature
+                A user-friendly tool that collects information from the user through questionnaires or input about their daily habits, emotions, and physical symptoms. It provides personalized insights and recommendations to help users understand and manage their stress effectively.
                 </div>
                 <div className="mt-4 text-lg tracking-wider">
-                <button>Learn More</button>
+                <Link to ="login"><button>Learn More</button></Link>
                 <hr />
                 </div>
               </div>
@@ -367,15 +365,14 @@ const handleClick = () => {
               />
        
               <div className="flex relative z-10 rounded-xl flex-col items-center px-16 pt-9 pb-4 mt-16 font-medium text-white bg-slate-600 max-md:px-5 max-md:mt-10">
-                <div className="text-4xl text-center leading-[50px] w-[329px]">
-                  Stress Detection System
+                <div className="text-3xl text-center leading-[50px] w-[329px]">
+                  Soundscape
                 </div>
                 <div className="self-stretch mt-4 text-lg leading-8 text-center">
-                  You can track your stress with this our product. This is new
-                  technological Feature
+                Immersive audio environments designed to enhance relaxation, focus, or sleep. Soundscapes often include nature sounds (e.g., rain, ocean waves), white noise, or calming music to create a soothing atmosphere for meditation, work, or rest.
                 </div>
-                <div className="mt-4 text-lg tracking-wider">
-                <button>Learn More</button>
+                <div className="mt-20 text-lg tracking-wider">
+                <Link to ="login"><button>Learn More</button></Link>
                 <hr />
                 </div>
               </div>
@@ -388,14 +385,14 @@ const handleClick = () => {
               />
        
               <div className="flex relative z-10 flex-col rounded-xl items-center px-16 pt-9 pb-4 mt-16 font-medium text-white bg-slate-600 max-md:px-5 max-md:mt-10">
-                <div className="text-4xl text-center leading-[50px] w-[329px]">
+                <div className="text-3xl text-center leading-[50px] w-[329px]">
                   Educational Content
                 </div>
                 <div className="self-stretch mt-4 text-lg leading-8 text-center">
-                  You can learn how to control your stress level within some guidance articles
+                Informative and engaging resources designed to educate users about stress management, mental health, and relaxation techniques. This can include articles, videos, podcasts, or interactive modules to empower users with knowledge and practical tools.
                 </div>
                 <div className="mt-4 text-lg tracking-wider">
-                <button>Learn More</button>
+                <Link to ="login"><button>Learn More</button></Link>
                 <hr />
                 </div>
               </div>
@@ -427,25 +424,25 @@ const handleClick = () => {
       
       {/* Column 1 */}
       <div className="flex flex-col w-[33%] max-md:w-full">
-        <div className="flex flex-col px-6 pt-10 pb-10 min-h-[260px] bg-slate-950 text-center">
+        <div className="flex flex-col px-6 pt-10 pb-10 min-h-[260px] bg-slate-950 rounded-lg text-center">
           <p className="text-white text-2xl">Jane Froster <hr /></p>
-          <p className="text-white">“Lorem ipsum dolor sit amet, consec tetur adi piscing elit. Praesent tellus leo, vesti bulum a ipsum sed, suscipit sodales ex. Vestibulum id varius risus. Fusce tempus tellus sed.”</p>
+          <p className="text-white">This app is a lifesaver! The stress detection feature is so accurate, and the personalized recommendations have helped me manage my stress better. I love the soundscapes and meditation guides—they’re perfect for winding down after a long day. Highly recommend it to anyone looking for a little peace in their life!</p>
         </div>
       </div>
       
       {/* Column 2 */}
       <div className="flex flex-col w-[33%] max-md:w-full">
-        <div className="flex flex-col px-6 pt-10 pb-10 min-h-[260px] bg-slate-950 text-center">
-          <p className="text-white text-2xl">Ninna Aguero <hr /></p>
-          <p className="text-white">“Lorem ipsum dolor sit amet, consec tetur adi piscing elit. Praesent tellus leo, vesti bulum a ipsum sed, suscipit sodales ex. Vestibulum id varius risus. Fusce tempus tellus sed.”</p>
+        <div className="flex flex-col px-6 pt-10 pb-10 min-h-[260px] rounded-lg bg-slate-950 text-center">
+          <p className="text-white text-2xl">James P. <hr /></p>
+          <p className="text-white">"I’ve tried so many relaxation apps, but this one stands out. The schedule reminders keep me on track, and the educational content is super insightful. The stress level calculation is spot-on, and I feel more in control of my mental health now. Thank you for creating such a thoughtful app!"</p>
         </div>
       </div>
       
       {/* Column 3 */}
       <div className="flex flex-col w-[33%] max-md:w-full">
-        <div className="flex flex-col px-6 pt-10 pb-10 min-h-[260px] bg-slate-950 text-center">
+        <div className="flex flex-col px-6 pt-10 pb-10 min-h-[260px] rounded-lg bg-slate-950 text-center">
           <p className="text-white text-2xl">Samantha Krik <hr /></p>
-          <p className="text-white">“Lorem ipsum dolor sit amet, consec tetur adi piscing elit. Praesent tellus leo, vesti bulum a ipsum sed, suscipit sodales ex. Vestibulum id varius risus. Fusce tempus tellus sed.”</p>
+          <p className="text-white">"Absolutely love this app! The combination of soundscapes, meditation, and stress detection is genius. It’s like having a personal wellness coach in my pocket. The interface is clean and easy to use, and the tips are so practical. This app has become a daily essential for me!.Thank you so much"</p>
         </div>
       </div>
       
