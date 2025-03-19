@@ -95,39 +95,6 @@ export default function Home() {
         Your browser does not support the video tag.
       </video>
     </div>
-
-
-      <div className=" bg-slate-800">
-      <div className="flex flex-col items-center self-center px-10 py-10 ml-36 max-w-full mt-[36px] w-[1011px] max-md:px-5 max-md:mt-10">
-        <div className="text-5xl font-bold tracking-tight leading-tight text-center text-white max-md:max-w-full max-md:text-4xl">
-          Try our 100% free Plan 7 days
-        </div>
-        <div className="self-stretch px-12 py-8 mt-6 w-full rounded-xl border-blue-900 border-solid bg-zinc-800 border-[3px] max-md:px-5 max-md:max-w-full">
-          <div className="flex gap-5 max-md:flex-col">
-            <div className="flex flex-col w-9/12 max-md:ml-0 max-md:w-full">
-              <div className="self-stretch my-auto text-base leading-7 text-center text-white max-md:mt-10 max-md:max-w-full">
-                Get started with our free plan and make 10 lookups per month
-                absolutely free!
-                <br />
-                <br />
-              </div>
-            </div>
-            <div className="flex flex-col ml-5 w-3/12 max-md:ml-0 max-md:w-full">
-              <Link to='/register'><button className="grow gap-2.5 self-stretch px-9 py-2 w-full text-base font-bold text-center text-white bg-teal-500 rounded min-h-[40px] max-md:px-5 max-md:mt-10">
-                Signup for Free 
-              </button></Link>
-            </div>
-          </div>
-        </div>
-        <div className="mt-14 text-2xl leading-none text-center text-white max-md:mt-10">
-          Payment Methods
-        </div>
-       
-        <div className="mt-5 text-base leading-loose text-center text-white">
-          We accept Visa, Credit Card, Mastercard and Debit Card
-        </div>
-      </div>
-      </div>
     </div>
 </div>
 

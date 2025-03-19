@@ -7,13 +7,13 @@ import youtube from '../../assets/youtube_icon.png';
 
 const Footer = () => {
   return (
-    <footer className="bg-slate-700 text-white py-20 px-5">
-      <div className="container mx-auto flex flex-col items-center">
+    <footer className="bg-slate-700 text-white py-18 px-5">
+      <div className="container mx-auto flex flex-col items-center ">
         {/* Footer Content with Three Columns */}
         <header className="flex gap-10 items-start justify-between w-full max-w-6xl font-semibold text-white">
           
           {/* Column 1: Logo and Description */}
-          <div className="flex flex-col gap-5 mt-3 w-1/3 mr-10">
+          <div className="flex flex-col gap-5 mt-5 w-1/3 mr-10">
             <div className="flex items-center gap-3">
               <img src={logo_icon} alt="App Logo" className="w-16 h-16" />
               <div className="flex flex-col">
@@ -54,7 +54,7 @@ const Footer = () => {
         </header>
 
         {/* Bottom Row for Copyright Statement and Social Media Icons */}
-        <div className="flex justify-between items-center w-full max-w-6xl mt-10">
+        <div className="flex justify-between items-center w-full max-w-6xl mt-5 mb-3">
           <div className="text-gray-400 text-center">
             <p>&copy; 2024 Your Company Name. All Rights Reserved.</p>
           </div>
