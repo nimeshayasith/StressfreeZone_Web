@@ -61,24 +61,24 @@ const Dashboard = () => {
       if (!response.ok) throw new Error('Error fetching tasks');
       const data = await response.json();
 
-      // Filter tasks with due dates and sort them
-      const tasksWithDueDates = data
-        .flatMap((list) =>
-          list.tasks
-            .filter((task) => task.dueDate) // Filter tasks with due dates
-            .map((task) => ({
-              ...task,
-              listName: list.name, // Include the list name
-            }))
-        )
-        .sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate)) // Sort by due date
-        .slice(0, 3); // Only take the first 3 tasks
+     // Filter tasks with due dates and exclude completed tasks
+     const tasksWithDueDates = data
+     .flatMap((list) =>
+       list.tasks
+         .filter((task) => task.dueDate && !task.completed) // Filter tasks with due dates and not completed
+         .map((task) => ({
+           ...task,
+           listName: list.name, // Include the list name
+         }))
+     )
+     .sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate)) // Sort by due date
+     .slice(0, 3); // Only take the first 3 tasks
 
-      setUpcomingTasks(tasksWithDueDates);
-    } catch (error) {
-      console.error('Error fetching upcoming tasks:', error);
-    }
-  };
+   setUpcomingTasks(tasksWithDueDates);
+ } catch (error) {
+   console.error('Error fetching upcoming tasks:', error);
+ }
+};
 
   // Format the due date
   const formatDate = (dateString) => {
@@ -97,6 +97,15 @@ const Dashboard = () => {
     if (stressLevel > 50 && stressLevel <= 80) return "High Stress";
     if (stressLevel > 80 && stressLevel <= 100) return "Very High Stress";
     return "No Stress Data";
+  };
+
+  // Get color based on stress level
+  const getStressLevelColor = (stressLevel) => {
+    if (stressLevel >= 0 && stressLevel <= 10) return "bg-green-500"; // Green for low stress
+    if (stressLevel > 10 && stressLevel <= 50) return "bg-yellow-500"; // Yellow for moderate stress
+    if (stressLevel > 50 && stressLevel <= 80) return "bg-orange-500"; // Orange for high stress
+    if (stressLevel > 80 && stressLevel <= 100) return "bg-red-500"; // Red for very high stress
+    return "bg-gray-500"; // Default color
   };
 
   return (
@@ -241,39 +250,51 @@ const Dashboard = () => {
 
 
           <div className="grid grid-cols-2 grid-row-2 gap-4">
-  {/* Left column */}
-  <div className="bg-black/30 p-4 shadow-md rounded-md border border-gray-300">
-  <h2 className="gap-10 self-stretch max-w-full text-2xl leading-none text-white w-[370px]">
-        Quick Relaxation
-      </h2>
-      <div className="flex gap-5 max-md:flex-col">
-        <div className="flex flex-col w-[63%] max-md:ml-0 max-md:w-full">
-          <div className="flex flex-col mt-14 -mr-8 h-12 text-neutral-300 max-md:mt-10">
-            <h3 className="text-xl">Good vibes, good life</h3>
-            <p className="text-base">Positive thinking | </p>
-          min</div>
-        </div>
-        <div className="flex flex-col ml-5 w-[37%] max-md:ml-0 max-md:w-full">
-          <div className="flex flex-col">
-            <  img src={quickrelaxationbackground}
-              className="object-contain w-48 h-48 opacity-100"
-            />
-             </div>
-        </div>
-      </div>
-  </div>
+ 
 
-   {/* Right Column: Stress Level Result */}
-   <div className="bg-black/30 p-4 shadow-md rounded-md border border-gray-300">
-              <h2 className="text-2xl text-white mb-4">Your Stress Level</h2>
+  {/* Grid Layout */}
+ 
+            {/* Left Column: Quick Relaxation */}
+            <div className="bg-black/30 p-4 shadow-md rounded-md border border-gray-300">
+              <h2 className="text-2xl text-white mb-4">Quick Relaxation</h2>
+              <div className="flex gap-5 max-md:flex-col">
+                <div className="flex flex-col w-[63%] max-md:ml-0 max-md:w-full">
+                  <div className="flex flex-col mt-14 -mr-8 h-12 text-neutral-300 max-md:mt-10">
+                    <h3 className="text-xl">Good vibes, good life</h3>
+                    <p className="text-base">Positive thinking | </p>
+                  </div>
+                </div>
+                <div className="flex flex-col ml-5 w-[37%] max-md:ml-0 max-md:w-full">
+                  <img
+                    src={quickrelaxationbackground}
+                    className="object-contain w-48 h-48 opacity-100"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Stress Level Indicator */}
+            <div className="bg-black/30 p-4 shadow-md rounded-md border border-gray-300">
+              <h2 className="text-2xl text-white mb-4">Your Current State</h2>
               {stressLevel !== null ? (
                 <div className="space-y-4">
-                  <p className="text-xl font-semibold">
-                    {getStressLevelCategory(stressLevel)}
-                  </p>
-                  <p className="text-gray-400">
-                    <span className="font-medium">Score:</span> {stressLevel.toFixed(2)}
-                  </p>
+                  {/* Progress Bar */}
+                  <div className="w-full bg-gray-700 rounded-full h-4">
+                    <div
+                      className={`h-4 rounded-full ${getStressLevelColor(stressLevel)}`}
+                      style={{ width: `${stressLevel}%` }}
+                    ></div>
+                  </div>
+                  {/* Friendly Message */}
+                  <p className="text-xl text-slate-300 font-semibold text-center">
+  {stressLevel <= 10
+    ? "You're feeling calm and relaxed. Keep it up! 😊 Take a moment to enjoy this peaceful state. Practice gratitude or spend some time in nature to maintain this balance."
+    : stressLevel <= 50
+    ? "You're doing well, but take a moment to unwind. 🌿 Consider a short walk, deep breathing, or listening to calming music. Small breaks can make a big difference!"
+    : stressLevel <= 80
+    ? "You're feeling a bit stressed. Let's find ways to relax. 🧘‍♂️ Try a quick meditation session, journal your thoughts, or engage in a hobby you love. You've got this!"
+    : "You're feeling very stressed. Take a deep breath and relax. 🌸 It's okay to feel this way. Reach out to a friend, practice mindfulness, or take a break to recharge. You're stronger than you think!"}
+</p>
                 </div>
               ) : (
                 <p className="text-gray-400">No stress level data available.</p>
@@ -301,9 +322,8 @@ const Dashboard = () => {
       </div>
     </article> 
   </div>
-
-  {/* Right Column: Upcoming Events */}
-  <div className="bg-black/30 p-4 shadow-md rounded-md border border-gray-300">
+ {/* Right Column: Upcoming Events */}
+ <div className="bg-black/30 p-4 shadow-md rounded-md border border-gray-300">
               <h2 className="text-2xl text-white mb-4">Upcoming Events</h2>
               {upcomingTasks.length > 0 ? (
                 <div className="space-y-4">
@@ -326,10 +346,7 @@ const Dashboard = () => {
                 <p className="text-gray-400">No upcoming events found.</p>
               )}
             </div>
-
-
-
-</div>
+          </div>
 
 
 
