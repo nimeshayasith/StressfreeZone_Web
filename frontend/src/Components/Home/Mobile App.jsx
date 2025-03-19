@@ -5,6 +5,7 @@ import MobileAppRightSide from '../../assets/Mobile App Right Side.png'
 import TheGirl from '../../assets/Thegirl.png'
 import logo_icon from '../../assets/logo1.svg'
 import Footer from './Footer';
+import sampleVideo from '../../assets/sample-video.mp4';
 
 const MobileAppPage = () => {
     return (
@@ -12,7 +13,7 @@ const MobileAppPage = () => {
         
     <div className="min-h-screen w-full flex items-center justify-center px-2 py-8 bg-gray-800">
 
-      <div className="flex flex-col px-20 w-full max-md:px-5 max-md:max-w-full">
+      <div className="flex  px-20 w-full max-md:px-5 max-md:max-w-full">
       <div className="flex flex-wrap gap-10 text-lg leading-8 text-center text-white">
 
       <div className="flex flex-wrap gap-0 justify-between items-center self-start min-h-[51px] max-md:max-w-full">
@@ -54,15 +55,36 @@ const MobileAppPage = () => {
     <div className="relative mt-9 text-lg text-left leading-8 text-neutral-400 max-md:max-w-full">
     Our mission is to provide a seamless and user-friendly mobile app that empowers you to manage stress effectively. With tools designed to help you relax, track your stress levels, and practice mindfulness, we aim to make stress management accessible anytime, anywhere. Your journey to a balanced and stress-free life starts here. <br />
     </div>
-    <div className="flex gap-5 justify-between mt-12 ml-36 max-w-full text-lg font-medium tracking-wider text-white w-[360px] max-md:mt-10 max-md:ml-2.5">
-          <button className="relative px-10 py-3 bg-teal-500 max-md:px-5">View More</button>
-         
-        </div>
  
   </div>
 
   <div className="w-1/2 text-right -mt-11">
 <img src={MobileAppRightSide} alt="" className="w-120 h-120 left-[100px] top-[100px] "/>
+</div>
+
+<div className="flex items-center justify-center min-h-screen bg-gray-900 ml-60">
+  <div className="flex overflow-hidden flex-col justify-center items-center px-20 py-14 bg-gray-900 max-md:px-5 mb-16">
+    <section className="flex flex-col items-center text-center max-w-[677px]">
+      <h1 className="text-5xl font-bold text-violet-400 max-md:max-w-full max-md:text-4xl">
+      <span className="text-violet-400"></span>
+      </h1>
+      <p className="mt-5 mb-8 w-full text-lg text-white max-md:max-w-full">
+      Transform your daily routine  {" "}
+        <span className="text-violet-400">with our app</span> your pocket-sized companion for mindfulness, relaxation, and a happier, healthier you.
+      </p>
+    </section>
+    <video
+      className="w-full max-w-xl rounded-lg shadow-lg"
+      controls
+      autoPlay
+      loop
+      muted
+      style={{ width: "300px", height: "auto" }}
+    >
+      <source src={sampleVideo} type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
 </div>
 </div>
 </div>

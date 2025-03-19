@@ -114,6 +114,7 @@ const handleClick = () => {
           </div>
         
       </div>
+      <div></div>
         {/*<img src={CircleGaps} alt=""  className="object-cover absolute flex mr-28"/>*/}
    <div className="flex relative flex-col items-start self-center pt-20 pr-12 pb-0 mt-0 mb-28 ml-24 max-w-full min-h-[503px] rounded-[202px] w-[568px] max-md:pt-24 max-md:pr-5">
    <div className="absolute -bottom-36 -left-44 w-56 h-56 bg-teal-600 rounded-full animate-pulse blur-2xl"></div>
@@ -139,17 +140,18 @@ const handleClick = () => {
           <div className="flex gap-5 justify-between mt-12 ml-0 md:ml-36 max-w-full text-lg font-medium tracking-wider text-white w-[360px] max-md:mt-10 max-md:ml-2.5">
                 <button
                   onClick={handleClick}
-                  className="relative px-10 py-3 bg-teal-500 max-md:px-5"
+                  className="relative px-10 py-3 bg-teal-500 max-md:px-5 rounded-2xl"
                 >
                   Try for free
                 </button>
                 <Link to="/contactus">
-                  <button className="relative self-start px-3 py-5">
+                  <button className="relative self-start px-10 py-3 bg-slate-600 border-spacing-0 max-md:px-5 rounded-2xl">
                     Contact Us
                   </button>
                 </Link>
               </div>
             </div>
+            
 
         <div className="w-full md:w-1/2 text-right -mt-7">
               <img
