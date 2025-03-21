@@ -1,9 +1,8 @@
 const express = require('express');
 const { protect } = require('../middleware/authMiddleware'); 
-const List = require('../models/List'); 
-
-
+const List = require('../models/List');
 const router = express.Router();
+const userProfileSchema = require('../models/userProfile');
 
 // Get all lists for a user
 router.get('/gettask', protect, async (req, res) => {

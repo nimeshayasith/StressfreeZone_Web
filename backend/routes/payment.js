@@ -79,6 +79,7 @@ router.post('/create-subscription', protect, async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
 /*
 // Webhook handler for subscription events
 router.post('/webhook', express.raw({type: 'application/json'}), async (req, res) => {
