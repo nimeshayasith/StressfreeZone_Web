@@ -52,14 +52,21 @@ export default function Home() {
 
           <img src={YogaBackgroundArt} alt=""  className="object-cover absolute inset-0 size-full"/>
 
-          <div className="relative text-4xl text-left font-bold text-white leading-[55px] max-md:max-w-full max-md:text-4xl max-md:leading-[49px]">
+          <div className="relative text-4xl text-left font-bold text-white leading-[55px] max-md:max-w-full max-md:text-4xl max-md:leading-[49px] -mt-5">
           Take the First Step <br />
            Toward a Calmer You
           </div>
-          <div className="relative mt-9 text-lg text-left leading-8 text-neutral-400 max-md:max-w-full">
-          Your mental health is just as important as your physical health. By incorporating mind relaxation exercises into your daily routine, you can reduce stress, improve your mood, and enhance your overall quality of life.<br/>
 
-Explore Stress-Free Zone today and discover the tools and techniques to help you unwind, recharge, and thrive. <br/>Remember, a relaxed mind is a powerful mind. 🌿 </div>
+          <div className="relative mt-9 text-lg text-left leading-8 text-neutral-400 max-md:max-w-full">
+    Your mental health is just as important as your physical health. By incorporating mind relaxation exercises into your daily routine, you can reduce stress, improve your mood, and enhance your overall quality of life.<br/>
+
+    Explore Stress-Free Zone today and discover the tools and techniques to help you unwind, recharge, and thrive. Remember, a relaxed mind is a powerful mind. 🌿 
+  </div>
+
+  <p className="text-xl text-white font-semibold text-center mt-6">
+      Ready to embark on your journey to a calmer you? <br/>
+      Log in or sign up to unlock exclusive content and personalized relaxation techniques.
+    </p>
        
        
         </div>
