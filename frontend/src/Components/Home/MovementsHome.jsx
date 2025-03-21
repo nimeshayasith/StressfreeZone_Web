@@ -70,31 +70,6 @@ export default function Home() {
       </div>
     </div>
       </div>
-
-
-      <div className="flex overflow-hidden flex-col justify-center items-center px-20 py-14 bg-gray-900 max-md:px-5 mb-16">
-      <section className="flex flex-col items-center text-center max-w-[677px]">
-      <h1 className="text-5xl font-bold text-violet-600 max-md:max-w-full max-md:text-4xl">
-        30 days for <span className="text-violet-600">$55</span>
-      </h1>
-      <p className="mt-5 mb-8 w-full text-lg text-neutral-500 max-md:max-w-full">
-        All students are eligible to try our{" "}
-        <span className="text-violet-600">30 Day UNLIMITED</span> Intro Special
-        once. Take as many classes as you want, either in studio or online, for 30
-        days straight.
-      </p>
-    </section>
-      <video
-        className="w-full max-w-5xl rounded-lg shadow-lg"
-        controls
-        autoPlay
-        loop
-        muted
-      >
-        <source src={sampleVideo} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
     </div>
 </div>
 
