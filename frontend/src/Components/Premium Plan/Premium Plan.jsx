@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import "react-toastify/dist/ReactToastify.css";
 import logo_icon from "../../assets/logo1.svg";
+import { IoIosArrowBack } from "react-icons/io";
 
 
 export default function Premier() {
@@ -85,20 +86,27 @@ export default function Premier() {
     <div className="h-screen w-full flex items-center justify-center px-20 py-14 bg-gray-800 overflow-hidden">
       <ToastContainer />
       <div className="flex flex-col self-start max-md:max-w-full w-1/2 ml-20">
+      <div className="flex items-center w-full">
+            <IoIosArrowBack
+              className="text-white cursor-pointer text-xl mr-2"
+              onClick={() => navigate(-1)} // Navigate to the previous page
+            />
+          
+         
         {/* Logo and Heading */}
         <div className="flex gap-2.5 mt-5 self-start font-semibold text-white">
           <img src={logo_icon} alt="App Logo" className="w-16 h-16" />
           <div className="flex flex-col my-auto">
+            
             <h1 className="text-2xl font-bold">CALM MIND</h1>
             <p className="mt-1.5 text-base">STRESS FREE ZONE</p>
+          </div>
           </div>
         </div>
 
         {/* Payment Information */}
         <div className="flex flex-col items-start text-base font-medium max-w-[426px] text-slate-400 mt-10">
-          <h1 className="text-3xl font-semibold text-white">Payment Information</h1>
           <p className="mt-0 text-lg leading-loose">Review your payment details before proceeding.</p>
-
           <form onSubmit={handleSubmit} className="w-full">
             <label className="block mb-2">Cardholder Name</label>
             <input
@@ -135,12 +143,7 @@ export default function Premier() {
               {processing ? "Processing..." : "Get Started"}
             </button>
 
-            <button
-      className="w-full bg-red-500 hover:bg-red-800 text-white py-3 rounded mt-3 disabled:opacity-50"
-      onClick={() => navigate(-1)} // Navigate to the previous page
-    >
-      Back
-    </button>
+            
           </form>
         </div>
       </div>

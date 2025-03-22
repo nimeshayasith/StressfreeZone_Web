@@ -3,10 +3,11 @@ import {Link} from "react-router-dom"
 import YogaBackgroundArt from '../../assets/Yoga background art.png'
 import TheGirl from '../../assets/Thegirl.png'
 import logo_icon from '../../assets/logo1.svg'
+import Footer from './Footer';
 
 const AboutUsPage = () => {
     return (
-        
+        <div>
 <div className="min-h-screen w-full flex items-center justify-center px-2 py-8 bg-gray-800">
 
 <div className="flex flex-col px-20 w-full max-md:px-5 max-md:max-w-full">
@@ -42,21 +43,22 @@ const AboutUsPage = () => {
 
     <img src={YogaBackgroundArt} alt=""  className="object-cover absolute inset-0 size-full"/>
 
-    <div className="relative text-4xl text-left font-bold text-white leading-[55px] max-md:max-w-full max-md:text-4xl max-md:leading-[49px]">
-      Happiness is a decision, <br />
-      not adestination. 
-      <br /> Realize it with us!
+    <div className="relative text-3xl text-left font-bold text-white leading-[55px] max-md:max-w-full max-md:text-4xl max-md:leading-[49px]">
+    Welcome to Stress-Free Zone, <br />
+    <span style={{ paddingLeft: '30px' }}>your sanctuary for peace and </span> 
+      <br /> <span style={{ paddingLeft: '50px' }}> relaxation in a fast-paced world.</span>
+  
     </div>
     <div className="relative mt-9 text-lg text-left leading-8 text-neutral-400 max-md:max-w-full">
-      Our mission is to provide users with effective tools and resources
-      to manage stress and enhance their overall mental well-being.
-      Through guided relaxation techniques, personalized mindfulness
-      exercises, <br />
+ Our mission is simple: to help you unwind, recharge, and find balance in your daily life. Whether you're feeling overwhelmed, anxious, or just in need of a mental break, our web and mobile applications are designed to guide you toward a calmer, more centered state of mind.
+
+Through a combination of soothing audio experiences, mindfulness exercises, guided meditations, and stress-relief tools, we provide a personalized approach to help you manage stress effectively. Our platform is built with care, ensuring a seamless and intuitive experience for users of all ages and backgrounds.
+
+At Stress-Free Zone, we believe that everyone deserves a moment of tranquility. Join us on this journey to a healthier, happier, and more stress-free life.<br/>
+
+Take a deep breath,you’re in the right place. 🌿 <br />
     </div>
-    <div className="flex gap-5 justify-between mt-12 ml-36 max-w-full text-lg font-medium tracking-wider text-white w-[360px] max-md:mt-10 max-md:ml-2.5">
-          <button className="relative px-10 py-3 bg-teal-500 max-md:px-5">View More</button>
-         
-        </div>
+  
  
   </div>
 
@@ -64,10 +66,15 @@ const AboutUsPage = () => {
 <img src={TheGirl} alt="" className="w-120 h-120 left-[100px] top-[100px] "/>
 </div>
 </div>
+
 </div>
-            
+
         </div>
+        
         </div>
+        <Footer/>
+        </div>
+      
     );
 }
 

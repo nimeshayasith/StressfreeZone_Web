@@ -11,6 +11,7 @@ import learnmore from '../../assets/stresschecker.png';
 import userprofile from '../../assets/userprofile.png';
 import stressfreezoneicon from '../../assets/stressfreezoneicon.png';
 import { Link ,useNavigate} from 'react-router-dom';
+import premier from '../../assets/premiere.png';
 
 
 const StressChecker = () => {
@@ -21,38 +22,35 @@ const StressChecker = () => {
       const [answers, setAnswers] = useState([]);
     
       const questions = [
-        "I eat at least one hot, balanced meal a day",
-        "I get 7-9 hours of least at least four nights a week",
-        "I exercise to the point of perspiration at least twice a week",
-        "I have a network of friends, family and acquaintances on whom I can rely",
-        "I am able to speak openly about my feelings when angry, stressed or worried",
-        "I do something for fun at least once a week",
-        "I take quiet time for myself during the day",
-        "My income covers my daily living costs",
-        "I am calm when I am kept waiting/stuck in traffic/late for an appointment",
-        "I feel organised and in control",
-        "I recognise when I am not coping well under pressure and I know how to deal with it",
-        "On average how many cigarettes do you smoke per day?",
-        "On average how often do you drink alcohol per week?",
-        "On average I drink fewer than two cups of coffee (or tea or cola) a day",
+        "I feel overwhelmed by my responsibilities at work or home.",
+        "I find it difficult to relax or unwind after a long day.",
+        "I often feel irritable or impatient with people around me.",
+        "I struggle to fall asleep or stay asleep due to stress.",
+        "I feel physically tired even after a full night’s sleep.",
+        "I have trouble concentrating on tasks because of stress.",
+        "I feel supported by my friends or family when I’m stressed.",
+        "I take breaks during the day to manage my stress levels.",
+        "I feel anxious or worried about things beyond my control.",
+        "I use healthy coping mechanisms (e.g., exercise, meditation) to manage stress."
         
       ];
     
       const options = [
-        { value: 1, label: "Very Good" },
-        { value: 2, label: "Good" },
-        { value: 3, label: "Satisfactory" },
-        { value: 4, label: "Bad" },
-        { value: 5, label: "Very Bad" },
+        { value: 1, label: "Yes" },
+        { value: 2, label: "Sometimes Yes" },
+        { value: 3, label: "Maybe" },
+        { value: 4, label: "Sometimes No" },
+        { value: 5, label: "No" }
       ];
     
       const stressMapping = {
         1: 0,
         2: 25,
         3: 50,
-        4: 75,
+        4: 75, 
         5: 100,
       };
+      
     
       const handleOptionSelect = (value) => {
         const updatedAnswers = [...answers];
@@ -78,6 +76,9 @@ const StressChecker = () => {
     const averageStress = (totalStress / answers.length);
 
     console.log(`Average Stress: ${averageStress}`);
+
+     // Save the stress level result in localStorage
+  localStorage.setItem('stressLevel', averageStress); 
         if (averageStress >= 0 && averageStress <= 10) {
           navigate("/levela"); // Redirect to low-stress page
         } else if (averageStress > 10 && averageStress <= 50) {
@@ -98,7 +99,7 @@ const StressChecker = () => {
    <div className='flex'>
   <aside className=" fixed w-1/5 bg-gray-900 text-white p-9 rounded-md shadow-lg mt-5 ml-3 border-2 border-teal-400">
   <nav>
-    <ul className="space-y-6 lg:space-y-10"> {/* Adds gap between the list items */}
+    <ul className="space-y-6 lg:space-y-7"> {/* Adds gap between the list items */}
       <li>
       <div className='flex items-center space-x-3 lg:space-x-5'>
   <img src={dashboard} alt=""  />
@@ -112,7 +113,7 @@ const StressChecker = () => {
 
             <li>
               <div className='flex items-center space-x-3 lg:space-x-5'>
-                <img src={dashboard} alt="" />
+                <img src={premier} alt="" />
                 <Link to="/billing"
                   className="relative inline-block text-gray-400 hover:text-gray-300 transition duration-300 
                     before:content-[''] before:absolute before:left-0 before:bottom-0 

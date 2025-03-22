@@ -12,31 +12,36 @@ const Home = () => {
   const navigate = useNavigate();
 
   const handleTrialStart = () => {
+    
+
     toast.info(
       <div>
         <p>Do you want to start your 7-day free trial?</p>
-        <button
-          onClick={() => {
-            navigate("/login");
-            toast.dismiss();
-          }}
-          style={{ marginRight: '10px', padding: '10px 10px', background: 'green', color: 'white', border: 'none', borderRadius: '5px' }}
-        >
-          Yes
-        </button>
-        <button
-          onClick={() => toast.dismiss()}
-          style={{ padding: '5px 10px', background: 'red', color: 'white', border: 'none', borderRadius: '5px' }}
-        >
-          No
-        </button>
+        <div className="flex space-x-2">
+          <button
+            onClick={() => {
+              navigate("/login");
+              toast.dismiss();
+            }}
+            className="px-4 py-2 bg-green-500 hover:bg-green-700 text-white rounded-lg"
+          >
+            Yes
+          </button>
+          <button
+            onClick={() => toast.dismiss()}
+            className="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-lg"
+          >
+            No
+          </button>
+        </div>
       </div>,
       {
-        position: "top-center",
+        position: "top-right",
         autoClose: false,
         closeOnClick: false,
         pauseOnHover: true,
         draggable: true,
+        closeButton: false,  // Hide the default close button
       }
     );
   };
@@ -94,25 +99,18 @@ const Home = () => {
               <p className="mt-12 text-base leading-7 text-center text-white max-md:mt-10">
                 Pricing plans for businesses at every stage of growth. <br /> Try our risk-free for 14 days. No credit card required.
               </p>
-              <div className="flex mt-24 max-w-full text-xl leading-normal text-center w-[612px] max-md:mt-10">
+              <div className="flex mt-20 max-w-full text-xl leading-normal text-center w-[612px] max-md:mt-10">
                 <button className="flex-auto gap-3.5 self-stretch px-24 py-4 text-white whitespace-nowrap bg-emerald-400 rounded-md min-h-[66px] max-md:px-5">
                   Monthly
                 </button>
-                <div className="flex flex-auto gap-4 items-center py-4 pr-14 pl-24 text-emerald-400 bg-white rounded-md border border-emerald-400 border-solid min-h-[66px] max-md:px-5">
-                  <span className="self-stretch my-auto">Yearly</span>
-                  <span className="gap-3.5 self-stretch pr-2.5 pl-2.5 my-auto h-8 bg-amber-200 rounded-md w-[110px]">
-                    Save 20%
-                  </span>
-                </div>
               </div>
-              <div className="self-stretch mt-24 max-md:mt-10 max-md:max-w-full">
-                <div className="grid grid-cols-3 gap-4 p-5">
-                  <div className="bg-white h-auto rounded">
+              <div className="flex items-center h-screen -mt-16">
+                  <div className="bg-white h-auto rounded w-96 ">
                     <div className="p-4">
                       <button className="bg-gray-200 rounded p-2 font-semibold">Monthly</button>
                       <div className="p-2 mb-1 text-blue-300">For all individuals and starters who want to start with domaining.</div>
                       <hr />
-                      <h1 className="font-bold text-5xl mt-2 p-2">$5</h1>
+                      <h1 className="font-bold text-4xl mt-2 p-2">1500 LKR</h1>
                       <p className="text-blue-300 font-semibold mb-2 p-2">Per member, Per month</p>
                       <hr />
                       <ul className="list-disc list-inside text-md text-blue-300 p-2 mb-2">
@@ -132,36 +130,6 @@ const Home = () => {
                       <p className="text-sm items-center text-zinc-500 mt-2">No credit card required</p>
                     </div>
                   </div>
-
-                  <div className="bg-white h-auto rounded">
-                    <div className="p-4">
-                      <button className="bg-gray-200 rounded p-2 font-semibold">Unlimited</button>
-                      <div className="p-2 mb-1 text-blue-300">For all individuals and starters who want to start with domaining.</div>
-                      <hr />
-                      <h1 className="font-bold text-5xl p-2 mt-2">$150</h1>
-                      <p className="text-blue-300 font-semibold mb-2 p-2">Per member, Per month</p>
-                      <hr />
-                      <ul className="list-disc list-inside text-md text-blue-300 p-2 mb-2">
-                        <li>Access to All features</li>
-                        <li>1k lookups</li>
-                        <li>30K API credits</li>
-                        <li>10 Monitoring Quota</li>
-                        <li>60 minutes Monitoring interval</li>
-                        <li>20% discount on backorders</li>
-                        <li>Domain Name Appraisal</li>
-                        <li>1p Monitoring</li>
-                        <li>Backlink Monitoring</li>
-                      </ul>
-                      <button
-                        className="bg-orange-200 p-2 rounded font-semibold mt-3"
-                        onClick={handleTrialStart}
-                      >
-                        Start free 7-day trial
-                      </button>
-                      <p className="text-sm items-center text-zinc-500 mt-y">No credit card required</p>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -171,7 +139,7 @@ const Home = () => {
               <div className="text-5xl font-bold tracking-tight leading-tight text-center text-white max-md:max-w-full max-md:text-4xl">
                 Try our 100% free Plan 7 days
               </div>
-              <div className="self-stretch px-12 py-8 mt-6 w-full rounded-xl border-blue-900 border-solid bg-zinc-800 border-[3px] max-md:px-5 max-md:max-w-full">
+              <div className="self-stretch px-12 py-8 mt-6 w-full rounded-xl border-blue-900 border-solid bg-zinc-900 border-[3px] max-md:px-5 max-md:max-w-full">
                 <div className="flex gap-5 max-md:flex-col">
                   <div className="flex flex-col w-9/12 max-md:ml-0 max-md:w-full">
                     <div className="self-stretch my-auto text-base leading-7 text-center text-white max-md:mt-10 max-md:max-w-full">

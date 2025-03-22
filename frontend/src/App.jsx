@@ -35,6 +35,8 @@ import SuccessPage from './Components/Home/SuccessPage';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import BillingPage from './Components/Premium Plan/Premium Plan';
+import PrivacyPolicy from './Components/Home/Privacy Policy';
+import TermsofConditions from './Components/Home/Terms Of Conditions';
 
 const stripePromise = loadStripe("pk_test_51QrCNfBlwh3mSIcZc5PgVLscB34U6jlrr5cYre0nf7uqt2gk7u39mpScoqYISliyBtguuKv5kOfTQQBwqEVUD5kW00EoQe92CY");
 
@@ -77,6 +79,8 @@ function App() {
         <Route path="/leveld" element={<StressLevel4/>}/>
         <Route path="/successpage" element={<SuccessPage/>}/>
         <Route path="/billing" element={<BillingPage/>}/>
+        <Route path="/privacypolicy" element={<PrivacyPolicy/>}/>
+        <Route path="/termsofconditions" element={<TermsofConditions/>}/>
       </Routes>
     </Router>
     </Elements>

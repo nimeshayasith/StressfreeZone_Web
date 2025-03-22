@@ -4,6 +4,7 @@ const Greeting = () => {
   const [greeting, setGreeting] = useState("");
   const [formattedDate, setFormattedDate] = useState("");
 
+  
   useEffect(() => {
     // Get the current date and time
     const currentDate = new Date();
