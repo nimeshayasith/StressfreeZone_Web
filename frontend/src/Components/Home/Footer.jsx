@@ -27,10 +27,10 @@ const Footer = () => {
           {/* Column 2: Footer Links */}
           <div className="flex flex-col gap-5 pl-16 mt-24 w-1/3">
             <div className="flex flex-col gap-y-2">
-              <a href="/about" className="hover:underline">About Us</a>
-              <a href="/contact" className="hover:underline">Contact</a>
-              <a href="/privacy" className="hover:underline">Privacy Policy</a>
-              <a href="/terms" className="hover:underline">Terms of Service</a>
+              <a href="/aboutus" className="hover:underline">About Us</a>
+              <a href="/contactus" className="hover:underline">Contact</a>
+              <a href="/mobileapp" className="hover:underline">Mobile App</a>
+              <a href="/" className="hover:underline">Home</a>
             </div>
           </div>
   
