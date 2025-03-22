@@ -1,20 +1,33 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import Footer from './Footer';
-
-const InputField = ({ label, placeholder, type = 'text' }) => (
-  <div className="mt-4 w-full">
-    <label className="text-xl font-semibold text-white">{label}</label>
-    <input
-      type={type}
-      placeholder={placeholder}
-      className="self-stretch px-2 py-3 text-lg leading-8 bg-white text-neutral-400 w-full"
-    />
-  </div>
-);
+import emailjs from '@emailjs/browser';
+import { ToastContainer, toast } from "react-toastify";
 
 const ContactUsPage = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm('service_gyn8v33', 'template_b4620ba', form.current, {
+        publicKey: '2qJtg-gH2flJJf0Lz',
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+          toast.success("Message sent successfully!", { position: "top-right" });
+          form.current.reset();
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+          toast.error(error.response?.data?.message || "Message sending failed!", { position: "top-right" });
+        },
+      );
+  };
   return (
     <div className="flex flex-col min-h-screen justify-between bg-slate-700">
+      <ToastContainer autoClose={2000} />
       <div className="flex flex-col items-center justify-center px-20 py-32 max-md:px-5 max-md:py-24">
         <div className="flex gap-14 mb-16 w-full max-w-[1200px] max-md:flex-col">
           {/* Left side - Description */}
@@ -29,32 +42,26 @@ const ContactUsPage = () => {
                 Get in touch with us
               </h1>
               <p className="mt-8 text-lg leading-8 text-neutral-400 max-md:mt-5">
+
               We’d love to hear from you! Whether you have questions, feedback, or need support, our team is here to help. Reach out to us via email or the form below, and we’ll get back to you as soon as possible.
+
               </p>
             </div>
           </div>
 
           {/* Right side - Form */}
-          <div className="flex w-2/3 -mt-14 flex-col bg-black bg-opacity-40 border border-white rounded-md px-10 py-20 max-md:w-full max-md:mt-10">
-            <form className="flex flex-col w-full text-2xl font-semibold text-white">
-              {/* First Name and Last Name in the same row */}
-              <div className="flex gap-9 w-full">
-                <InputField label="First Name" placeholder="First Name" />
-                <InputField label="Last Name" placeholder="Last Name" />
-              </div>
-              {/* Email and Message in separate rows */}
-              <div>
-                <InputField label="Email" placeholder="Your Email" type="email" />
-                <InputField
-                  label="Message"
-                  placeholder="Type Your Message Here"
-                  type="text"
-                />
-              </div>
 
-              <button className="px-10 py-5 mt-8 text-lg font-medium tracking-wider bg-teal-500 w-[278px]">
-                Send Message
-              </button>
+          <div className="flex w-2/3 flex-col bg-black bg-opacity-40 border border-white px-10 py-20 max-md:w-full max-md:mt-10">
+          
+            <form ref={form} onSubmit={sendEmail} className="flex flex-col w-full text-2xl font-semibold text-white">
+              <label>Name</label>
+              <input type="text" name="user_name" className="p-2 h-10 text-xl text-black rounded-sm"/>
+              <label>Email</label>
+              <input type="email" name="user_email" className="p-2 h-10 text-xl text-black rounded-sm"/>
+              <label>Message</label>
+              <textarea name="message" className="p-2 h-40 text-xl text-black rounded-sm"/>
+              <input type="submit" value="Send" className="px-10 py-5 mt-8 text-lg font-medium tracking-wider bg-teal-500 w-[278px] rounded-md"/>
+
             </form>
           </div>
         </div>
