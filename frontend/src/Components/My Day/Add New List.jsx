@@ -139,7 +139,7 @@ function AddNewList() {
   };
 
   const updateListName = async () => {
-    const listId = lists[editingListIndexindex]._id;
+    const listId = lists[editingListIndex]?._id;
     try {
       const response = await fetch(`http://localhost:5000/api/lists/${listId}`, {
         method: 'PUT',
