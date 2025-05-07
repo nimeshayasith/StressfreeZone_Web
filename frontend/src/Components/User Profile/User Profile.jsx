@@ -12,7 +12,8 @@ import userprofile from '../../assets/userprofile.jpg';
 import userprofileicon from '../../assets/userprofile.png';
 import stressfreezoneicon from '../../assets/stressfreezoneicon.png';
 import { Link , useNavigate} from 'react-router-dom';
-import premier from '../../assets/premiere.png'
+import premier from '../../assets/premiere.png';
+import axios from "axios";
 
 const UserProfile = () => {
   
@@ -36,13 +37,24 @@ const UserProfile = () => {
       localStorage.removeItem('token'); 
       localStorage.removeItem('user');
       localStorage.removeItem("lists");
-      navigate('/');
+      navigate('/login');
       console.log("User logged out!");
     };
-    const handleDeleteAccount = () => {
+    const handleDeleteAccount = async() => {
       if (window.confirm("Are you sure you want to delete your account? This action can not be undone.")) {
-        // Perform account deletion logic here
-        console.log("Account deleted.");
+        try {
+          const token = localStorage.getItem('token');
+          await axios.delete('http://localhost:5000/api/deleteacc/delete', {
+            headers: { Authorization: `Bearer ${token}` }
+          });
+  
+          alert('Account deleted successfully');
+          localStorage.removeItem('token');
+          navigate('/')
+        } catch (error) {
+          alert('Failed to delete account');
+          console.error(error);
+        }
       }
     };
     

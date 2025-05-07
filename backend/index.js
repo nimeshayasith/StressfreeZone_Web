@@ -6,6 +6,7 @@ const cors = require('cors');
 const listRoutes = require('./routes/listRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const paymentRoutes = require('./routes/payment');
+const deleteRoute = require('./routes/deleteRoute')
 
 const videoRoutes = require('./routes/videoRoutes');
 
@@ -37,7 +38,7 @@ app.use('/api/lists',listRoutes);
 app.use('/api/admin',adminRoutes);
 app.use('/api/videos', videoRoutes);
 app.use('/api/payment',paymentRoutes);
-
+app.use('/api/deleteacc', deleteRoute);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
