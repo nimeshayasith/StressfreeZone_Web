@@ -22,7 +22,7 @@ app.use(cors({
     credentials:true,
     allowedHeaders: 'Content-Type, Authorization'
 }))
-//mongodb+srv://kaveesha:owdkmw1234@cluster0.ozrec1x.mongodb.net/myDatabase?retryWrites=true&w=majority&appName=Cluster0
+
 
 app.use(express.json());
 
