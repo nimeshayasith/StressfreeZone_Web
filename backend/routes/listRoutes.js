@@ -101,7 +101,7 @@ router.put('/:id', protect, async(req,res)=>{
     if(!list){
       return res.status(404).json({message:'List not found'});
     }
-    if(!list.user.toString() !== req.user._id.toString()){
+    if(list.user.toString() !== req.user._id.toString()){
       return res.status(401).json({ message: 'Not authorized'});
     }
 
