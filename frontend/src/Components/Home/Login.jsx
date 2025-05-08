@@ -9,6 +9,7 @@ import Meditation_2 from '../../assets/Meditation_2.svg';
 import googlelogo from '../../assets/google_logo.jpeg';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { IoIosArrowBack } from "react-icons/io";
 
 
 export default function Login() {
@@ -87,8 +88,13 @@ export default function Login() {
       {/* Left Section */}
       <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start">
         <div className="flex gap-2.5 mb-8 lg:ml-20 font-semibold text-white">
+        <IoIosArrowBack
+                    className="text-white cursor-pointer text-xl mr-5"
+                    onClick={() => navigate(-1)} // Navigate to the previous page
+                  />
           <img src={logo_icon} alt="App Logo" className="w-12 h-12 sm:w-16 sm:h-16" />
           <div className="flex flex-col justify-center">
+            
             <h1 className="text-xl sm:text-2xl font-bold">CALM MIND</h1>
             <p className="text-sm sm:text-base">STRESS FREE ZONE</p>
           </div>

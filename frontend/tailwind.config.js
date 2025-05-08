@@ -4,6 +4,7 @@ export default {
     extend: {
       animation: {
         blink: 'blink 2s infinite', // Adjust duration as needed
+        'spin-slow': 'spin 10s linear infinite',
       },
       keyframes: {
         blink: {
