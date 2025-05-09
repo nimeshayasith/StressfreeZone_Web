@@ -15,6 +15,8 @@ const AdminHome = () => {
   // State for success and error messages
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [isUploading, setIsUploading] = useState(false);
 
   // Handle form input changes
   const handleInputChange = (e) => {
@@ -44,20 +46,35 @@ const AdminHome = () => {
       formDataToSend.append('thumbnail', formData.image)
 
       try {
+        setIsUploading(true);
+        setUploadProgress(0);
+        setSuccessMessage('');
+        setErrorMessage('');
+
         const response = await axios.post('http://localhost:5000/api/videos/upload', formDataToSend, {
-          headers: { 'Content-Type': 'multipart/form-data' },
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          },
+          onUploadProgress: (progressEvent) => {
+            const percent = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+            setUploadProgress(percent);
+          }
         });
 
-        // Display success message
-        setSuccessMessage(response.data.message);
-        setErrorMessage('');
-        setFormData({ title: '', description: '', category: 'Movements', video: null, image:null });
-
-        // Clear success message after 3 seconds
-        setTimeout(() => setSuccessMessage(''), 3000);
+        setSuccessMessage(response.data.message || 'Video uploaded successfully!');
+        setFormData({
+          title: '',
+          description: '',
+          category: 'Movements',
+          video: null,
+          image: null
+        });
       } catch (error) {
         setErrorMessage(error.response?.data?.error || 'Error uploading video');
-        setSuccessMessage('');
+      } finally {
+        setIsUploading(false);
+        setTimeout(() => setSuccessMessage(''), 3000);
+        setTimeout(() => setErrorMessage(''), 3000);
       }
     } else {
       setErrorMessage('Please fill in all fields and upload a video.');
@@ -154,13 +171,25 @@ const AdminHome = () => {
 </div>
 
 
-            <button
+{isUploading && (
+              <div className="mb-4">
+                <div className="w-full bg-gray-300 rounded-full h-4">
+                  <div
+                    className="bg-green-600 h-4 rounded-full transition-all duration-300 ease-in-out"
+                    style={{ width: `${uploadProgress}%` }}
+                  ></div>
+                </div>
+                <p className="text-sm mt-1 text-green-300">{uploadProgress}% Uploading...</p>
+              </div>
+            )}
+ <button
               type="submit"
-              className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+              className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-blue-600 disabled:opacity-50"
+              disabled={isUploading}
             >
-              Upload Video
+              {isUploading ? 'Uploading...' : 'Upload Video'}
             </button>
-          </form>
+ </form>
           {successMessage && (
             <div className="bg-green-100 text-green-700 p-4 rounded-md mb-4">
               {successMessage}

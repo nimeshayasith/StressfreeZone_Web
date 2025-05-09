@@ -5,8 +5,8 @@ import YogaBackgroundArt from '../../assets/Yoga background art.png'
 import quickrelaxationRightSide from '../../assets/quick relaxation.png'
 import logo_icon from '../../assets/logo1.svg'
 import Footer from "./Footer";
-import sampleVideo from '../../assets/sample-video.mp4'
-
+import relaxingAudio from '../../assets/relaxing-audio.mp3';
+import quickrelaxationaudio from '../../assets/quickrelaxationaudio.jpg'
 
 
 export default function Home() {
@@ -16,7 +16,6 @@ export default function Home() {
 
     <div>
 
-      
      <div className="min-h-screen w-full flex items-center justify-center px-2 py-8 bg-gray-800">
  
        <div className="flex flex-col px-20 w-full max-md:px-5 max-md:max-w-full">
@@ -70,10 +69,46 @@ export default function Home() {
       </div>
     </div>
       </div>
+       {/* New Audio and Image Section Before Footer */}
+   <div className="flex justify-center items-center rounded-md  px-10 py-6 mt-8 mb-8 gap-10">
+        {/* Audio Player Section */}
+        <div className="w-3/5 text-center  p-8 bg-gray-900 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl">
+  <h3 className="text-3xl font-semibold text-teal-400 tracking-wide">
+    🌿 Calm Your Mind
+  </h3>
+  <p className="text-gray-400 mt-2 italic text-lg">
+    A gentle audio journey to tranquility
+  </p>
 
+  <h2 className="text-3xl font-bold mt-6 text-white leading-relaxed">
+    "Pause, inhale deeply, and let the tension fade away..."
+  </h2>
 
-    </div>
+  <div className="mt-6">
+    <audio
+      controls
+      className="w-full rounded-lg shadow-md   "
+    >
+      <source src={relaxingAudio} type="audio/mp3" />
+      Your browser does not support the audio element.
+    </audio>
+  </div>
 </div>
+
+
+        {/* Image Section */}
+        <div className="w-2/5">
+          <img
+            src={quickrelaxationaudio}
+            alt="Relaxing Exercise"
+            className="rounded-lg shadow-lg w-96 h-auto  p-8"
+          />
+        </div>
+      </div>
+    </div>
+    
+</div>
+  
 
 <Footer />
 </div>
