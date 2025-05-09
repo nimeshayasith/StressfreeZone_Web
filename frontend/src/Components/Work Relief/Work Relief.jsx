@@ -26,7 +26,7 @@ const WorkRelief = () => {
     // Fetch videos from the database by category 'Soundscape'
     const fetchVideos = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/videos/WorkRelief'); // Replace with your backend URL
+        const response = await fetch('https://stressfreezone-web.onrender.com/api/videos/WorkRelief'); // Replace with your backend URL
         if (!response.ok) {
           throw new Error('Failed to fetch videos');
         }
