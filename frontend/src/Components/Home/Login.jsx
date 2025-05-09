@@ -19,7 +19,7 @@ export default function Login() {
   const handleLogin = async () => {
     try {
       // Authenticate with the backend
-      const response = await axios.post("http://localhost:5000/api/auth/login", {
+      const response = await axios.post("https://stressfreezone-web.onrender.com/api/auth/login", {
         email,
         password
       });
@@ -45,7 +45,7 @@ export default function Login() {
         return;
       }
   
-      await axios.post("http://localhost:5000/api/auth/forgot-password", { email });
+      await axios.post("https://stressfreezone-web.onrender.com/api/auth/forgot-password", { email });
   
       toast.success("Password reset email sent successfully!", { position: "top-right" });
   
@@ -61,7 +61,7 @@ export default function Login() {
       const user = result.user;
       const token = await user.getIdToken();
   
-      const res = await axios.post("http://localhost:5000/api/auth/login-google", { token });
+      const res = await axios.post("https://stressfreezone-web.onrender.com/api/auth/login-google", { token });
   
       if (res.status === 200) {
         localStorage.setItem("token", res.data.token);
@@ -159,5 +159,6 @@ export default function Login() {
       </div>
     </div>
   );
-  
+
 }
+
