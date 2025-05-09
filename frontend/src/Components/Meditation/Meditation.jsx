@@ -26,7 +26,7 @@ const Meditation = () => {
 useEffect(() => {
   const fetchVideos = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/videos/Meditation');
+      const response = await fetch('https://stressfreezone-web.onrender.com/api/videos/Meditation');
       if (!response.ok) {
         throw new Error('Failed to fetch videos');
       }
