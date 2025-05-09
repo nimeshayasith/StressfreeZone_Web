@@ -110,7 +110,7 @@ const Home = () => {
                       <button className="bg-gray-200 rounded p-2 font-semibold">Monthly</button>
                       <div className="p-2 mb-1 text-blue-300">For all individuals and starters who want to start with domaining.</div>
                       <hr />
-                      <h1 className="font-bold text-5xl mt-2 p-2">1500 LKR</h1>
+                      <h1 className="font-bold text-4xl mt-2 p-2">1500 LKR</h1>
                       <p className="text-blue-300 font-semibold mb-2 p-2">Per member, Per month</p>
                       <hr />
                       <ul className="list-disc list-inside text-md text-blue-300 p-2 mb-2">
@@ -139,7 +139,7 @@ const Home = () => {
               <div className="text-5xl font-bold tracking-tight leading-tight text-center text-white max-md:max-w-full max-md:text-4xl">
                 Try our 100% free Plan 7 days
               </div>
-              <div className="self-stretch px-12 py-8 mt-6 w-full rounded-xl border-blue-900 border-solid bg-zinc-800 border-[3px] max-md:px-5 max-md:max-w-full">
+              <div className="self-stretch px-12 py-8 mt-6 w-full rounded-xl border-blue-900 border-solid bg-zinc-900 border-[3px] max-md:px-5 max-md:max-w-full">
                 <div className="flex gap-5 max-md:flex-col">
                   <div className="flex flex-col w-9/12 max-md:ml-0 max-md:w-full">
                     <div className="self-stretch my-auto text-base leading-7 text-center text-white max-md:mt-10 max-md:max-w-full">

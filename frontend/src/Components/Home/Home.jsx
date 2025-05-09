@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React from "react";
+import React , { useEffect, useRef } from "react";
 import {useNavigate,Link , useLocation} from "react-router-dom"
 import YogaBackgroundArt from '../../assets/Yoga background art.png'
 import YogaGirlRightSide from '../../assets/Yoga girl right side.png'
@@ -28,6 +28,38 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function Home() {
   const navigate = useNavigate();
   const location = useLocation();
+  const cardsRef = useRef(null);
+
+  useEffect(() => {
+    const cards = cardsRef.current?.querySelectorAll('.card-item');
+    if (!cards) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-rotate-in');
+            // Keep the visible state after animation
+            entry.target.style.opacity = '1';
+          } else {
+            // Only reset the animation class, not opacity
+            entry.target.classList.remove('animate-rotate-in');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    cards.forEach((card) => {
+      observer.observe(card);
+    });
+
+    return () => {
+      cards.forEach((card) => {
+        observer.unobserve(card);
+      });
+    };
+  }, []);
 
 const handleClick = () => {
   navigate('/login');
@@ -75,12 +107,46 @@ const handleClick = () => {
     });
   };
   
-
+  const cards = [
+    {
+      title: 'Choose your top goal',
+      description: 'Practice your breathing, relax your body, listen to calming sound music.',
+      image: placeholder1,
+    },
+    {
+      title: 'Listen the calming music help you sleep',
+      description: '50+ music with calming sound to help you fall asleep faster. Calm can change your life.',
+      image: placeholder3,
+    },
+    {
+      title: '30 days Meditation Challenge',
+      description: '100+ guided meditations covering anxiety, focus, stress, gratitude, and more.',
+      image: placeholder4,
+    },
+  ];
+  const styles = `
+  @keyframes rotateIn {
+    from {
+      transform: rotateY(90deg) scale(0.8);
+    }
+    to {
+      transform: rotateY(0) scale(1);
+    }
+  }
+  .card-item {
+    transform-style: preserve-3d;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .animate-rotate-in {
+    animation: rotateIn 0.8s ease-out forwards;
+  }
+`;
 
   return (
 
     <div>
-
+   <style>{styles}</style>
       
     <div className="min-h-screen w-full flex items-center justify-center px-2 py-8 bg-gray-800">
 
@@ -114,6 +180,7 @@ const handleClick = () => {
           </div>
         
       </div>
+      <div></div>
         {/*<img src={CircleGaps} alt=""  className="object-cover absolute flex mr-28"/>*/}
    <div className="flex relative flex-col items-start self-center pt-20 pr-12 pb-0 mt-0 mb-28 ml-24 max-w-full min-h-[503px] rounded-[202px] w-[568px] max-md:pt-24 max-md:pr-5">
    <div className="absolute -bottom-36 -left-44 w-56 h-56 bg-teal-600 rounded-full animate-pulse blur-2xl"></div>
@@ -139,17 +206,18 @@ const handleClick = () => {
           <div className="flex gap-5 justify-between mt-12 ml-0 md:ml-36 max-w-full text-lg font-medium tracking-wider text-white w-[360px] max-md:mt-10 max-md:ml-2.5">
                 <button
                   onClick={handleClick}
-                  className="relative px-10 py-3 bg-teal-500 max-md:px-5"
+                  className="relative px-10 py-3 bg-teal-500 max-md:px-5 rounded-2xl"
                 >
                   Try for free
                 </button>
                 <Link to="/contactus">
-                  <button className="relative self-start px-3 py-5">
+                  <button className="relative self-start px-10 py-3 bg-slate-600 border-spacing-0 max-md:px-5 rounded-2xl">
                     Contact Us
                   </button>
                 </Link>
               </div>
             </div>
+            
 
         <div className="w-full md:w-1/2 text-right -mt-7">
               <img
@@ -218,12 +286,33 @@ const handleClick = () => {
  
 
     
-      <div className="flex relative flex-col items-center px-0 pt-96 pb-0 mt-6 w-full min-h-[900px] max-md:py-24 max-md:mt-0 max-md:max-w-full">
-        <div className="flex overflow-hidden relative flex-col justify-center items-center self-stretch px-20 py-14 -mt-80 font-bold bg-slate-800 bg-opacity-50 max-md:px-5 max-md:max-w-full">
-          <div className="flex relative flex-col pt-5 pr-2.5 pl-10 w-full max-w-[1446px] min-h-[650px] pb-[0px] rounded-[202px] max-md:pb-24 max-md:pl-5 max-md:max-w-full">
-           <img src={phoneSelection} alt="" /> 
+      <div className="flex relative flex-col items-center px-0 pt-20 pb-0 mt-6 -mb-40 w-full min-h-[900px] max-md:py-24 max-md:mt-0 max-md:max-w-full">
+       {/* Rotating Cards Section */}
+      
+       <div className="container mx-auto px-4">
+      <h2 className="text-4xl font-bold text-center text-white mb-16">Discover Our Features</h2>
+      <div ref={cardsRef} className="flex flex-wrap justify-center gap-8">
+        {cards.map((card, index) => (
+          <div
+            key={index}
+            className="card-item w-72 h-96 bg-slate-700 rounded-2xl p-6 flex flex-col items-center text-center shadow-lg hover:shadow-teal-500/50 transition-all duration-500 hover:-translate-y-2"
+            style={{ animationDelay: `${index * 0.2}s` }}
+          >
+            <div className="w-40 h-40 rounded-full overflow-hidden mb-6 border-4 border-teal-500">
+              <img 
+                src={card.image} 
+                alt={card.title} 
+                className="w-full h-full object-cover transition-transform duration-700 hover:scale-110" 
+              />
+            </div>
+            <h3 className="text-xl font-bold text-white mb-3">{card.title}</h3>
+            <p className="text-gray-300 flex-grow">{card.description}</p>
+            
           </div>
-        </div>
+        ))}
+      </div>
+    </div>
+      
         </div>
 
         <div className="min-h-screen bg-gradient-to-br  flex items-center justify-center p-6 relative overflow-hidden border-8 border-transparent shadow-[0_0_0_8px_rgba(0,0,0,0.1)]">
@@ -244,7 +333,7 @@ const handleClick = () => {
       {/* Button to Show Relaxation Tip */}
       
       <button
-        className="fixed bottom-10 right-10 bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300"
+        className="fixed bottom-10 right-10 bg-slate-700 text-white py-2 px-4 rounded-full hover:bg-slate-900 transition duration-300"
         onClick={showRelaxationTip}
       >
         Get a Relaxation Tip
@@ -264,24 +353,23 @@ const handleClick = () => {
     <div className="flex relative flex-col items-center px-0 pt-24 pb-0 mt-6 w-full min-h-[1300px] max-md:py-24 max-md:mt-0 max-md:max-w-full">
     
   
-      <div className="mt-10 w-full max-md:max-w-full">
+      <div className="mt-10 w-full max-md:max-w-full mb-16">
       
-        <div className="flex gap-5 -mt-36 pr-16 max-md:flex-col">
+        <div className="flex gap-5 -mt-36 pr-16 max-md:flex-col ">
 
 
           <div className="flex flex-col w-[33%]  max-md:ml-0 max-md:w-full">
             <div className="flex relative flex-col px-6 pt-56 w-full min-h-[439px] rounded-[50px] max-md:px-5 max-md:pt-24 max-md:mt-10 max-md:max-w-full">
-            <img src={placeholder1} alt="placeholder" className="object-cover absolute inset-0 size-full rounded-3xl" />
-              <div className="flex relative z-10 flex-col items-center px-16 pt-9 pb-4 mt-16 font-medium text-white bg-slate-600 max-md:px-5 max-md:mt-10 rounded-xl">
-                <div className="text-4xl text-center leading-[50px] w-[329px]">
-                  Body and Mined Relaxation
+            <img src={placeholder1} alt="placeholder" className="object-cover absolute inset-0  size-full rounded-3xl" />
+              <div className="flex relative z-10 flex-col items-center px-16 pt-9 pb-2 mt-16 font-medium text-white bg-slate-600 max-md:px-5 max-md:mt-10 rounded-xl">
+                <div className="text-3xl text-center leading-[50px] w-[329px]">
+                  Body and Mind Relaxation
                 </div>
                 <div className="self-stretch mt-4 text-lg leading-8 text-center">
-                  You can choose the both Mind relaxation 
-                  techniques from here
+                A holistic approach to achieving mental and physical calmness through techniques like deep breathing, progressive muscle relaxation, and mindfulness. These practices help reduce stress, improve focus, and promote overall well-being.
                 </div>
                 <div className="mt-4 text-lg tracking-wider">
-                <button>Learn More</button>
+                <Link to ="login"><button >Learn More</button></Link>
                 <hr />
                 </div>
               </div>
@@ -297,14 +385,14 @@ const handleClick = () => {
               <img src={placeholder1}  alt="" className="rounded-3xl object-cover absolute inset-0 size-full"/>
      
               <div className="flex relative  rounded-xl z-10 flex-col items-center px-16 pt-9 pb-4 mt-16 font-medium text-white bg-slate-600 max-md:px-5 max-md:mt-10">
-                <div className="text-4xl text-center leading-[50px] w-[329px]">
+                <div className="text-3xl text-center leading-[50px] w-[329px]">
                   Schedule Reminder Service
                 </div>
                 <div className="self-stretch mt-4 text-lg leading-8 text-center">
-                You can schedule your exercises reminders through this... 
+                A tool or app that helps users manage their time effectively by sending reminders for tasks, appointments, or self-care activities. It ensures users stay organized and maintain a balanced routine, reducing stress and improving productivity. 
                 </div>
                 <div className="mt-4 text-lg tracking-wider">
-                <button>Learn More</button>
+                <Link to ="login"><button>Learn More</button></Link>
                 <hr />
                 </div>
               </div>
@@ -317,15 +405,15 @@ const handleClick = () => {
               />
        
               <div className="flex relative rounded-xl z-10 flex-col items-center px-16 pt-9 pb-4 mt-16 font-medium text-white bg-slate-600 max-md:px-5 max-md:mt-10">
-                <div className="text-4xl text-center leading-[50px] w-[329px]">
-                  Meditation and Soundscape
+                <div className="text-3xl text-center leading-[50px] w-[329px]">
+                  Meditation
                 </div>
                 <div className="self-stretch mt-4 text-lg leading-8 text-center">
-                You can learn more about the meditation and soundscape from here
+                A practice of training the mind to achieve a state of clarity, focus, and inner peace. Techniques include guided meditation, mindfulness, and visualization, which help reduce stress, improve emotional health, and increase self-awareness.
                  
                 </div>
-                <div className="mt-4 text-lg tracking-wider">
-                <button>Learn More</button>
+                <div className="mt-16 text-lg tracking-wider">
+                <Link to ="login"><button>Learn More</button></Link>
                 <hr />
                 </div>
               </div>
@@ -340,15 +428,14 @@ const handleClick = () => {
               />
        
               <div className="flex relative z-10 rounded-xl flex-col items-center px-16 pt-9 pb-4 mt-16 font-medium text-white bg-slate-600 max-md:px-5 max-md:mt-10">
-                <div className="text-4xl text-center leading-[50px] w-[329px]">
+                <div className="text-3xl text-center leading-[50px] w-[329px]">
                   Stress Detection System
                 </div>
                 <div className="self-stretch mt-4 text-lg leading-8 text-center">
-                  You can track your stress with this our product. This is new
-                  technological Feature
+                A user-friendly tool that collects information from the user through questionnaires or input about their daily habits, emotions, and physical symptoms. It provides personalized insights and recommendations to help users understand and manage their stress effectively.
                 </div>
                 <div className="mt-4 text-lg tracking-wider">
-                <button>Learn More</button>
+                <Link to ="login"><button>Learn More</button></Link>
                 <hr />
                 </div>
               </div>
@@ -365,15 +452,14 @@ const handleClick = () => {
               />
        
               <div className="flex relative z-10 rounded-xl flex-col items-center px-16 pt-9 pb-4 mt-16 font-medium text-white bg-slate-600 max-md:px-5 max-md:mt-10">
-                <div className="text-4xl text-center leading-[50px] w-[329px]">
-                  Stress Detection System
+                <div className="text-3xl text-center leading-[50px] w-[329px]">
+                  Soundscape
                 </div>
                 <div className="self-stretch mt-4 text-lg leading-8 text-center">
-                  You can track your stress with this our product. This is new
-                  technological Feature
+                Immersive audio environments designed to enhance relaxation, focus, or sleep. Soundscapes often include nature sounds (e.g., rain, ocean waves), white noise, or calming music to create a soothing atmosphere for meditation, work, or rest.
                 </div>
-                <div className="mt-4 text-lg tracking-wider">
-                <button>Learn More</button>
+                <div className="mt-20 text-lg tracking-wider">
+                <Link to ="login"><button>Learn More</button></Link>
                 <hr />
                 </div>
               </div>
@@ -386,14 +472,14 @@ const handleClick = () => {
               />
        
               <div className="flex relative z-10 flex-col rounded-xl items-center px-16 pt-9 pb-4 mt-16 font-medium text-white bg-slate-600 max-md:px-5 max-md:mt-10">
-                <div className="text-4xl text-center leading-[50px] w-[329px]">
+                <div className="text-3xl text-center leading-[50px] w-[329px]">
                   Educational Content
                 </div>
                 <div className="self-stretch mt-4 text-lg leading-8 text-center">
-                  You can learn how to control your stress level within some guidance articles
+                Informative and engaging resources designed to educate users about stress management, mental health, and relaxation techniques. This can include articles, videos, podcasts, or interactive modules to empower users with knowledge and practical tools.
                 </div>
                 <div className="mt-4 text-lg tracking-wider">
-                <button>Learn More</button>
+                <Link to ="login"><button>Learn More</button></Link>
                 <hr />
                 </div>
               </div>
@@ -425,25 +511,25 @@ const handleClick = () => {
       
       {/* Column 1 */}
       <div className="flex flex-col w-[33%] max-md:w-full">
-        <div className="flex flex-col px-6 pt-10 pb-10 min-h-[260px] bg-slate-950 text-center">
+        <div className="flex flex-col px-6 pt-10 pb-10 min-h-[260px] bg-slate-950 rounded-lg text-center">
           <p className="text-white text-2xl">Jane Froster <hr /></p>
-          <p className="text-white">“Lorem ipsum dolor sit amet, consec tetur adi piscing elit. Praesent tellus leo, vesti bulum a ipsum sed, suscipit sodales ex. Vestibulum id varius risus. Fusce tempus tellus sed.”</p>
+          <p className="text-white">This app is a lifesaver! The stress detection feature is so accurate, and the personalized recommendations have helped me manage my stress better. I love the soundscapes and meditation guides—they’re perfect for winding down after a long day. Highly recommend it to anyone looking for a little peace in their life!</p>
         </div>
       </div>
       
       {/* Column 2 */}
       <div className="flex flex-col w-[33%] max-md:w-full">
-        <div className="flex flex-col px-6 pt-10 pb-10 min-h-[260px] bg-slate-950 text-center">
-          <p className="text-white text-2xl">Ninna Aguero <hr /></p>
-          <p className="text-white">“Lorem ipsum dolor sit amet, consec tetur adi piscing elit. Praesent tellus leo, vesti bulum a ipsum sed, suscipit sodales ex. Vestibulum id varius risus. Fusce tempus tellus sed.”</p>
+        <div className="flex flex-col px-6 pt-10 pb-10 min-h-[260px] rounded-lg bg-slate-950 text-center">
+          <p className="text-white text-2xl">James P. <hr /></p>
+          <p className="text-white">"I’ve tried so many relaxation apps, but this one stands out. The schedule reminders keep me on track, and the educational content is super insightful. The stress level calculation is spot-on, and I feel more in control of my mental health now. Thank you for creating such a thoughtful app!"</p>
         </div>
       </div>
       
       {/* Column 3 */}
       <div className="flex flex-col w-[33%] max-md:w-full">
-        <div className="flex flex-col px-6 pt-10 pb-10 min-h-[260px] bg-slate-950 text-center">
+        <div className="flex flex-col px-6 pt-10 pb-10 min-h-[260px] rounded-lg bg-slate-950 text-center">
           <p className="text-white text-2xl">Samantha Krik <hr /></p>
-          <p className="text-white">“Lorem ipsum dolor sit amet, consec tetur adi piscing elit. Praesent tellus leo, vesti bulum a ipsum sed, suscipit sodales ex. Vestibulum id varius risus. Fusce tempus tellus sed.”</p>
+          <p className="text-white">"Absolutely love this app! The combination of soundscapes, meditation, and stress detection is genius. It’s like having a personal wellness coach in my pocket. The interface is clean and easy to use, and the tips are so practical. This app has become a daily essential for me!.Thank you so much"</p>
         </div>
       </div>
       

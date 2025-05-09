@@ -12,7 +12,10 @@ import userprofile from '../../assets/userprofile.jpg';
 import userprofileicon from '../../assets/userprofile.png';
 import stressfreezoneicon from '../../assets/stressfreezoneicon.png';
 import { Link , useNavigate} from 'react-router-dom';
-import premier from '../../assets/premiere.png'
+import premier from '../../assets/premiere.png';
+import axios from "axios";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const UserProfile = () => {
   
@@ -36,21 +39,68 @@ const UserProfile = () => {
       localStorage.removeItem('token'); 
       localStorage.removeItem('user');
       localStorage.removeItem("lists");
-      navigate('/');
-      console.log("User logged out!");
+      navigate('/login');
+      toast.success('You have logged out successfully');
     };
     const handleDeleteAccount = () => {
-      if (window.confirm("Are you sure you want to delete your account? This action can not be undone.")) {
-        // Perform account deletion logic here
-        console.log("Account deleted.");
-      }
-    };
+  toast.warn(
+    ({ closeToast }) => (
+      <div>
+        <p>Are you sure you want to delete your account?</p>
+        <p className="text-sm text-gray-300">This action cannot be undone.</p>
+        <div className="mt-2 flex gap-4 justify-end">
+          <button
+            onClick={() => {
+              confirmDelete();
+              closeToast();
+            }}
+            className="bg-red-600 text-white px-3 py-1 rounded"
+          >
+            Yes, Delete
+          </button>
+          <button
+            onClick={closeToast}
+            className="bg-gray-500 text-white px-3 py-1 rounded"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    ),
+    {
+      position: "top-center",
+      autoClose: false,
+      closeOnClick: false,
+      closeButton: false,
+    }
+  );
+};
+
+const confirmDelete = async () => {
+  try {
+    const token = localStorage.getItem('token');
+    await axios.delete('http://localhost:5000/api/deleteacc/delete', {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+
+    toast.success('Account deleted successfully', { position: 'top-right' });
+    navigate('/');
+  } catch (error) {
+    toast.error('Failed to delete account', { position: 'top-right' });
+    console.error(error);
+  }
+};
+
     
     
   
   return (
     
     <div className=" min-h-[1100px] w-full  px-4 py-10 bg-gray-800 relative">
+      <ToastContainer />
           <img src={YogaBackgroundArt} alt=""  className="object-cover opacity-40 absolute pl-44 pt-0 w-auto h-auto size-full bg-no-repeat bg-cover bg-fixed "/>
       <div className="flex w-full">
        

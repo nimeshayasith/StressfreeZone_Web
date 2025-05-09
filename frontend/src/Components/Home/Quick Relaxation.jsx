@@ -5,8 +5,8 @@ import YogaBackgroundArt from '../../assets/Yoga background art.png'
 import quickrelaxationRightSide from '../../assets/quick relaxation.png'
 import logo_icon from '../../assets/logo1.svg'
 import Footer from "./Footer";
-import sampleVideo from '../../assets/sample-video.mp4'
-
+import relaxingAudio from '../../assets/relaxing-audio.mp3';
+import quickrelaxationaudio from '../../assets/quickrelaxationaudio.jpg'
 
 
 export default function Home() {
@@ -16,7 +16,6 @@ export default function Home() {
 
     <div>
 
-      
      <div className="min-h-screen w-full flex items-center justify-center px-2 py-8 bg-gray-800">
  
        <div className="flex flex-col px-20 w-full max-md:px-5 max-md:max-w-full">
@@ -39,15 +38,15 @@ export default function Home() {
          </div>
          </div>
           <div className="flex gap-0.5 justify-center items-center self-stretch my-auto min-h-[51px] min-w-[240px] w-[480px] max-md:max-w-full">
-                  <div className="flex flex-col self-stretch my-auto min-w-[240px] w-[480px] max-md:max-w-full">
-                    <div className="flex justify-center items-center min-h-[51px]">
+                 <div className="flex flex-col self-stretch my-auto min-w-[240px] w-[480px] max-md:max-w-full">
+                   <div className="flex justify-center items-center min-h-[51px]">
                      <Link to="/"><button className="self-stretch my-auto  w-[120px] hover:text-teal-300 transition duration-300">Home</button></Link>
                      <Link to="/aboutus"><button className="self-stretch my-auto w-[120px] hover:text-teal-300 transition duration-300">About Us</button></Link>
                      <Link to="/mobileapp"><button className="self-stretch my-auto w-[120px] hover:text-teal-300 transition duration-300">Mobile App</button></Link>
-                     <Link to="/premierplan"><button className="self-stretch my-auto w-[120px] hover:text-teal-300 transition duration-300">Premier plan</button></Link>
+                     <Link to="/premierplan"><button className="self-stretch my-auto  w-[120px] hover:text-teal-300 transition duration-300">Premier plan</button></Link>
                    </div>
-        </div>
-      </div>
+                 </div>
+               </div>
         {/*<img src={CircleGaps} alt=""  className="object-cover absolute flex mr-28"/>*/}
         <div className="flex relative flex-col items-start self-center pt-20 pr-12 pb-0 mt-0 mb-28 ml-24 max-w-full min-h-[503px] rounded-[202px] w-[568px] max-md:pt-24 max-md:pr-5">
 
@@ -70,68 +69,46 @@ export default function Home() {
       </div>
     </div>
       </div>
+       {/* New Audio and Image Section Before Footer */}
+   <div className="flex justify-center items-center rounded-md  px-10 py-6 mt-8 mb-8 gap-10">
+        {/* Audio Player Section */}
+        <div className="w-3/5 text-center  p-8 bg-gray-900 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl">
+  <h3 className="text-3xl font-semibold text-teal-400 tracking-wide">
+    🌿 Calm Your Mind
+  </h3>
+  <p className="text-gray-400 mt-2 italic text-lg">
+    A gentle audio journey to tranquility
+  </p>
 
+  <h2 className="text-3xl font-bold mt-6 text-white leading-relaxed">
+    "Pause, inhale deeply, and let the tension fade away..."
+  </h2>
 
-      <div className="flex overflow-hidden flex-col justify-center items-center px-20 py-14 bg-gray-900 max-md:px-5 mb-16">
-      <div className="flex overflow-hidden flex-col justify-center items-center px-20 py-14 bg-gray-900 max-md:px-5 mb-16">
-      <section className="flex flex-col items-center text-center max-w-[677px]">
-      <h1 className="text-5xl font-bold text-violet-600 max-md:max-w-full max-md:text-4xl">
-        30 days for <span className="text-violet-600">$55</span>
-      </h1>
-      <p className="mt-5 mb-8 w-full text-lg text-neutral-500 max-md:max-w-full">
-        All students are eligible to try our{" "}
-        <span className="text-violet-600">30 Day UNLIMITED</span> Intro Special
-        once. Take as many classes as you want, either in studio or online, for 30
-        days straight.
-      </p>
-    </section>
-      <video
-        className="w-full max-w-5xl rounded-lg shadow-lg"
-        controls
-        autoPlay
-        loop
-        muted
-      >
-        <source src={sampleVideo} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
-    </div>
-
-
-      <div className=" bg-slate-800">
-      <div className="flex flex-col items-center self-center px-10 py-10 ml-36 max-w-full mt-[36px] w-[1011px] max-md:px-5 max-md:mt-10">
-        <div className="text-5xl font-bold tracking-tight leading-tight text-center text-white max-md:max-w-full max-md:text-4xl">
-          Try our 100% free Plan 7 days
-        </div>
-        <div className="self-stretch px-12 py-8 mt-6 w-full rounded-xl border-blue-900 border-solid bg-zinc-800 border-[3px] max-md:px-5 max-md:max-w-full">
-          <div className="flex gap-5 max-md:flex-col">
-            <div className="flex flex-col w-9/12 max-md:ml-0 max-md:w-full">
-              <div className="self-stretch my-auto text-base leading-7 text-center text-white max-md:mt-10 max-md:max-w-full">
-                Get started with our free plan and make 10 lookups per month
-                absolutely free!
-                <br />
-                <br />
-              </div>
-            </div>
-            <div className="flex flex-col ml-5 w-3/12 max-md:ml-0 max-md:w-full">
-              <Link to='/register'><button className="grow gap-2.5 self-stretch px-9 py-2 w-full text-base font-bold text-center text-white bg-teal-500 rounded min-h-[40px] max-md:px-5 max-md:mt-10">
-                Signup for Free 
-              </button></Link>
-            </div>
-          </div>
-        </div>
-        <div className="mt-14 text-2xl leading-none text-center text-white max-md:mt-10">
-          Payment Methods
-        </div>
-       
-        <div className="mt-5 text-base leading-loose text-center text-white">
-          We accept Visa, Credit Card, Mastercard and Debit Card
-        </div>
-      </div>
-      </div>
-    </div>
+  <div className="mt-6">
+    <audio
+      controls
+      className="w-full rounded-lg shadow-md   "
+    >
+      <source src={relaxingAudio} type="audio/mp3" />
+      Your browser does not support the audio element.
+    </audio>
+  </div>
 </div>
+
+
+        {/* Image Section */}
+        <div className="w-2/5">
+          <img
+            src={quickrelaxationaudio}
+            alt="Relaxing Exercise"
+            className="rounded-lg shadow-lg w-96 h-auto  p-8"
+          />
+        </div>
+      </div>
+    </div>
+    
+</div>
+  
 
 <Footer />
 </div>
