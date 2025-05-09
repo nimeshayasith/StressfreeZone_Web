@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React from "react";
+import React , { useEffect, useRef } from "react";
 import {useNavigate,Link , useLocation} from "react-router-dom"
 import YogaBackgroundArt from '../../assets/Yoga background art.png'
 import YogaGirlRightSide from '../../assets/Yoga girl right side.png'
@@ -28,6 +28,38 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function Home() {
   const navigate = useNavigate();
   const location = useLocation();
+  const cardsRef = useRef(null);
+
+  useEffect(() => {
+    const cards = cardsRef.current?.querySelectorAll('.card-item');
+    if (!cards) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-rotate-in');
+            // Keep the visible state after animation
+            entry.target.style.opacity = '1';
+          } else {
+            // Only reset the animation class, not opacity
+            entry.target.classList.remove('animate-rotate-in');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    cards.forEach((card) => {
+      observer.observe(card);
+    });
+
+    return () => {
+      cards.forEach((card) => {
+        observer.unobserve(card);
+      });
+    };
+  }, []);
 
 const handleClick = () => {
   navigate('/login');
@@ -75,12 +107,46 @@ const handleClick = () => {
     });
   };
   
-
+  const cards = [
+    {
+      title: 'Choose your top goal',
+      description: 'Practice your breathing, relax your body, listen to calming sound music.',
+      image: placeholder1,
+    },
+    {
+      title: 'Listen the calming music help you sleep',
+      description: '50+ music with calming sound to help you fall asleep faster. Calm can change your life.',
+      image: placeholder3,
+    },
+    {
+      title: '30 days Meditation Challenge',
+      description: '100+ guided meditations covering anxiety, focus, stress, gratitude, and more.',
+      image: placeholder4,
+    },
+  ];
+  const styles = `
+  @keyframes rotateIn {
+    from {
+      transform: rotateY(90deg) scale(0.8);
+    }
+    to {
+      transform: rotateY(0) scale(1);
+    }
+  }
+  .card-item {
+    transform-style: preserve-3d;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .animate-rotate-in {
+    animation: rotateIn 0.8s ease-out forwards;
+  }
+`;
 
   return (
 
     <div>
-
+   <style>{styles}</style>
       
     <div className="min-h-screen w-full flex items-center justify-center px-2 py-8 bg-gray-800">
 
@@ -220,12 +286,35 @@ const handleClick = () => {
  
 
     
-      <div className="flex relative flex-col items-center px-0 pt-96 pb-0 mt-6 w-full min-h-[900px] max-md:py-24 max-md:mt-0 max-md:max-w-full">
-        <div className="flex overflow-hidden relative flex-col justify-center items-center self-stretch px-20 py-14 -mt-80 font-bold bg-slate-800 bg-opacity-50 max-md:px-5 max-md:max-w-full">
-          <div className="flex relative flex-col pt-5 pr-2.5 pl-10 w-full max-w-[1446px] min-h-[650px] pb-[0px] rounded-[202px] max-md:pb-24 max-md:pl-5 max-md:max-w-full">
-           <img src={phoneSelection} alt="" /> 
+      <div className="flex relative flex-col items-center px-0 pt-20 pb-0 mt-6 -mb-40 w-full min-h-[900px] max-md:py-24 max-md:mt-0 max-md:max-w-full">
+       {/* Rotating Cards Section */}
+      
+       <div className="container mx-auto px-4">
+      <h2 className="text-4xl font-bold text-center text-white mb-16">Discover Our Features</h2>
+      <div ref={cardsRef} className="flex flex-wrap justify-center gap-8">
+        {cards.map((card, index) => (
+          <div
+            key={index}
+            className="card-item w-72 h-96 bg-slate-700 rounded-2xl p-6 flex flex-col items-center text-center shadow-lg hover:shadow-teal-500/50 transition-all duration-500 hover:-translate-y-2"
+            style={{ animationDelay: `${index * 0.2}s` }}
+          >
+            <div className="w-40 h-40 rounded-full overflow-hidden mb-6 border-4 border-teal-500">
+              <img 
+                src={card.image} 
+                alt={card.title} 
+                className="w-full h-full object-cover transition-transform duration-700 hover:scale-110" 
+              />
+            </div>
+            <h3 className="text-xl font-bold text-white mb-3">{card.title}</h3>
+            <p className="text-gray-300 flex-grow">{card.description}</p>
+            <button className="mt-4 px-6 py-2 bg-teal-600 text-white rounded-full hover:bg-teal-700 transition-colors">
+              Learn More
+            </button>
           </div>
-        </div>
+        ))}
+      </div>
+    </div>
+      
         </div>
 
         <div className="min-h-screen bg-gradient-to-br  flex items-center justify-center p-6 relative overflow-hidden border-8 border-transparent shadow-[0_0_0_8px_rgba(0,0,0,0.1)]">

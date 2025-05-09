@@ -18,7 +18,7 @@ const ContactUsPage = () => {
           console.log('SUCCESS!');
           toast.success("Message sent successfully!", { position: "top-right" });
           form.current.reset();
-        },
+        }, 
         (error) => {
           console.log('FAILED...', error.text);
           toast.error(error.response?.data?.message || "Message sending failed!", { position: "top-right" });

@@ -155,7 +155,7 @@ export default function Premier() {
           <h2 className="text-2xl text-slate-300 font-bold mb-4">Annual Membership</h2>
           <p className="text-lg text-gray-400 mb-4">7-Day Free Trial</p>
           <p className="text-xl font-semibold text-slate-700 mb-4">
-            $5/month, billed annually at $50 after 7-day free trial cancel
+           1500 LKR per month, billed annually at 16000 LKR after 7-day free trial cancel
           </p>
           <ul className="space-y-3 mb-6">
             <li className="flex items-center">

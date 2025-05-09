@@ -261,7 +261,7 @@ const Dashboard = () => {
                 <div className="flex flex-col w-[63%] max-md:ml-0 max-md:w-full">
                   <div className="flex flex-col mt-14 -mr-8 h-12 text-neutral-300 max-md:mt-10">
                     <h3 className="text-xl">Good vibes, good life</h3>
-                    <p className="text-base">Positive thinking | </p>
+                    <p className="text-base">Have a great day</p>
                   </div>
                 </div>
                 <div className="flex flex-col ml-5 w-[37%] max-md:ml-0 max-md:w-full">
@@ -307,20 +307,27 @@ const Dashboard = () => {
         Quick Relaxation
       </h2>
 
-      <article className="flex relative text-white  flex-col mt-6 w-full rounded-xl min-h-[78px] max-md:max-w-full">
-      <div className="flex relative  flex-col mb-4 bg-slate-950 items-start py-6 pr-20 pl-6 rounded-xl max-md:px-5 max-md:max-w-full">
-        <h3 className="text-sm">Hard Plan</h3>
-        <p className="text-xs font-light">Lorem ipsum dolor sit amet consectetur. Id amet orci viverra id.</p>
-      </div>
-      <div className="flex relative flex-col mb-4 bg-slate-950 items-start py-6 pr-20 pl-6 rounded-xl max-md:px-5 max-md:max-w-full">
-        <h3 className="text-sm">Hard Plan</h3>
-        <p className="text-xs font-light">Lorem ipsum dolor sit amet consectetur. Id amet orci viverra id.</p>
-      </div>
-      <div className="flex relative flex-col bg-slate-950 items-start py-6 pr-20 pl-6 rounded-xl max-md:px-5 max-md:max-w-full">
-        <h3 className="text-sm">Hard Plan</h3>
-        <p className="text-xs font-light">Lorem ipsum dolor sit amet consectetur. Id amet orci viverra id.</p>
-      </div>
-    </article> 
+      <article className="flex relative text-white flex-col mt-6 w-full rounded-xl min-h-[78px] max-md:max-w-full">
+  <div className="flex relative flex-col mb-4 bg-slate-950 items-start py-6 pr-20 pl-6 rounded-xl max-md:px-5 max-md:max-w-full">
+    <h3 className="text-sm">Deep Breathing</h3>
+    <p className="text-xs font-light">
+      Take a deep breath in, hold for a few seconds, and slowly exhale. Repeat this process to calm your mind and body.
+    </p>
+  </div>
+  <div className="flex relative flex-col mb-4 bg-slate-950 items-start py-6 pr-20 pl-6 rounded-xl max-md:px-5 max-md:max-w-full">
+    <h3 className="text-sm">Guided Meditation</h3>
+    <p className="text-xs font-light">
+      Listen to soothing guided meditations to clear your thoughts and bring a sense of peace and relaxation.
+    </p>
+  </div>
+  <div className="flex relative flex-col bg-slate-950 items-start py-6 pr-20 pl-6 rounded-xl max-md:px-5 max-md:max-w-full">
+    <h3 className="text-sm">Soothing Sounds</h3>
+    <p className="text-xs font-light">
+      Immerse yourself in calming nature sounds, like ocean waves or rainfall, to reduce stress and enhance focus.
+    </p>
+  </div>
+</article>
+
   </div>
  {/* Right Column: Upcoming Events */}
  <div className="bg-black/30 p-4 shadow-md rounded-md border border-gray-300">
