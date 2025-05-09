@@ -27,7 +27,7 @@ export default function Register() {
   
         // Send registration request to backend
         const response = await axios.post(
-          "https://stressfreezone-web-frontend.onrender.com/api/auth/signup",
+          "http://stressfreezone-web-frontend.onrender.com/api/auth/signup",
           { name, email, password }
         );
   
